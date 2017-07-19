@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "TemporaryData.h"
 #import "WalgreensAPI.h"
 
 @interface StoreListController : UITableViewController <WalgreensAPIDelegate>

@@ -14,7 +14,6 @@
 		3978F1481EBD462A001FD643 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978F1471EBD462A001FD643 /* MapKit.framework */; };
 		A814971A1EB3252500CEE993 /* StoreNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A81497191EB3252500CEE993 /* StoreNumberCell.m */; };
 		A821BB371EDBA08000B878BA /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A821BB361EDBA08000B878BA /* walgreensapidb.sql */; };
-		A821BB3A1EDBA6C000B878BA /* TemporaryData.m in Sources */ = {isa = PBXBuildFile; fileRef = A821BB391EDBA6C000B878BA /* TemporaryData.m */; };
 		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
 		A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72E1EB023FB002ED089 /* AppDelegate.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
@@ -51,8 +50,6 @@
 		A81497181EB3252500CEE993 /* StoreNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreNumberCell.h; sourceTree = "<group>"; };
 		A81497191EB3252500CEE993 /* StoreNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreNumberCell.m; sourceTree = "<group>"; };
 		A821BB361EDBA08000B878BA /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
-		A821BB381EDBA6C000B878BA /* TemporaryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemporaryData.h; path = Common/TemporaryData.h; sourceTree = "<group>"; };
-		A821BB391EDBA6C000B878BA /* TemporaryData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemporaryData.m; path = Common/TemporaryData.m; sourceTree = "<group>"; };
 		A821BB411EDBADF400B878BA /* SharedCommands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedCommands.h; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C72B1EB023FB002ED089 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -290,8 +287,6 @@
 		A842C7291EB023FB002ED089 /* WalgreensDashboardApp */ = {
 			isa = PBXGroup;
 			children = (
-				A821BB381EDBA6C000B878BA /* TemporaryData.h */,
-				A821BB391EDBA6C000B878BA /* TemporaryData.m */,
 				A821BB241EDB95C700B878BA /* Common */,
 				A821BB2D1EDB962E00B878BA /* Resources */,
 				A821BB2E1EDB963F00B878BA /* Supporting Files */,
@@ -412,7 +407,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3978F13D1EBD4545001FD643 /* MapPin.m in Sources */,
-				A821BB3A1EDBA6C000B878BA /* TemporaryData.m in Sources */,
 				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
 				3978F1401EBD4554001FD643 /* StoreDetailViewController.m in Sources */,
 				A814971A1EB3252500CEE993 /* StoreNumberCell.m in Sources */,

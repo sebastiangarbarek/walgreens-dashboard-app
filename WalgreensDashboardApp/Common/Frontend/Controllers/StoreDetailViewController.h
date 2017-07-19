@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-#import "TemporaryData.h"
 #import "WalgreensAPI.h"
 
 @interface StoreDetailViewController : UIViewController <WalgreensAPIDelegate> {
