@@ -12,6 +12,7 @@
 		3978F1431EBD4577001FD643 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3978F1421EBD4577001FD643 /* Main.storyboard */; };
 		3978F1451EBD45F4001FD643 /* StoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3978F1441EBD45F4001FD643 /* StoreListController.m */; };
 		3978F1481EBD462A001FD643 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3978F1471EBD462A001FD643 /* MapKit.framework */; };
+		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
 		A814971A1EB3252500CEE993 /* StoreNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A81497191EB3252500CEE993 /* StoreNumberCell.m */; };
 		A821BB371EDBA08000B878BA /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A821BB361EDBA08000B878BA /* walgreensapidb.sql */; };
 		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
@@ -59,6 +60,8 @@
 		3978F1471EBD462A001FD643 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
+		A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
 		A81497151EB324FC00CEE993 /* StoreListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreListController.h; sourceTree = "<group>"; };
 		A81497181EB3252500CEE993 /* StoreNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreNumberCell.h; sourceTree = "<group>"; };
 		A81497191EB3252500CEE993 /* StoreNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreNumberCell.m; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 		A8A4CB611F2B46E000B87449 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */,
+				A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
 				A8A4CB5E1F2B406700B87449 /* main.m in Sources */,
 				A842C7431EB0277D002ED089 /* MenuViewController.m in Sources */,
+				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
 				3978F1451EBD45F4001FD643 /* StoreListController.m in Sources */,
 				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
 				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
