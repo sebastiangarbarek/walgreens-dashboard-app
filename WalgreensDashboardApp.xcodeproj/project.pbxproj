@@ -148,6 +148,7 @@
 		A821BB241EDB95C700B878BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A8A4CB5F1F2B433200B87449 /* Backend */,
 				A821BB291EDB95F800B878BA /* Frontend */,
 			);
 			name = Common;
@@ -370,6 +371,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A8A4CB5F1F2B433200B87449 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				A8A4CB611F2B46E000B87449 /* Models */,
+			);
+			name = Backend;
+			path = Common/Backend;
+			sourceTree = "<group>";
+		};
+		A8A4CB611F2B46E000B87449 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -424,7 +441,6 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = T45LG4J27C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -655,7 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T45LG4J27C;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
@@ -667,7 +683,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T45LG4J27C;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
