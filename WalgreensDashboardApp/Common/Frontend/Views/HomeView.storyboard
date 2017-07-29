@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MlS-g2-mim">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="J2x-Iv-6eV">
+            <objects>
+                <viewController id="MlS-g2-mim" customClass="MenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PtT-AU-Kps"/>
+                        <viewControllerLayoutGuide type="bottom" id="hDn-tE-CHQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v5g-TU-yKC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTs-Tb-u4J">
+                                <rect key="frame" x="20" y="73" width="173" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="goW-ZR-XUE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7l-1d-vpf">
+                                <rect key="frame" x="20" y="124" width="173" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="alR-Vm-Ag6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgx-du-gfi" userLabel="Online Store Number">
+                                <rect key="frame" x="211" y="175" width="148" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WQ-CA-BSt" userLabel="Offline Store Number">
+                                <rect key="frame" x="211" y="226" width="148" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stores Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCF-aJ-t2j">
+                                <rect key="frame" x="20" y="175" width="287" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="oPU-6Z-3Ag"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stores Offline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvA-WO-hQc" userLabel="Stores Offline">
+                                <rect key="frame" x="20" y="226" width="287" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="Jiv-Bi-H12"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18e-D2-fu9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="6Ho-Cd-ifK">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="BuJ-Fa-2PJ">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VLL-Nz-6M9">
+                                                <rect key="frame" x="16" y="6" width="32" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Last" image="lastDayButton"/>
+                                                <connections>
+                                                    <action selector="lastDayButton:" destination="MlS-g2-mim" eventType="touchUpInside" id="dDA-KV-g5e"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="4Zc-Bf-eOd">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yWM-Cf-mNe">
+                                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Next" image="nextDayButton"/>
+                                                <connections>
+                                                    <action selector="nextDayButton:" destination="MlS-g2-mim" eventType="touchUpInside" id="hRZ-ol-cnn"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArI-iL-CIk">
+                                <rect key="frame" x="211" y="124" width="148" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q95-kl-T2G">
+                                <rect key="frame" x="211" y="73" width="148" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="SQF-Hx-xUi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="baseline" secondItem="q95-kl-T2G" secondAttribute="baseline" id="3Ga-E8-O0X"/>
+                            <constraint firstItem="q95-kl-T2G" firstAttribute="leading" secondItem="XTs-Tb-u4J" secondAttribute="trailing" constant="18" id="3JK-0a-dwD"/>
+                            <constraint firstItem="PCF-aJ-t2j" firstAttribute="firstBaseline" secondItem="Qgx-du-gfi" secondAttribute="firstBaseline" id="6nW-kp-trJ"/>
+                            <constraint firstItem="18e-D2-fu9" firstAttribute="top" secondItem="PtT-AU-Kps" secondAttribute="bottom" id="CoG-Oj-Uat"/>
+                            <constraint firstItem="tvA-WO-hQc" firstAttribute="firstBaseline" secondItem="5WQ-CA-BSt" secondAttribute="firstBaseline" id="EGX-Ax-Fph"/>
+                            <constraint firstItem="18e-D2-fu9" firstAttribute="leading" secondItem="v5g-TU-yKC" secondAttribute="leading" id="FEy-3l-XZz"/>
+                            <constraint firstItem="ArI-iL-CIk" firstAttribute="trailing" secondItem="Qgx-du-gfi" secondAttribute="trailing" id="QJ5-SY-R7c"/>
+                            <constraint firstItem="PCF-aJ-t2j" firstAttribute="leading" secondItem="tvA-WO-hQc" secondAttribute="leading" id="Qp5-w8-Heq"/>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="trailing" secondItem="t7l-1d-vpf" secondAttribute="trailing" id="WOh-lW-XLQ"/>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="leading" secondItem="t7l-1d-vpf" secondAttribute="leading" id="Wdq-oj-Kr0"/>
+                            <constraint firstItem="PCF-aJ-t2j" firstAttribute="baseline" secondItem="Qgx-du-gfi" secondAttribute="baseline" id="Wkm-3W-EkC"/>
+                            <constraint firstItem="t7l-1d-vpf" firstAttribute="baseline" secondItem="ArI-iL-CIk" secondAttribute="baseline" id="Xn2-rA-y8W"/>
+                            <constraint firstItem="PCF-aJ-t2j" firstAttribute="trailing" secondItem="tvA-WO-hQc" secondAttribute="trailing" id="Xym-uj-rYe"/>
+                            <constraint firstItem="t7l-1d-vpf" firstAttribute="firstBaseline" secondItem="ArI-iL-CIk" secondAttribute="firstBaseline" id="Zzn-Ky-7sb"/>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="firstBaseline" secondItem="q95-kl-T2G" secondAttribute="firstBaseline" id="ao0-17-g0M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PCF-aJ-t2j" secondAttribute="trailing" constant="52" id="bgc-kp-70e"/>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="leading" secondItem="v5g-TU-yKC" secondAttribute="leadingMargin" constant="4" id="e8B-4g-J4D"/>
+                            <constraint firstItem="q95-kl-T2G" firstAttribute="leading" secondItem="ArI-iL-CIk" secondAttribute="leading" id="fOh-zc-gNl"/>
+                            <constraint firstItem="Qgx-du-gfi" firstAttribute="leading" secondItem="5WQ-CA-BSt" secondAttribute="leading" id="gXW-yH-xnH"/>
+                            <constraint firstItem="ArI-iL-CIk" firstAttribute="leading" secondItem="Qgx-du-gfi" secondAttribute="leading" id="j4V-Dw-mup"/>
+                            <constraint firstItem="t7l-1d-vpf" firstAttribute="top" secondItem="XTs-Tb-u4J" secondAttribute="bottom" constant="8" symbolic="YES" id="l9b-c7-DMM"/>
+                            <constraint firstItem="t7l-1d-vpf" firstAttribute="leading" secondItem="PCF-aJ-t2j" secondAttribute="leading" id="lRq-er-POa"/>
+                            <constraint firstItem="q95-kl-T2G" firstAttribute="trailing" secondItem="v5g-TU-yKC" secondAttribute="trailingMargin" id="liU-at-GQX"/>
+                            <constraint firstItem="XTs-Tb-u4J" firstAttribute="top" secondItem="18e-D2-fu9" secondAttribute="bottom" constant="9" id="mQ4-fk-nl5"/>
+                            <constraint firstAttribute="trailing" secondItem="18e-D2-fu9" secondAttribute="trailing" id="oBj-br-zYq"/>
+                            <constraint firstItem="tvA-WO-hQc" firstAttribute="baseline" secondItem="5WQ-CA-BSt" secondAttribute="baseline" id="obt-GT-R9l"/>
+                            <constraint firstItem="q95-kl-T2G" firstAttribute="trailing" secondItem="ArI-iL-CIk" secondAttribute="trailing" id="q9j-XD-1cy"/>
+                            <constraint firstItem="Qgx-du-gfi" firstAttribute="trailing" secondItem="5WQ-CA-BSt" secondAttribute="trailing" id="rIX-zQ-mYs"/>
+                            <constraint firstItem="tvA-WO-hQc" firstAttribute="top" secondItem="PCF-aJ-t2j" secondAttribute="bottom" constant="8" symbolic="YES" id="tP5-jX-Sjh"/>
+                            <constraint firstItem="PCF-aJ-t2j" firstAttribute="top" secondItem="t7l-1d-vpf" secondAttribute="bottom" constant="8" symbolic="YES" id="wVd-Kf-pQr"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="CCd-mo-3G2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="numberOfOfflineStores" destination="5WQ-CA-BSt" id="GKi-IC-d27"/>
+                        <outlet property="numberOfOnlineStores" destination="Qgx-du-gfi" id="C36-SA-xIe"/>
+                        <outlet property="photoServerStatus" destination="ArI-iL-CIk" id="00u-sm-C6i"/>
+                        <outlet property="storeServerStatus" destination="q95-kl-T2G" id="cxc-PI-VlU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tmd-ll-TcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1118.840579710145" y="-200.54347826086959"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="home" width="32" height="32"/>
+        <image name="lastDayButton" width="32" height="32"/>
+        <image name="nextDayButton" width="32" height="32"/>
+    </resources>
+</document>

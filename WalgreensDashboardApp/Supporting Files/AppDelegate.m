@@ -16,9 +16,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Set the navigation bar tint color to white.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:1.0]];
+   // [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:1.0]];
     // Set the navigation bar text color to Walgreens red.
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:229.0/255.0 green:25.0/255.0 blue:55.0/255.0 alpha:1.0]];
+   // [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:229.0/255.0 green:25.0/255.0 blue:55.0/255.0 alpha:1.0]];
     return YES;
 }
 
