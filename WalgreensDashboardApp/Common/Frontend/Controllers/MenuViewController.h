@@ -10,9 +10,13 @@
 
 #import "WalgreensAPI.h"
 
-@interface MenuViewController : UITableViewController <WalgreensAPIDelegate>
+@interface MenuViewController : UIViewController <WalgreensAPIDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *storeServerStatus;
 @property (weak, nonatomic) IBOutlet UILabel *photoServerStatus;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfOnlineStores;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfOfflineStores;
+- (IBAction)nextDayButton:(id)sender;
+- (IBAction)lastDayButton:(id)sender;
 
 @end

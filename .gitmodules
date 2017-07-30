@@ -1,0 +1,3 @@
+[submodule "WalgreensDashboardApp/External/WalgreensAPIHarvester"]
+	path = WalgreensDashboardApp/External/WalgreensAPIHarvester
+	url = https://sebastiangarbarek@bitbucket.org/sebastiangarbarek/walgreens-api-harvester.git
