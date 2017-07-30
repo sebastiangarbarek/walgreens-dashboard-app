@@ -1,14 +1,14 @@
 //
-//  StoreNumberCell.m
-//  WalgreensDashboardMock
+//  UpdateCell.m
+//  WalgreensDashboardApp
 //
-//  Created by Sebastian Garbarek on 28/04/17.
+//  Created by Sebastian Garbarek on 30/07/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import "StoreNumberCell.h"
+#import "UpdateCell.h"
 
-@implementation StoreNumberCell
+@implementation UpdateCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
