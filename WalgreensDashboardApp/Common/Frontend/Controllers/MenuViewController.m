@@ -7,7 +7,6 @@
 //
 
 #import "MenuViewController.h"
-#import "MenuItemCell.h"
 
 #import "StoreListController.h"
 
@@ -18,7 +17,7 @@
     WalgreensAPI *walgreensAPI;
     DatabaseManager *databaseManager;
     NSArray *menuItems;
-    int numberOfStoresOnline;
+    int onlineStoresNumber;
 }
 
 @end
@@ -42,16 +41,23 @@
     
     // Initialize database manager for Walgreens API database and get the number of online stores.
     databaseManager = [[DatabaseManager alloc] initWithDatabaseFilename:WalgreensAPIDatabaseFilename];
-    numberOfStoresOnline = [self getNumberOfStoresOnlineFromDatabase];
+    [self setNumberOfStoresOnlineFromDatabase];
     
     [self checkServerStatus];
 }
 
-- (int)getNumberOfStoresOnlineFromDatabase {
+- (void)setNumberOfStoresOnlineFromDatabase {
     NSMutableArray *result = [databaseManager executeQuery:SC_GetNumberOfOnlineStoresCommand];
     NSDictionary *row = result[0];
-    return [[row objectForKey:@"total"] intValue];
+    onlineStoresNumber = [[row objectForKey:@"total"] intValue];
+    [_numberOfOnlineStores setText:[NSString stringWithFormat:@"%i", onlineStoresNumber]];
 }
+
+//TODO
+- (void)setNumberOfStoresOfflineFromDatabase {
+
+}
+    
 
 - (void)checkServerStatus {
     [_photoServerStatus setTextColor:UIColor.blackColor];
@@ -66,37 +72,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Table View -
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [menuItems count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Menu Item" forIndexPath:indexPath];
-    
-    [[cell menuItemLabel] setText:menuItems[[indexPath row]]];
-    
-    if ([menuItems[[indexPath row]] isEqualToString:@"Stores Online"]) {
-        [[cell secondaryLabel] setText:[NSString stringWithFormat:@"%i", numberOfStoresOnline]];
-    }
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([menuItems[[indexPath row]] isEqualToString:@"Stores Online"]) {
-        // Deselect the cell.
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        [self performSegueWithIdentifier:@"Display Online Stores" sender:self];
-    }
 }
 
 #pragma mark - Walgreens API -
@@ -203,4 +178,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+//TODO
+- (IBAction)nextDayButton:(id)sender {
+}
+
+//TODO
+- (IBAction)lastDayButton:(id)sender {
+}
 @end
