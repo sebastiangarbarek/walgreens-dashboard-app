@@ -15,6 +15,7 @@
 
 @interface HomeViewController : UITableViewController <UITabBarControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (strong, nonatomic) NSString *date;

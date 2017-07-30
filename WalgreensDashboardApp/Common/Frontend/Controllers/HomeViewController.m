@@ -29,6 +29,11 @@
     self.tabBarController.delegate = self;
     self.date = [DateHelper currentDate];
     self.navigationItem.title = self.date;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notifyStoreOnline:)
+                                                 name:@"Store online"
+                                               object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -110,6 +115,14 @@
 
 - (IBAction)previousButton:(id)sender {
     
+}
+
+- (void)notifyStoreOnline:(NSNotification *)notification {
+    NSDictionary *responseDictionary = (NSDictionary *) notification.object;
+    NSDictionary *storeDictionary = [responseDictionary objectForKey:@"store"];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.notificationLabel.text = [NSString stringWithFormat:@"Store #%@ is online.", [storeDictionary objectForKey:@"storeNum"]];
+    });
 }
 
 

@@ -36,6 +36,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="bYM-gN-DFb">
+                            <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBV-IN-4b1">
+                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="FBV-IN-4b1" firstAttribute="leading" secondItem="bYM-gN-DFb" secondAttribute="leading" constant="8" id="2cg-Xo-GQg"/>
+                                <constraint firstAttribute="bottom" secondItem="FBV-IN-4b1" secondAttribute="bottom" constant="8" id="KLM-LK-PB1"/>
+                                <constraint firstAttribute="trailing" secondItem="FBV-IN-4b1" secondAttribute="trailing" constant="8" id="Zlp-S7-qy3"/>
+                                <constraint firstItem="FBV-IN-4b1" firstAttribute="top" secondItem="bYM-gN-DFb" secondAttribute="top" constant="8" id="bQf-Yv-ouw"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Update Cell" id="Y2C-lm-l26" customClass="UpdateCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -135,6 +154,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="0ia-bb-58b" id="zwj-Yt-Pzp"/>
+                        <outlet property="notificationLabel" destination="FBV-IN-4b1" id="xIR-3z-Ic6"/>
                         <outlet property="previousButton" destination="mmJ-jM-Pe1" id="f5e-7a-Ytb"/>
                     </connections>
                 </tableViewController>

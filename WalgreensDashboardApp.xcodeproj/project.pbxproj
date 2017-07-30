@@ -78,6 +78,7 @@
 		A86A06C01F2DA863005A0936 /* UpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCell.m; sourceTree = "<group>"; };
 		A86A06C11F2DA863005A0936 /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
 		A86A06C21F2DA863005A0936 /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
+		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
 		A8A4CB2F1F2B406700B87449 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		A8A4CB301F2B406700B87449 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		A8A4CB311F2B406700B87449 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		A821BB2F1EDB964800B878BA /* Database Files */ = {
 			isa = PBXGroup;
 			children = (
+				A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */,
 			);
 			name = "Database Files";
 			path = "Resources/Database Files";
