@@ -269,7 +269,7 @@
 				A86A06C11F2DA863005A0936 /* OfflineCell.h */,
 				A86A06C21F2DA863005A0936 /* OfflineCell.m */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A8A4CAE91F2B3F6A00B87449 /* External */ = {
