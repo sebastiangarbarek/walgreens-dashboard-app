@@ -2,17 +2,15 @@
 //  HomeViewController.m
 //  WalgreensDashboardApp
 //
-//  Created by Sebastian Garbarek on 29/07/17.
+//  Created by Sebastian Garbarek on 31/07/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
 #import "HomeViewController.h"
 #import "OfflineViewController.h"
+#import "DateHelper.h"
 
-@interface HomeViewController () {
-    NSArray *sectionTitles;
-    NSDictionary *cellTitles;
-}
+@interface HomeViewController ()
 
 @end
 
@@ -21,90 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    sectionTitles = @[@"UPDATE", @"SERVERS", @"STORES"];
-    cellTitles = @{sectionTitles[0] : @[@""],
-                   sectionTitles[1] : @[@"Store", @"Print"],
-                   sectionTitles[2] : @[@"Online", @"Offline"]};
+    self.date = [DateHelper currentDate];
     
     self.tabBarController.delegate = self;
-    self.date = [DateHelper currentDate];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     self.navigationItem.title = self.date;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(notifyStoreOnline:)
-                                                 name:@"Store online"
-                                               object:nil];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.title = self.date;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [sectionTitles count];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [sectionTitles objectAtIndex:section];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSString *sectionTitle = [sectionTitles objectAtIndex:section];
-    NSArray *sectionCells = [cellTitles objectForKey:sectionTitle];
-    return [sectionCells count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.section) {
-        case 0: {
-            UpdateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Update Cell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
-        }
-        case 1: {
-            ServerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Server Cell" forIndexPath:indexPath];
-            NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
-            NSArray *sectionCells = [cellTitles objectForKey:sectionTitle];
-            NSString *cellTitle = [sectionCells objectAtIndex:indexPath.row];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.separatorInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, CGFLOAT_MAX);
-            cell.serviceLabel.text = cellTitle;
-            cell.serviceStatusLabel.text = @"Online";
-            cell.serviceStatusLabel.textColor = [UIColor greenColor];
-            return cell;
-        }
-        case 2: {
-            StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Status Cell" forIndexPath:indexPath];
-            NSString *sectionTitle = [sectionTitles objectAtIndex:indexPath.section];
-            NSArray *sectionCells = [cellTitles objectForKey:sectionTitle];
-            NSString *cellTitle = [sectionCells objectAtIndex:indexPath.row];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.separatorInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, CGFLOAT_MAX);
-            cell.statusLabel.text = cellTitle;
-            cell.totalLabel.text = @"0 ";
-            return cell;
-        }
-        default:
-            break;
-    }
-    
-    return nil;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    UINavigationController *navigationController = (UINavigationController *)viewController;
-    UIViewController *root = navigationController.viewControllers[0];
-    
-    if ([root isKindOfClass:[OfflineViewController class]]) {
-        OfflineViewController *offlineViewController = (OfflineViewController *)root;
+    // Pass the current date to the offline view.
+    if ([viewController isKindOfClass:[OfflineViewController class]]) {
+        OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
         offlineViewController.date = self.date;
     }
 }
@@ -116,14 +43,5 @@
 - (IBAction)previousButton:(id)sender {
     
 }
-
-- (void)notifyStoreOnline:(NSNotification *)notification {
-    NSDictionary *responseDictionary = (NSDictionary *) notification.object;
-    NSDictionary *storeDictionary = [responseDictionary objectForKey:@"store"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.notificationLabel.text = [NSString stringWithFormat:@"Store #%@ is online.", [storeDictionary objectForKey:@"storeNum"]];
-    });
-}
-
 
 @end

@@ -33,6 +33,8 @@
         [self copyInitialDatabase];
     }
     
+    sqlite3_open([databasePath UTF8String], &database);
+    
     // Super method returns success or failure.
     return YES;
 }

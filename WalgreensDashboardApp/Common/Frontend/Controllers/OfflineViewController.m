@@ -17,42 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = self.date;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.title = self.date;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store Cell" forIndexPath:indexPath];
-    return cell;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    self.tabBarController.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationItem.title = self.date;
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    UINavigationController *navigationController = (UINavigationController *)viewController;
-    UIViewController *root = navigationController.viewControllers[0];
-    
-    if ([root isKindOfClass:[HomeViewController class]]) {
-        HomeViewController *homeViewController = (HomeViewController *)root;
+    // Pass the current date to the offline view.
+    if ([viewController isKindOfClass:[HomeViewController class]]) {
+        HomeViewController *homeViewController = (HomeViewController *)viewController;
         homeViewController.date = self.date;
-        homeViewController.title = self.date;
     }
 }
 

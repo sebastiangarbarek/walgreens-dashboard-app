@@ -17,8 +17,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     printf("[APP] Initializing status controller...\n");
     
-    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startController) object:nil];
-    [thread start];
+    //NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(startController) object:nil];
+    //[thread start];
     
     return YES;
 }

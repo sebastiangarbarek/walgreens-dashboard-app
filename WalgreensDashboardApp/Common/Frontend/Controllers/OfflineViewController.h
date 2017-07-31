@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OfflineViewController : UITableViewController <UITabBarControllerDelegate>
+@interface OfflineViewController : UIViewController <UITabBarControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
+
 @property (strong, nonatomic) NSString *date;
 
 @end

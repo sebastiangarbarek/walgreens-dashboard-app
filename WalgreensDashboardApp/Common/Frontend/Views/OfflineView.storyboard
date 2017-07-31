@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9iG-eJ-vtU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DKE-F5-rZw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,23 +9,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Date-->
-        <scene sceneID="QAQ-yj-5pP">
+        <!--StoreView-->
+        <scene sceneID="OLx-iP-Hc7">
             <objects>
-                <tableViewController id="9ue-Px-Lhm" customClass="OfflineViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fbv-jt-Zy6">
+                <viewControllerPlaceholder storyboardName="StoreView" id="xI8-Oy-pRS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NM9-iL-cca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1333" y="124"/>
+        </scene>
+        <!--Offline Stores Table View Controller-->
+        <scene sceneID="oqk-1z-eFR">
+            <objects>
+                <tableViewController storyboardIdentifier="Offline Table View" id="6IY-45-soZ" customClass="OfflineStoresTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zLy-nt-wuZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Store Cell" textLabel="aQp-wA-181" style="IBUITableViewCellStyleDefault" id="RTL-ap-ryO" customClass="OfflineCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Offline Cell" textLabel="9yL-jc-0hV" style="IBUITableViewCellStyleDefault" id="1HN-sw-oMR" customClass="OfflineCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RTL-ap-ryO" id="fNB-rP-sUy">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1HN-sw-oMR" id="s9e-7w-ots">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQp-wA-181">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9yL-jc-0hV">
                                             <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -35,62 +43,76 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storeLabel" destination="aQp-wA-181" id="CAn-EN-qop"/>
-                                    <segue destination="xI8-Oy-pRS" kind="show" identifier="store" id="6LL-xo-8JX"/>
+                                    <segue destination="xI8-Oy-pRS" kind="show" id="hPW-hM-YEm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="9ue-Px-Lhm" id="NXq-PB-Hqo"/>
-                            <outlet property="delegate" destination="9ue-Px-Lhm" id="u7R-Ll-eM6"/>
+                            <outlet property="dataSource" destination="6IY-45-soZ" id="cGV-zI-0JS"/>
+                            <outlet property="delegate" destination="6IY-45-soZ" id="edA-Zi-WHU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Date" id="MeQ-5a-TOg">
-                        <barButtonItem key="leftBarButtonItem" title="Previous" id="A8u-Xh-7Ph">
-                            <connections>
-                                <action selector="previousButton:" destination="9ue-Px-Lhm" id="Eft-cL-p8S"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="KeV-5D-LM9">
-                            <connections>
-                                <action selector="nextButton:" destination="9ue-Px-Lhm" id="Sqh-qy-7FE"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="nextButton" destination="KeV-5D-LM9" id="u52-Ni-o3u"/>
-                        <outlet property="previousButton" destination="A8u-Xh-7Ph" id="Lt4-0w-g6b"/>
-                    </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X07-Rf-QQk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbh-Sh-MeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="131"/>
-        </scene>
-        <!--StoreView-->
-        <scene sceneID="OLx-iP-Hc7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="StoreView" id="xI8-Oy-pRS" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NM9-iL-cca" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1530" y="383"/>
+            <point key="canvasLocation" x="614" y="125"/>
         </scene>
         <!--Offline-->
-        <scene sceneID="hjG-YF-K90">
+        <scene sceneID="Lcq-6Z-CKH">
             <objects>
-                <navigationController id="9iG-eJ-vtU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Offline" id="qxn-gg-EbY"/>
+                <viewController id="DKE-F5-rZw" customClass="OfflineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Qs-ad-uxm"/>
+                        <viewControllerLayoutGuide type="bottom" id="dTM-cG-xaN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tzx-eP-Evg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPa-CM-7RH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="Date" id="f0T-Ki-Zbs">
+                                        <barButtonItem key="leftBarButtonItem" title="Previous" id="PnD-OV-5zE">
+                                            <connections>
+                                                <action selector="previousButton:" destination="DKE-F5-rZw" id="KDr-2v-SQc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Next" id="jW1-bn-w8c">
+                                            <connections>
+                                                <action selector="nextButton:" destination="DKE-F5-rZw" id="Klw-lp-cB9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FeP-1g-Qwk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FeP-1g-Qwk" secondAttribute="trailing" id="0XO-eb-z8o"/>
+                            <constraint firstItem="wPa-CM-7RH" firstAttribute="leading" secondItem="tzx-eP-Evg" secondAttribute="leading" id="0fN-vq-NVo"/>
+                            <constraint firstItem="wPa-CM-7RH" firstAttribute="top" secondItem="7Qs-ad-uxm" secondAttribute="bottom" id="4eJ-mk-F6Y"/>
+                            <constraint firstAttribute="trailing" secondItem="wPa-CM-7RH" secondAttribute="trailing" id="6VS-OO-zdi"/>
+                            <constraint firstItem="dTM-cG-xaN" firstAttribute="top" secondItem="FeP-1g-Qwk" secondAttribute="bottom" id="7cg-jD-TMJ"/>
+                            <constraint firstItem="FeP-1g-Qwk" firstAttribute="leading" secondItem="tzx-eP-Evg" secondAttribute="leading" id="iVn-3C-5eb"/>
+                            <constraint firstItem="FeP-1g-Qwk" firstAttribute="top" secondItem="wPa-CM-7RH" secondAttribute="bottom" id="k2s-pD-IUz"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Offline" id="GSt-Bq-0iv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yfI-Z1-B8b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
                     <connections>
-                        <segue destination="9ue-Px-Lhm" kind="relationship" relationship="rootViewController" id="g9K-bB-JcK"/>
+                        <outlet property="navigationItem" destination="f0T-Ki-Zbs" id="0Ds-LE-T2S"/>
+                        <outlet property="nextButton" destination="jW1-bn-w8c" id="wfK-Ma-blB"/>
+                        <outlet property="previousButton" destination="PnD-OV-5zE" id="X6y-bH-LHW"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O2Q-NP-LhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYw-Ec-ncG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="131"/>
+            <point key="canvasLocation" x="-47.200000000000003" y="124.58770614692655"/>
         </scene>
     </scenes>
 </document>
