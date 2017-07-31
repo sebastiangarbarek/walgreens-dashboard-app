@@ -270,7 +270,7 @@
 				A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */,
 				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
 			);
-			name = "Home View";
+			path = "Home View";
 			sourceTree = "<group>";
 		};
 		A88A79911F2F346000C99BFD /* Offline View */ = {
@@ -282,7 +282,7 @@
 				A88A79921F2F41AE00C99BFD /* OfflineStoresTableViewController.h */,
 				A88A79931F2F41AE00C99BFD /* OfflineStoresTableViewController.m */,
 			);
-			name = "Offline View";
+			path = "Offline View";
 			sourceTree = "<group>";
 		};
 		A8A4CAE91F2B3F6A00B87449 /* External */ = {
