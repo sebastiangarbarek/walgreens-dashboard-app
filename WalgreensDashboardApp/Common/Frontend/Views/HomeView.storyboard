@@ -85,6 +85,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="PBe-jR-L5a"/>
                     <connections>
+                        <outlet property="containerView" destination="0Rf-Ts-roG" id="ioG-FE-t5T"/>
                         <outlet property="navigationItem" destination="XyO-VJ-Pcj" id="Ltv-9x-H3G"/>
                         <outlet property="nextButton" destination="BK0-BT-EhS" id="e9V-gT-j6E"/>
                         <outlet property="previousButton" destination="xCm-NG-P3u" id="ibf-e0-SXZ"/>
@@ -145,6 +146,9 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SG8-Nk-5Bz">
                                                     <rect key="frame" x="349.5" y="12" width="10.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -169,6 +173,9 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VS4-yc-UXv">
                                                     <rect key="frame" x="349.5" y="12" width="10.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
+                                                    </accessibility>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

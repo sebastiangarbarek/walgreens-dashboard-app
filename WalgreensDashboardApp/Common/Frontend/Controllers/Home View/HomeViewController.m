@@ -22,9 +22,11 @@
     self.date = [DateHelper currentDate];
     
     self.tabBarController.delegate = self;
+    
+    [self embedTableView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     self.navigationItem.title = self.date;
 }
 
@@ -34,6 +36,21 @@
         OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
         offlineViewController.date = self.date;
     }
+}
+
+- (void)embedTableView {
+    UIStoryboard *storyBoard = self.storyboard;
+    UITableViewController *tableViewController;
+    
+    if (/* DISABLES CODE */ (1) /* Requests not complete */) {
+        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
+    } else {
+        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table View"];
+    }
+    
+    [self addChildViewController:tableViewController];
+    [self.containerView addSubview:tableViewController.view];
+    [tableViewController didMoveToParentViewController:self];
 }
 
 - (IBAction)nextButton:(id)sender {

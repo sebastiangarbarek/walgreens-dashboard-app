@@ -21,7 +21,7 @@
     self.tabBarController.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     self.navigationItem.title = self.date;
 }
 
