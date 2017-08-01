@@ -16,6 +16,7 @@
     
     if (self) {
         requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
+        // This thread will always exit normally.
         [requestThread start];
     }
     
@@ -25,7 +26,7 @@
 - (void)start {
     while ([self updateStoreStatusesForToday] == NO) {
         // Notify that the app is not connected to the internet.
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Not connected" object:nil];
         
         // Sleep before making another request to prevent DoS.
         [NSThread sleepForTimeInterval:0.5f];
@@ -34,7 +35,7 @@
 
 - (void)stop {
     // Running loops will check if cancelled and exit at an appropriate time.
-    [requestThread cancel];
+    [walgreensApi.currentExecutingThread cancel];
 }
 
 @end

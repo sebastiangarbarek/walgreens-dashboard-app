@@ -31,7 +31,8 @@
 }
 
 - (void)configureView {
-    
+    self.totalOnlineStoresLabel.text = @"0";
+    self.totalOfflineStoresLabel.text = @"0";
 }
 
 - (void)storeOnlineUpdate {
