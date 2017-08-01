@@ -183,7 +183,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="g1n-9X-McZ" style="IBUITableViewCellStyleDefault" id="q2l-cN-xRB">
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="g1n-9X-McZ" style="IBUITableViewCellStyleDefault" id="q2l-cN-xRB">
                                         <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q2l-cN-xRB" id="yfH-cM-coJ">
@@ -209,6 +209,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="notificationsCell" destination="q2l-cN-xRB" id="Ei4-s9-9vw"/>
                         <outlet property="notificationsLabel" destination="g1n-9X-McZ" id="Yhz-7z-YUP"/>
                         <outlet property="requestProgressView" destination="YEf-oj-Qit" id="2Bg-ne-95H"/>
                         <outlet property="totalOfflineStoresLabel" destination="VS4-yc-UXv" id="yhi-nh-mfI"/>

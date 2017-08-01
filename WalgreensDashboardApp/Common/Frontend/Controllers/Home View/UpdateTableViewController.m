@@ -8,8 +8,12 @@
 
 #import "UpdateTableViewController.h"
 #import "OfflineViewController.h"
+#import "DatabaseManagerApp.h"
 
-@interface UpdateTableViewController ()
+@interface UpdateTableViewController () {
+    DatabaseManagerApp *databaseManagerApp;
+    NSInteger totalStoresToRequest;
+}
 
 @end
 
@@ -26,8 +30,18 @@
                                              selector:@selector(storeOfflineUpdate)
                                                  name:@"Store offline"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notConnectedUpdate)
+                                                 name:@"Not connected"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notConnectedUpdate)
+                                                 name:@"Connected"
+                                               object:nil];
     
     [self configureView];
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    totalStoresToRequest = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
 }
 
 - (void)configureView {
@@ -45,15 +59,32 @@
 }
 
 - (void)updateProgressBar {
-    
+    self.requestProgressView.progress
+     = (float)[[databaseManagerApp.selectCommands countStoresInTempTable] integerValue] / [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
 }
 
 - (void)updateTotalStoresOnline {
-    
+    self.totalOnlineStoresLabel.text
+    = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
 }
 
 - (void)updateTotalStoresOffline {
-    
+    self.totalOfflineStoresLabel.text
+    = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper dateWithString:[DateHelper currentDate] ]] intValue]];
+}
+
+- (void)notConnectedUpdate {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    self.notificationsLabel.textColor = [UIColor redColor];
+    self.notificationsLabel.text = @"You are not connected to the internet";
+    self.notificationsCell.hidden = NO;
+}
+
+- (void)connectedUpdate {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    self.notificationsLabel.textColor = [UIColor darkTextColor];
+    self.notificationsLabel.text = @"";
+    self.notificationsCell.hidden = YES;
 }
 
 @end

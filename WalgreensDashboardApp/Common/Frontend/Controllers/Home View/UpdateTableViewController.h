@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DateHelper.h"
-
 @interface UpdateTableViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
+@property (weak, nonatomic) IBOutlet UITableViewCell *notificationsCell;
 @property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
 
 @end

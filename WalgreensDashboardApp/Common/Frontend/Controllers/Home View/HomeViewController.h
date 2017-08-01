@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 
+@property (weak, nonatomic) UITableViewController *currentTableViewController;
+
 @property (strong, nonatomic) NSString *date;
 
 @end

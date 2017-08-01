@@ -23,6 +23,11 @@
     
     self.tabBarController.delegate = self;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(requestsComplete)
+                                                 name:@"Requests complete"
+                                               object:nil];
+    
     [self embedTableView];
 }
 
@@ -51,6 +56,17 @@
     [self addChildViewController:tableViewController];
     [self.containerView addSubview:tableViewController.view];
     [tableViewController didMoveToParentViewController:self];
+    self.currentTableViewController = tableViewController;
+}
+
+- (void)requestsComplete {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    [self.currentTableViewController willMoveToParentViewController:nil];
+    [self.currentTableViewController.view removeFromSuperview];
+    [self.currentTableViewController removeFromParentViewController];
+    
+    [self embedTableView];
 }
 
 - (IBAction)nextButton:(id)sender {
