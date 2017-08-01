@@ -9,10 +9,7 @@
 #import "UpdateTableViewController.h"
 #import "OfflineViewController.h"
 
-@interface UpdateTableViewController () {
-    NSMutableArray *sectionTitles;
-    NSMutableDictionary *cellTitles;
-}
+@interface UpdateTableViewController ()
 
 @end
 
@@ -29,6 +26,12 @@
                                              selector:@selector(storeOfflineUpdate)
                                                  name:@"Store offline"
                                                object:nil];
+    
+    [self configureView];
+}
+
+- (void)configureView {
+    
 }
 
 - (void)storeOnlineUpdate {
