@@ -6,6 +6,9 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #import "AppDelegate.h"
 #import "StatusControllerApp.h"
 
@@ -19,6 +22,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[[Crashlytics class]]];
     return YES;
 }
 
