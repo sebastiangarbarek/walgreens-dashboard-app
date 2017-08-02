@@ -28,6 +28,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // The app has approx. 5 seconds to return from this method.
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     printf("[APP] Stopping status controller...\n");
     [statusControllerApp stop];
 }
@@ -38,6 +39,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     printf("[APP] Initializing status controller...\n");
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [databaseManagerApp closeDatabase];
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     statusControllerApp = [[StatusControllerApp alloc] initWithManager:databaseManagerApp];

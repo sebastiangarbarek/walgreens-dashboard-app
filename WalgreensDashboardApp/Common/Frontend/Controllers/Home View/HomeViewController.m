@@ -31,10 +31,10 @@
                                                  name:@"Requests complete"
                                                object:nil];
     
-    [self embedTableView];
-    
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
+    
+    [self embedTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -55,8 +55,8 @@
     
     NSInteger numberOfStoresInDatabase = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
     NSInteger numberOfStoresInTemp = [[databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
-
-    if (1) {
+    
+    if (numberOfStoresInDatabase - numberOfStoresInTemp) {
         tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
     } else {
         tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table View"];
@@ -70,12 +70,9 @@
 }
 
 - (void)requestsComplete {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
     [self.currentTableViewController willMoveToParentViewController:nil];
     [self.currentTableViewController.view removeFromSuperview];
     [self.currentTableViewController removeFromParentViewController];
-    
     [self embedTableView];
 }
 

@@ -20,7 +20,7 @@
     }
 }
 
-#pragma mark - Overridden Methods -
+#pragma mark - Override -
 
 - (BOOL)openCreateDatabase {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -30,15 +30,16 @@
         [self copyInitialDatabase];
     }
     
-    sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil);
-    
     self.tableCommands = [[TableCommands alloc] initWithDatabaseManager:self];
     self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];
     self.selectCommands = [[SelectCommands alloc] initWithDatabaseManager:self];
     self.updateCommands = [[UpdateCommands alloc] initWithDatabaseManager:self];
     
-    // Super method returns success or failure.
-    return YES;
+    int code = sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil);
+    if (code == SQLITE_OK)
+        return YES;
+    else
+        return NO;
 }
 
 @end

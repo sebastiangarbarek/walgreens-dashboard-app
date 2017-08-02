@@ -34,8 +34,12 @@
                                                  name:@"Not connected"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(notConnectedUpdate)
+                                             selector:@selector(connectedUpdate)
                                                  name:@"Connected"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(requestsCompleteUpdate)
+                                                 name:@"Requests complete"
                                                object:nil];
     
     [self configureView];
@@ -60,31 +64,23 @@
 - (void)storeOfflineUpdate {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateTotalStoresOffline];
+        // Additional notification of store offline can be called here.
+        [self.tableView reloadData];
     });
 }
 
 - (void)updateProgressBar {
     NSInteger storesInTemp = [[databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
     NSInteger storesToRequest = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
-    if (!storesInTemp) {
-        printf("[APP] (countStoresInTempTable:) returned nil.\n");
-    } else {
-        self.requestProgressView.progress = (float)storesInTemp / storesToRequest;
-    }
+    self.requestProgressView.progress = (float)storesInTemp / storesToRequest;
 }
 
 - (void)updateTotalStoresOnline {
-    NSInteger storesOnlineInTemp = [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] integerValue];
-    if (!storesOnlineInTemp) {
-        printf("[APP] (countOnlineStoresInTempTable:) returned nil.\n");
-    } else {
-        self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%li", (long)storesOnlineInTemp];
-    }
+    self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
 }
 
 - (void)updateTotalStoresOffline {
-    self.totalOfflineStoresLabel.text
-    = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper dateWithString:[DateHelper currentDate] ]] intValue]];
+    self.totalOfflineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue]];
 }
 
 - (void)notConnectedUpdate {
@@ -93,6 +89,7 @@
         self.notificationsLabel.textColor = [UIColor redColor];
         self.notificationsLabel.text = @"You are not connected to the internet";
         self.notificationsCell.hidden = NO;
+        [self.tableView reloadData];
     });
 }
 
@@ -102,6 +99,13 @@
         self.notificationsLabel.textColor = [UIColor darkTextColor];
         self.notificationsLabel.text = @"";
         self.notificationsCell.hidden = YES;
+        [self.tableView reloadData];
+    });
+}
+
+- (void)requestsCompleteUpdate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     });
 }
 

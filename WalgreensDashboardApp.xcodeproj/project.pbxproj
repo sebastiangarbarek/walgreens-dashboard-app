@@ -261,7 +261,7 @@
 				A85553091F30642400C7B20C /* StatusControllerApp.h */,
 				A855530A1F30644800C7B20C /* StatusControllerApp.m */,
 			);
-			name = Controllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		A88A79861F2F14BA00C99BFD /* Cells */ = {
