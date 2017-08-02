@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OfflineStoresTableViewController : UITableViewController
+@interface OfflineTableViewController : UITableViewController
 
-
+@property (strong, nonatomic) NSString *date;
 
 @end

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController <UITabBarControllerDelegate>
+#import "DatePickerViewController.h"
+
+@interface HomeViewController : DatePickerViewController <UITabBarControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -17,9 +19,5 @@
 
 // The current table view controller in the container view, referenced to remove.
 @property (weak, nonatomic) UITableViewController *currentTableViewController;
-
-@property (strong, nonatomic) NSString *date;
-@property (strong, nonatomic) NSString *nextDate;
-@property (strong, nonatomic) NSString *previousDate;
 
 @end

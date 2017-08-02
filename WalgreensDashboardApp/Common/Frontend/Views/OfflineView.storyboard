@@ -17,10 +17,10 @@
             </objects>
             <point key="canvasLocation" x="1333" y="124"/>
         </scene>
-        <!--Offline Stores Table View Controller-->
+        <!--Offline Table View Controller-->
         <scene sceneID="oqk-1z-eFR">
             <objects>
-                <tableViewController storyboardIdentifier="Offline Table View" id="6IY-45-soZ" customClass="OfflineStoresTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Offline Table View" id="6IY-45-soZ" customClass="OfflineTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zLy-nt-wuZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,6 +43,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="storeLabel" destination="9yL-jc-0hV" id="du8-c8-Ezc"/>
                                     <segue destination="xI8-Oy-pRS" kind="show" id="hPW-hM-YEm"/>
                                 </connections>
                             </tableViewCell>
@@ -105,6 +106,7 @@
                     <tabBarItem key="tabBarItem" title="Offline" id="GSt-Bq-0iv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="containerView" destination="FeP-1g-Qwk" id="KhE-YZ-mpj"/>
                         <outlet property="navigationItem" destination="f0T-Ki-Zbs" id="0Ds-LE-T2S"/>
                         <outlet property="nextButton" destination="jW1-bn-w8c" id="wfK-Ma-blB"/>
                         <outlet property="previousButton" destination="PnD-OV-5zE" id="X6y-bH-LHW"/>
