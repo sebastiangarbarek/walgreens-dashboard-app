@@ -12,18 +12,15 @@
 
 - (void)copyInitialDatabase {
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
-    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:databasePath error:nil];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:databasePath error:&error];
+    if (error != nil) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
 }
 
 #pragma mark - Overridden Methods -
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self openCreateDatabase];
-    }
-    return self;
-}
 
 - (BOOL)openCreateDatabase {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -34,6 +31,11 @@
     }
     
     sqlite3_open([databasePath UTF8String], &database);
+    
+    self.tableCommands = [[TableCommands alloc] initWithDatabaseManager:self];
+    self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];
+    self.selectCommands = [[SelectCommands alloc] initWithDatabaseManager:self];
+    self.updateCommands = [[UpdateCommands alloc] initWithDatabaseManager:self];
     
     // Super method returns success or failure.
     return YES;

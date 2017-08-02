@@ -9,8 +9,11 @@
 #import "HomeViewController.h"
 #import "OfflineViewController.h"
 #import "DateHelper.h"
+#import "DatabaseManagerApp.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () {
+    DatabaseManagerApp *databaseManagerApp;
+}
 
 @end
 
@@ -29,6 +32,9 @@
                                                object:nil];
     
     [self embedTableView];
+    
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [databaseManagerApp openCreateDatabase];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,13 +53,17 @@
     UIStoryboard *storyBoard = self.storyboard;
     UITableViewController *tableViewController;
     
-    if (/* DISABLES CODE */ (1) /* Requests not complete */) {
+    NSInteger numberOfStoresInDatabase = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+    NSInteger numberOfStoresInTemp = [[databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
+
+    if (1) {
         tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
     } else {
         tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table View"];
     }
     
     [self addChildViewController:tableViewController];
+    tableViewController.view.frame = self.containerView.bounds;
     [self.containerView addSubview:tableViewController.view];
     [tableViewController didMoveToParentViewController:self];
     self.currentTableViewController = tableViewController;

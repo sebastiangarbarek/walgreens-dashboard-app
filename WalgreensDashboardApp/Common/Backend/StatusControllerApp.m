@@ -11,8 +11,8 @@
 
 @implementation StatusControllerApp
 
-- (instancetype)init {
-    self = [super initWithManager:[[DatabaseManagerApp alloc] init]];
+- (instancetype)initWithManager:(DatabaseManager *)dbManager {
+    self = [super initWithManager:dbManager];
     
     if (self) {
         requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];

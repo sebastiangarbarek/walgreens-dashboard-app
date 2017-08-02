@@ -41,6 +41,7 @@
     
     [self configureView];
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [databaseManagerApp openCreateDatabase];
     totalStoresToRequest = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
 }
 
@@ -50,8 +51,11 @@
 }
 
 - (void)storeOnlineUpdate {
-    [self updateProgressBar];
-    [self updateTotalStoresOnline];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateProgressBar];
+        [self updateTotalStoresOnline];
+        [self.tableView reloadData];
+    });
 }
 
 - (void)storeOfflineUpdate {
@@ -59,13 +63,21 @@
 }
 
 - (void)updateProgressBar {
-    self.requestProgressView.progress
-     = (float)[[databaseManagerApp.selectCommands countStoresInTempTable] integerValue] / [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+    NSInteger storesInTemp = [[databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
+    if (!storesInTemp) {
+        printf("[APP] (countStoresInTempTable:) returned nil.\n");
+    } else {
+        self.requestProgressView.progress = (float)storesInTemp / totalStoresToRequest;
+    }
 }
 
 - (void)updateTotalStoresOnline {
-    self.totalOnlineStoresLabel.text
-    = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
+    NSInteger storesOnlineInTemp = [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] integerValue];
+    if (!storesOnlineInTemp) {
+        printf("[APP] (countOnlineStoresInTempTable:) returned nil.\n");
+    } else {
+        self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%li", (long)storesOnlineInTemp];
+    }
 }
 
 - (void)updateTotalStoresOffline {
