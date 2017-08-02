@@ -29,7 +29,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     self.date = ((OfflineViewController *)self.parentViewController).date;
-    offlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
     [self.tableView reloadData];
 }
 

@@ -25,8 +25,6 @@
     
     self.date = [DateHelper currentDate];
     
-    self.tabBarController.delegate = self;
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(switchTableView)
                                                  name:@"Requests complete"
@@ -36,8 +34,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"DATE HOME %@", self.date);
+    self.tabBarController.delegate = self;
     [self checkDates];
+    NSLog(@"(HomeView) Date: %@", self.date);
     [self setDateForView:self.date];
 }
 
@@ -45,6 +44,7 @@
     // Pass the current date to the offline view.
     if ([viewController isKindOfClass:[OfflineViewController class]]) {
         OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
+        NSLog(@"(HomeView->OfflineView) Passing date: %@", self.date);
         offlineViewController.date = self.date;
     }
 }

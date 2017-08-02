@@ -28,7 +28,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSLog(@"DATE OFFLINE %@", self.date);
+    self.tabBarController.delegate = self;
     [self checkDates];
     [self setDateForView:self.date];
 }
@@ -59,7 +59,6 @@
     UITableView *tableView = [self.containerView subviews][0];
     [self checkDates];
     [tableView reloadData];
-    NSLog(@"(OfflineView) Reload called");
 }
 
 - (IBAction)previousButton:(id)sender {
@@ -67,7 +66,6 @@
     UITableView *tableView = [self.containerView subviews][0];
     [self checkDates];
     [tableView reloadData];
-    NSLog(@"(OfflineView) Reload called");
 }
 
 @end

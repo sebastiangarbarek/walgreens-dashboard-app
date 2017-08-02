@@ -30,6 +30,11 @@
     [self configureView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.date = ((HomeViewController *)self.parentViewController).date;
+    [self configureView];
+}
+
 - (void)configureView {
     self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i",
                                         ([[databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue]
