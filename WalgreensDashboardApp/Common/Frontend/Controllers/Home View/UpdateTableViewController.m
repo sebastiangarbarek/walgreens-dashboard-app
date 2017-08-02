@@ -10,8 +10,6 @@
 #import "OfflineViewController.h"
 #import "DatabaseManagerApp.h"
 
-#import "AppDelegate.h"
-
 @interface UpdateTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
 }
@@ -42,7 +40,8 @@
     
     [self configureView];
     
-    databaseManagerApp = [(AppDelegate *)[[UIApplication sharedApplication] delegate] databaseManagerApp];
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [databaseManagerApp openCreateDatabase];
 }
 
 - (void)configureView {
@@ -59,7 +58,9 @@
 }
 
 - (void)storeOfflineUpdate {
-    [self updateTotalStoresOffline];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateTotalStoresOffline];
+    });
 }
 
 - (void)updateProgressBar {
@@ -87,17 +88,21 @@
 }
 
 - (void)notConnectedUpdate {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    self.notificationsLabel.textColor = [UIColor redColor];
-    self.notificationsLabel.text = @"You are not connected to the internet";
-    self.notificationsCell.hidden = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        self.notificationsLabel.textColor = [UIColor redColor];
+        self.notificationsLabel.text = @"You are not connected to the internet";
+        self.notificationsCell.hidden = NO;
+    });
 }
 
 - (void)connectedUpdate {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    self.notificationsLabel.textColor = [UIColor darkTextColor];
-    self.notificationsLabel.text = @"";
-    self.notificationsCell.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        self.notificationsLabel.textColor = [UIColor darkTextColor];
+        self.notificationsLabel.text = @"";
+        self.notificationsCell.hidden = YES;
+    });
 }
 
 @end

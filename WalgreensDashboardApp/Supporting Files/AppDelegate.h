@@ -15,6 +15,4 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, atomic) DatabaseManagerApp *databaseManagerApp;
-
 @end

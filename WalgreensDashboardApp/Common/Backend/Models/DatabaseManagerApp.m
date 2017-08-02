@@ -30,7 +30,7 @@
         [self copyInitialDatabase];
     }
     
-    sqlite3_open([databasePath UTF8String], &database);
+    sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil);
     
     self.tableCommands = [[TableCommands alloc] initWithDatabaseManager:self];
     self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];

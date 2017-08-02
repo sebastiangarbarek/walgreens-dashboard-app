@@ -11,8 +11,6 @@
 #import "DateHelper.h"
 #import "DatabaseManagerApp.h"
 
-#import "AppDelegate.h"
-
 @interface HomeViewController () {
     DatabaseManagerApp *databaseManagerApp;
 }
@@ -35,7 +33,8 @@
     
     [self embedTableView];
     
-    databaseManagerApp = [(AppDelegate *)[[UIApplication sharedApplication] delegate] databaseManagerApp];
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [databaseManagerApp openCreateDatabase];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
