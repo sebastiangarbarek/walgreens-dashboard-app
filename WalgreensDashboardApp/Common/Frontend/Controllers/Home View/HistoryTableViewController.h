@@ -10,6 +10,9 @@
 
 @interface HistoryTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
 
+@property (strong, nonatomic) NSString *date;
 
 @end

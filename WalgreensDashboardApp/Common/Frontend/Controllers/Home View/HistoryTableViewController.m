@@ -7,8 +7,12 @@
 //
 
 #import "HistoryTableViewController.h"
+#import "HomeViewController.h"
+#import "DatabaseManagerApp.h"
 
-@interface HistoryTableViewController ()
+@interface HistoryTableViewController () {
+    DatabaseManagerApp *databaseManagerApp;
+}
 
 @end
 
@@ -16,6 +20,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Retrieve selected date from home view controller.
+    self.date = ((HomeViewController *)self.parentViewController).date;
+    
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [databaseManagerApp openCreateDatabase];
+    
+    [self configureView];
+}
+
+- (void)configureView {
+    self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i",
+                                        ([[databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue]
+                                         - [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:self.date] intValue])];
+    self.totalOfflineStoresLabel.text = [NSString stringWithFormat:@"%i",
+                                         [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:self.date] intValue]];
 }
 
 @end

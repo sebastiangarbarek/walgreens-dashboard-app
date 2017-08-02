@@ -7,6 +7,7 @@
 //
 
 #import "UpdateTableViewController.h"
+#import "HomeViewController.h"
 #import "OfflineViewController.h"
 #import "DatabaseManagerApp.h"
 

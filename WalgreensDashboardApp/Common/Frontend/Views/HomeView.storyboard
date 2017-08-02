@@ -287,6 +287,10 @@
                             <outlet property="delegate" destination="8c9-TI-5fC" id="a2G-6o-VGd"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="totalOfflineStoresLabel" destination="r90-od-jFg" id="u3r-Bj-PFF"/>
+                        <outlet property="totalOnlineStoresLabel" destination="sAc-Lq-vpw" id="he3-yb-4qg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qx4-kf-ZYn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

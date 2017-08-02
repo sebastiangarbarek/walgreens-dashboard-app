@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *notificationsCell;
 @property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
 
+@property (strong, nonatomic) NSString *date;
+
 @end
