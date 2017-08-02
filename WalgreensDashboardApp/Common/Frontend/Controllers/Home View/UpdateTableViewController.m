@@ -10,9 +10,10 @@
 #import "OfflineViewController.h"
 #import "DatabaseManagerApp.h"
 
+#import "AppDelegate.h"
+
 @interface UpdateTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
-    NSInteger totalStoresToRequest;
 }
 
 @end
@@ -40,9 +41,8 @@
                                                object:nil];
     
     [self configureView];
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    [databaseManagerApp openCreateDatabase];
-    totalStoresToRequest = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+    
+    databaseManagerApp = [(AppDelegate *)[[UIApplication sharedApplication] delegate] databaseManagerApp];
 }
 
 - (void)configureView {
@@ -64,10 +64,11 @@
 
 - (void)updateProgressBar {
     NSInteger storesInTemp = [[databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
+    NSInteger storesToRequest = [[databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
     if (!storesInTemp) {
         printf("[APP] (countStoresInTempTable:) returned nil.\n");
     } else {
-        self.requestProgressView.progress = (float)storesInTemp / totalStoresToRequest;
+        self.requestProgressView.progress = (float)storesInTemp / storesToRequest;
     }
 }
 

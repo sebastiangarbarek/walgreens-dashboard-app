@@ -11,7 +11,6 @@
 
 @interface AppDelegate () {
     StatusControllerApp *statusControllerApp;
-    DatabaseManagerApp *databaseManagerApp;
 }
 
 @end
@@ -30,6 +29,8 @@
     // The app has approx. 5 seconds to return from this method.
     printf("[APP] Stopping status controller...\n");
     [statusControllerApp stop];
+    [self.databaseManagerApp closeDatabase];
+    self.databaseManagerApp = nil;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -38,13 +39,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     printf("[APP] Initializing status controller...\n");
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    statusControllerApp = [[StatusControllerApp alloc] initWithManager:databaseManagerApp];
+    self.databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    statusControllerApp = [[StatusControllerApp alloc] initWithManager:self.databaseManagerApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     printf("[APP] Stopping status controller...\n");
     [statusControllerApp stop];
+    [self.databaseManagerApp closeDatabase];
+    self.databaseManagerApp = nil;
 }
 
 @end
