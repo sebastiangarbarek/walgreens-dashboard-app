@@ -28,7 +28,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    // Must reassign delegate as delegate passed between home and offline views.
     self.tabBarController.delegate = self;
+    
     [self checkDates];
     [self setDateForView:self.date];
 }

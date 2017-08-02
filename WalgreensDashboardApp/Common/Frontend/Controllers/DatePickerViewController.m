@@ -14,6 +14,7 @@
     [super viewDidLoad];
     
     self.databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    // Database closes itself after use.
     [self.databaseManagerApp openCreateDatabase];
 }
 

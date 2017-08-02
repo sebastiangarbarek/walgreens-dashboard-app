@@ -24,6 +24,7 @@
     [super viewDidLoad];
 
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    // Database closes itself after use.
     [databaseManagerApp openCreateDatabase];
 }
 
@@ -57,10 +58,6 @@
     }
     
     return cell;
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
 }
 
 @end

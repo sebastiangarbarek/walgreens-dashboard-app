@@ -34,17 +34,18 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    // Must reassign delegate as delegate passed between home and offline views.
     self.tabBarController.delegate = self;
+    
     [self checkDates];
-    NSLog(@"(HomeView) Date: %@", self.date);
     [self setDateForView:self.date];
+    [self switchTableView];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     // Pass the current date to the offline view.
     if ([viewController isKindOfClass:[OfflineViewController class]]) {
         OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
-        NSLog(@"(HomeView->OfflineView) Passing date: %@", self.date);
         offlineViewController.date = self.date;
     }
 }

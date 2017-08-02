@@ -25,6 +25,7 @@
     self.date = ((HomeViewController *)self.parentViewController).date;
     
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    // Database closes itself after use.
     [databaseManagerApp openCreateDatabase];
     
     [self configureView];

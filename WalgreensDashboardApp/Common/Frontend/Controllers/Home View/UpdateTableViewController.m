@@ -43,15 +43,15 @@
                                                  name:@"Requests complete"
                                                object:nil];
     
-    [self configureView];
-    
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
+    
+    [self configureView];
 }
 
 - (void)configureView {
-    self.totalOnlineStoresLabel.text = @"0";
-    self.totalOfflineStoresLabel.text = @"0";
+    self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
+    self.totalOfflineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue]];
 }
 
 - (void)storeOnlineUpdate {
