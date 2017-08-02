@@ -22,17 +22,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.date = ((OfflineViewController *)self.parentViewController).date;
-    
+
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
-    
-    NSLog(@"date table view %@", self.date);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.date = ((OfflineViewController *)self.parentViewController).date;
     offlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    self.date = ((OfflineViewController *)self.parentViewController).date;
+    offlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
     return 1;
 }
 
@@ -45,7 +48,9 @@
     
     NSString *city = [[offlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
     NSString *state = [[offlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
-    if (city) {
+    
+    if ([city length] != 0) {
+        city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         cell.storeLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
     } else {
         // Details unknown.

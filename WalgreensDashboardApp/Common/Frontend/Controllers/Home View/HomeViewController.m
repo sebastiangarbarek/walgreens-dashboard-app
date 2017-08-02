@@ -32,12 +32,13 @@
                                                  name:@"Requests complete"
                                                object:nil];
     
-    [self checkDates];
     [self embedTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.title = self.date;
+    NSLog(@"DATE HOME %@", self.date);
+    [self checkDates];
+    [self setDateForView:self.date];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
@@ -45,7 +46,6 @@
     if ([viewController isKindOfClass:[OfflineViewController class]]) {
         OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
         offlineViewController.date = self.date;
-        offlineViewController.navigationItem.title = self.date;
     }
 }
 

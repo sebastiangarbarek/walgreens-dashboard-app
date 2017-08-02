@@ -29,6 +29,7 @@
             [self enableButtonWithNextDate:nextDate];
         }
     } else {
+        // Equal to current day.
         [self disableNextDateButton];
     }
     

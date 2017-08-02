@@ -24,20 +24,20 @@
     
     self.tabBarController.delegate = self;
     
-    NSLog(@"date controller %@", self.date);
-    
-    [self checkDates];
     [self embedTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.title = self.date;
+    NSLog(@"DATE OFFLINE %@", self.date);
+    [self checkDates];
+    [self setDateForView:self.date];
 }
 
 - (void)embedTableView {
     UIStoryboard *storyBoard = self.storyboard;
-    UITableViewController *tableViewController;
+    OfflineTableViewController *tableViewController;
     
+    tableViewController.date = self.date;
     tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
 
     [self addChildViewController:tableViewController];
@@ -47,11 +47,10 @@
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    // Pass the current date to the offline view.
+    // Pass the current date to the home view.
     if ([viewController isKindOfClass:[HomeViewController class]]) {
         HomeViewController *homeViewController = (HomeViewController *)viewController;
         homeViewController.date = self.date;
-        homeViewController.navigationItem.title = self.date;
     }
 }
 
@@ -60,6 +59,7 @@
     UITableView *tableView = [self.containerView subviews][0];
     [self checkDates];
     [tableView reloadData];
+    NSLog(@"(OfflineView) Reload called");
 }
 
 - (IBAction)previousButton:(id)sender {
@@ -67,6 +67,7 @@
     UITableView *tableView = [self.containerView subviews][0];
     [self checkDates];
     [tableView reloadData];
+    NSLog(@"(OfflineView) Reload called");
 }
 
 @end
