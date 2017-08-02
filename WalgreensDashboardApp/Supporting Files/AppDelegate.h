@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "StatusController.h"
+#import "DatabaseManagerApp.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (atomic) BOOL inForeground;
 
 @end

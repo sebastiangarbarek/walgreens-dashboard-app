@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
+		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
 		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
+		A812078A1F327055006C6384 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207881F327055006C6384 /* Fabric.framework */; };
+		A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207891F327055006C6384 /* Crashlytics.framework */; };
 		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
 		A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72E1EB023FB002ED089 /* AppDelegate.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
+		A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A855530A1F30644800C7B20C /* StatusControllerApp.m */; };
 		A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06801F2DA820005A0936 /* HomeView.storyboard */; };
 		A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06811F2DA820005A0936 /* OfflineView.storyboard */; };
 		A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06821F2DA820005A0936 /* StoreView.storyboard */; };
-		A86A06B71F2DA850005A0936 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B21F2DA850005A0936 /* HomeViewController.m */; };
+		A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */; };
 		A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B41F2DA850005A0936 /* OfflineViewController.m */; };
-		A86A06B91F2DA850005A0936 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B61F2DA850005A0936 /* StoreViewController.m */; };
-		A86A06C31F2DA863005A0936 /* ServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06BC1F2DA863005A0936 /* ServerCell.m */; };
-		A86A06C41F2DA863005A0936 /* StatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06BE1F2DA863005A0936 /* StatusCell.m */; };
-		A86A06C51F2DA863005A0936 /* UpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06C01F2DA863005A0936 /* UpdateCell.m */; };
-		A86A06C61F2DA863005A0936 /* OfflineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06C21F2DA863005A0936 /* OfflineCell.m */; };
+		A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79881F2F151700C99BFD /* OfflineCell.m */; };
+		A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798B1F2F33E400C99BFD /* HomeViewController.m */; };
+		A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */; };
+		A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */; };
 		A8A4CB501F2B406700B87449 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB301F2B406700B87449 /* Controller.m */; };
 		A8A4CB511F2B406700B87449 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB321F2B406700B87449 /* DataController.m */; };
 		A8A4CB521F2B406700B87449 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB341F2B406700B87449 /* StatusController.m */; };
@@ -52,8 +56,12 @@
 /* Begin PBXFileReference section */
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
 		A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
+		A81207881F327055006C6384 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		A81207891F327055006C6384 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C72B1EB023FB002ED089 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A842C72D1EB023FB002ED089 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,23 +69,24 @@
 		A842C7361EB023FB002ED089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A842C73B1EB023FB002ED089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A85553091F30642400C7B20C /* StatusControllerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
+		A855530A1F30644800C7B20C /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
 		A86A06801F2DA820005A0936 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		A86A06811F2DA820005A0936 /* OfflineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineView.storyboard; sourceTree = "<group>"; };
 		A86A06821F2DA820005A0936 /* StoreView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreView.storyboard; sourceTree = "<group>"; };
-		A86A06B11F2DA850005A0936 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		A86A06B21F2DA850005A0936 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewController.h; sourceTree = "<group>"; };
+		A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewController.m; sourceTree = "<group>"; };
 		A86A06B31F2DA850005A0936 /* OfflineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineViewController.h; sourceTree = "<group>"; };
 		A86A06B41F2DA850005A0936 /* OfflineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineViewController.m; sourceTree = "<group>"; };
-		A86A06B51F2DA850005A0936 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
-		A86A06B61F2DA850005A0936 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
-		A86A06BB1F2DA863005A0936 /* ServerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerCell.h; sourceTree = "<group>"; };
-		A86A06BC1F2DA863005A0936 /* ServerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerCell.m; sourceTree = "<group>"; };
-		A86A06BD1F2DA863005A0936 /* StatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusCell.h; sourceTree = "<group>"; };
-		A86A06BE1F2DA863005A0936 /* StatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusCell.m; sourceTree = "<group>"; };
-		A86A06BF1F2DA863005A0936 /* UpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCell.h; sourceTree = "<group>"; };
-		A86A06C01F2DA863005A0936 /* UpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCell.m; sourceTree = "<group>"; };
-		A86A06C11F2DA863005A0936 /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
-		A86A06C21F2DA863005A0936 /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
+		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
+		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
+		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
+		A88A798A1F2F33E400C99BFD /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A88A798B1F2F33E400C99BFD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
+		A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
+		A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTableViewController.h; sourceTree = "<group>"; };
+		A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTableViewController.m; sourceTree = "<group>"; };
 		A8A4CB2F1F2B406700B87449 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		A8A4CB301F2B406700B87449 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
 		A8A4CB311F2B406700B87449 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
@@ -123,6 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
+				A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */,
+				A812078A1F327055006C6384 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */,
+				A81207881F327055006C6384 /* Fabric.framework */,
+				A81207891F327055006C6384 /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,13 +179,10 @@
 		A821BB2A1EDB960400B878BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A86A06BA1F2DA858005A0936 /* Cells */,
-				A86A06B11F2DA850005A0936 /* HomeViewController.h */,
-				A86A06B21F2DA850005A0936 /* HomeViewController.m */,
-				A86A06B31F2DA850005A0936 /* OfflineViewController.h */,
-				A86A06B41F2DA850005A0936 /* OfflineViewController.m */,
-				A86A06B51F2DA850005A0936 /* StoreViewController.h */,
-				A86A06B61F2DA850005A0936 /* StoreViewController.m */,
+				A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */,
+				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
+				A88A798D1F2F340300C99BFD /* Home View */,
+				A88A79911F2F346000C99BFD /* Offline View */,
 			);
 			name = Controllers;
 			path = Common/Frontend/Controllers;
@@ -213,6 +223,7 @@
 		A821BB2F1EDB964800B878BA /* Database Files */ = {
 			isa = PBXGroup;
 			children = (
+				A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */,
 			);
 			name = "Database Files";
 			path = "Resources/Database Files";
@@ -257,19 +268,47 @@
 			path = WalgreensDashboardApp;
 			sourceTree = "<group>";
 		};
-		A86A06BA1F2DA858005A0936 /* Cells */ = {
+		A85553081F3063FA00C7B20C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A86A06BB1F2DA863005A0936 /* ServerCell.h */,
-				A86A06BC1F2DA863005A0936 /* ServerCell.m */,
-				A86A06BD1F2DA863005A0936 /* StatusCell.h */,
-				A86A06BE1F2DA863005A0936 /* StatusCell.m */,
-				A86A06BF1F2DA863005A0936 /* UpdateCell.h */,
-				A86A06C01F2DA863005A0936 /* UpdateCell.m */,
-				A86A06C11F2DA863005A0936 /* OfflineCell.h */,
-				A86A06C21F2DA863005A0936 /* OfflineCell.m */,
+				A85553091F30642400C7B20C /* StatusControllerApp.h */,
+				A855530A1F30644800C7B20C /* StatusControllerApp.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A88A79861F2F14BA00C99BFD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A88A79871F2F151700C99BFD /* OfflineCell.h */,
+				A88A79881F2F151700C99BFD /* OfflineCell.m */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A88A798D1F2F340300C99BFD /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				A88A798A1F2F33E400C99BFD /* HomeViewController.h */,
+				A88A798B1F2F33E400C99BFD /* HomeViewController.m */,
+				A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */,
+				A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */,
+				A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */,
+				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
+			);
+			path = "Home View";
+			sourceTree = "<group>";
+		};
+		A88A79911F2F346000C99BFD /* Offline View */ = {
+			isa = PBXGroup;
+			children = (
+				A88A79861F2F14BA00C99BFD /* Cells */,
+				A86A06B31F2DA850005A0936 /* OfflineViewController.h */,
+				A86A06B41F2DA850005A0936 /* OfflineViewController.m */,
+				A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */,
+				A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */,
+			);
+			path = "Offline View";
 			sourceTree = "<group>";
 		};
 		A8A4CAE91F2B3F6A00B87449 /* External */ = {
@@ -361,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A4CB611F2B46E000B87449 /* Models */,
+				A85553081F3063FA00C7B20C /* Controllers */,
 			);
 			name = Backend;
 			path = Common/Backend;
@@ -403,6 +443,7 @@
 				A842C7231EB023FB002ED089 /* Sources */,
 				A842C7241EB023FB002ED089 /* Frameworks */,
 				A842C7251EB023FB002ED089 /* Resources */,
+				A81207871F326FE3006C6384 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -464,6 +505,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */,
 				A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
@@ -473,6 +515,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A81207871F326FE3006C6384 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 81b1135fcd47afe2c58acb7e33f5bec6f83c2790 ed44d0d5a83e40dcd4928fdb9cb0fbf39b36548fd4566ab54c3648c0bce1fb50";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3978F1571EBEAF16001FD643 /* Sources */ = {
@@ -487,28 +545,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A4CB591F2B406700B87449 /* UpdateCommands.m in Sources */,
-				A86A06C61F2DA863005A0936 /* OfflineCell.m in Sources */,
 				A8A4CB571F2B406700B87449 /* SelectCommands.m in Sources */,
 				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
-				A86A06B71F2DA850005A0936 /* HomeViewController.m in Sources */,
+				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
 				A8A4CB501F2B406700B87449 /* Controller.m in Sources */,
 				A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */,
 				A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */,
 				A8A4CB511F2B406700B87449 /* DataController.m in Sources */,
+				A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */,
 				A8A4CB521F2B406700B87449 /* StatusController.m in Sources */,
-				A86A06B91F2DA850005A0936 /* StoreViewController.m in Sources */,
-				A86A06C41F2DA863005A0936 /* StatusCell.m in Sources */,
+				A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */,
+				A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */,
 				A8A4CB531F2B406700B87449 /* Commands.m in Sources */,
-				A86A06C31F2DA863005A0936 /* ServerCell.m in Sources */,
 				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
 				A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */,
 				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
 				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
+				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,
 				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
+				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
 				A842C72C1EB023FB002ED089 /* main.m in Sources */,
 				A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */,
-				A86A06C51F2DA863005A0936 /* UpdateCell.m in Sources */,
 				A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */,
+				A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */,
 				A8A4CB581F2B406700B87449 /* TableCommands.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +720,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
@@ -673,6 +736,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;

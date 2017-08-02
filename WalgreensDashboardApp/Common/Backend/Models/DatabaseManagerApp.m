@@ -12,18 +12,15 @@
 
 - (void)copyInitialDatabase {
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
-    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:databasePath error:nil];
-}
-
-#pragma mark - Overridden Methods -
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        [self openCreateDatabase];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:databasePath error:&error];
+    if (error != nil) {
+        NSLog(@"%@", [error localizedDescription]);
     }
-    return self;
 }
+
+#pragma mark - Override -
 
 - (BOOL)openCreateDatabase {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -33,8 +30,16 @@
         [self copyInitialDatabase];
     }
     
-    // Super method returns success or failure.
-    return YES;
+    self.tableCommands = [[TableCommands alloc] initWithDatabaseManager:self];
+    self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];
+    self.selectCommands = [[SelectCommands alloc] initWithDatabaseManager:self];
+    self.updateCommands = [[UpdateCommands alloc] initWithDatabaseManager:self];
+    
+    int code = sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil);
+    if (code == SQLITE_OK)
+        return YES;
+    else
+        return NO;
 }
 
 @end
