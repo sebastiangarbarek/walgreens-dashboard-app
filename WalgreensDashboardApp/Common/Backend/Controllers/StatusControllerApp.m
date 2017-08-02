@@ -8,6 +8,7 @@
 
 #import "StatusControllerApp.h"
 #import "DatabaseManagerApp.h"
+#import "AppDelegate.h"
 
 @implementation StatusControllerApp
 
@@ -18,6 +19,11 @@
         requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
         [requestThread start];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(stopped)
+                                                 name:@"Stopped"
+                                               object:nil];
     
     return self;
 }
@@ -32,6 +38,15 @@
 - (void)stop {
     // Running loops should check if cancelled and exit at an appropriate time.
     [walgreensApi.currentExecutingThread cancel];
+}
+
+- (void)stopped {
+    // There is a chance that foreground had been called before stop finished.
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] inForeground]) {
+        printf("[APP] App went into foreground before status controller stopped.\n");
+        requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
+        [requestThread start];
+    }
 }
 
 @end
