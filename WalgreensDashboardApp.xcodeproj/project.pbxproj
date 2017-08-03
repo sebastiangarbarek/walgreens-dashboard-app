@@ -10,8 +10,6 @@
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
 		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
-		A812078A1F327055006C6384 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207881F327055006C6384 /* Fabric.framework */; };
-		A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207891F327055006C6384 /* Crashlytics.framework */; };
 		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
 		A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72E1EB023FB002ED089 /* AppDelegate.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
@@ -60,8 +58,6 @@
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
 		A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
-		A81207881F327055006C6384 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		A81207891F327055006C6384 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C72B1EB023FB002ED089 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A842C72D1EB023FB002ED089 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,8 +128,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
-				A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */,
-				A812078A1F327055006C6384 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */,
-				A81207881F327055006C6384 /* Fabric.framework */,
-				A81207891F327055006C6384 /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -443,7 +435,6 @@
 				A842C7231EB023FB002ED089 /* Sources */,
 				A842C7241EB023FB002ED089 /* Frameworks */,
 				A842C7251EB023FB002ED089 /* Resources */,
-				A81207871F326FE3006C6384 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -470,6 +461,7 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = T45LG4J27C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -515,22 +507,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A81207871F326FE3006C6384 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 81b1135fcd47afe2c58acb7e33f5bec6f83c2790 ed44d0d5a83e40dcd4928fdb9cb0fbf39b36548fd4566ab54c3648c0bce1fb50";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3978F1571EBEAF16001FD643 /* Sources */ = {
@@ -719,7 +695,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -735,7 +711,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
