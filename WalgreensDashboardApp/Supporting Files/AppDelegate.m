@@ -6,35 +6,56 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
-@interface AppDelegate ()
+#import "AppDelegate.h"
+#import "StatusControllerApp.h"
+
+@interface AppDelegate () {
+    StatusControllerApp *statusControllerApp;
+    DatabaseManagerApp *databaseManagerApp;
+}
 
 @end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Set the navigation bar tint color to white.
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:1.0]];
-    // Set the navigation bar text color to Walgreens red.
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:229.0/255.0 green:25.0/255.0 blue:55.0/255.0 alpha:1.0]];
+    [Fabric with:@[[Crashlytics class]]];
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    self.inForeground = NO;
+    // The app has approx. 5 seconds to return from this method.
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    printf("[APP] Stopping status controller...\n");
+    // There is a chance (applicationDidBecomeActive:) is called before stop executes.
+    [statusControllerApp stop];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    self.inForeground = YES;
+    printf("[APP] Initializing status controller...\n");
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [databaseManagerApp closeDatabase];
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    statusControllerApp = [[StatusControllerApp alloc] initWithManager:databaseManagerApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    printf("[APP] Stopping status controller...\n");
+    [statusControllerApp stop];
+    [databaseManagerApp closeDatabase];
 }
 
 @end
