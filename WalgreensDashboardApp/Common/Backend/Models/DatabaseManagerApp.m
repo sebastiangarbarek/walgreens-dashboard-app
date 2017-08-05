@@ -20,7 +20,7 @@
     }
 }
 
-#pragma mark - Override -
+#pragma mark - Override
 
 - (BOOL)openCreateDatabase {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

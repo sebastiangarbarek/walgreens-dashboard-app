@@ -52,28 +52,28 @@
 
 - (void)embedTableView {
     UIStoryboard *storyBoard = self.storyboard;
-    UITableViewController *tableViewController;
+    UINavigationController *navigationController;
     
     NSInteger numberOfStoresInDatabase = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
     NSInteger numberOfStoresInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
     
     if ((numberOfStoresInDatabase - numberOfStoresInTemp) && [self.date isEqualToString:[DateHelper currentDate]]) {
-        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
+        navigationController = [storyBoard instantiateViewControllerWithIdentifier:@"Home Navigation Controller"];
     } else {
-        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table View"];
+        navigationController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table Navigation Controller"];
     }
     
-    [self addChildViewController:tableViewController];
-    tableViewController.view.frame = self.containerView.bounds;
-    [self.containerView addSubview:tableViewController.view];
-    [tableViewController didMoveToParentViewController:self];
-    self.currentTableViewController = tableViewController;
+    [self addChildViewController:navigationController];
+    navigationController.view.frame = self.containerView.bounds;
+    [self.containerView addSubview:navigationController.view];
+    [navigationController didMoveToParentViewController:self];
+    self.currentNavigationController = navigationController;
 }
 
 - (void)switchTableView {
-    [self.currentTableViewController willMoveToParentViewController:nil];
-    [self.currentTableViewController.view removeFromSuperview];
-    [self.currentTableViewController removeFromParentViewController];
+    [self.currentNavigationController willMoveToParentViewController:nil];
+    [self.currentNavigationController.view removeFromSuperview];
+    [self.currentNavigationController removeFromParentViewController];
     [self embedTableView];
     [self checkDates];
 }
