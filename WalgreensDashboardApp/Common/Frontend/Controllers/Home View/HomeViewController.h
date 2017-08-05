@@ -18,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 
 // The current table view controller in the container view, referenced to remove.
-@property (weak, nonatomic) UINavigationController *currentNavigationController;
+@property (weak, nonatomic) UITableViewController *currentTableViewController;
 
 @end
