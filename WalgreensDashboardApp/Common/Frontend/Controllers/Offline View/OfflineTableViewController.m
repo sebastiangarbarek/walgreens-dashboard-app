@@ -29,12 +29,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.date = ((OfflineViewController *)self.parentViewController).date;
+    //self.date = ((OfflineViewController *)self.parentViewController).date;
     [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    self.date = ((OfflineViewController *)self.parentViewController).date;
+    //self.date = ((OfflineViewController *)self.parentViewController).date;
     offlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
     return 1;
 }

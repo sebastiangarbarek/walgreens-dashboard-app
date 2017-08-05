@@ -11,7 +11,7 @@
 #import "DateHelper.h"
 #import "DatabaseManagerApp.h"
 
-@interface DatePickerViewController : UIViewController <UITabBarControllerDelegate>
+@interface DatePickerViewController : UIViewController
 
 @property DatabaseManagerApp *databaseManagerApp;
 

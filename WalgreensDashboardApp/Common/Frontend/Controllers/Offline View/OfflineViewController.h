@@ -10,7 +10,7 @@
 
 #import "DatePickerViewController.h"
 
-@interface OfflineViewController : DatePickerViewController <UITabBarControllerDelegate>
+@interface OfflineViewController : DatePickerViewController
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (weak, nonatomic) IBOutlet UIView *containerView;

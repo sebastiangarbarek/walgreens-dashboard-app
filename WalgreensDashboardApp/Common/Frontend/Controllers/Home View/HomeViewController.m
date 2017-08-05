@@ -23,6 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Remove navigation bar bottom borders.
+    [self.navigationBar setShadowImage:[[UIImage alloc] init]];
+    [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    
     self.date = [DateHelper currentDate];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -34,33 +38,40 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    // Must reassign delegate as delegate passed between home and offline views.
-    self.tabBarController.delegate = self;
-    
     [self checkDates];
     [self setDateForView:self.date];
     [self switchTableView];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[OfflineViewController class]]) {
+        [(OfflineViewController *)segue.destinationViewController setDate:self.date];
+    }
+}
+
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
     // Pass the current date to the offline view.
-    if ([viewController isKindOfClass:[OfflineViewController class]]) {
-        OfflineViewController *offlineViewController = (OfflineViewController *)viewController;
-        offlineViewController.date = self.date;
+    if ([viewController isKindOfClass:[DatePickerViewController class]]) {
+        DatePickerViewController *datePickerViewController = (DatePickerViewController *)viewController;
+        datePickerViewController.date = self.date;
     }
 }
 
 - (void)embedTableView {
-    UIStoryboard *storyBoard = self.storyboard;
+    UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
+    UIStoryboard *historyStoryBoard = [UIStoryboard storyboardWithName:@"HistoryView" bundle:nil];
+    
     UITableViewController *tableViewController;
     
     NSInteger numberOfStoresInDatabase = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
     NSInteger numberOfStoresInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
     
     if ((numberOfStoresInDatabase - numberOfStoresInTemp) && [self.date isEqualToString:[DateHelper currentDate]]) {
-        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
+        self.navigationBar.topItem.title = @"Dashboard";
+        tableViewController = [updateStoryBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
     } else {
-        tableViewController = [storyBoard instantiateViewControllerWithIdentifier:@"History Table View"];
+        self.navigationBar.topItem.title = @"History";
+        tableViewController = [historyStoryBoard instantiateViewControllerWithIdentifier:@"History Table View"];
     }
     
     [self addChildViewController:tableViewController];

@@ -15,6 +15,8 @@
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
 		A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A855530A1F30644800C7B20C /* StatusControllerApp.m */; };
+		A85A2E671F35C94C00417C2C /* UpdateView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E661F35C94C00417C2C /* UpdateView.storyboard */; };
+		A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E681F35C96100417C2C /* HistoryView.storyboard */; };
 		A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06801F2DA820005A0936 /* HomeView.storyboard */; };
 		A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06811F2DA820005A0936 /* OfflineView.storyboard */; };
 		A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06821F2DA820005A0936 /* StoreView.storyboard */; };
@@ -67,6 +69,8 @@
 		A842C73B1EB023FB002ED089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A85553091F30642400C7B20C /* StatusControllerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
 		A855530A1F30644800C7B20C /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
+		A85A2E661F35C94C00417C2C /* UpdateView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateView.storyboard; sourceTree = "<group>"; };
+		A85A2E681F35C96100417C2C /* HistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoryView.storyboard; sourceTree = "<group>"; };
 		A86A06801F2DA820005A0936 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		A86A06811F2DA820005A0936 /* OfflineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineView.storyboard; sourceTree = "<group>"; };
 		A86A06821F2DA820005A0936 /* StoreView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreView.storyboard; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				A86A06801F2DA820005A0936 /* HomeView.storyboard */,
+				A85A2E661F35C94C00417C2C /* UpdateView.storyboard */,
+				A85A2E681F35C96100417C2C /* HistoryView.storyboard */,
 				A86A06811F2DA820005A0936 /* OfflineView.storyboard */,
 				A86A06821F2DA820005A0936 /* StoreView.storyboard */,
 			);
@@ -461,7 +467,6 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = T45LG4J27C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -497,7 +502,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85A2E671F35C94C00417C2C /* UpdateView.storyboard in Resources */,
 				A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */,
+				A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */,
 				A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
@@ -695,7 +702,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T45LG4J27C;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -711,7 +718,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T45LG4J27C;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
