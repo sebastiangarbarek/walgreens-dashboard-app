@@ -87,14 +87,12 @@
                     // Get home view.
                     HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
                     
-                    // Enable back button on home view.
-                    [homeViewController switchBackButton];
-                    [homeViewController.backButton setAction:@selector(backHome)];
-                    
                     // Swap container view.
                     UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
                     UITableViewController *offlineViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
                     [homeViewController embedTableView:offlineViewController];
+                    
+                    [homeViewController switchBackButton];
                     
                     break;
                 }
@@ -106,18 +104,6 @@
             break;
         }
     }
-}
-
-- (void)backHome {
-    // Get home view.
-    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController.parentViewController;
-    
-    // Disable back button on home view.
-    [homeViewController switchBackButton];
-    [homeViewController.backButton setAction:@selector(backHome)];
-    
-    // Swap container view.
-    [homeViewController embedInitialTableView];
 }
 
 @end

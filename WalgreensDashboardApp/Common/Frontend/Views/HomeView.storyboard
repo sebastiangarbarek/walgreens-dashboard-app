@@ -81,8 +81,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Dashboard" id="BqE-gI-euV">
-                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="sqF-YG-BnT">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="3zu-LT-UZY">
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="backButton:" destination="eBb-N7-dtP" id="9kz-3m-7po"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -106,7 +109,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="sqF-YG-BnT" id="OoV-dA-xxF"/>
+                        <outlet property="backButton" destination="3zu-LT-UZY" id="jZx-ZP-XZk"/>
                         <outlet property="containerView" destination="0Rf-Ts-roG" id="ioG-FE-t5T"/>
                         <outlet property="dateTitle" destination="XyO-VJ-Pcj" id="b4Z-uD-byS"/>
                         <outlet property="navigationBar" destination="q4Y-n0-nWs" id="qCb-XL-3RZ"/>
