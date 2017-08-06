@@ -15,6 +15,8 @@
 
 @property DatabaseManagerApp *databaseManagerApp;
 
+@property (weak, nonatomic) UINavigationItem *dateTitle;
+
 @property (weak, nonatomic) UIBarButtonItem *nextButton;
 @property (weak, nonatomic) UIBarButtonItem *previousButton;
 

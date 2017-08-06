@@ -80,7 +80,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem title="Dashboard" id="BqE-gI-euV"/>
+                                    <navigationItem title="Dashboard" id="BqE-gI-euV">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="sqF-YG-BnT">
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -102,9 +106,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="sqF-YG-BnT" id="OoV-dA-xxF"/>
                         <outlet property="containerView" destination="0Rf-Ts-roG" id="ioG-FE-t5T"/>
+                        <outlet property="dateTitle" destination="XyO-VJ-Pcj" id="b4Z-uD-byS"/>
                         <outlet property="navigationBar" destination="q4Y-n0-nWs" id="qCb-XL-3RZ"/>
-                        <outlet property="navigationItem" destination="XyO-VJ-Pcj" id="Ltv-9x-H3G"/>
                         <outlet property="nextButton" destination="BK0-BT-EhS" id="e9V-gT-j6E"/>
                         <outlet property="previousButton" destination="xCm-NG-P3u" id="ibf-e0-SXZ"/>
                     </connections>

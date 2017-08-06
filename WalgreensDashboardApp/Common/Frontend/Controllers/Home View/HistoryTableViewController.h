@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryTableViewController : UITableViewController
+#import "CommonStaticTableViewController.h"
+
+@interface HistoryTableViewController : CommonStaticTableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;

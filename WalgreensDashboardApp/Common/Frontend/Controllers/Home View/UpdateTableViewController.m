@@ -110,4 +110,51 @@
     });
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        // Store status section
+        case 0: {
+            switch (indexPath.row) {
+                // Online row
+                case 0: {
+                    break;
+                }
+                // Offline row
+                case 1: {
+                    // Get home view.
+                    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
+                    
+                    // Enable back button on home view.
+                    [homeViewController switchBackButton];
+                    [homeViewController.backButton setAction:@selector(backHome)];
+                    
+                    // Swap container view.
+                    UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
+                    UITableViewController *offlineViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
+                    [homeViewController embedTableView:offlineViewController];
+                    
+                    break;
+                }
+            }
+            break;
+        }
+        // Store hours section
+        case 1: {
+            break;
+        }
+    }
+}
+
+- (void)backHome {
+    // Get home view.
+    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController.parentViewController;
+    
+    // Disable back button on home view.
+    [homeViewController switchBackButton];
+    [homeViewController.backButton setAction:@selector(backHome)];
+    
+    // Swap container view.
+    [homeViewController embedInitialTableView];
+}
+
 @end

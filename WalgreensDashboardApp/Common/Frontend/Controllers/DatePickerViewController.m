@@ -46,7 +46,7 @@
 
 - (void)setDateForView:(NSString *)date {
     self.date = date;
-    self.navigationItem.title = self.date;
+    self.dateTitle.title = self.date;
 }
 
 - (void)enableButtonWithNextDate:(NSString *)nextDate {

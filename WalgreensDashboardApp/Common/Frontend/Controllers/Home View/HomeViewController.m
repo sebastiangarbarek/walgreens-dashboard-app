@@ -17,47 +17,54 @@
 
 @implementation HomeViewController
 
+@dynamic dateTitle;
 @dynamic nextButton;
 @dynamic previousButton;
 
+#pragma mark - View Controller
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setDateForView:[DateHelper currentDate]];
+    [self checkDates];
     
     // Remove navigation bar bottom borders.
     [self.navigationBar setShadowImage:[[UIImage alloc] init]];
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     
-    self.date = [DateHelper currentDate];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(switchTableView)
+                                             selector:@selector(embedInitialTableView)
                                                  name:@"Requests complete"
                                                object:nil];
     
-    [self embedTableView];
+    [self embedInitialTableView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [self checkDates];
-    [self setDateForView:self.date];
-    [self switchTableView];
+#pragma mark - Container
+
+- (void)embedInitialTableView {
+    [self embedTableView:[self homeTableView]];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[OfflineViewController class]]) {
-        [(OfflineViewController *)segue.destinationViewController setDate:self.date];
+- (void)embedTableView:(UITableViewController *)tableViewController {
+    [self removeTableView];
+    [self addChildViewController:tableViewController];
+    tableViewController.view.frame = self.containerView.bounds;
+    [self.containerView addSubview:tableViewController.view];
+    [tableViewController didMoveToParentViewController:self];
+    self.currentTableViewController = tableViewController;
+}
+
+- (void)removeTableView {
+    if (self.currentTableViewController != nil) {
+        [self.currentTableViewController willMoveToParentViewController:nil];
+        [self.currentTableViewController.view removeFromSuperview];
+        [self.currentTableViewController removeFromParentViewController];
     }
 }
 
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    // Pass the current date to the offline view.
-    if ([viewController isKindOfClass:[DatePickerViewController class]]) {
-        DatePickerViewController *datePickerViewController = (DatePickerViewController *)viewController;
-        datePickerViewController.date = self.date;
-    }
-}
-
-- (void)embedTableView {
+- (UITableViewController *)homeTableView {
     UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
     UIStoryboard *historyStoryBoard = [UIStoryboard storyboardWithName:@"HistoryView" bundle:nil];
     
@@ -74,29 +81,44 @@
         tableViewController = [historyStoryBoard instantiateViewControllerWithIdentifier:@"History Table View"];
     }
     
-    [self addChildViewController:tableViewController];
-    tableViewController.view.frame = self.containerView.bounds;
-    [self.containerView addSubview:tableViewController.view];
-    [tableViewController didMoveToParentViewController:self];
-    self.currentTableViewController = tableViewController;
+    return tableViewController;
 }
 
-- (void)switchTableView {
-    [self.currentTableViewController willMoveToParentViewController:nil];
-    [self.currentTableViewController.view removeFromSuperview];
-    [self.currentTableViewController removeFromParentViewController];
-    [self embedTableView];
-    [self checkDates];
+#pragma mark - Buttons
+
+- (void)switchBackButton {
+    if ([self.backButton isEnabled]) {
+        [self.backButton setEnabled:NO];
+        [self.backButton setTintColor:[UIColor clearColor]];
+    } else {
+        [self.backButton setEnabled:YES];
+        [self.backButton setTintColor:nil];
+    }
 }
 
 - (IBAction)nextButton:(id)sender {
     [self setDateForView:self.nextDate];
-    [self switchTableView];
+    
+    if ([self.date isEqualToString:[DateHelper currentDate]]) {
+        [self removeTableView];
+        [self embedTableView:[self homeTableView]];
+    } else if ([self.currentTableViewController isKindOfClass:[CommonStaticTableViewController class]]) {
+        [((CommonStaticTableViewController *)self.currentTableViewController) reloadData];
+    }
+    
+    [self checkDates];
 }
 
 - (IBAction)previousButton:(id)sender {
     [self setDateForView:self.previousDate];
-    [self switchTableView];
+    
+    if ([self.currentTableViewController isKindOfClass:[UpdateTableViewController class]]) {
+        [self embedInitialTableView];
+    } else if ([self.currentTableViewController isKindOfClass:[CommonStaticTableViewController class]]) {
+        [((CommonStaticTableViewController *)self.currentTableViewController) reloadData];
+    }
+    
+    [self checkDates];
 }
 
 @end
