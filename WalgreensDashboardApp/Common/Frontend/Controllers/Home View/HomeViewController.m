@@ -34,14 +34,31 @@
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(embedInitialTableView)
+                                             selector:@selector(progressViewUpdate)
+                                                 name:@"Store online"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(storeOfflineUpdate:)
+                                                 name:@"Store offline"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notConnectedUpdate)
+                                                 name:@"Not connected"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(connectedUpdate)
+                                                 name:@"Connected"
+                                               object:nil];
+    // Remove progress view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(requestsCompleteUpdate)
                                                  name:@"Requests complete"
                                                object:nil];
     
     [self embedInitialTableView];
 }
 
-#pragma mark - Container
+#pragma mark - Container View
 
 - (void)embedInitialTableView {
     [self embedTableView:[self homeTableView]];
@@ -119,6 +136,48 @@
     }
     
     [self checkDates];
+}
+
+#pragma mark - Progress View
+
+- (void)progressViewUpdate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSInteger storesInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
+        NSInteger storesToRequest = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+        self.requestProgressView.progress = (float)storesInTemp / storesToRequest;
+        self.percentCompleteLabel.text = [NSString stringWithFormat:@"%.1f%%", (((float)storesInTemp / storesToRequest) * 100)];
+    });
+}
+
+- (void)storeOfflineUpdate:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *offlineStore = notification.userInfo;
+        self.notificationsLabel.textColor = [UIColor redColor];
+        self.notificationsLabel.text = [NSString stringWithFormat:@"Store #%@ is offline", [offlineStore objectForKey:@"Store Number"]];
+    });
+}
+
+- (void)requestsCompleteUpdate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self.progressView setHidden:YES];
+    });
+}
+
+- (void)notConnectedUpdate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        self.notificationsLabel.textColor = [UIColor redColor];
+        self.notificationsLabel.text = @"You are not connected to the internet";
+    });
+}
+
+- (void)connectedUpdate {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        self.notificationsLabel.textColor = [UIColor darkTextColor];
+        self.notificationsLabel.text = @"Requesting stores...";
+    });
 }
 
 @end

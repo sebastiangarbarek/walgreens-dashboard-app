@@ -30,7 +30,7 @@
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Knw-Ct-hIC">
                                         <rect key="frame" x="8" y="43" width="359" height="2"/>
                                     </progressView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8q-v0-srO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requesting stores..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8q-v0-srO">
                                         <rect key="frame" x="8" y="14" width="359" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -111,7 +111,11 @@
                         <outlet property="dateTitle" destination="XyO-VJ-Pcj" id="b4Z-uD-byS"/>
                         <outlet property="navigationBar" destination="q4Y-n0-nWs" id="qCb-XL-3RZ"/>
                         <outlet property="nextButton" destination="BK0-BT-EhS" id="e9V-gT-j6E"/>
+                        <outlet property="notificationsLabel" destination="u8q-v0-srO" id="OwL-am-7oa"/>
+                        <outlet property="percentCompleteLabel" destination="wBB-95-7gO" id="d6m-Yk-nzN"/>
                         <outlet property="previousButton" destination="xCm-NG-P3u" id="ibf-e0-SXZ"/>
+                        <outlet property="progressView" destination="flS-3n-TBU" id="BBh-lj-cdj"/>
+                        <outlet property="requestProgressView" destination="Knw-Ct-hIC" id="qim-SQ-JFl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbi-k0-FP1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -20,9 +20,13 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-
 // The current table view controller in the container view, referenced to remove.
 @property (weak, nonatomic) UITableViewController *currentTableViewController;
+
+@property (weak, nonatomic) IBOutlet UIView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
+@property (weak, nonatomic) IBOutlet UILabel *percentCompleteLabel;
 
 - (void)embedInitialTableView;
 - (void)embedTableView:(UITableViewController *)tableViewController;
