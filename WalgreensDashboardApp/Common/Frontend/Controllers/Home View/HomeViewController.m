@@ -60,6 +60,26 @@
 
 #pragma mark - Container View
 
+- (void)animateTransitionFrom:(UITableViewController *)old to:(UITableViewController *)new {
+    [old willMoveToParentViewController:nil];
+    [self addChildViewController:new];
+    //[self.containerView addSubview:new.view];
+    self.currentTableViewController = new;
+    
+    new.view.frame = CGRectMake(self.containerView.bounds.size.width,
+                                      new.view.frame.origin.y,
+                                      new.view.frame.size.width,
+                                      new.view.frame.size.height);
+    
+    [self transitionFromViewController:old toViewController:new duration:0.25 options:0 animations:^{
+        new.view.frame = self.containerView.bounds;
+    }
+    completion:^(BOOL finished) {
+        [old removeFromParentViewController];
+        [new didMoveToParentViewController:self];
+    }];
+}
+
 - (void)embedInitialTableView {
     [self embedTableView:[self homeTableView]];
 }
@@ -114,7 +134,7 @@
 }
 
 - (IBAction)backButton:(id)sender {
-    
+    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView]];
 }
 
 - (IBAction)nextButton:(id)sender {
