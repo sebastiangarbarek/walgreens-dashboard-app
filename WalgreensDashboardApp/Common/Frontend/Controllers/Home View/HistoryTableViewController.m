@@ -28,15 +28,12 @@
     // Database closes itself after use.
     [databaseManagerApp openCreateDatabase];
     
-    [self configureView];
+    [self reloadData];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)reloadData {
     self.date = ((HomeViewController *)self.parentViewController).date;
-    [self configureView];
-}
-
-- (void)configureView {
+    
     self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i",
                                         ([[databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue]
                                          - [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:self.date] intValue])];
