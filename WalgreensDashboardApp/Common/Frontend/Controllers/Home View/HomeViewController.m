@@ -165,7 +165,14 @@
 }
 
 - (IBAction)backButton:(id)sender {
-    
+    /*
+     1. Implement stack data structure 
+     2. Push views onto the stack when clicking in e.g. Offline Stores -> State -> City -> Store List -> Store Detail
+     3. Pop views off the stack when clicking the back button
+     4. Animate pushing and popping views like cards
+            e.g. animate view moving on top of view, animate view moving off revealing view underneath
+     5. Add shadows to the date picker
+     */
 }
 
 - (IBAction)nextButton:(id)sender {
