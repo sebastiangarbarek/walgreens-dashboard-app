@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, TransitionDirection) {
 };
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UINavigationBar *datePicker;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *dateTitle;
 

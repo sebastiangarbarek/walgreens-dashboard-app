@@ -111,6 +111,7 @@
                     <connections>
                         <outlet property="backButton" destination="3zu-LT-UZY" id="jZx-ZP-XZk"/>
                         <outlet property="containerView" destination="0Rf-Ts-roG" id="ioG-FE-t5T"/>
+                        <outlet property="datePicker" destination="Md7-BH-TDa" id="SVr-VR-W7m"/>
                         <outlet property="dateTitle" destination="XyO-VJ-Pcj" id="b4Z-uD-byS"/>
                         <outlet property="navigationBar" destination="q4Y-n0-nWs" id="qCb-XL-3RZ"/>
                         <outlet property="nextButton" destination="BK0-BT-EhS" id="e9V-gT-j6E"/>

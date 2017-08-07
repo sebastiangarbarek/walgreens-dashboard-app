@@ -55,6 +55,26 @@
                                                  name:@"Requests complete"
                                                object:nil];
     
+    // Add shadow to date picker.
+    CGRect datePickerBounds = self.datePicker.bounds;
+    datePickerBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+    datePickerBounds.origin.y = datePickerBounds.size.height / 2;
+    datePickerBounds.size.height = datePickerBounds.size.height / 2;
+    UIBezierPath *datePickerShadowPath = [UIBezierPath bezierPathWithRect:datePickerBounds];
+    self.datePicker.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.datePicker.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    self.datePicker.layer.shadowOpacity = 0.25f;
+    self.datePicker.layer.shadowPath = datePickerShadowPath.CGPath;
+    
+    // Add shadow to update view.
+    CGRect updateViewBounds = self.progressView.bounds;
+    updateViewBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+    UIBezierPath *updateViewShadowPath = [UIBezierPath bezierPathWithRect:updateViewBounds];
+    self.progressView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.progressView.layer.shadowOffset = CGSizeMake(0.0f, -0.5f);
+    self.progressView.layer.shadowOpacity = 0.25f;
+    self.progressView.layer.shadowPath = updateViewShadowPath.CGPath;
+    
     [self embedInitialTableView];
 }
 
