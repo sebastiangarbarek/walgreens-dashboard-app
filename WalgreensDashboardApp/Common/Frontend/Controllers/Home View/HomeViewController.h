@@ -12,6 +12,13 @@
 
 @interface HomeViewController : DatePickerViewController
 
+typedef NS_ENUM(NSInteger, TransitionDirection) {
+    RightToLeft,
+    LeftToRight,
+    Right,
+    Left
+};
+
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *dateTitle;

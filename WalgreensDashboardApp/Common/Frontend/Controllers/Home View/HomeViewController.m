@@ -60,21 +60,48 @@
 
 #pragma mark - Container View
 
-- (void)animateTransitionFrom:(UITableViewController *)old to:(UITableViewController *)new {
+- (void)animateTransitionFrom:(UITableViewController *)old to:(UITableViewController *)new transitionDirection:(TransitionDirection)transitionDirection {
     [old willMoveToParentViewController:nil];
     [self addChildViewController:new];
-    //[self.containerView addSubview:new.view];
     self.currentTableViewController = new;
     
-    new.view.frame = CGRectMake(self.containerView.bounds.size.width,
-                                      new.view.frame.origin.y,
-                                      new.view.frame.size.width,
-                                      new.view.frame.size.height);
-    
+    switch (transitionDirection) {
+        case RightToLeft:
+            new.view.frame = CGRectMake(self.containerView.bounds.size.width,
+                                        new.view.frame.origin.y,
+                                        new.view.frame.size.width,
+                                        new.view.frame.size.height);
+            break;
+        case LeftToRight:
+            new.view.frame = CGRectMake(-self.containerView.bounds.size.width,
+                                        new.view.frame.origin.y,
+                                        new.view.frame.size.width,
+                                        new.view.frame.size.height);
+            break;
+        default:
+            break;
+    }
+
     [self transitionFromViewController:old toViewController:new duration:0.25 options:0 animations:^{
         new.view.frame = self.containerView.bounds;
-    }
-    completion:^(BOOL finished) {
+
+        switch (transitionDirection) {
+            case RightToLeft:
+                old.view.frame = CGRectMake(-self.containerView.bounds.size.width,
+                                            new.view.frame.origin.y,
+                                            new.view.frame.size.width,
+                                            new.view.frame.size.height);
+                break;
+            case LeftToRight:
+                old.view.frame = CGRectMake(self.containerView.bounds.size.width,
+                                            new.view.frame.origin.y,
+                                            new.view.frame.size.width,
+                                            new.view.frame.size.height);
+                break;
+            default:
+                break;
+        }
+    } completion:^(BOOL finished) {
         [old removeFromParentViewController];
         [new didMoveToParentViewController:self];
     }];
@@ -121,6 +148,10 @@
     return tableViewController;
 }
 
+- (UITableViewController *)storeListView {
+    return nil;
+}
+
 #pragma mark - Buttons
 
 - (void)switchBackButton {
@@ -134,31 +165,18 @@
 }
 
 - (IBAction)backButton:(id)sender {
-    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView]];
+    
 }
 
 - (IBAction)nextButton:(id)sender {
     [self setDateForView:self.nextDate];
-    
-    if ([self.date isEqualToString:[DateHelper currentDate]]) {
-        [self removeTableView];
-        [self embedTableView:[self homeTableView]];
-    } else if ([self.currentTableViewController isKindOfClass:[CommonStaticTableViewController class]]) {
-        [((CommonStaticTableViewController *)self.currentTableViewController) reloadData];
-    }
-    
+    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView] transitionDirection:RightToLeft];
     [self checkDates];
 }
 
 - (IBAction)previousButton:(id)sender {
     [self setDateForView:self.previousDate];
-    
-    if ([self.currentTableViewController isKindOfClass:[UpdateTableViewController class]]) {
-        [self embedInitialTableView];
-    } else if ([self.currentTableViewController isKindOfClass:[CommonStaticTableViewController class]]) {
-        [((CommonStaticTableViewController *)self.currentTableViewController) reloadData];
-    }
-    
+    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView] transitionDirection:LeftToRight];
     [self checkDates];
 }
 
