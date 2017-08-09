@@ -62,7 +62,7 @@
     datePickerBounds.size.height = datePickerBounds.size.height / 2;
     UIBezierPath *datePickerShadowPath = [UIBezierPath bezierPathWithRect:datePickerBounds];
     self.datePicker.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.datePicker.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+    self.datePicker.layer.shadowOffset = CGSizeMake(0.0f, 0.1f);
     self.datePicker.layer.shadowOpacity = 0.25f;
     self.datePicker.layer.shadowPath = datePickerShadowPath.CGPath;
     
@@ -71,7 +71,7 @@
     updateViewBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
     UIBezierPath *updateViewShadowPath = [UIBezierPath bezierPathWithRect:updateViewBounds];
     self.progressView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.progressView.layer.shadowOffset = CGSizeMake(0.0f, -0.5f);
+    self.progressView.layer.shadowOffset = CGSizeMake(0.0f, -0.1f);
     self.progressView.layer.shadowOpacity = 0.25f;
     self.progressView.layer.shadowPath = updateViewShadowPath.CGPath;
     
@@ -186,7 +186,6 @@
 
 - (IBAction)backButton:(id)sender {
     /*
-     1. Implement stack data structure 
      2. Push views onto the stack when clicking in e.g. Offline Stores -> State -> City -> Store List -> Store Detail
      3. Pop views off the stack when clicking the back button
      4. Animate pushing and popping views like cards
