@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "OfflineViewController.h"
 #import "UpdateTableViewController.h"
 #import "HistoryTableViewController.h"
 
@@ -80,51 +79,51 @@
 
 #pragma mark - Container View
 
-- (void)animateTransitionFrom:(UITableViewController *)old to:(UITableViewController *)new transitionDirection:(TransitionDirection)transitionDirection {
-    [old willMoveToParentViewController:nil];
-    [self addChildViewController:new];
-    self.currentTableViewController = new;
+- (void)animateTransitionTo:(UITableViewController *)newVc transitionDirection:(TransitionDirection)transitionDirection {
+    UITableViewController *current = self.currentTableViewController;
+    
+    [current willMoveToParentViewController:nil];
+    [self addChildViewController:newVc];
+    
+    CGFloat width = self.containerView.bounds.size.width;
+    CGFloat height = self.containerView.bounds.size.height;
     
     switch (transitionDirection) {
         case RightToLeft:
-            new.view.frame = CGRectMake(self.containerView.bounds.size.width,
-                                        new.view.frame.origin.y,
-                                        new.view.frame.size.width,
-                                        new.view.frame.size.height);
+            newVc.view.frame = CGRectMake(width, 0, width, height);
             break;
         case LeftToRight:
-            new.view.frame = CGRectMake(-self.containerView.bounds.size.width,
-                                        new.view.frame.origin.y,
-                                        new.view.frame.size.width,
-                                        new.view.frame.size.height);
+            newVc.view.frame = CGRectMake(-width, 0, width, height);
             break;
+        case Left:
+            newVc.view.frame = CGRectMake(width, 0, width, height);
+            break;
+        case Right:
+            newVc.view.frame = CGRectMake(0, 0, width, height);
         default:
             break;
     }
-
-    [self transitionFromViewController:old toViewController:new duration:0.25 options:0 animations:^{
-        new.view.frame = self.containerView.bounds;
-
+    
+    [self transitionFromViewController:current toViewController:newVc duration:2 options:0 animations:^{
+        newVc.view.frame = self.containerView.bounds;
         switch (transitionDirection) {
             case RightToLeft:
-                old.view.frame = CGRectMake(-self.containerView.bounds.size.width,
-                                            new.view.frame.origin.y,
-                                            new.view.frame.size.width,
-                                            new.view.frame.size.height);
+                current.view.frame = CGRectMake(-width, 0, width, height);
                 break;
             case LeftToRight:
-                old.view.frame = CGRectMake(self.containerView.bounds.size.width,
-                                            new.view.frame.origin.y,
-                                            new.view.frame.size.width,
-                                            new.view.frame.size.height);
+                current.view.frame = CGRectMake(width, 0, width, height);
                 break;
+            case Right:
+                current.view.frame = CGRectMake(width, 0, width, height);
             default:
                 break;
         }
     } completion:^(BOOL finished) {
-        [old removeFromParentViewController];
-        [new didMoveToParentViewController:self];
+        [newVc didMoveToParentViewController:self];
+        [current removeFromParentViewController];
     }];
+    
+    self.currentTableViewController = newVc;
 }
 
 - (void)embedInitialTableView {
@@ -138,6 +137,29 @@
     [self.containerView addSubview:tableViewController.view];
     [tableViewController didMoveToParentViewController:self];
     self.currentTableViewController = tableViewController;
+}
+
+- (void)popViewFromContainer:(UITableViewController *)tableViewController {
+    // Add the table view controller as a child to this.
+    [self addChildViewController:tableViewController];
+    
+    // Size the new table view controller to fit in the container view.
+    tableViewController.view.frame = self.containerView.bounds;
+    
+    // Add the view as a subview to the container view.
+    [self.containerView addSubview:tableViewController.view];
+    
+    // Bring current to the front for animation purposes.
+    [self.containerView bringSubviewToFront:self.currentTableViewController.view];
+    
+    CGFloat width = self.containerView.bounds.size.width;
+    CGFloat height = self.containerView.bounds.size.height;
+    [UIView animateWithDuration:2 animations:^ {
+        self.currentTableViewController.view.frame = CGRectMake(width, 0, width, height);
+    } completion:^(BOOL finised) {
+        [self.currentTableViewController.view removeFromSuperview];
+        [self.currentTableViewController removeFromParentViewController];
+    }];
 }
 
 - (void)removeTableView {
@@ -168,10 +190,6 @@
     return tableViewController;
 }
 
-- (UITableViewController *)storeListView {
-    return nil;
-}
-
 #pragma mark - Buttons
 
 - (void)switchBackButton {
@@ -190,19 +208,18 @@
      3. Pop views off the stack when clicking the back button
      4. Animate pushing and popping views like cards
             e.g. animate view moving on top of view, animate view moving off revealing view underneath
-     5. Add shadows to the date picker
      */
 }
 
 - (IBAction)nextButton:(id)sender {
     [self setDateForView:self.nextDate];
-    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView] transitionDirection:RightToLeft];
+    [self animateTransitionTo:[self homeTableView] transitionDirection:RightToLeft];
     [self checkDates];
 }
 
 - (IBAction)previousButton:(id)sender {
     [self setDateForView:self.previousDate];
-    [self animateTransitionFrom:self.currentTableViewController to:[self homeTableView] transitionDirection:LeftToRight];
+    [self animateTransitionTo:[self homeTableView] transitionDirection:LeftToRight];
     [self checkDates];
 }
 

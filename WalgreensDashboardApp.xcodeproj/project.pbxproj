@@ -21,7 +21,6 @@
 		A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06811F2DA820005A0936 /* OfflineView.storyboard */; };
 		A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06821F2DA820005A0936 /* StoreView.storyboard */; };
 		A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */; };
-		A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B41F2DA850005A0936 /* OfflineViewController.m */; };
 		A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79881F2F151700C99BFD /* OfflineCell.m */; };
 		A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798B1F2F33E400C99BFD /* HomeViewController.m */; };
 		A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */; };
@@ -77,8 +76,6 @@
 		A86A06821F2DA820005A0936 /* StoreView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreView.storyboard; sourceTree = "<group>"; };
 		A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewController.h; sourceTree = "<group>"; };
 		A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewController.m; sourceTree = "<group>"; };
-		A86A06B31F2DA850005A0936 /* OfflineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineViewController.h; sourceTree = "<group>"; };
-		A86A06B41F2DA850005A0936 /* OfflineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineViewController.m; sourceTree = "<group>"; };
 		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
 		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
 		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
@@ -305,8 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				A88A79861F2F14BA00C99BFD /* Cells */,
-				A86A06B31F2DA850005A0936 /* OfflineViewController.h */,
-				A86A06B41F2DA850005A0936 /* OfflineViewController.m */,
 				A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */,
 				A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */,
 			);
@@ -556,7 +551,6 @@
 				A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */,
 				A8A4CB531F2B406700B87449 /* Commands.m in Sources */,
 				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
-				A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */,
 				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
 				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
 				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,

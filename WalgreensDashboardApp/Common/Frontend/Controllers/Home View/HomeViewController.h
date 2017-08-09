@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NSMutableArray+Stack.h"
 #import "DatePickerViewController.h"
 
 @interface HomeViewController : DatePickerViewController
@@ -36,8 +37,10 @@ typedef NS_ENUM(NSInteger, TransitionDirection) {
 @property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *percentCompleteLabel;
 
-- (void)embedInitialTableView;
-- (void)embedTableView:(UITableViewController *)tableViewController;
+@property (weak, nonatomic) NSMutableArray *navigationStack;
+
+- (void)animateTransitionTo:(UITableViewController *)newVc transitionDirection:(TransitionDirection)transitionDirection;
 - (void)switchBackButton;
+- (void)popViewFromContainer:(UITableViewController *)tableViewController;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "UpdateTableViewController.h"
 #import "HomeViewController.h"
-#import "OfflineViewController.h"
 #import "DatabaseManagerApp.h"
 
 @interface UpdateTableViewController () {
@@ -89,9 +88,10 @@
                     
                     // Swap container view.
                     UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
-                    UITableViewController *offlineViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
-                    [homeViewController embedTableView:offlineViewController];
+                    UITableViewController *offlineTableViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
+                    [homeViewController popViewFromContainer:offlineTableViewController];
                     
+                    [homeViewController.navigationStack addObject:offlineTableViewController];
                     [homeViewController switchBackButton];
                     
                     break;
@@ -104,6 +104,7 @@
             break;
         }
     }
+    // Push selected view onto navigation stack.
 }
 
 @end
