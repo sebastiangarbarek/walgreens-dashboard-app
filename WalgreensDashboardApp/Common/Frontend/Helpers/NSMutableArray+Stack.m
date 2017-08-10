@@ -24,7 +24,7 @@
 }
 
 - (id)peek {
-    if ([self count] == 0)
+    if ([self count] != 0)
         return [self lastObject];
     else
         return nil;

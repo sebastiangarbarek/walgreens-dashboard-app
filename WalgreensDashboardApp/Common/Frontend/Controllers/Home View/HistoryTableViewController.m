@@ -58,9 +58,8 @@
                     // Swap container view.
                     UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
                     UITableViewController *offlineTableViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
-                    [homeViewController animateTransitionTo:offlineTableViewController transitionDirection:Left];
+                    [homeViewController animateTransitionTo:offlineTableViewController transition:Push];
                     
-                    [homeViewController.navigationStack addObject:offlineTableViewController];
                     [homeViewController switchBackButton];
                     
                     break;

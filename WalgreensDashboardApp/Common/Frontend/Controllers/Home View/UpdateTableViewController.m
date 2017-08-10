@@ -38,10 +38,10 @@
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
     
-    [self configureView];
+    [self reloadData];
 }
 
-- (void)configureView {
+- (void)reloadData {
     self.totalOnlineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
     self.totalOfflineStoresLabel.text = [NSString stringWithFormat:@"%i", [[databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue]];
 }
@@ -89,9 +89,8 @@
                     // Swap container view.
                     UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
                     UITableViewController *offlineTableViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
-                    [homeViewController popViewFromContainer:offlineTableViewController];
+                    [homeViewController animateTransitionTo:offlineTableViewController transition:Push];
                     
-                    [homeViewController.navigationStack addObject:offlineTableViewController];
                     [homeViewController switchBackButton];
                     
                     break;

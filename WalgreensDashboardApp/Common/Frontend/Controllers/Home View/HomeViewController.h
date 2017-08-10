@@ -13,11 +13,10 @@
 
 @interface HomeViewController : DatePickerViewController
 
-typedef NS_ENUM(NSInteger, TransitionDirection) {
+typedef NS_ENUM(NSInteger, Transition) {
     RightToLeft,
     LeftToRight,
-    Right,
-    Left
+    Push,
 };
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -37,10 +36,10 @@ typedef NS_ENUM(NSInteger, TransitionDirection) {
 @property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *percentCompleteLabel;
 
-@property (weak, nonatomic) NSMutableArray *navigationStack;
+@property (strong, nonatomic) NSMutableArray *navigationStack;
 
-- (void)animateTransitionTo:(UITableViewController *)newVc transitionDirection:(TransitionDirection)transitionDirection;
+- (void)animateTransitionTo:(UITableViewController *)newVc transition:(Transition)transition;
+- (void)popAnimate:(UITableViewController *)newVc;
 - (void)switchBackButton;
-- (void)popViewFromContainer:(UITableViewController *)tableViewController;
 
 @end

@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "UpdateTableViewController.h"
 #import "HistoryTableViewController.h"
+#import "OfflineTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _navigationStack = [NSMutableArray new];
     [self setDateForView:[DateHelper currentDate]];
     [self checkDates];
     
@@ -79,7 +81,7 @@
 
 #pragma mark - Container View
 
-- (void)animateTransitionTo:(UITableViewController *)newVc transitionDirection:(TransitionDirection)transitionDirection {
+- (void)animateTransitionTo:(UITableViewController *)newVc transition:(Transition)transition {
     UITableViewController *current = self.currentTableViewController;
     
     [current willMoveToParentViewController:nil];
@@ -88,46 +90,74 @@
     CGFloat width = self.containerView.bounds.size.width;
     CGFloat height = self.containerView.bounds.size.height;
     
-    switch (transitionDirection) {
+    switch (transition) {
         case RightToLeft:
             newVc.view.frame = CGRectMake(width, 0, width, height);
             break;
         case LeftToRight:
             newVc.view.frame = CGRectMake(-width, 0, width, height);
             break;
-        case Left:
+        case Push:
             newVc.view.frame = CGRectMake(width, 0, width, height);
             break;
-        case Right:
-            newVc.view.frame = CGRectMake(0, 0, width, height);
         default:
             break;
     }
     
-    [self transitionFromViewController:current toViewController:newVc duration:2 options:0 animations:^{
+    [self transitionFromViewController:current toViewController:newVc duration:0.25 options:0 animations:^{
         newVc.view.frame = self.containerView.bounds;
-        switch (transitionDirection) {
+        switch (transition) {
             case RightToLeft:
                 current.view.frame = CGRectMake(-width, 0, width, height);
                 break;
             case LeftToRight:
                 current.view.frame = CGRectMake(width, 0, width, height);
                 break;
-            case Right:
-                current.view.frame = CGRectMake(width, 0, width, height);
             default:
                 break;
         }
     } completion:^(BOOL finished) {
         [newVc didMoveToParentViewController:self];
         [current removeFromParentViewController];
+        
+        self.currentTableViewController = newVc;
+        
+        if (transition == Push) {
+            [self.navigationStack push:newVc];
+        }
     }];
+}
+
+- (void)popAnimate:(UITableViewController *)newVc {
+    // Add the table view controller as a child to this.
+    [self addChildViewController:newVc];
     
-    self.currentTableViewController = newVc;
+    // Size the new table view controller to fit in the container view.
+    newVc.view.frame = self.containerView.bounds;
+    
+    // Add the view as a subview to the container view.
+    [self.containerView addSubview:newVc.view];
+    
+    // Bring current view controller to the front for pop animation.
+    [self.containerView bringSubviewToFront:self.currentTableViewController.view];
+    
+    CGFloat width = self.containerView.bounds.size.width;
+    CGFloat height = self.containerView.bounds.size.height;
+    [UIView animateWithDuration:0.25 animations:^ {
+        self.currentTableViewController.view.frame = CGRectMake(width, 0, width, height);
+    } completion:^(BOOL finised) {
+        [self.currentTableViewController.view removeFromSuperview];
+        [self.currentTableViewController removeFromParentViewController];
+        
+        [self.navigationStack push:newVc];
+        self.currentTableViewController = newVc;
+    }];
 }
 
 - (void)embedInitialTableView {
-    [self embedTableView:[self homeTableView]];
+    UITableViewController *homeTableView = [self homeTableView];
+    [self embedTableView:homeTableView];
+    [self.navigationStack push:homeTableView];
 }
 
 - (void)embedTableView:(UITableViewController *)tableViewController {
@@ -137,29 +167,6 @@
     [self.containerView addSubview:tableViewController.view];
     [tableViewController didMoveToParentViewController:self];
     self.currentTableViewController = tableViewController;
-}
-
-- (void)popViewFromContainer:(UITableViewController *)tableViewController {
-    // Add the table view controller as a child to this.
-    [self addChildViewController:tableViewController];
-    
-    // Size the new table view controller to fit in the container view.
-    tableViewController.view.frame = self.containerView.bounds;
-    
-    // Add the view as a subview to the container view.
-    [self.containerView addSubview:tableViewController.view];
-    
-    // Bring current to the front for animation purposes.
-    [self.containerView bringSubviewToFront:self.currentTableViewController.view];
-    
-    CGFloat width = self.containerView.bounds.size.width;
-    CGFloat height = self.containerView.bounds.size.height;
-    [UIView animateWithDuration:2 animations:^ {
-        self.currentTableViewController.view.frame = CGRectMake(width, 0, width, height);
-    } completion:^(BOOL finised) {
-        [self.currentTableViewController.view removeFromSuperview];
-        [self.currentTableViewController removeFromParentViewController];
-    }];
 }
 
 - (void)removeTableView {
@@ -190,6 +197,22 @@
     return tableViewController;
 }
 
+- (void)datePickerSwapViewWithDirection:(Transition)direction {
+    UITableViewController *tableViewController;
+    
+    if ([self.currentTableViewController isKindOfClass:[OfflineTableViewController class]]) {
+        UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
+        tableViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
+        [self animateTransitionTo:tableViewController transition:RightToLeft];
+    } else {
+        tableViewController = [self homeTableView];
+        [self animateTransitionTo:tableViewController transition:direction];
+    }
+    
+    [self.navigationStack pop];
+    [self.navigationStack push:tableViewController];
+}
+
 #pragma mark - Buttons
 
 - (void)switchBackButton {
@@ -203,23 +226,26 @@
 }
 
 - (IBAction)backButton:(id)sender {
-    /*
-     2. Push views onto the stack when clicking in e.g. Offline Stores -> State -> City -> Store List -> Store Detail
-     3. Pop views off the stack when clicking the back button
-     4. Animate pushing and popping views like cards
-            e.g. animate view moving on top of view, animate view moving off revealing view underneath
-     */
+    if ([self.navigationStack count]) {
+        // Pop off current.
+        [self.navigationStack pop];
+        [self popAnimate:[self.navigationStack pop]];
+    }
+    
+    if ([self.navigationStack count] == 0) {
+        [self switchBackButton];
+    }
 }
 
 - (IBAction)nextButton:(id)sender {
     [self setDateForView:self.nextDate];
-    [self animateTransitionTo:[self homeTableView] transitionDirection:RightToLeft];
+    [self datePickerSwapViewWithDirection:RightToLeft];
     [self checkDates];
 }
 
 - (IBAction)previousButton:(id)sender {
     [self setDateForView:self.previousDate];
-    [self animateTransitionTo:[self homeTableView] transitionDirection:LeftToRight];
+    [self datePickerSwapViewWithDirection:LeftToRight];
     [self checkDates];
 }
 
