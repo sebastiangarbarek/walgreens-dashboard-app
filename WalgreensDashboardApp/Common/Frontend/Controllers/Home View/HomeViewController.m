@@ -229,7 +229,9 @@
     if ([self.navigationStack count]) {
         // Pop off current.
         [self.navigationStack pop];
+        [self setDateForView:((CommonTableViewController *)[self.navigationStack peek]).date];
         [self popAnimate:[self.navigationStack pop]];
+        [self checkDates];
     }
     
     if ([self.navigationStack count] == 0) {

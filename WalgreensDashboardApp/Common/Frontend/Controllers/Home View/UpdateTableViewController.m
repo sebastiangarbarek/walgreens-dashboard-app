@@ -20,6 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Retrieve selected date from home view controller.
+    self.date = ((HomeViewController *)self.parentViewController).date;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(storeOnlineUpdate)

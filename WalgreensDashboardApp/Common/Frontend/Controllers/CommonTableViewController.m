@@ -6,13 +6,13 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import "CommonStaticTableViewController.h"
+#import "CommonTableViewController.h"
 
-@interface CommonStaticTableViewController ()
+@interface CommonTableViewController ()
 
 @end
 
-@implementation CommonStaticTableViewController
+@implementation CommonTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommonStaticTableViewController : UITableViewController
+@interface CommonTableViewController : UITableViewController
 
 - (void)reloadData;
+
+@property (strong, nonatomic) NSString *date;
 
 @end
