@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatePickerViewController.h"
+#import "WalgreensDashboardApp-Bridging-Header.h"
 
-@interface ChartViewController : UIViewController
+@interface ChartViewController : DatePickerViewController 
 
-@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSString *currentDay;
 @property (strong, nonatomic) NSMutableArray *xaixsWithDate;
-@property (strong, nonatomic) NSMutableArray *yaixsWithNumberOfStore;
+@property (strong, nonatomic) NSMutableArray *arrayWithThreeDaysLater;
+@property (strong, nonatomic) NSMutableArray *arrayWithThreeDaysBefore;
+@property (strong, nonatomic) NSArray *yaixsWithNumberOfStore;
 
 @end

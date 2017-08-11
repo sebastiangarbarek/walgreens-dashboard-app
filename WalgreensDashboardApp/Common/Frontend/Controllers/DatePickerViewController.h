@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString *nextDate;
 @property (strong, nonatomic) NSString *previousDate;
 
+
 - (void)checkDates;
 - (void)setDateForView:(NSString *)date;
 - (void)enableButtonWithNextDate:(NSString *)nextDate;
