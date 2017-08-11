@@ -11,9 +11,11 @@
 #import "DateHelper.h"
 #import "DatabaseManagerApp.h"
 
-@interface DatePickerViewController : UIViewController <UITabBarControllerDelegate>
+@interface DatePickerViewController : UIViewController
 
 @property DatabaseManagerApp *databaseManagerApp;
+
+@property (weak, nonatomic) UINavigationItem *dateTitle;
 
 @property (weak, nonatomic) UIBarButtonItem *nextButton;
 @property (weak, nonatomic) UIBarButtonItem *previousButton;

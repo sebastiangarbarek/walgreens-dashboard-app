@@ -46,7 +46,10 @@
 
 - (void)setDateForView:(NSString *)date {
     self.date = date;
-    self.navigationItem.title = self.date;
+    if ([self.date isEqualToString:[DateHelper currentDate]]) {
+        self.dateTitle.title = @"Today";
+    } else
+        self.dateTitle.title = self.date;
 }
 
 - (void)enableButtonWithNextDate:(NSString *)nextDate {

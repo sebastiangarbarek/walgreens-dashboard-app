@@ -6,8 +6,8 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
+#import "HomeViewController.h"
 #import "OfflineTableViewController.h"
-#import "OfflineViewController.h"
 #import "OfflineCell.h"
 #import "DatabaseManagerApp.h"
 
@@ -29,12 +29,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.date = ((OfflineViewController *)self.parentViewController).date;
+    self.date = ((HomeViewController *)self.parentViewController).date;
     [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    self.date = ((OfflineViewController *)self.parentViewController).date;
+    self.date = ((HomeViewController *)self.parentViewController).date;
     offlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
     return 1;
 }
@@ -54,7 +54,7 @@
         cell.storeLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
     } else {
         // Details unknown.
-        cell.storeLabel.text = [[[offlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue];
+        cell.storeLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[offlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue]];
     }
     
     return cell;

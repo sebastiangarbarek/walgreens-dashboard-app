@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryTableViewController : UITableViewController
+#import "CommonTableViewController.h"
+
+@interface HistoryTableViewController : CommonTableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
-
-@property (strong, nonatomic) NSString *date;
 
 @end
