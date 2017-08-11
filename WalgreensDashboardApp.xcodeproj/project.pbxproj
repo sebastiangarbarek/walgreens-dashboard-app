@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; };
+		4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */; };
+		4E3F0BB81F3D1FA700F1D22D /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
 		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
@@ -52,11 +56,51 @@
 			remoteGlobalIDString = A842C7261EB023FB002ED089;
 			remoteInfo = WalgreensDashboardApp;
 		};
+		4E3F0BA81F3D1E5A00F1D22D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		4E3F0BAA1F3D1E5A00F1D22D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		4E3F0BAE1F3D1E6900F1D22D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4E3F0BB01F3D1E6900F1D22D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
+		4E3F0BB21F3D1EDA00F1D22D /* WalgreensDashboardApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalgreensDashboardApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
+		4E3F0BB61F3D1FA700F1D22D /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
+		4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
@@ -135,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
+				4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +200,32 @@
 				3978F15F1EBEAF16001FD643 /* Info.plist */,
 			);
 			path = WalgreensDashboardAppTests;
+			sourceTree = "<group>";
+		};
+		4E3F0BA21F3D1E4D00F1D22D /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */,
+			);
+			name = Charts;
+			sourceTree = "<group>";
+		};
+		4E3F0BA41F3D1E5900F1D22D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */,
+				4E3F0BAB1F3D1E5A00F1D22D /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E3F0BB51F3D1F3E00F1D22D /* Chart View */ = {
+			isa = PBXGroup;
+			children = (
+				4E3F0BB61F3D1FA700F1D22D /* ChartViewController.h */,
+				4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */,
+			);
+			name = "Chart View";
 			sourceTree = "<group>";
 		};
 		A821BB241EDB95C700B878BA /* Common */ = {
@@ -183,6 +254,7 @@
 				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
 				A82607031F3C828D00A412C8 /* CommonTableViewController.h */,
 				A82607041F3C828D00A412C8 /* CommonTableViewController.m */,
+				4E3F0BB51F3D1F3E00F1D22D /* Chart View */,
 				A88A798D1F2F340300C99BFD /* Home View */,
 				A88A79911F2F346000C99BFD /* Offline View */,
 			);
@@ -220,6 +292,8 @@
 				A842C72E1EB023FB002ED089 /* AppDelegate.m */,
 				A842C72B1EB023FB002ED089 /* main.m */,
 				A842C73B1EB023FB002ED089 /* Info.plist */,
+				4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */,
+				4E3F0BB21F3D1EDA00F1D22D /* WalgreensDashboardApp-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,6 +390,7 @@
 		A8A4CAE91F2B3F6A00B87449 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				4E3F0BA21F3D1E4D00F1D22D /* Charts */,
 				A8A4CB2D1F2B406700B87449 /* WalgreensAPIHarvester */,
 			);
 			path = External;
@@ -455,10 +530,12 @@
 				A842C7231EB023FB002ED089 /* Sources */,
 				A842C7241EB023FB002ED089 /* Frameworks */,
 				A842C7251EB023FB002ED089 /* Resources */,
+				4E3F0BB01F3D1E6900F1D22D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4E3F0BAF1F3D1E6900F1D22D /* PBXTargetDependency */,
 			);
 			name = WalgreensDashboardApp;
 			productName = WalgreensDashboardMock;
@@ -481,6 +558,7 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -496,6 +574,12 @@
 			mainGroup = A842C71E1EB023FB002ED089;
 			productRefGroup = A842C7281EB023FB002ED089 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4E3F0BA41F3D1E5900F1D22D /* Products */;
+					ProjectRef = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A842C7261EB023FB002ED089 /* WalgreensDashboardApp */,
@@ -503,6 +587,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 4E3F0BA81F3D1E5A00F1D22D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E3F0BAB1F3D1E5A00F1D22D /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 4E3F0BAA1F3D1E5A00F1D22D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3978F1591EBEAF16001FD643 /* Resources */ = {
@@ -558,10 +659,12 @@
 				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
 				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
 				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
+				4E3F0BB81F3D1FA700F1D22D /* ChartViewController.m in Sources */,
 				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,
 				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
 				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
 				A842C72C1EB023FB002ED089 /* main.m in Sources */,
+				4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */,
 				A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */,
 				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
 				A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */,
@@ -577,6 +680,11 @@
 			isa = PBXTargetDependency;
 			target = A842C7261EB023FB002ED089 /* WalgreensDashboardApp */;
 			targetProxy = 3978F1601EBEAF16001FD643 /* PBXContainerItemProxy */;
+		};
+		4E3F0BAF1F3D1E6900F1D22D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 4E3F0BAE1F3D1E6900F1D22D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -596,6 +704,7 @@
 		3978F1631EBEAF16001FD643 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -611,6 +720,7 @@
 		3978F1641EBEAF16001FD643 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -716,7 +826,9 @@
 		A842C73F1EB023FB002ED089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -726,13 +838,18 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WalgreensDashboardApp/Supporting Files/WalgreensDashboardApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A842C7401EB023FB002ED089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -742,6 +859,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WalgreensDashboardApp/Supporting Files/WalgreensDashboardApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
