@@ -53,15 +53,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owU-So-LlA" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="200"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="184"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="top" id="3Zt-ov-8LV"/>
-                                                <constraint firstAttribute="bottom" secondItem="owU-So-LlA" secondAttribute="bottom" id="EMN-iv-2Bm"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" id="IMF-XG-TM7"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="trailing" secondItem="TUB-vx-MnQ" secondAttribute="trailingMargin" id="UvQ-40-wZG"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="topMargin" id="Kxf-6e-fih"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" constant="8" id="ghe-B2-Oxw"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="centerX" secondItem="TUB-vx-MnQ" secondAttribute="centerX" id="j2P-xY-p0X"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="bottom" secondItem="TUB-vx-MnQ" secondAttribute="bottomMargin" id="vlQ-Mc-fCa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -97,16 +97,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B14-TO-bnp" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="200"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="184"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" id="27N-w7-uXV"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="trailing" secondItem="Ubf-BH-t2r" secondAttribute="trailingMargin" id="AyA-0g-dJ2"/>
-                                                <constraint firstAttribute="bottom" secondItem="B14-TO-bnp" secondAttribute="bottom" id="NaM-ED-GQR"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="top" id="eB9-99-9oa"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="bottom" secondItem="Ubf-BH-t2r" secondAttribute="bottomMargin" id="Scn-2u-Fbq"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="centerX" secondItem="Ubf-BH-t2r" secondAttribute="centerX" id="joW-ej-v1C"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="topMargin" id="rXM-qQ-Ojo"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" constant="8" id="s69-5w-u4B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

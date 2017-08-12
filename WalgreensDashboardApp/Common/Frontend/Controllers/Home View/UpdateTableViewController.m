@@ -9,10 +9,16 @@
 #import "UpdateTableViewController.h"
 #import "HomeViewController.h"
 #import "DatabaseManagerApp.h"
+#import "ChartsView.h"
+
 
 @interface UpdateTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
+    ChartsView *chartView;
+    BOOL completed;
 }
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
 
 @end
 
@@ -40,6 +46,8 @@
     
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
+    
+    [self setUpChart];
     
     [self reloadData];
 }
@@ -73,6 +81,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // Update view accordingly.
     });
+    completed = YES;
+    [self setUpChart];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,5 +118,27 @@
     }
     // Push selected view onto navigation stack.
 }
+
+- (void)setUpChart{
+    if(completed){
+        _xaixsWithDate = [[NSMutableArray alloc] init];
+        chartView =[[ChartsView alloc] init];
+    
+        [chartView setSelfDate:self.date];
+    
+        _xaixsWithDate = [chartView setXAixsArray:_xaixsWithDate];
+    
+        NSMutableArray *onlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Online"];
+        NSMutableArray *offlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Offline"];
+    
+        _graphForOnlineStores.data = [chartView setDataForStores:_xaixsWithDate:onlineStoreNumberData: @"Online" :_graphForOnlineStores];
+        _graphForOfflineStores.data = [chartView setDataForStores:_xaixsWithDate :offlineStoreNumberData: @"Offline" :_graphForOfflineStores];
+    }else{
+        _graphForOnlineStores.noDataText = @"Will be updated after 100%...";
+        _graphForOfflineStores.noDataText= @"Will be updated after 100%...";
+    }
+    
+}
+
 
 @end

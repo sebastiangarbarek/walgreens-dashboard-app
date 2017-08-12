@@ -17,12 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
 
-@property (strong, nonatomic) NSString *currentDay;
 @property (strong, nonatomic) NSMutableArray *xaixsWithDate;
-@property (strong, nonatomic) NSMutableArray *dataWithDate;
-@property (strong, nonatomic) NSArray *yaixsWithNumberOfStore;
-@property (strong, nonatomic) NSString *nextDateForArray;
-@property (strong, nonatomic) NSString *previousDateForArray;
-@property (strong, nonatomic) NSString *selectedDate;
 
 @end
