@@ -21,6 +21,7 @@
 @property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
 
 
+
 @end
 
 @implementation UpdateTableViewController
@@ -30,6 +31,7 @@
     
     // Retrieve selected date from home view controller.
     self.date = ((HomeViewController *)self.parentViewController).date;
+    
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(storeOnlineUpdate)
@@ -82,6 +84,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // Update view accordingly.
         completed = YES;
+        // Reload tableView data
+        [self.tableView reloadData];
         [self setUpChart];
     });
 }
@@ -120,6 +124,7 @@
     // Push selected view onto navigation stack.
 }
 
+//Set the height of cells
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(completed){
         if(indexPath.row ==1){

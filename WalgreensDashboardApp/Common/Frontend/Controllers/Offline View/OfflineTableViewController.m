@@ -52,6 +52,7 @@
     if ([city length] != 0) {
         city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         cell.storeLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
+        NSLog(@"-%@-",offlineStores);
     } else {
         // Details unknown.
         cell.storeLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[offlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue]];
