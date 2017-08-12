@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
 @property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
 
+
 @end
 
 @implementation UpdateTableViewController
@@ -80,9 +81,9 @@
 - (void)requestsCompleteUpdate {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Update view accordingly.
+        completed = YES;
+        [self setUpChart];
     });
-    completed = YES;
-    [self setUpChart];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -95,7 +96,7 @@
                     break;
                 }
                 // Offline row
-                case 1: {
+                case 2: {
                     // Get home view.
                     HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
                     
@@ -119,6 +120,26 @@
     // Push selected view onto navigation stack.
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(completed){
+        if(indexPath.row ==1){
+            return 200;
+        }
+        if(indexPath.row == 3){
+            return 200;
+        }
+        return 45;
+    }else{
+        if(indexPath.row ==1){
+            return 0;
+        }
+        if(indexPath.row == 3){
+            return 0;
+        }
+        return 45;
+    }
+}
+
 - (void)setUpChart{
     if(completed){
         _xaixsWithDate = [[NSMutableArray alloc] init];
@@ -133,9 +154,6 @@
     
         _graphForOnlineStores.data = [chartView setDataForStores:_xaixsWithDate:onlineStoreNumberData: @"Online" :_graphForOnlineStores];
         _graphForOfflineStores.data = [chartView setDataForStores:_xaixsWithDate :offlineStoreNumberData: @"Offline" :_graphForOfflineStores];
-    }else{
-        _graphForOnlineStores.noDataText = @"Will be updated after 100%...";
-        _graphForOfflineStores.noDataText= @"Will be updated after 100%...";
     }
     
 }

@@ -48,7 +48,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="9Ne-Jw-2lO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellForOnline" rowHeight="200" id="9Ne-Jw-2lO">
                                         <rect key="frame" x="0.0" y="72" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ne-Jw-2lO" id="V0Y-1Z-SVi">
@@ -61,10 +61,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="centerX" secondItem="V0Y-1Z-SVi" secondAttribute="centerX" id="Efc-ff-MA6"/>
-                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="bottom" secondItem="V0Y-1Z-SVi" secondAttribute="bottomMargin" id="g7Y-f5-lPl"/>
-                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="leading" secondItem="V0Y-1Z-SVi" secondAttribute="leadingMargin" constant="8" id="ox1-u4-7vD"/>
-                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="top" secondItem="V0Y-1Z-SVi" secondAttribute="topMargin" id="sA3-Mg-zbE"/>
+                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="leading" secondItem="V0Y-1Z-SVi" secondAttribute="leadingMargin" constant="8" id="0M6-ov-hLO"/>
+                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="top" secondItem="V0Y-1Z-SVi" secondAttribute="topMargin" id="C95-4s-imb"/>
+                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="bottom" secondItem="V0Y-1Z-SVi" secondAttribute="bottomMargin" id="faA-W1-PTK"/>
+                                                <constraint firstItem="5ws-g2-5Uu" firstAttribute="centerX" secondItem="V0Y-1Z-SVi" secondAttribute="centerX" id="pMP-ZX-68a"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -95,7 +95,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="TI4-Yq-5WV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellForOffline" rowHeight="200" id="TI4-Yq-5WV">
                                         <rect key="frame" x="0.0" y="316" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TI4-Yq-5WV" id="8VH-lG-kim">
@@ -108,10 +108,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="m03-MW-gHu" firstAttribute="leading" secondItem="8VH-lG-kim" secondAttribute="leadingMargin" constant="8" id="0uU-br-1Jt"/>
-                                                <constraint firstItem="m03-MW-gHu" firstAttribute="top" secondItem="8VH-lG-kim" secondAttribute="topMargin" id="XCd-48-4Rl"/>
-                                                <constraint firstItem="m03-MW-gHu" firstAttribute="centerX" secondItem="8VH-lG-kim" secondAttribute="centerX" id="gcp-Qp-EWC"/>
-                                                <constraint firstItem="m03-MW-gHu" firstAttribute="bottom" secondItem="8VH-lG-kim" secondAttribute="bottomMargin" id="nXA-o7-9eo"/>
+                                                <constraint firstItem="m03-MW-gHu" firstAttribute="top" secondItem="8VH-lG-kim" secondAttribute="topMargin" id="Hl9-1I-UFy"/>
+                                                <constraint firstItem="m03-MW-gHu" firstAttribute="centerX" secondItem="8VH-lG-kim" secondAttribute="centerX" id="WF9-cP-1c3"/>
+                                                <constraint firstItem="m03-MW-gHu" firstAttribute="bottom" secondItem="8VH-lG-kim" secondAttribute="bottomMargin" id="uOz-Lg-b9e"/>
+                                                <constraint firstItem="m03-MW-gHu" firstAttribute="leading" secondItem="8VH-lG-kim" secondAttribute="leadingMargin" constant="8" id="y83-3u-xIS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

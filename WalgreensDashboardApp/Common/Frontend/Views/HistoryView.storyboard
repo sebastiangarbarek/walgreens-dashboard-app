@@ -29,14 +29,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rxt-uu-vCx">
-                                                    <rect key="frame" x="15" y="13" width="49" height="21"/>
+                                                    <rect key="frame" x="15" y="13" width="49" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="457-Lb-wz5">
-                                                    <rect key="frame" x="350" y="13" width="11" height="21"/>
+                                                    <rect key="frame" x="349.5" y="13" width="10.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,10 +58,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="topMargin" id="Kxf-6e-fih"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" constant="8" id="ghe-B2-Oxw"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="centerX" secondItem="TUB-vx-MnQ" secondAttribute="centerX" id="j2P-xY-p0X"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="bottom" secondItem="TUB-vx-MnQ" secondAttribute="bottomMargin" id="vlQ-Mc-fCa"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" constant="8" id="EeR-cv-iux"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="topMargin" id="TSU-bZ-nPV"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="bottom" secondItem="TUB-vx-MnQ" secondAttribute="bottomMargin" id="mHa-AK-JAz"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="centerX" secondItem="TUB-vx-MnQ" secondAttribute="centerX" id="oeD-ux-Ugg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -73,14 +73,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Offline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E0s-jJ-7sQ">
-                                                    <rect key="frame" x="15" y="13" width="51" height="21"/>
+                                                    <rect key="frame" x="15" y="13" width="51" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3O3-a9-BAg">
-                                                    <rect key="frame" x="350" y="13" width="11" height="21"/>
+                                                    <rect key="frame" x="349.5" y="13" width="10.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,10 +103,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="bottom" secondItem="Ubf-BH-t2r" secondAttribute="bottomMargin" id="Scn-2u-Fbq"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="centerX" secondItem="Ubf-BH-t2r" secondAttribute="centerX" id="joW-ej-v1C"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="topMargin" id="rXM-qQ-Ojo"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" constant="8" id="s69-5w-u4B"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" constant="8" id="Heg-Cn-aVt"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="centerX" secondItem="Ubf-BH-t2r" secondAttribute="centerX" id="QlQ-dx-XVS"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="topMargin" id="lAP-Tc-0Gf"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="bottom" secondItem="Ubf-BH-t2r" secondAttribute="bottomMargin" id="pWN-Iy-fvk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
