@@ -132,6 +132,7 @@
     }];
 }
 
+
 - (void)popAnimate:(UITableViewController *)newVc {
     // Add the table view controller as a child to this.
     [self addChildViewController:newVc];
