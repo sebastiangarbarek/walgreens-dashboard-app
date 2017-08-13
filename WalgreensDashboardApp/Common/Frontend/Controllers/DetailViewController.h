@@ -18,14 +18,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *storeNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *storeAddressLabel;
 @property (strong, nonatomic) IBOutlet UILabel *contactLabel;
-@property (strong, nonatomic) IBOutlet UIButton *callBtn;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-- (IBAction)callBtnAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *callBtn;
+@property (nonatomic,strong) NSDictionary *recivedDictionary;
 
 - (BOOL)isPhoneNumber:(NSString *)string;
 - (BOOL)isCoordinate:(NSString *)string;
 - (BOOL)isCoordinateValid:(double)lat :(double)lng;
-
-@property (nonatomic,strong) NSMutableArray *recivedArray;
 
 @end

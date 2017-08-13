@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Offline Cell" textLabel="5wk-fb-ocy" style="IBUITableViewCellStyleDefault" id="p8n-Ku-YdX" customClass="OfflineCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -36,7 +37,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="storeLabel" destination="5wk-fb-ocy" id="KOk-os-qhY"/>
-                                    <segue destination="hKJ-D0-tLA" kind="presentation" trigger="accessoryAction" id="c6q-6J-jPj"/>
+                                    <segue destination="hKJ-D0-tLA" kind="presentation" identifier="Show Store Detail" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Zb0-Lf-Y8k"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -48,13 +49,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icM-HW-6O4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4854" y="-672"/>
+            <point key="canvasLocation" x="4853.6000000000004" y="-672.41379310344837"/>
         </scene>
         <!--StoreView-->
         <scene sceneID="RWH-EO-x59">
             <objects>
-                <viewControllerPlaceholder storyboardName="StoreView" id="hKJ-D0-tLA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkY-mj-s9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="StoreView" id="hKJ-D0-tLA" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="5455" y="-673"/>
         </scene>

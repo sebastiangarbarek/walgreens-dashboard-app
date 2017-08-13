@@ -58,10 +58,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" constant="8" id="EeR-cv-iux"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="topMargin" id="TSU-bZ-nPV"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="bottom" secondItem="TUB-vx-MnQ" secondAttribute="bottomMargin" id="mHa-AK-JAz"/>
-                                                <constraint firstItem="owU-So-LlA" firstAttribute="centerX" secondItem="TUB-vx-MnQ" secondAttribute="centerX" id="oeD-ux-Ugg"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="top" secondItem="TUB-vx-MnQ" secondAttribute="topMargin" id="4fL-vi-xgb"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="centerX" secondItem="TUB-vx-MnQ" secondAttribute="centerX" id="M7s-dl-zhQ"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="leading" secondItem="TUB-vx-MnQ" secondAttribute="leadingMargin" constant="8" id="hqN-Xk-Hfx"/>
+                                                <constraint firstItem="owU-So-LlA" firstAttribute="bottom" secondItem="TUB-vx-MnQ" secondAttribute="bottomMargin" id="xxZ-Nz-617"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -103,10 +103,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" constant="8" id="Heg-Cn-aVt"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="centerX" secondItem="Ubf-BH-t2r" secondAttribute="centerX" id="QlQ-dx-XVS"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="topMargin" id="lAP-Tc-0Gf"/>
-                                                <constraint firstItem="B14-TO-bnp" firstAttribute="bottom" secondItem="Ubf-BH-t2r" secondAttribute="bottomMargin" id="pWN-Iy-fvk"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="leading" secondItem="Ubf-BH-t2r" secondAttribute="leadingMargin" constant="8" id="Qtq-l4-92o"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="bottom" secondItem="Ubf-BH-t2r" secondAttribute="bottomMargin" id="XhF-FA-m2q"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="centerX" secondItem="Ubf-BH-t2r" secondAttribute="centerX" id="f3u-kF-beO"/>
+                                                <constraint firstItem="B14-TO-bnp" firstAttribute="top" secondItem="Ubf-BH-t2r" secondAttribute="topMargin" id="hMm-Ta-bDS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

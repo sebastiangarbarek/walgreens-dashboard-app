@@ -45,18 +45,13 @@
     return [offlineStores count];
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
+//Segues
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"Show Store Detail"]) {
         DetailViewController *storeDetailViewController = [segue destinationViewController];
         NSIndexPath *selectedPath = [[self tableView] indexPathForSelectedRow];
-        _sendArray = [offlineStores objectAtIndex:selectedPath.row];
-        storeDetailViewController.recivedArray = _sendArray;
-        NSLog(@"send");
+        _sendDictionary = [offlineStores objectAtIndex:selectedPath.row];
+        storeDetailViewController.recivedDictionary = _sendDictionary;
     }
 }
 
@@ -74,6 +69,7 @@
     } else {
         // Details unknown.
         cell.storeLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[offlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;

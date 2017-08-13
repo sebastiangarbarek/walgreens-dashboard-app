@@ -11,7 +11,7 @@
 @interface OfflineTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *date;
-@property (strong, nonatomic) NSMutableArray *sendArray;
+@property (strong, nonatomic) NSDictionary *sendDictionary;
 
 
 @property (weak, nonatomic) UITableViewController *currentTableViewController;

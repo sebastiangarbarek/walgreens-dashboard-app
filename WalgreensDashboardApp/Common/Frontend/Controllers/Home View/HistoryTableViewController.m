@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "DatabaseManagerApp.h"
 #import "ChartsView.h"
+#import "DetailViewController.h"
 
 @interface HistoryTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
@@ -18,6 +19,7 @@
 }
 @property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
 @property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
+- (IBAction)callDetail:(id)sender;
 
 @end
 
@@ -93,4 +95,10 @@
     
 }
 
+- (IBAction)callDetail:(id)sender {
+    
+    UIStoryboard *storeStoryBoard = [UIStoryboard storyboardWithName:@"StoreView" bundle:nil];
+    DetailViewController *detailViewController = [storeStoryBoard instantiateViewControllerWithIdentifier:@"StoreDetailView"];
+    [self.navigationController popToViewController:detailViewController animated:YES];
+}
 @end
