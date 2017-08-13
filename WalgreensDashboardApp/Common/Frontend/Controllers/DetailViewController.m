@@ -42,7 +42,7 @@
         
         storePhone = [NSString stringWithFormat:@"%@", [_recivedDictionary objectForKey:@"storePhoneNum"]];
         //set detail view board color for known store
-        _detailView.layer.borderColor = [UIColor colorWithRed:0/255.0 green:250/255.0 blue:154/255.0 alpha:0.3].CGColor;
+        _detailView.layer.borderColor = [UIColor colorWithRed:255/255.0 green:99/255.0 blue:71/255.0 alpha:0.3].CGColor;
         
     }else{
         //Set details unknown if the details is unknown
@@ -50,7 +50,7 @@
         self.storeAddressLabel.text = [NSString stringWithFormat:@"Store Address: Unknown..."];
         
         //Set detail view board color for unknown store
-        _detailView.layer.borderColor = [UIColor colorWithRed:255/255.0 green:99/255.0 blue:71/255.0 alpha:0.3].CGColor;
+        _detailView.layer.borderColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.3].CGColor;
     }
 }
 
