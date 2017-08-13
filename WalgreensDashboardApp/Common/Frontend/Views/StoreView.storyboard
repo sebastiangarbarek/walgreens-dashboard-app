@@ -58,7 +58,7 @@
                                                 <constraint firstAttribute="height" constant="48" id="dOk-c1-S8H"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                            <state key="normal" title="Button">
+                                            <state key="normal" title="Call">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
