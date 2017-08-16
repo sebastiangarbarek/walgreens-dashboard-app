@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "CommonTableViewController.h"
+#import "WalgreensDashboardApp-Bridging-Header.h"
+#import "DateHelper.h"
 
 @interface UpdateTableViewController : CommonTableViewController
 
@@ -17,5 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notificationsCell;
 @property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
+
+@property (strong, nonatomic) NSMutableArray *xaixsWithDate;
+
 
 @end

@@ -9,10 +9,18 @@
 #import "UpdateTableViewController.h"
 #import "HomeViewController.h"
 #import "DatabaseManagerApp.h"
+#import "ChartsView.h"
+
 
 @interface UpdateTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
+    ChartsView *chartView;
+    BOOL completed;
 }
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
+
+
 
 @end
 
@@ -23,6 +31,7 @@
     
     // Retrieve selected date from home view controller.
     self.date = ((HomeViewController *)self.parentViewController).date;
+    
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(storeOnlineUpdate)
@@ -40,6 +49,8 @@
     
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
     [databaseManagerApp openCreateDatabase];
+    
+    [self setUpChart];
     
     [self reloadData];
 }
@@ -72,6 +83,10 @@
 - (void)requestsCompleteUpdate {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Update view accordingly.
+        completed = YES;
+        // Reload tableView data
+        [self.tableView reloadData];
+        [self setUpChart];
     });
 }
 
@@ -85,7 +100,7 @@
                     break;
                 }
                 // Offline row
-                case 1: {
+                case 2: {
                     // Get home view.
                     HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
                     
@@ -108,5 +123,45 @@
     }
     // Push selected view onto navigation stack.
 }
+
+//Set the height of cells
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(completed){
+        if(indexPath.row ==1){
+            return 200;
+        }
+        if(indexPath.row == 3){
+            return 200;
+        }
+        return 45;
+    }else{
+        if(indexPath.row ==1){
+            return 0;
+        }
+        if(indexPath.row == 3){
+            return 0;
+        }
+        return 45;
+    }
+}
+
+- (void)setUpChart{
+    if(completed){
+        _xaixsWithDate = [[NSMutableArray alloc] init];
+        chartView =[[ChartsView alloc] init];
+    
+        [chartView setSelfDate:self.date];
+    
+        _xaixsWithDate = [chartView setXAixsArray:_xaixsWithDate];
+    
+        NSMutableArray *onlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Online"];
+        NSMutableArray *offlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Offline"];
+    
+        _graphForOnlineStores.data = [chartView setDataForStores:_xaixsWithDate:onlineStoreNumberData: @"Online" :_graphForOnlineStores];
+        _graphForOfflineStores.data = [chartView setDataForStores:_xaixsWithDate :offlineStoreNumberData: @"Offline" :_graphForOfflineStores];
+    }
+    
+}
+
 
 @end

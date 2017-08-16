@@ -10,6 +10,8 @@
 #import "OfflineTableViewController.h"
 #import "OfflineCell.h"
 #import "DatabaseManagerApp.h"
+#import "DetailViewController.h"
+
 
 @interface OfflineTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
@@ -43,11 +45,23 @@
     return [offlineStores count];
 }
 
+//Segues
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"Show Store Detail"]) {
+        DetailViewController *storeDetailViewController = [segue destinationViewController];
+        NSIndexPath *selectedPath = [[self tableView] indexPathForSelectedRow];
+        _sendDictionary = [offlineStores objectAtIndex:selectedPath.row];
+        storeDetailViewController.recivedDictionary = _sendDictionary;
+    }
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OfflineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Offline Cell" forIndexPath:indexPath];
     
     NSString *city = [[offlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
     NSString *state = [[offlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
+    
     
     if ([city length] != 0) {
         city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -55,6 +69,7 @@
     } else {
         // Details unknown.
         cell.storeLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[offlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
