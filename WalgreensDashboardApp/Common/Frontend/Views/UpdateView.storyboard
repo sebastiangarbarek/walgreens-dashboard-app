@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Update Table View Controller-->
         <scene sceneID="7dS-fN-ITa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EGu-GK-QNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="Update Table View" id="tAF-bz-skl" customClass="UpdateTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tpf-ng-At7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -75,6 +76,54 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="asV-j1-196">
+                                        <rect key="frame" x="0.0" y="116" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="asV-j1-196" id="wB6-Bz-Aiu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SMh-QX-661">
+                                                    <rect key="frame" x="15" y="12" width="44" height="21"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hl0-7z-3eQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="21"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzI-5w-KCd">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="44" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="SMh-QX-661" secondAttribute="height" multiplier="21:10" id="5IY-GU-VBL"/>
+                                                        <constraint firstAttribute="width" constant="42" id="93a-qj-vsl"/>
+                                                        <constraint firstAttribute="height" constant="20.5" id="z2O-f3-IG0"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mf-Cq-ob7" userLabel="Total Open Stores Label">
+                                                    <rect key="frame" x="349" y="12" width="11" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="2Mf-Cq-ob7" secondAttribute="height" multiplier="11:21" id="6mQ-WB-UR1"/>
+                                                        <constraint firstAttribute="width" constant="11" id="mKO-Os-bHD"/>
+                                                        <constraint firstAttribute="height" constant="21" id="qoJ-UN-NFq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.32026170220729" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SMh-QX-661" firstAttribute="top" secondItem="2Mf-Cq-ob7" secondAttribute="top" id="3Zh-qx-ylg"/>
+                                                <constraint firstItem="SMh-QX-661" firstAttribute="centerY" secondItem="wB6-Bz-Aiu" secondAttribute="centerY" id="Bc9-3r-bbv"/>
+                                                <constraint firstItem="SMh-QX-661" firstAttribute="leading" secondItem="wB6-Bz-Aiu" secondAttribute="leadingMargin" constant="7" id="fnu-n9-WrV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2Mf-Cq-ob7" secondAttribute="trailing" constant="7" id="mez-wF-0vM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -86,10 +135,12 @@
                     <connections>
                         <outlet property="totalOfflineStoresLabel" destination="uCZ-Zg-vUM" id="9Cz-2Y-UvN"/>
                         <outlet property="totalOnlineStoresLabel" destination="GXT-j0-jJn" id="IfB-hv-E73"/>
+                        <outlet property="totalOpenStoresLabel" destination="2Mf-Cq-ob7" id="S4d-aj-QHO"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGu-GK-QNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3606" y="-672"/>
+            <point key="canvasLocation" x="3605.5999999999999" y="-672.41379310344837"/>
         </scene>
     </scenes>
 </document>

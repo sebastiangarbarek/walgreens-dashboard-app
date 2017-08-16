@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; };
-		4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */; };
 		4E3F0BB81F3D1FA700F1D22D /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
@@ -86,7 +83,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,9 +92,10 @@
 /* Begin PBXFileReference section */
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4649B03B1F424D450041D373 /* xcuserdata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = xcuserdata; path = WalgreensDashboardApp.xcodeproj/xcuserdata; sourceTree = "<group>"; };
+		4649B03D1F424D630041D373 /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; name = External; path = WalgreensDashboardApp/External; sourceTree = "<group>"; };
+		4649B03F1F424ED00041D373 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Supporting Files"; path = "WalgreensDashboardApp/Supporting Files"; sourceTree = "<group>"; };
 		4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
-		4E3F0BB21F3D1EDA00F1D22D /* WalgreensDashboardApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalgreensDashboardApp-Bridging-Header.h"; sourceTree = "<group>"; };
-		4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
 		4E3F0BB61F3D1FA700F1D22D /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
 		4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
@@ -179,7 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
-				4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +185,9 @@
 		3978F1461EBD462A001FD643 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4649B03F1F424ED00041D373 /* Supporting Files */,
+				4649B03D1F424D630041D373 /* External */,
+				4649B03B1F424D450041D373 /* xcuserdata */,
 				A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
@@ -292,8 +291,6 @@
 				A842C72E1EB023FB002ED089 /* AppDelegate.m */,
 				A842C72B1EB023FB002ED089 /* main.m */,
 				A842C73B1EB023FB002ED089 /* Info.plist */,
-				4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */,
-				4E3F0BB21F3D1EDA00F1D22D /* WalgreensDashboardApp-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -664,7 +661,6 @@
 				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
 				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
 				A842C72C1EB023FB002ED089 /* main.m in Sources */,
-				4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */,
 				A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */,
 				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
 				A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */,
@@ -704,7 +700,6 @@
 		3978F1631EBEAF16001FD643 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -720,7 +715,6 @@
 		3978F1641EBEAF16001FD643 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";

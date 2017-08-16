@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalOfflineStoresLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *notificationsCell;
 @property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalOpenStoresLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalClosedStoresLabel;
 
 @end
