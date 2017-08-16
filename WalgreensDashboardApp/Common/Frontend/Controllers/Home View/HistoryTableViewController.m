@@ -4,6 +4,7 @@
 //
 //  Created by Sebastian Garbarek on 31/07/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
+//  Naomi Wu modified on 16/08/2017.
 //
 
 #import "HistoryTableViewController.h"
@@ -48,6 +49,16 @@
             switch (indexPath.row) {
                 // Online row.
                 case 0: {
+                    // Get home view.
+                    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
+                    
+                    // Swap container view.
+                    UIStoryboard *onlineStoryBoard = [UIStoryboard storyboardWithName:@"OnlineView" bundle:nil];
+                    UITableViewController *onlineTableViewController = [onlineStoryBoard instantiateViewControllerWithIdentifier:@"Online Table View"];
+                    [homeViewController animateTransitionTo:onlineTableViewController transition:Push];
+                    
+                    [homeViewController switchBackButton];
+                    
                     break;
                 }
                 // Offline row.
