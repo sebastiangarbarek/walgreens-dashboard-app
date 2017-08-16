@@ -99,65 +99,84 @@
         }
     }
     // ?
-    else {
-        return 0;
-    }
+    return 0;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    int mode = 0;
+    switch (mode) {
+        case 1 : {
+            displayMode = @"state";
+            break;
+        }
+        case 2 : {
+            displayMode = @"city";
+            break;
+        }
+        case 3 : {
+            displayMode = @"storeNum";
+            break;
+        }
+    }
+    
     OnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Online Cell" forIndexPath:indexPath];
     
-    // Display state
-    NSString *state = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
-    if ([state length] != 0) {
-        
-        state = [state stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@(%@)", [[[onlineStores objectAtIndex:indexPath.row]
-                                                                                    objectForKey:@"storeNum"] stringValue], state];
-        
-    } else {
-        
+    // Display state to cell
+    if ([displayMode isEqualToString:@"state"]) {
+        NSString *state = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
+        if ([state length] != 0) {
+            state = [state stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@(%@)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                        objectForKey:@"storeNum"] stringValue], state];
+        } else {
+            // Details unknow
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknow)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                                     objectForKey:@"storeNum"] stringValue]];
+        }
+        return cell;
     }
     
-    // Display cities with state
-    if ([state isEqualToString:@""]) {
-        
+    // Display cities with state to cell
+    if ([displayMode isEqualToString:@"city"]) {
+        NSString *state = [[SelectCommands alloc] init].selectStatesInStoreDetail[indexPath.row];
+        NSString *currentState;
+        NSString *city = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
+        if ([currentState isEqualToString:state]) {
+            if ([city length] != 0) {
+                city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@(%@ %@)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                            objectForKey:@"storeNum"] stringValue], currentState, city];
+            }
+            // State is null
+            else {
+                // Details unknown.
+                cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                                          objectForKey:@"storeNum"] stringValue]];
+            }
+        }
+        return cell;
     }
-    // State is null
-    else {
-        // Details unknown.
-        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", [[[onlineStores objectAtIndex:indexPath.row] objectForKey:@"storeNum"] stringValue]];
-    }
-    NSMutableArray *CityList = [[[SelectCommands alloc] init] selectCitiesInStoreDetailWithState:[[NSString alloc] initWithFormat:@"%@", state]];
     
     // Display stores with city
-    
-    
-    
-    OnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Online Cell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    NSString *city = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
-    NSString *state = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
-    
-    if ([city length] != 0) {
+    if ([displayMode isEqualToString:@"storeNum"]) {
+        NSString *city = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
         
-        city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
-        
-    } else {
-        
-        // Details unknow
-        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknow)", [[[onlineStores objectAtIndex:indexPath.row]
+        if ([city length] != 0) {
+            city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@(%@)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                        objectForKey:@"storeNum"] stringValue], city];
+            
+        } else {
+            // Details unknow
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknow)", [[[onlineStores objectAtIndex:indexPath.row]
                                                                                                  objectForKey:@"storeNum"] stringValue]];
-        
+        }
+        return cell;
     }
     
     return cell;
-    
 }
 
 
