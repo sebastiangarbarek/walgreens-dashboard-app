@@ -86,11 +86,25 @@
     }
     
     // Return store number with specific city
-    
-    
-    return [onlineStores count];
-    
+    if ([displayMode isEqualToString:@"storeNum"]) {
+        // Specify city
+        NSString *city;
+        NSString *currentCity;
+        NSMutableArray *cities = [[[SelectCommands alloc] init] selectStoresInStoreDetailWithCity:city];
+        for (city in cities) {
+            if ([currentCity isEqualToString:city]) {
+                NSMutableArray *StoreList = [[[SelectCommands alloc] init] selectStoresInStoreDetailWithCity:[[NSString alloc] initWithFormat:@"%@", city]];
+                return [StoreList count];
+            }
+        }
+    }
+    // ?
+    else {
+        return 0;
+    }
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
