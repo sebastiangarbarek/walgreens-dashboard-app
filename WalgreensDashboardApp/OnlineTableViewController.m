@@ -6,9 +6,17 @@
 //  Copyright © 2017 Naomi Wu. All rights reserved.
 //
 
+#import "HomeViewController.h"
 #import "OnlineTableViewController.h"
+#import "OnlineCell.h"
+#import "DatabaseManagerApp.h"
 
-@interface OnlineTableViewController ()
+@interface OnlineTableViewController () {
+    
+    DatabaseManagerApp *databaseManagerApp;
+    NSMutableArray *onlineStores;
+    
+}
 
 @end
 
@@ -17,39 +25,56 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    // Database closes itself after use.
+    [databaseManagerApp openCreateDatabase];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    
+    self.date = ((HomeViewController *)self.parentViewController).date;
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    
+    self.date = ((HomeViewController *)self.parentViewController).date;
+//    onlineStores = [databaseManagerApp.selectCommands selectOfflineStoresInHistoryTableWithDate:self.date];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return [onlineStores count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    OnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Online Cell" forIndexPath:indexPath];
     
     // Configure the cell...
+    NSString *city = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"city"];
+    NSString *state = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
+    
+    if ([city length] != 0) {
+        
+        city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"%@, %@", city, state];
+        
+    } else {
+        
+        // Details unknow
+        cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (dayails unknow)", [[[onlineStores objectAtIndex:indexPath.row]
+                                                                                                 objectForKey:@"storeNum"] stringValue]];
+        
+    }
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
