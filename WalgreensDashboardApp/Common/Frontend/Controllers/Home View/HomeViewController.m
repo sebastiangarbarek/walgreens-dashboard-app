@@ -4,12 +4,14 @@
 //
 //  Created by Sebastian Garbarek on 31/07/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
+//  Naomi Wu modified on 16/08/2017.
 //
 
 #import "HomeViewController.h"
 #import "UpdateTableViewController.h"
 #import "HistoryTableViewController.h"
 #import "OfflineTableViewController.h"
+#import "OnlineTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -42,6 +44,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(storeOfflineUpdate:)
                                                  name:@"Store offline"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(storeOnlineUpdate:)
+                                                 name:@"Store online"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notConnectedUpdate)
@@ -205,6 +211,12 @@
         UIStoryboard *offlineStoryBoard = [UIStoryboard storyboardWithName:@"OfflineView" bundle:nil];
         tableViewController = [offlineStoryBoard instantiateViewControllerWithIdentifier:@"Offline Table View"];
         [self animateTransitionTo:tableViewController transition:RightToLeft];
+    } else if ([self.currentTableViewController isKindOfClass:[OnlineTableViewController class]]) {
+        
+        UIStoryboard *onlineStoryBoard = [UIStoryboard storyboardWithName:@"OnlineView" bundle:nil];
+        tableViewController = [onlineStoryBoard instantiateViewControllerWithIdentifier:@"Online Table View"];
+        [self animateTransitionTo:tableViewController transition:RightToLeft];
+        
     } else {
         tableViewController = [self homeTableView];
         [self animateTransitionTo:tableViewController transition:direction];
@@ -268,6 +280,16 @@
         NSDictionary *offlineStore = notification.userInfo;
         self.notificationsLabel.textColor = [UIColor redColor];
         self.notificationsLabel.text = [NSString stringWithFormat:@"Store #%@ is offline", [offlineStore objectForKey:@"Store Number"]];
+    });
+}
+
+- (void)storeOnlineUpdate:(NSNotification *)notification {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *onlineStore = notification.userInfo;
+        self.notificationsLabel.textColor = [UIColor redColor];
+        self.notificationsLabel.text = [NSString stringWithFormat:@"Store #%@ is online", [onlineStore objectForKey:@"Store Number"]];
+        
     });
 }
 
