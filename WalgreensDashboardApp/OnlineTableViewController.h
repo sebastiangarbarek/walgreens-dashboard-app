@@ -13,4 +13,12 @@
 
 @property (strong, nonatomic) NSString *date;
 
+// The current table view controller in the container view, referenced to remove.
+@property (weak, nonatomic) UITableViewController *currentTableViewController;
+
+@property (strong, nonatomic) NSMutableArray *navigationStack;
+
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @end

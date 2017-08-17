@@ -48,6 +48,10 @@
 		B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B38ECF771F40413300AF75B0 /* OnlineView.storyboard */; };
 		B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */; };
 		B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7D1F40446600AF75B0 /* OnlineCell.m */; };
+		B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08A81F4534ED00509D57 /* CityList.storyboard */; };
+		B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08AE1F45378A00509D57 /* CityTableViewController.m */; };
+		B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */; };
+		B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08B31F45384C00509D57 /* StoreList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +167,12 @@
 		B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTableViewController.m; sourceTree = "<group>"; };
 		B38ECF7C1F40446600AF75B0 /* OnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineCell.h; sourceTree = "<group>"; };
 		B38ECF7D1F40446600AF75B0 /* OnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineCell.m; sourceTree = "<group>"; };
+		B3FB08A81F4534ED00509D57 /* CityList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CityList.storyboard; sourceTree = "<group>"; };
+		B3FB08AD1F45378A00509D57 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		B3FB08AE1F45378A00509D57 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
+		B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B31F45384C00509D57 /* StoreList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,11 +266,11 @@
 		A821BB2B1EDB961800B878BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3FB08AC1F45350F00509D57 /* Online */,
 				A86A06801F2DA820005A0936 /* HomeView.storyboard */,
 				A85A2E661F35C94C00417C2C /* UpdateView.storyboard */,
 				A85A2E681F35C96100417C2C /* HistoryView.storyboard */,
 				A86A06811F2DA820005A0936 /* OfflineView.storyboard */,
-				B38ECF771F40413300AF75B0 /* OnlineView.storyboard */,
 				A86A06821F2DA820005A0936 /* StoreView.storyboard */,
 			);
 			name = Views;
@@ -509,6 +519,10 @@
 				B38ECF761F402BA600AF75B0 /* Cells */,
 				B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */,
 				B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */,
+				B3FB08AD1F45378A00509D57 /* CityTableViewController.h */,
+				B3FB08AE1F45378A00509D57 /* CityTableViewController.m */,
+				B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */,
+				B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */,
 			);
 			name = "Online View";
 			path = ../../..;
@@ -521,6 +535,16 @@
 				B38ECF7D1F40446600AF75B0 /* OnlineCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3FB08AC1F45350F00509D57 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				B3FB08A81F4534ED00509D57 /* CityList.storyboard */,
+				B38ECF771F40413300AF75B0 /* OnlineView.storyboard */,
+				B3FB08B31F45384C00509D57 /* StoreList.storyboard */,
+			);
+			name = Online;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -642,9 +666,11 @@
 				A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */,
 				A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */,
 				A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */,
+				B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
 				B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
+				B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */,
 				A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */,
 				A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */,
 			);
@@ -668,10 +694,12 @@
 				A8A4CB571F2B406700B87449 /* SelectCommands.m in Sources */,
 				A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */,
 				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
+				B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */,
 				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
 				A8A4CB501F2B406700B87449 /* Controller.m in Sources */,
 				A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */,
 				A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */,
+				B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */,
 				A8A4CB511F2B406700B87449 /* DataController.m in Sources */,
 				B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */,
 				B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */,

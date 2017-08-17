@@ -46,10 +46,6 @@
                                                  name:@"Store offline"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(storeOnlineUpdate:)
-                                                 name:@"Store online"
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notConnectedUpdate)
                                                  name:@"Not connected"
                                                object:nil];

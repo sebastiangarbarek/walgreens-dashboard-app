@@ -16,6 +16,7 @@
     
     DatabaseManagerApp *databaseManagerApp;
     NSMutableArray *onlineStores;
+    NSMutableArray *StateList;
     NSString *displayMode;
     
 }
@@ -47,96 +48,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    int mode = 0;
-    switch (mode) {
-        case 1 : {
-            displayMode = @"state";
-            break;
-        }
-        case 2 : {
-            displayMode = @"city";
-            break;
-        }
-        case 3 : {
-            displayMode = @"storeNum";
-            break;
-        }
-    }
-    
     // Return state count
-    if ([displayMode isEqualToString: @"state"]) {
-        NSMutableArray *StateList = [[SelectCommands alloc] init].selectStatesInStoreDetail;
-        // 54?53?
-        return [StateList count];
-    }
-    
-    // Return city number with specific state
-    if ([displayMode isEqualToString:@"city"]) {
-        // Specify state
-        NSString *state;
-        NSString *currentState;
-        NSMutableArray *states = [[[SelectCommands alloc] init] selectCitiesInStoreDetailWithState:state];
-        for (state in states) {
-            if ([currentState isEqualToString:state]) {
-                NSMutableArray *CityList = [[[SelectCommands alloc] init] selectCitiesInStoreDetailWithState:[[NSString alloc] initWithFormat:@"%@", state]];
-                return [CityList count];
-            }
-        }
-    }
-    
-    // Return store number with specific city
-    if ([displayMode isEqualToString:@"storeNum"]) {
-        // Specify city
-        NSString *city;
-        NSString *currentCity;
-        NSMutableArray *cities = [[[SelectCommands alloc] init] selectStoresInStoreDetailWithCity:city];
-        for (city in cities) {
-            if ([currentCity isEqualToString:city]) {
-                NSMutableArray *StoreList = [[[SelectCommands alloc] init] selectStoresInStoreDetailWithCity:[[NSString alloc] initWithFormat:@"%@", city]];
-                return [StoreList count];
-            }
-        }
-    }
-    // ?
-    return 0;
+    StateList = [databaseManagerApp.selectCommands selectStatesInStoreDetail];
+    return [StateList count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    int mode = 0;
-    switch (mode) {
-        case 1 : {
-            displayMode = @"state";
-            break;
-        }
-        case 2 : {
-            displayMode = @"city";
-            break;
-        }
-        case 3 : {
-            displayMode = @"storeNum";
-            break;
-        }
-    }
-    
     OnlineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Online Cell" forIndexPath:indexPath];
     
     // Display state to cell
-    if ([displayMode isEqualToString:@"state"]) {
-        NSString *state = [[onlineStores objectAtIndex:indexPath.row] objectForKey:@"state"];
+    
+        NSString *state = [StateList[indexPath.row] objectForKey:@"state"];
         if ([state length] != 0) {
             state = [state stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@(%@)", [[[onlineStores objectAtIndex:indexPath.row]
-                                                                                        objectForKey:@"storeNum"] stringValue], state];
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"%@",state];
         } else {
             // Details unknow
-            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"Store #%@ (details unknow)", [[[onlineStores objectAtIndex:indexPath.row]
-                                                                                                     objectForKey:@"storeNum"] stringValue]];
+            cell.onlineStoreLabel.text = [NSString stringWithFormat:@"(state unknow)"];
         }
         return cell;
-    }
+    
+    
+    /*
     
     // Display cities with state to cell
     if ([displayMode isEqualToString:@"city"]) {
@@ -174,11 +108,106 @@
                                                                                                  objectForKey:@"storeNum"] stringValue]];
         }
         return cell;
-    }
-    
-    return cell;
+    }*/
 }
 
+- (void)animateTransitionTo:(UITableViewController *)newVc transition:(Transition)transition {
+    UITableViewController *current = self.currentTableViewController;
+    
+    [current willMoveToParentViewController:nil];
+    [self addChildViewController:newVc];
+    
+    CGFloat width = self.containerView.bounds.size.width;
+    CGFloat height = self.containerView.bounds.size.height;
+    
+    switch (transition) {
+        case RightToLeft:
+            newVc.view.frame = CGRectMake(width, 0, width, height);
+            break;
+        case LeftToRight:
+            newVc.view.frame = CGRectMake(-width, 0, width, height);
+            break;
+        case Push:
+            newVc.view.frame = CGRectMake(width, 0, width, height);
+            break;
+        default:
+            break;
+    }
+    
+    [self transitionFromViewController:current toViewController:newVc duration:0.25 options:0 animations:^{
+        newVc.view.frame = self.containerView.bounds;
+        switch (transition) {
+            case RightToLeft:
+                current.view.frame = CGRectMake(-width, 0, width, height);
+                break;
+            case LeftToRight:
+                current.view.frame = CGRectMake(width, 0, width, height);
+                break;
+            default:
+                break;
+        }
+    } completion:^(BOOL finished) {
+        [newVc didMoveToParentViewController:self];
+        [current removeFromParentViewController];
+        
+        self.currentTableViewController = newVc;
+        
+        if (transition == Push) {
+            [self.navigationStack push:newVc];
+        }
+    }];
+}
 
+- (void)popAnimate:(UITableViewController *)newVc {
+    // Add the table view controller as a child to this.
+    [self addChildViewController:newVc];
+    
+    // Size the new table view controller to fit in the container view.
+    newVc.view.frame = self.containerView.bounds;
+    
+    // Add the view as a subview to the container view.
+    [self.containerView addSubview:newVc.view];
+    
+    // Bring current view controller to the front for pop animation.
+    [self.containerView bringSubviewToFront:self.currentTableViewController.view];
+    
+    CGFloat width = self.containerView.bounds.size.width;
+    CGFloat height = self.containerView.bounds.size.height;
+    [UIView animateWithDuration:0.25 animations:^ {
+        self.currentTableViewController.view.frame = CGRectMake(width, 0, width, height);
+    } completion:^(BOOL finised) {
+        [self.currentTableViewController.view removeFromSuperview];
+        [self.currentTableViewController removeFromParentViewController];
+        
+        [self.navigationStack push:newVc];
+        self.currentTableViewController = newVc;
+    }];
+}
 
+/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+            // Store status section
+        case 0: {
+            
+                    // Get home view.
+                    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
+                    
+                    // Swap container view.
+                    UIStoryboard *cityListStoryBoard = [UIStoryboard storyboardWithName:@"CityList" bundle:nil];
+                    UITableViewController *cityListTableViewController = [cityListStoryBoard instantiateViewControllerWithIdentifier:@"City Table View"];
+                    [homeViewController animateTransitionTo:cityListTableViewController transition:Push];
+                    
+                    [homeViewController switchBackButton];
+                    break;
+        }
+            // Store hours section
+        case 1: {
+            break;
+        }
+    }
+    // Push selected view onto navigation stack.
+}
+
+*/
 @end
