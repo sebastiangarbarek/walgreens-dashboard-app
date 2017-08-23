@@ -16,7 +16,6 @@
 		4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
-		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
 		A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82607041F3C828D00A412C8 /* CommonTableViewController.m */; };
 		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
 		A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72E1EB023FB002ED089 /* AppDelegate.m */; };
@@ -35,6 +34,20 @@
 		A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */; };
 		A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
+		A8E09A471F4D45560063EEE4 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A401F4D45560063EEE4 /* StatusController.m */; };
+		A8E09A481F4D45560063EEE4 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A421F4D45560063EEE4 /* DataController.m */; };
+		A8E09A491F4D45560063EEE4 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A441F4D45560063EEE4 /* Controller.m */; };
+		A8E09A621F4D45680063EEE4 /* NetworkUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */; };
+		A8E09A631F4D45680063EEE4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4E1F4D45680063EEE4 /* Reachability.m */; };
+		A8E09A641F4D45680063EEE4 /* WalgreensAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */; };
+		A8E09A651F4D45680063EEE4 /* Commands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A531F4D45680063EEE4 /* Commands.m */; };
+		A8E09A661F4D45680063EEE4 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A551F4D45680063EEE4 /* DatabaseManager.m */; };
+		A8E09A671F4D45680063EEE4 /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */; };
+		A8E09A681F4D45680063EEE4 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A591F4D45680063EEE4 /* DateHelper.m */; };
+		A8E09A691F4D45680063EEE4 /* InsertCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */; };
+		A8E09A6A1F4D45680063EEE4 /* SelectCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */; };
+		A8E09A6B1F4D45680063EEE4 /* TableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5F1F4D45680063EEE4 /* TableCommands.m */; };
+		A8E09A6C1F4D45680063EEE4 /* UpdateCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A611F4D45680063EEE4 /* UpdateCommands.m */; };
 		B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B38ECF771F40413300AF75B0 /* OnlineView.storyboard */; };
 		B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */; };
 		B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7D1F40446600AF75B0 /* OnlineCell.m */; };
@@ -85,8 +98,6 @@
 		4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
-		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
-		A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
 		A82607031F3C828D00A412C8 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
 		A82607041F3C828D00A412C8 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +128,36 @@
 		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
 		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A8E09A3E1F4D45560063EEE4 /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
+		A8E09A3F1F4D45560063EEE4 /* StatusControllerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
+		A8E09A401F4D45560063EEE4 /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
+		A8E09A411F4D45560063EEE4 /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
+		A8E09A421F4D45560063EEE4 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		A8E09A431F4D45560063EEE4 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		A8E09A441F4D45560063EEE4 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		A8E09A451F4D45560063EEE4 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtility.h; sourceTree = "<group>"; };
+		A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtility.m; sourceTree = "<group>"; };
+		A8E09A4D1F4D45680063EEE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A8E09A4E1F4D45680063EEE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPI.h; sourceTree = "<group>"; };
+		A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPI.m; sourceTree = "<group>"; };
+		A8E09A521F4D45680063EEE4 /* Commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commands.h; sourceTree = "<group>"; };
+		A8E09A531F4D45680063EEE4 /* Commands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commands.m; sourceTree = "<group>"; };
+		A8E09A541F4D45680063EEE4 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		A8E09A551F4D45680063EEE4 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
+		A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
+		A8E09A581F4D45680063EEE4 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		A8E09A591F4D45680063EEE4 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertCommands.h; sourceTree = "<group>"; };
+		A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertCommands.m; sourceTree = "<group>"; };
+		A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCommands.h; sourceTree = "<group>"; };
+		A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCommands.m; sourceTree = "<group>"; };
+		A8E09A5E1F4D45680063EEE4 /* TableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommands.h; sourceTree = "<group>"; };
+		A8E09A5F1F4D45680063EEE4 /* TableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommands.m; sourceTree = "<group>"; };
+		A8E09A601F4D45680063EEE4 /* UpdateCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCommands.h; sourceTree = "<group>"; };
+		A8E09A611F4D45680063EEE4 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
 		B38ECF771F40413300AF75B0 /* OnlineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlineView.storyboard; sourceTree = "<group>"; };
 		B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTableViewController.h; sourceTree = "<group>"; };
 		B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTableViewController.m; sourceTree = "<group>"; };
@@ -333,6 +374,14 @@
 		A85553081F3063FA00C7B20C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8E09A3E1F4D45560063EEE4 /* StatusControllerApp.m */,
+				A8E09A3F1F4D45560063EEE4 /* StatusControllerApp.h */,
+				A8E09A401F4D45560063EEE4 /* StatusController.m */,
+				A8E09A411F4D45560063EEE4 /* StatusController.h */,
+				A8E09A421F4D45560063EEE4 /* DataController.m */,
+				A8E09A431F4D45560063EEE4 /* DataController.h */,
+				A8E09A441F4D45560063EEE4 /* Controller.m */,
+				A8E09A451F4D45560063EEE4 /* Controller.h */,
 				A85553091F30642400C7B20C /* StatusControllerApp.h */,
 				A855530A1F30644800C7B20C /* StatusControllerApp.m */,
 			);
@@ -391,10 +440,11 @@
 		A8A4CB611F2B46E000B87449 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */,
-				A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */,
+				A8E09A4A1F4D45680063EEE4 /* Network */,
+				A8E09A511F4D45680063EEE4 /* Database */,
 			);
-			path = Models;
+			name = Models;
+			path = Models/Database;
 			sourceTree = "<group>";
 		};
 		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
@@ -405,6 +455,43 @@
 			);
 			name = Helpers;
 			path = Common/Frontend/Helpers;
+			sourceTree = "<group>";
+		};
+		A8E09A4A1F4D45680063EEE4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */,
+				A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */,
+				A8E09A4D1F4D45680063EEE4 /* Reachability.h */,
+				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
+				A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */,
+				A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */,
+			);
+			name = Network;
+			path = WalgreensDashboardApp/Common/Backend/Models/Network;
+			sourceTree = SOURCE_ROOT;
+		};
+		A8E09A511F4D45680063EEE4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A521F4D45680063EEE4 /* Commands.h */,
+				A8E09A531F4D45680063EEE4 /* Commands.m */,
+				A8E09A541F4D45680063EEE4 /* DatabaseManager.h */,
+				A8E09A551F4D45680063EEE4 /* DatabaseManager.m */,
+				A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */,
+				A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */,
+				A8E09A581F4D45680063EEE4 /* DateHelper.h */,
+				A8E09A591F4D45680063EEE4 /* DateHelper.m */,
+				A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */,
+				A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */,
+				A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */,
+				A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */,
+				A8E09A5E1F4D45680063EEE4 /* TableCommands.h */,
+				A8E09A5F1F4D45680063EEE4 /* TableCommands.m */,
+				A8E09A601F4D45680063EEE4 /* UpdateCommands.h */,
+				A8E09A611F4D45680063EEE4 /* UpdateCommands.m */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		B38ECF731F402B6000AF75B0 /* Online View */ = {
@@ -561,7 +648,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8E09A671F4D45680063EEE4 /* DatabaseManagerApp.m in Sources */,
 				A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */,
+				A8E09A491F4D45560063EEE4 /* Controller.m in Sources */,
+				A8E09A6A1F4D45680063EEE4 /* SelectCommands.m in Sources */,
 				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
 				B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */,
 				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
@@ -570,18 +660,28 @@
 				B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */,
 				B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */,
 				A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */,
+				A8E09A631F4D45680063EEE4 /* Reachability.m in Sources */,
 				4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */,
 				A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */,
 				A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */,
-				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
+				A8E09A691F4D45680063EEE4 /* InsertCommands.m in Sources */,
+				A8E09A481F4D45560063EEE4 /* DataController.m in Sources */,
+				A8E09A641F4D45680063EEE4 /* WalgreensAPI.m in Sources */,
+				A8E09A471F4D45560063EEE4 /* StatusController.m in Sources */,
 				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,
+				A8E09A681F4D45680063EEE4 /* DateHelper.m in Sources */,
+				A8E09A6C1F4D45680063EEE4 /* UpdateCommands.m in Sources */,
+				A8E09A621F4D45680063EEE4 /* NetworkUtility.m in Sources */,
 				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
 				A842C72C1EB023FB002ED089 /* main.m in Sources */,
+				A8E09A651F4D45680063EEE4 /* Commands.m in Sources */,
+				A8E09A6B1F4D45680063EEE4 /* TableCommands.m in Sources */,
 				4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */,
 				4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */,
 				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
 				4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */,
 				A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */,
+				A8E09A661F4D45680063EEE4 /* DatabaseManager.m in Sources */,
 				4E1C8E4D1F3E998200947604 /* ChartsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
