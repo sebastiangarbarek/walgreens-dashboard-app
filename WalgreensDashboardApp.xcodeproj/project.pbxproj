@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */; };
+		4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E481F3E758600947604 /* SetValueFormatter.m */; };
+		4E1C8E4D1F3E998200947604 /* ChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E4C1F3E998200947604 /* ChartsView.m */; };
+		4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3749381F3EE491004DBD53 /* MapKit.framework */; };
+		4E37493E1F3EE4CE004DBD53 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E37493D1F3EE4CE004DBD53 /* MapPin.m */; };
+		4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3749441F3EEC1F004DBD53 /* DetailViewController.m */; };
+		4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; };
+		4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */; };
-		4E3F0BB81F3D1FA700F1D22D /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
 		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
@@ -94,10 +101,20 @@
 /* Begin PBXFileReference section */
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAxisFomatter.h; sourceTree = "<group>"; };
+		4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAxisFomatter.m; sourceTree = "<group>"; };
+		4E1C8E471F3E758600947604 /* SetValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetValueFormatter.h; sourceTree = "<group>"; };
+		4E1C8E481F3E758600947604 /* SetValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetValueFormatter.m; sourceTree = "<group>"; };
+		4E1C8E4B1F3E998200947604 /* ChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsView.h; sourceTree = "<group>"; };
+		4E1C8E4C1F3E998200947604 /* ChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsView.m; sourceTree = "<group>"; };
+		4E3749381F3EE491004DBD53 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4E37493C1F3EE4CE004DBD53 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		4E37493D1F3EE4CE004DBD53 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		4E3749431F3EEC1F004DBD53 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		4E3749441F3EEC1F004DBD53 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		4E3F0BB21F3D1EDA00F1D22D /* WalgreensDashboardApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WalgreensDashboardApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		4E3F0BB31F3D1EDA00F1D22D /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
-		4E3F0BB61F3D1FA700F1D22D /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
-		4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
@@ -188,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B38ECF711F3F183B00AF75B0 /* Charts.framework in Frameworks */,
+				4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */,
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +216,7 @@
 		3978F1461EBD462A001FD643 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E3749381F3EE491004DBD53 /* MapKit.framework */,
 				A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
@@ -211,6 +230,34 @@
 			path = WalgreensDashboardAppTests;
 			sourceTree = "<group>";
 		};
+		4E1C8E4A1F3E995C00947604 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4E1C8E4B1F3E998200947604 /* ChartsView.h */,
+				4E1C8E4C1F3E998200947604 /* ChartsView.m */,
+			);
+			name = Models;
+			path = Common/Frontend/Views;
+			sourceTree = "<group>";
+		};
+		4E37493B1F3EE4A0004DBD53 /* MapPin */ = {
+			isa = PBXGroup;
+			children = (
+				4E37493C1F3EE4CE004DBD53 /* MapPin.h */,
+				4E37493D1F3EE4CE004DBD53 /* MapPin.m */,
+			);
+			name = MapPin;
+			sourceTree = "<group>";
+		};
+		4E37493F1F3EE532004DBD53 /* Detail  View */ = {
+			isa = PBXGroup;
+			children = (
+				4E3749431F3EEC1F004DBD53 /* DetailViewController.h */,
+				4E3749441F3EEC1F004DBD53 /* DetailViewController.m */,
+			);
+			name = "Detail  View";
+			sourceTree = "<group>";
+		};
 		4E3F0BA21F3D1E4D00F1D22D /* Charts */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,10 +269,22 @@
 		4E3F0BB51F3D1F3E00F1D22D /* Chart View */ = {
 			isa = PBXGroup;
 			children = (
-				4E3F0BB61F3D1FA700F1D22D /* ChartViewController.h */,
-				4E3F0BB71F3D1FA700F1D22D /* ChartViewController.m */,
+				4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */,
+				4E3F0BAB1F3D1E5A00F1D22D /* ChartsTests.xctest */,
 			);
-			name = "Chart View";
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E3F0BB51F3D1F3E00F1D22D /* Chart View Fomatter */ = {
+			isa = PBXGroup;
+			children = (
+				4E1C8E471F3E758600947604 /* SetValueFormatter.h */,
+				4E1C8E481F3E758600947604 /* SetValueFormatter.m */,
+				4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */,
+				4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */,
+			);
+			name = "Chart View Fomatter";
+			path = ../Common/Frontend/Controllers;
 			sourceTree = "<group>";
 		};
 		A821BB241EDB95C700B878BA /* Common */ = {
@@ -242,6 +301,7 @@
 			children = (
 				A8B5AD471F3AEDF00040A2E8 /* Helpers */,
 				A821BB2B1EDB961800B878BA /* Views */,
+				4E1C8E4A1F3E995C00947604 /* Models */,
 				A821BB2A1EDB960400B878BA /* Controllers */,
 			);
 			name = Frontend;
@@ -254,7 +314,7 @@
 				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
 				A82607031F3C828D00A412C8 /* CommonTableViewController.h */,
 				A82607041F3C828D00A412C8 /* CommonTableViewController.m */,
-				4E3F0BB51F3D1F3E00F1D22D /* Chart View */,
+				4E37493F1F3EE532004DBD53 /* Detail  View */,
 				A88A798D1F2F340300C99BFD /* Home View */,
 				A88A79911F2F346000C99BFD /* Offline View */,
 				B38ECF731F402B6000AF75B0 /* Online View */,
@@ -290,6 +350,8 @@
 		A821BB2E1EDB963F00B878BA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E37493B1F3EE4A0004DBD53 /* MapPin */,
+				4E3F0BB51F3D1F3E00F1D22D /* Chart View Fomatter */,
 				A842C72D1EB023FB002ED089 /* AppDelegate.h */,
 				A842C72E1EB023FB002ED089 /* AppDelegate.m */,
 				A842C72B1EB023FB002ED089 /* main.m */,
@@ -602,7 +664,7 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 3REFLA83ZM;
+						DevelopmentTeam = T45LG4J27C;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -698,12 +760,14 @@
 				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
 				A8A4CB501F2B406700B87449 /* Controller.m in Sources */,
 				A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */,
+				4E37493E1F3EE4CE004DBD53 /* MapPin.m in Sources */,
 				A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */,
 				B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */,
 				A8A4CB511F2B406700B87449 /* DataController.m in Sources */,
 				B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */,
 				B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */,
 				A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */,
+				4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */,
 				A8A4CB521F2B406700B87449 /* StatusController.m in Sources */,
 				A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */,
 				A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */,
@@ -711,17 +775,19 @@
 				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
 				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
 				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
-				4E3F0BB81F3D1FA700F1D22D /* ChartViewController.m in Sources */,
 				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,
 				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
 				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
 				A842C72C1EB023FB002ED089 /* main.m in Sources */,
 				4E3F0BB41F3D1EDA00F1D22D /* Charts-Bridging.swift in Sources */,
+				4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */,
 				A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */,
 				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
 				A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */,
+				4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */,
 				A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */,
 				A8A4CB581F2B406700B87449 /* TableCommands.m in Sources */,
+				4E1C8E4D1F3E998200947604 /* ChartsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,7 +943,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3REFLA83ZM;
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -898,7 +964,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 3REFLA83ZM;
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

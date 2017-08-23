@@ -10,10 +10,17 @@
 #import "HistoryTableViewController.h"
 #import "HomeViewController.h"
 #import "DatabaseManagerApp.h"
+#import "ChartsView.h"
+#import "DetailViewController.h"
 
 @interface HistoryTableViewController () {
     DatabaseManagerApp *databaseManagerApp;
+    ChartsView *chartView;
+    
 }
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
+- (IBAction)callDetail:(id)sender;
 
 @end
 
@@ -24,11 +31,12 @@
     
     // Retrieve selected date from home view controller.
     self.date = ((HomeViewController *)self.parentViewController).date;
-    
     databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    
     // Database closes itself after use.
     [databaseManagerApp openCreateDatabase];
-    
+    [self setUpChart];
+
     [self reloadData];
 }
 
@@ -62,7 +70,7 @@
                     break;
                 }
                 // Offline row.
-                case 1: {
+                case 2: {
                     // Get home view.
                     HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
                     
@@ -82,4 +90,26 @@
     // Push selected view onto navigation stack.
 }
 
+- (void)setUpChart{
+    _xaixsWithDate = [[NSMutableArray alloc] init];
+    chartView =[[ChartsView alloc] init];
+    
+    [chartView setSelfDate:self.date];
+    
+    _xaixsWithDate = [chartView setXAixsArray:_xaixsWithDate];
+    
+    NSMutableArray *onlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Online"];
+    NSMutableArray *offlineStoreNumberData = [chartView getStoreNumberFor:_xaixsWithDate :@"Offline"];
+    
+    _graphForOnlineStores.data = [chartView setDataForStores:_xaixsWithDate:onlineStoreNumberData: @"Online" :_graphForOnlineStores];
+    _graphForOfflineStores.data = [chartView setDataForStores:_xaixsWithDate :offlineStoreNumberData: @"Offline" :_graphForOfflineStores];
+    
+}
+
+- (IBAction)callDetail:(id)sender {
+    
+    UIStoryboard *storeStoryBoard = [UIStoryboard storyboardWithName:@"StoreView" bundle:nil];
+    DetailViewController *detailViewController = [storeStoryBoard instantiateViewControllerWithIdentifier:@"StoreDetailView"];
+    [self.navigationController popToViewController:detailViewController animated:YES];
+}
 @end

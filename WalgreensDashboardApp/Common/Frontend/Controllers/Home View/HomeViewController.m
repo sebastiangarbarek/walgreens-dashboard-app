@@ -13,8 +13,9 @@
 #import "OfflineTableViewController.h"
 #import "OnlineTableViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController (){
 
+}
 
 @end
 
@@ -58,6 +59,8 @@
                                              selector:@selector(requestsCompleteUpdate)
                                                  name:@"Requests complete"
                                                object:nil];
+    
+
     
     // Add shadow to date picker.
     CGRect datePickerBounds = self.datePicker.bounds;
@@ -130,6 +133,7 @@
         }
     }];
 }
+
 
 - (void)popAnimate:(UITableViewController *)newVc {
     // Add the table view controller as a child to this.
