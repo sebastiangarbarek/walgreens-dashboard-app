@@ -51,6 +51,14 @@
 		A8A4CB5D1F2B406700B87449 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB4E1F2B406700B87449 /* Input.m */; };
 		A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
+		B38ECF711F3F183B00AF75B0 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38ECF6E1F3F17E600AF75B0 /* Charts.framework */; };
+		B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B38ECF771F40413300AF75B0 /* OnlineView.storyboard */; };
+		B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */; };
+		B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7D1F40446600AF75B0 /* OnlineCell.m */; };
+		B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08A81F4534ED00509D57 /* CityList.storyboard */; };
+		B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08AE1F45378A00509D57 /* CityTableViewController.m */; };
+		B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */; };
+		B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08B31F45384C00509D57 /* StoreList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,26 +69,19 @@
 			remoteGlobalIDString = A842C7261EB023FB002ED089;
 			remoteInfo = WalgreensDashboardApp;
 		};
-		4E3F0BA81F3D1E5A00F1D22D /* PBXContainerItemProxy */ = {
+		B38ECF6D1F3F17E600AF75B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+			containerPortal = B38ECF681F3F17E600AF75B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		4E3F0BAA1F3D1E5A00F1D22D /* PBXContainerItemProxy */ = {
+		B38ECF6F1F3F17E600AF75B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+			containerPortal = B38ECF681F3F17E600AF75B0 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
-		};
-		4E3F0BAE1F3D1E6900F1D22D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 06165F231D8110E600722320;
-			remoteInfo = Charts;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -91,7 +92,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4E3F0BAD1F3D1E6900F1D22D /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +178,18 @@
 		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
 		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B38ECF681F3F17E600AF75B0 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		B38ECF771F40413300AF75B0 /* OnlineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlineView.storyboard; sourceTree = "<group>"; };
+		B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTableViewController.h; sourceTree = "<group>"; };
+		B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTableViewController.m; sourceTree = "<group>"; };
+		B38ECF7C1F40446600AF75B0 /* OnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineCell.h; sourceTree = "<group>"; };
+		B38ECF7D1F40446600AF75B0 /* OnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineCell.m; sourceTree = "<group>"; };
+		B3FB08A81F4534ED00509D57 /* CityList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CityList.storyboard; sourceTree = "<group>"; };
+		B3FB08AD1F45378A00509D57 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		B3FB08AE1F45378A00509D57 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
+		B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B31F45384C00509D57 /* StoreList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,9 +204,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B38ECF711F3F183B00AF75B0 /* Charts.framework in Frameworks */,
 				4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */,
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
-				4E3F0BAC1F3D1E6900F1D22D /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,12 +261,12 @@
 		4E3F0BA21F3D1E4D00F1D22D /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */,
+				B38ECF681F3F17E600AF75B0 /* Charts.xcodeproj */,
 			);
 			name = Charts;
 			sourceTree = "<group>";
 		};
-		4E3F0BA41F3D1E5900F1D22D /* Products */ = {
+		4E3F0BB51F3D1F3E00F1D22D /* Chart View */ = {
 			isa = PBXGroup;
 			children = (
 				4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */,
@@ -305,6 +317,7 @@
 				4E37493F1F3EE532004DBD53 /* Detail  View */,
 				A88A798D1F2F340300C99BFD /* Home View */,
 				A88A79911F2F346000C99BFD /* Offline View */,
+				B38ECF731F402B6000AF75B0 /* Online View */,
 			);
 			name = Controllers;
 			path = Common/Frontend/Controllers;
@@ -313,6 +326,7 @@
 		A821BB2B1EDB961800B878BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3FB08AC1F45350F00509D57 /* Online */,
 				A86A06801F2DA820005A0936 /* HomeView.storyboard */,
 				A85A2E661F35C94C00417C2C /* UpdateView.storyboard */,
 				A85A2E681F35C96100417C2C /* HistoryView.storyboard */,
@@ -552,6 +566,49 @@
 			path = Common/Frontend/Helpers;
 			sourceTree = "<group>";
 		};
+		B38ECF691F3F17E600AF75B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B38ECF6E1F3F17E600AF75B0 /* Charts.framework */,
+				B38ECF701F3F17E600AF75B0 /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B38ECF731F402B6000AF75B0 /* Online View */ = {
+			isa = PBXGroup;
+			children = (
+				B38ECF761F402BA600AF75B0 /* Cells */,
+				B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */,
+				B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */,
+				B3FB08AD1F45378A00509D57 /* CityTableViewController.h */,
+				B3FB08AE1F45378A00509D57 /* CityTableViewController.m */,
+				B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */,
+				B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */,
+			);
+			name = "Online View";
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		B38ECF761F402BA600AF75B0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B38ECF7C1F40446600AF75B0 /* OnlineCell.h */,
+				B38ECF7D1F40446600AF75B0 /* OnlineCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B3FB08AC1F45350F00509D57 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				B3FB08A81F4534ED00509D57 /* CityList.storyboard */,
+				B38ECF771F40413300AF75B0 /* OnlineView.storyboard */,
+				B3FB08B31F45384C00509D57 /* StoreList.storyboard */,
+			);
+			name = Online;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,7 +642,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4E3F0BAF1F3D1E6900F1D22D /* PBXTargetDependency */,
 			);
 			name = WalgreensDashboardApp;
 			productName = WalgreensDashboardMock;
@@ -627,8 +683,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4E3F0BA41F3D1E5900F1D22D /* Products */;
-					ProjectRef = 4E3F0BA31F3D1E5900F1D22D /* Charts.xcodeproj */;
+					ProductGroup = B38ECF691F3F17E600AF75B0 /* Products */;
+					ProjectRef = B38ECF681F3F17E600AF75B0 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -640,18 +696,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4E3F0BA91F3D1E5A00F1D22D /* Charts.framework */ = {
+		B38ECF6E1F3F17E600AF75B0 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 4E3F0BA81F3D1E5A00F1D22D /* PBXContainerItemProxy */;
+			remoteRef = B38ECF6D1F3F17E600AF75B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4E3F0BAB1F3D1E5A00F1D22D /* ChartsTests.xctest */ = {
+		B38ECF701F3F17E600AF75B0 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 4E3F0BAA1F3D1E5A00F1D22D /* PBXContainerItemProxy */;
+			remoteRef = B38ECF6F1F3F17E600AF75B0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -672,8 +728,11 @@
 				A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */,
 				A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */,
 				A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */,
+				B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
+				B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
+				B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */,
 				A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */,
 				A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */,
 			);
@@ -697,12 +756,16 @@
 				A8A4CB571F2B406700B87449 /* SelectCommands.m in Sources */,
 				A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */,
 				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
+				B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */,
 				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
 				A8A4CB501F2B406700B87449 /* Controller.m in Sources */,
 				A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */,
 				4E37493E1F3EE4CE004DBD53 /* MapPin.m in Sources */,
 				A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */,
+				B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */,
 				A8A4CB511F2B406700B87449 /* DataController.m in Sources */,
+				B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */,
+				B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */,
 				A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */,
 				4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */,
 				A8A4CB521F2B406700B87449 /* StatusController.m in Sources */,
@@ -735,11 +798,6 @@
 			isa = PBXTargetDependency;
 			target = A842C7261EB023FB002ED089 /* WalgreensDashboardApp */;
 			targetProxy = 3978F1601EBEAF16001FD643 /* PBXContainerItemProxy */;
-		};
-		4E3F0BAF1F3D1E6900F1D22D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			targetProxy = 4E3F0BAE1F3D1E6900F1D22D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -874,6 +932,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
