@@ -7,40 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */; };
+		4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E481F3E758600947604 /* SetValueFormatter.m */; };
+		4E1C8E4D1F3E998200947604 /* ChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C8E4C1F3E998200947604 /* ChartsView.m */; };
+		4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3749381F3EE491004DBD53 /* MapKit.framework */; };
+		4E37493E1F3EE4CE004DBD53 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E37493D1F3EE4CE004DBD53 /* MapPin.m */; };
+		4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3749441F3EEC1F004DBD53 /* DetailViewController.m */; };
+		7649FB6E2941621ED3FB9EEA /* Pods_WalgreensDashboardAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
-		A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */; };
-		A812078A1F327055006C6384 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207881F327055006C6384 /* Fabric.framework */; };
-		A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A81207891F327055006C6384 /* Crashlytics.framework */; };
-		A842C72C1EB023FB002ED089 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72B1EB023FB002ED089 /* main.m */; };
-		A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A842C72E1EB023FB002ED089 /* AppDelegate.m */; };
+		A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82607041F3C828D00A412C8 /* CommonTableViewController.m */; };
+		A82949D91F4E4C9D00EA0BBD /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
-		A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A855530A1F30644800C7B20C /* StatusControllerApp.m */; };
+		A85A2E671F35C94C00417C2C /* UpdateView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E661F35C94C00417C2C /* UpdateView.storyboard */; };
+		A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E681F35C96100417C2C /* HistoryView.storyboard */; };
 		A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06801F2DA820005A0936 /* HomeView.storyboard */; };
 		A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06811F2DA820005A0936 /* OfflineView.storyboard */; };
 		A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06821F2DA820005A0936 /* StoreView.storyboard */; };
 		A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */; };
-		A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86A06B41F2DA850005A0936 /* OfflineViewController.m */; };
 		A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79881F2F151700C99BFD /* OfflineCell.m */; };
 		A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798B1F2F33E400C99BFD /* HomeViewController.m */; };
 		A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */; };
 		A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */; };
-		A8A4CB501F2B406700B87449 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB301F2B406700B87449 /* Controller.m */; };
-		A8A4CB511F2B406700B87449 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB321F2B406700B87449 /* DataController.m */; };
-		A8A4CB521F2B406700B87449 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB341F2B406700B87449 /* StatusController.m */; };
-		A8A4CB531F2B406700B87449 /* Commands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB381F2B406700B87449 /* Commands.m */; };
-		A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB3A1F2B406700B87449 /* DatabaseManager.m */; };
-		A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB3C1F2B406700B87449 /* DateHelper.m */; };
-		A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB3E1F2B406700B87449 /* InsertCommands.m */; };
-		A8A4CB571F2B406700B87449 /* SelectCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB401F2B406700B87449 /* SelectCommands.m */; };
-		A8A4CB581F2B406700B87449 /* TableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB421F2B406700B87449 /* TableCommands.m */; };
-		A8A4CB591F2B406700B87449 /* UpdateCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB441F2B406700B87449 /* UpdateCommands.m */; };
-		A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB471F2B406700B87449 /* NetworkUtility.m */; };
-		A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB491F2B406700B87449 /* Reachability.m */; };
-		A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB4B1F2B406700B87449 /* WalgreensAPI.m */; };
-		A8A4CB5D1F2B406700B87449 /* Input.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4CB4E1F2B406700B87449 /* Input.m */; };
+		A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
+		A8E09A471F4D45560063EEE4 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A401F4D45560063EEE4 /* StatusController.m */; };
+		A8E09A481F4D45560063EEE4 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A421F4D45560063EEE4 /* DataController.m */; };
+		A8E09A491F4D45560063EEE4 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A441F4D45560063EEE4 /* Controller.m */; };
+		A8E09A621F4D45680063EEE4 /* NetworkUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */; };
+		A8E09A631F4D45680063EEE4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4E1F4D45680063EEE4 /* Reachability.m */; };
+		A8E09A641F4D45680063EEE4 /* WalgreensAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */; };
+		A8E09A651F4D45680063EEE4 /* Commands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A531F4D45680063EEE4 /* Commands.m */; };
+		A8E09A661F4D45680063EEE4 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A551F4D45680063EEE4 /* DatabaseManager.m */; };
+		A8E09A671F4D45680063EEE4 /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */; };
+		A8E09A691F4D45680063EEE4 /* InsertCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */; };
+		A8E09A6A1F4D45680063EEE4 /* SelectCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */; };
+		A8E09A6B1F4D45680063EEE4 /* TableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5F1F4D45680063EEE4 /* TableCommands.m */; };
+		A8E09A6C1F4D45680063EEE4 /* UpdateCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A611F4D45680063EEE4 /* UpdateCommands.m */; };
+		A8E1E2031F4E58CE008DE876 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2011F4E58CE008DE876 /* DateHelper.m */; };
+		A8E1E2161F4E5ADE008DE876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2111F4E5ADE008DE876 /* main.m */; };
+		A8E1E2171F4E5ADE008DE876 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A8E1E2121F4E5ADE008DE876 /* Info.plist */; };
+		A8E1E2181F4E5ADE008DE876 /* Charts-Bridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */; };
+		A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */; };
+		B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B38ECF771F40413300AF75B0 /* OnlineView.storyboard */; };
+		B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */; };
+		B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B38ECF7D1F40446600AF75B0 /* OnlineCell.m */; };
+		B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08A81F4534ED00509D57 /* CityList.storyboard */; };
+		B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08AE1F45378A00509D57 /* CityTableViewController.m */; };
+		B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */; };
+		B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3FB08B31F45384C00509D57 /* StoreList.storyboard */; };
+		FD45EFD0CCED084D3801BDEF /* Pods_WalgreensDashboardApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,31 +70,52 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4E3F0BB01F3D1E6900F1D22D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2CF0AFDCB79E639C41000337 /* Pods-WalgreensDashboardApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp.release.xcconfig"; sourceTree = "<group>"; };
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAxisFomatter.h; sourceTree = "<group>"; };
+		4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAxisFomatter.m; sourceTree = "<group>"; };
+		4E1C8E471F3E758600947604 /* SetValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetValueFormatter.h; sourceTree = "<group>"; };
+		4E1C8E481F3E758600947604 /* SetValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetValueFormatter.m; sourceTree = "<group>"; };
+		4E1C8E4B1F3E998200947604 /* ChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsView.h; sourceTree = "<group>"; };
+		4E1C8E4C1F3E998200947604 /* ChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsView.m; sourceTree = "<group>"; };
+		4E3749381F3EE491004DBD53 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4E37493C1F3EE4CE004DBD53 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		4E37493D1F3EE4CE004DBD53 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		4E3749431F3EEC1F004DBD53 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		4E3749441F3EEC1F004DBD53 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		58F71D457A8E5549B6DB1252 /* Pods-WalgreensDashboardApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
-		A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
-		A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
-		A81207881F327055006C6384 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		A81207891F327055006C6384 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		A82607031F3C828D00A412C8 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
+		A82607041F3C828D00A412C8 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
+		A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
+		A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A842C72B1EB023FB002ED089 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A842C72D1EB023FB002ED089 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		A842C72E1EB023FB002ED089 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A842C7361EB023FB002ED089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A842C73B1EB023FB002ED089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A85553091F30642400C7B20C /* StatusControllerApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
-		A855530A1F30644800C7B20C /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
+		A85A2E661F35C94C00417C2C /* UpdateView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateView.storyboard; sourceTree = "<group>"; };
+		A85A2E681F35C96100417C2C /* HistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoryView.storyboard; sourceTree = "<group>"; };
 		A86A06801F2DA820005A0936 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		A86A06811F2DA820005A0936 /* OfflineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineView.storyboard; sourceTree = "<group>"; };
 		A86A06821F2DA820005A0936 /* StoreView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreView.storyboard; sourceTree = "<group>"; };
 		A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewController.h; sourceTree = "<group>"; };
 		A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewController.m; sourceTree = "<group>"; };
-		A86A06B31F2DA850005A0936 /* OfflineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineViewController.h; sourceTree = "<group>"; };
-		A86A06B41F2DA850005A0936 /* OfflineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineViewController.m; sourceTree = "<group>"; };
 		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
 		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
 		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
@@ -87,36 +125,57 @@
 		A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTableViewController.h; sourceTree = "<group>"; };
 		A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTableViewController.m; sourceTree = "<group>"; };
-		A8A4CB2F1F2B406700B87449 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		A8A4CB301F2B406700B87449 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
-		A8A4CB311F2B406700B87449 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
-		A8A4CB321F2B406700B87449 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
-		A8A4CB331F2B406700B87449 /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
-		A8A4CB341F2B406700B87449 /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
-		A8A4CB371F2B406700B87449 /* Commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commands.h; sourceTree = "<group>"; };
-		A8A4CB381F2B406700B87449 /* Commands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commands.m; sourceTree = "<group>"; };
-		A8A4CB391F2B406700B87449 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
-		A8A4CB3A1F2B406700B87449 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
-		A8A4CB3B1F2B406700B87449 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
-		A8A4CB3C1F2B406700B87449 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
-		A8A4CB3D1F2B406700B87449 /* InsertCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertCommands.h; sourceTree = "<group>"; };
-		A8A4CB3E1F2B406700B87449 /* InsertCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertCommands.m; sourceTree = "<group>"; };
-		A8A4CB3F1F2B406700B87449 /* SelectCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCommands.h; sourceTree = "<group>"; };
-		A8A4CB401F2B406700B87449 /* SelectCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCommands.m; sourceTree = "<group>"; };
-		A8A4CB411F2B406700B87449 /* TableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommands.h; sourceTree = "<group>"; };
-		A8A4CB421F2B406700B87449 /* TableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommands.m; sourceTree = "<group>"; };
-		A8A4CB431F2B406700B87449 /* UpdateCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCommands.h; sourceTree = "<group>"; };
-		A8A4CB441F2B406700B87449 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
-		A8A4CB461F2B406700B87449 /* NetworkUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtility.h; sourceTree = "<group>"; };
-		A8A4CB471F2B406700B87449 /* NetworkUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtility.m; sourceTree = "<group>"; };
-		A8A4CB481F2B406700B87449 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A8A4CB491F2B406700B87449 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		A8A4CB4A1F2B406700B87449 /* WalgreensAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPI.h; sourceTree = "<group>"; };
-		A8A4CB4B1F2B406700B87449 /* WalgreensAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPI.m; sourceTree = "<group>"; };
-		A8A4CB4D1F2B406700B87449 /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
-		A8A4CB4E1F2B406700B87449 /* Input.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Input.m; sourceTree = "<group>"; };
-		A8A4CB4F1F2B406700B87449 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
+		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A8E09A401F4D45560063EEE4 /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
+		A8E09A411F4D45560063EEE4 /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
+		A8E09A421F4D45560063EEE4 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		A8E09A431F4D45560063EEE4 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		A8E09A441F4D45560063EEE4 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		A8E09A451F4D45560063EEE4 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtility.h; sourceTree = "<group>"; };
+		A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtility.m; sourceTree = "<group>"; };
+		A8E09A4D1F4D45680063EEE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A8E09A4E1F4D45680063EEE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPI.h; sourceTree = "<group>"; };
+		A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPI.m; sourceTree = "<group>"; };
+		A8E09A521F4D45680063EEE4 /* Commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commands.h; sourceTree = "<group>"; };
+		A8E09A531F4D45680063EEE4 /* Commands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commands.m; sourceTree = "<group>"; };
+		A8E09A541F4D45680063EEE4 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
+		A8E09A551F4D45680063EEE4 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
+		A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
+		A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertCommands.h; sourceTree = "<group>"; };
+		A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertCommands.m; sourceTree = "<group>"; };
+		A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCommands.h; sourceTree = "<group>"; };
+		A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCommands.m; sourceTree = "<group>"; };
+		A8E09A5E1F4D45680063EEE4 /* TableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommands.h; sourceTree = "<group>"; };
+		A8E09A5F1F4D45680063EEE4 /* TableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommands.m; sourceTree = "<group>"; };
+		A8E09A601F4D45680063EEE4 /* UpdateCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCommands.h; sourceTree = "<group>"; };
+		A8E09A611F4D45680063EEE4 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
+		A8E1E2011F4E58CE008DE876 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
+		A8E1E2021F4E58CE008DE876 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
+		A8E1E2101F4E5ADE008DE876 /* WalgreensDashboardApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WalgreensDashboardApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8E1E2111F4E5ADE008DE876 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A8E1E2121F4E5ADE008DE876 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
+		A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A8E1E2151F4E5ADE008DE876 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B38ECF771F40413300AF75B0 /* OnlineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OnlineView.storyboard; sourceTree = "<group>"; };
+		B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTableViewController.h; sourceTree = "<group>"; };
+		B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTableViewController.m; sourceTree = "<group>"; };
+		B38ECF7C1F40446600AF75B0 /* OnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineCell.h; sourceTree = "<group>"; };
+		B38ECF7D1F40446600AF75B0 /* OnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineCell.m; sourceTree = "<group>"; };
+		B3FB08A81F4534ED00509D57 /* CityList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CityList.storyboard; sourceTree = "<group>"; };
+		B3FB08AD1F45378A00509D57 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
+		B3FB08AE1F45378A00509D57 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
+		B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
+		B3FB08B31F45384C00509D57 /* StoreList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreList.storyboard; sourceTree = "<group>"; };
+		B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAF33B164F684CDBC08297E0 /* Pods-WalgreensDashboardAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FFAB52812B6619A93CDF5CA0 /* Pods-WalgreensDashboardAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7649FB6E2941621ED3FB9EEA /* Pods_WalgreensDashboardAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,21 +191,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */,
 				A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */,
-				A812078B1F327055006C6384 /* Crashlytics.framework in Frameworks */,
-				A812078A1F327055006C6384 /* Fabric.framework in Frameworks */,
+				FD45EFD0CCED084D3801BDEF /* Pods_WalgreensDashboardApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A6712546D177FAAEBC81EAA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				58F71D457A8E5549B6DB1252 /* Pods-WalgreensDashboardApp.debug.xcconfig */,
+				2CF0AFDCB79E639C41000337 /* Pods-WalgreensDashboardApp.release.xcconfig */,
+				CAF33B164F684CDBC08297E0 /* Pods-WalgreensDashboardAppTests.debug.xcconfig */,
+				FFAB52812B6619A93CDF5CA0 /* Pods-WalgreensDashboardAppTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3978F1461EBD462A001FD643 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E3749381F3EE491004DBD53 /* MapKit.framework */,
 				A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */,
-				A81207881F327055006C6384 /* Fabric.framework */,
-				A81207891F327055006C6384 /* Crashlytics.framework */,
+				B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */,
+				5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,11 +230,52 @@
 			path = WalgreensDashboardAppTests;
 			sourceTree = "<group>";
 		};
+		4E1C8E4A1F3E995C00947604 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A82949DA1F4E4DEE00EA0BBD /* Graph */,
+				4E37493B1F3EE4A0004DBD53 /* Map */,
+			);
+			name = Models;
+			path = Common/Frontend/Views;
+			sourceTree = "<group>";
+		};
+		4E37493B1F3EE4A0004DBD53 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4E37493C1F3EE4CE004DBD53 /* MapPin.h */,
+				4E37493D1F3EE4CE004DBD53 /* MapPin.m */,
+			);
+			name = Map;
+			path = ../Models/Map;
+			sourceTree = "<group>";
+		};
+		4E37493F1F3EE532004DBD53 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				4E3749431F3EEC1F004DBD53 /* DetailViewController.h */,
+				4E3749441F3EEC1F004DBD53 /* DetailViewController.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		4E3F0BB51F3D1F3E00F1D22D /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				4E1C8E471F3E758600947604 /* SetValueFormatter.h */,
+				4E1C8E481F3E758600947604 /* SetValueFormatter.m */,
+				4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */,
+				4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
 		A821BB241EDB95C700B878BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A8A4CB5F1F2B433200B87449 /* Backend */,
 				A821BB291EDB95F800B878BA /* Frontend */,
+				A8A4CB5F1F2B433200B87449 /* Backend */,
+				A8B5AD471F3AEDF00040A2E8 /* Helpers */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -171,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				A821BB2B1EDB961800B878BA /* Views */,
+				4E1C8E4A1F3E995C00947604 /* Models */,
 				A821BB2A1EDB960400B878BA /* Controllers */,
 			);
 			name = Frontend;
@@ -179,10 +293,11 @@
 		A821BB2A1EDB960400B878BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */,
-				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
-				A88A798D1F2F340300C99BFD /* Home View */,
-				A88A79911F2F346000C99BFD /* Offline View */,
+				A82949DD1F4E525A00EA0BBD /* Shared */,
+				A88A798D1F2F340300C99BFD /* Main */,
+				A88A79911F2F346000C99BFD /* Offline */,
+				B38ECF731F402B6000AF75B0 /* Online */,
+				4E37493F1F3EE532004DBD53 /* Store */,
 			);
 			name = Controllers;
 			path = Common/Frontend/Controllers;
@@ -191,9 +306,10 @@
 		A821BB2B1EDB961800B878BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A86A06801F2DA820005A0936 /* HomeView.storyboard */,
-				A86A06811F2DA820005A0936 /* OfflineView.storyboard */,
-				A86A06821F2DA820005A0936 /* StoreView.storyboard */,
+				A82949D21F4E4B9A00EA0BBD /* Main */,
+				A82949D11F4E4B8A00EA0BBD /* Offline */,
+				B3FB08AC1F45350F00509D57 /* Online */,
+				A82949DC1F4E50F800EA0BBD /* Store */,
 			);
 			name = Views;
 			path = Common/Frontend/Views;
@@ -207,17 +323,6 @@
 				A821BB2F1EDB964800B878BA /* Database Files */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		A821BB2E1EDB963F00B878BA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A842C72D1EB023FB002ED089 /* AppDelegate.h */,
-				A842C72E1EB023FB002ED089 /* AppDelegate.m */,
-				A842C72B1EB023FB002ED089 /* main.m */,
-				A842C73B1EB023FB002ED089 /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A821BB2F1EDB964800B878BA /* Database Files */ = {
@@ -238,6 +343,106 @@
 			path = Resources/Base.lproj;
 			sourceTree = "<group>";
 		};
+		A82949D11F4E4B8A00EA0BBD /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+				A86A06811F2DA820005A0936 /* OfflineView.storyboard */,
+			);
+			path = Offline;
+			sourceTree = "<group>";
+		};
+		A82949D21F4E4B9A00EA0BBD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A86A06801F2DA820005A0936 /* HomeView.storyboard */,
+				A85A2E661F35C94C00417C2C /* UpdateView.storyboard */,
+				A85A2E681F35C96100417C2C /* HistoryView.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A82949D31F4E4BBF00EA0BBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */,
+				A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A82949D41F4E4BEC00EA0BBD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */,
+				A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A82949D51F4E4BFE00EA0BBD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */,
+				A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A82949D61F4E4C4D00EA0BBD /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A521F4D45680063EEE4 /* Commands.h */,
+				A8E09A531F4D45680063EEE4 /* Commands.m */,
+				A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */,
+				A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */,
+				A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */,
+				A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */,
+				A8E09A5E1F4D45680063EEE4 /* TableCommands.h */,
+				A8E09A5F1F4D45680063EEE4 /* TableCommands.m */,
+				A8E09A601F4D45680063EEE4 /* UpdateCommands.h */,
+				A8E09A611F4D45680063EEE4 /* UpdateCommands.m */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		A82949DA1F4E4DEE00EA0BBD /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				4E1C8E4B1F3E998200947604 /* ChartsView.h */,
+				4E1C8E4C1F3E998200947604 /* ChartsView.m */,
+			);
+			name = Graph;
+			path = ../Models/Graph;
+			sourceTree = "<group>";
+		};
+		A82949DB1F4E4EB500EA0BBD /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				A8E1E2011F4E58CE008DE876 /* DateHelper.m */,
+				A8E1E2021F4E58CE008DE876 /* DateHelper.h */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		A82949DC1F4E50F800EA0BBD /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				A86A06821F2DA820005A0936 /* StoreView.storyboard */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		A82949DD1F4E525A00EA0BBD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */,
+				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
+				A82607031F3C828D00A412C8 /* CommonTableViewController.h */,
+				A82607041F3C828D00A412C8 /* CommonTableViewController.m */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		A842C71E1EB023FB002ED089 = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +450,7 @@
 				3978F15C1EBEAF16001FD643 /* WalgreensDashboardAppTests */,
 				A842C7281EB023FB002ED089 /* Products */,
 				3978F1461EBD462A001FD643 /* Frameworks */,
+				0A6712546D177FAAEBC81EAA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,8 +468,7 @@
 			children = (
 				A821BB241EDB95C700B878BA /* Common */,
 				A821BB2D1EDB962E00B878BA /* Resources */,
-				A821BB2E1EDB963F00B878BA /* Supporting Files */,
-				A8A4CAE91F2B3F6A00B87449 /* External */,
+				A8E1E2051F4E5A1D008DE876 /* Supporting Files */,
 			);
 			path = WalgreensDashboardApp;
 			sourceTree = "<group>";
@@ -271,8 +476,13 @@
 		A85553081F3063FA00C7B20C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A85553091F30642400C7B20C /* StatusControllerApp.h */,
-				A855530A1F30644800C7B20C /* StatusControllerApp.m */,
+				A8E09A451F4D45560063EEE4 /* Controller.h */,
+				A8E09A441F4D45560063EEE4 /* Controller.m */,
+				A8E09A411F4D45560063EEE4 /* StatusController.h */,
+				A8E09A401F4D45560063EEE4 /* StatusController.m */,
+				A8E09A431F4D45560063EEE4 /* DataController.h */,
+				A8E09A421F4D45560063EEE4 /* DataController.m */,
+				A82949D51F4E4BFE00EA0BBD /* App */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -283,10 +493,11 @@
 				A88A79871F2F151700C99BFD /* OfflineCell.h */,
 				A88A79881F2F151700C99BFD /* OfflineCell.m */,
 			);
-			path = Cells;
+			name = Cells;
+			path = ../Offline/Cells;
 			sourceTree = "<group>";
 		};
-		A88A798D1F2F340300C99BFD /* Home View */ = {
+		A88A798D1F2F340300C99BFD /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				A88A798A1F2F33E400C99BFD /* HomeViewController.h */,
@@ -296,104 +507,17 @@
 				A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */,
 				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
 			);
-			path = "Home View";
+			path = Main;
 			sourceTree = "<group>";
 		};
-		A88A79911F2F346000C99BFD /* Offline View */ = {
+		A88A79911F2F346000C99BFD /* Offline */ = {
 			isa = PBXGroup;
 			children = (
 				A88A79861F2F14BA00C99BFD /* Cells */,
-				A86A06B31F2DA850005A0936 /* OfflineViewController.h */,
-				A86A06B41F2DA850005A0936 /* OfflineViewController.m */,
 				A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */,
 				A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */,
 			);
-			path = "Offline View";
-			sourceTree = "<group>";
-		};
-		A8A4CAE91F2B3F6A00B87449 /* External */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB2D1F2B406700B87449 /* WalgreensAPIHarvester */,
-			);
-			path = External;
-			sourceTree = "<group>";
-		};
-		A8A4CB2D1F2B406700B87449 /* WalgreensAPIHarvester */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB2E1F2B406700B87449 /* Controller */,
-				A8A4CB351F2B406700B87449 /* Model */,
-				A8A4CB4C1F2B406700B87449 /* View */,
-			);
-			name = WalgreensAPIHarvester;
-			path = WalgreensAPIHarvester/WalgreensAPIHarvester;
-			sourceTree = "<group>";
-		};
-		A8A4CB2E1F2B406700B87449 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB2F1F2B406700B87449 /* Controller.h */,
-				A8A4CB301F2B406700B87449 /* Controller.m */,
-				A8A4CB311F2B406700B87449 /* DataController.h */,
-				A8A4CB321F2B406700B87449 /* DataController.m */,
-				A8A4CB331F2B406700B87449 /* StatusController.h */,
-				A8A4CB341F2B406700B87449 /* StatusController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		A8A4CB351F2B406700B87449 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB361F2B406700B87449 /* Database */,
-				A8A4CB451F2B406700B87449 /* Network */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A8A4CB361F2B406700B87449 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB371F2B406700B87449 /* Commands.h */,
-				A8A4CB381F2B406700B87449 /* Commands.m */,
-				A8A4CB391F2B406700B87449 /* DatabaseManager.h */,
-				A8A4CB3A1F2B406700B87449 /* DatabaseManager.m */,
-				A8A4CB3B1F2B406700B87449 /* DateHelper.h */,
-				A8A4CB3C1F2B406700B87449 /* DateHelper.m */,
-				A8A4CB3D1F2B406700B87449 /* InsertCommands.h */,
-				A8A4CB3E1F2B406700B87449 /* InsertCommands.m */,
-				A8A4CB3F1F2B406700B87449 /* SelectCommands.h */,
-				A8A4CB401F2B406700B87449 /* SelectCommands.m */,
-				A8A4CB411F2B406700B87449 /* TableCommands.h */,
-				A8A4CB421F2B406700B87449 /* TableCommands.m */,
-				A8A4CB431F2B406700B87449 /* UpdateCommands.h */,
-				A8A4CB441F2B406700B87449 /* UpdateCommands.m */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		A8A4CB451F2B406700B87449 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB461F2B406700B87449 /* NetworkUtility.h */,
-				A8A4CB471F2B406700B87449 /* NetworkUtility.m */,
-				A8A4CB481F2B406700B87449 /* Reachability.h */,
-				A8A4CB491F2B406700B87449 /* Reachability.m */,
-				A8A4CB4A1F2B406700B87449 /* WalgreensAPI.h */,
-				A8A4CB4B1F2B406700B87449 /* WalgreensAPI.m */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		A8A4CB4C1F2B406700B87449 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A8A4CB4D1F2B406700B87449 /* Input.h */,
-				A8A4CB4E1F2B406700B87449 /* Input.m */,
-				A8A4CB4F1F2B406700B87449 /* main.m */,
-			);
-			path = View;
+			path = Offline;
 			sourceTree = "<group>";
 		};
 		A8A4CB5F1F2B433200B87449 /* Backend */ = {
@@ -409,10 +533,93 @@
 		A8A4CB611F2B46E000B87449 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A80E8A121F2BD0D100A92BFB /* DatabaseManagerApp.h */,
-				A80E8A131F2BD0DF00A92BFB /* DatabaseManagerApp.m */,
+				A8E09A4A1F4D45680063EEE4 /* Network */,
+				A8E09A511F4D45680063EEE4 /* Database */,
 			);
-			path = Models;
+			name = Models;
+			path = Models/Database;
+			sourceTree = "<group>";
+		};
+		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A82949DB1F4E4EB500EA0BBD /* Date */,
+				A82949D31F4E4BBF00EA0BBD /* Data */,
+				4E3F0BB51F3D1F3E00F1D22D /* Chart */,
+			);
+			name = Helpers;
+			path = Common/Helpers;
+			sourceTree = "<group>";
+		};
+		A8E09A4A1F4D45680063EEE4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */,
+				A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */,
+				A8E09A4D1F4D45680063EEE4 /* Reachability.h */,
+				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
+				A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */,
+				A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */,
+			);
+			name = Network;
+			path = WalgreensDashboardApp/Common/Backend/Models/Network;
+			sourceTree = SOURCE_ROOT;
+		};
+		A8E09A511F4D45680063EEE4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A541F4D45680063EEE4 /* DatabaseManager.h */,
+				A8E09A551F4D45680063EEE4 /* DatabaseManager.m */,
+				A82949D61F4E4C4D00EA0BBD /* Commands */,
+				A82949D41F4E4BEC00EA0BBD /* App */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		A8E1E2051F4E5A1D008DE876 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8E1E2101F4E5ADE008DE876 /* WalgreensDashboardApp-Bridging-Header.h */,
+				A8E1E2111F4E5ADE008DE876 /* main.m */,
+				A8E1E2121F4E5ADE008DE876 /* Info.plist */,
+				A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */,
+				A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */,
+				A8E1E2151F4E5ADE008DE876 /* AppDelegate.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B38ECF731F402B6000AF75B0 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				B38ECF761F402BA600AF75B0 /* Cells */,
+				B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */,
+				B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */,
+				B3FB08AD1F45378A00509D57 /* CityTableViewController.h */,
+				B3FB08AE1F45378A00509D57 /* CityTableViewController.m */,
+				B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */,
+				B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */,
+			);
+			path = Online;
+			sourceTree = "<group>";
+		};
+		B38ECF761F402BA600AF75B0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B38ECF7C1F40446600AF75B0 /* OnlineCell.h */,
+				B38ECF7D1F40446600AF75B0 /* OnlineCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B3FB08AC1F45350F00509D57 /* Online */ = {
+			isa = PBXGroup;
+			children = (
+				B3FB08A81F4534ED00509D57 /* CityList.storyboard */,
+				B38ECF771F40413300AF75B0 /* OnlineView.storyboard */,
+				B3FB08B31F45384C00509D57 /* StoreList.storyboard */,
+			);
+			path = Online;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,9 +629,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3978F1621EBEAF16001FD643 /* Build configuration list for PBXNativeTarget "WalgreensDashboardAppTests" */;
 			buildPhases = (
+				01514F056F4C7DE178A4B0E7 /* [CP] Check Pods Manifest.lock */,
 				3978F1571EBEAF16001FD643 /* Sources */,
 				3978F1581EBEAF16001FD643 /* Frameworks */,
 				3978F1591EBEAF16001FD643 /* Resources */,
+				402C27D92BFCFA10DCAE0FC5 /* [CP] Embed Pods Frameworks */,
+				05A1C01C2B279F1022471357 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -440,10 +650,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A842C73E1EB023FB002ED089 /* Build configuration list for PBXNativeTarget "WalgreensDashboardApp" */;
 			buildPhases = (
+				C0F2A8A492437337863BCDC5 /* [CP] Check Pods Manifest.lock */,
 				A842C7231EB023FB002ED089 /* Sources */,
 				A842C7241EB023FB002ED089 /* Frameworks */,
 				A842C7251EB023FB002ED089 /* Resources */,
-				A81207871F326FE3006C6384 /* ShellScript */,
+				4E3F0BB01F3D1E6900F1D22D /* Embed Frameworks */,
+				4EB6B38CBE7A28397874E20B /* [CP] Embed Pods Frameworks */,
+				D7BF38104ADF7FE0CD9BA7B1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -470,6 +683,8 @@
 					};
 					A842C7261EB023FB002ED089 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = T45LG4J27C;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -505,10 +720,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85A2E671F35C94C00417C2C /* UpdateView.storyboard in Resources */,
 				A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */,
+				A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */,
 				A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */,
+				B3FB08B41F45384C00509D57 /* StoreList.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
+				B38ECF781F40413300AF75B0 /* OnlineView.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
+				A8E1E2171F4E5ADE008DE876 /* Info.plist in Resources */,
+				B3FB08A91F4534ED00509D57 /* CityList.storyboard in Resources */,
 				A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */,
 				A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */,
 			);
@@ -517,18 +738,104 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A81207871F326FE3006C6384 /* ShellScript */ = {
+		01514F056F4C7DE178A4B0E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WalgreensDashboardAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		05A1C01C2B279F1022471357 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 81b1135fcd47afe2c58acb7e33f5bec6f83c2790 ed44d0d5a83e40dcd4928fdb9cb0fbf39b36548fd4566ab54c3648c0bce1fb50";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		402C27D92BFCFA10DCAE0FC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EB6B38CBE7A28397874E20B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0F2A8A492437337863BCDC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WalgreensDashboardApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7BF38104ADF7FE0CD9BA7B1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -544,31 +851,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8A4CB591F2B406700B87449 /* UpdateCommands.m in Sources */,
-				A8A4CB571F2B406700B87449 /* SelectCommands.m in Sources */,
-				A842C72F1EB023FB002ED089 /* AppDelegate.m in Sources */,
+				A8E09A671F4D45680063EEE4 /* DatabaseManagerApp.m in Sources */,
+				A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */,
+				A8E09A491F4D45560063EEE4 /* Controller.m in Sources */,
+				A8E09A6A1F4D45680063EEE4 /* SelectCommands.m in Sources */,
+				B3FB08AF1F45378A00509D57 /* CityTableViewController.m in Sources */,
 				A86A06B71F2DA850005A0936 /* UpdateTableViewController.m in Sources */,
-				A8A4CB501F2B406700B87449 /* Controller.m in Sources */,
-				A8A4CB5A1F2B406700B87449 /* NetworkUtility.m in Sources */,
-				A8A4CB551F2B406700B87449 /* DateHelper.m in Sources */,
-				A8A4CB511F2B406700B87449 /* DataController.m in Sources */,
+				4E37493E1F3EE4CE004DBD53 /* MapPin.m in Sources */,
+				B3FB08B21F4537CF00509D57 /* StoreTableViewController.m in Sources */,
+				B38ECF7B1F40442A00AF75B0 /* OnlineTableViewController.m in Sources */,
+				B38ECF7E1F40446600AF75B0 /* OnlineCell.m in Sources */,
 				A88A79891F2F151700C99BFD /* OfflineCell.m in Sources */,
-				A8A4CB521F2B406700B87449 /* StatusController.m in Sources */,
+				A8E09A631F4D45680063EEE4 /* Reachability.m in Sources */,
+				4E1C8E461F3E60FF00947604 /* YAxisFomatter.m in Sources */,
 				A88A79941F2F41AE00C99BFD /* OfflineTableViewController.m in Sources */,
 				A88A79901F2F343900C99BFD /* HistoryTableViewController.m in Sources */,
-				A8A4CB531F2B406700B87449 /* Commands.m in Sources */,
-				A8A4CB5B1F2B406700B87449 /* Reachability.m in Sources */,
-				A86A06B81F2DA850005A0936 /* OfflineViewController.m in Sources */,
-				A80E8A141F2BD0DF00A92BFB /* DatabaseManagerApp.m in Sources */,
-				A8A4CB5D1F2B406700B87449 /* Input.m in Sources */,
-				A855530B1F30644800C7B20C /* StatusControllerApp.m in Sources */,
-				A8A4CB541F2B406700B87449 /* DatabaseManager.m in Sources */,
+				A8E09A691F4D45680063EEE4 /* InsertCommands.m in Sources */,
+				A8E09A481F4D45560063EEE4 /* DataController.m in Sources */,
+				A8E09A641F4D45680063EEE4 /* WalgreensAPI.m in Sources */,
+				A8E09A471F4D45560063EEE4 /* StatusController.m in Sources */,
+				A8E09A6C1F4D45680063EEE4 /* UpdateCommands.m in Sources */,
+				A8E1E2031F4E58CE008DE876 /* DateHelper.m in Sources */,
+				A82949D91F4E4C9D00EA0BBD /* StatusControllerApp.m in Sources */,
+				A8E09A621F4D45680063EEE4 /* NetworkUtility.m in Sources */,
 				A88A798C1F2F33E400C99BFD /* HomeViewController.m in Sources */,
-				A842C72C1EB023FB002ED089 /* main.m in Sources */,
-				A8A4CB561F2B406700B87449 /* InsertCommands.m in Sources */,
-				A8A4CB5C1F2B406700B87449 /* WalgreensAPI.m in Sources */,
+				A8E1E2181F4E5ADE008DE876 /* Charts-Bridging.swift in Sources */,
+				A8E09A651F4D45680063EEE4 /* Commands.m in Sources */,
+				A8E09A6B1F4D45680063EEE4 /* TableCommands.m in Sources */,
+				4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */,
+				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
+				4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */,
 				A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */,
-				A8A4CB581F2B406700B87449 /* TableCommands.m in Sources */,
+				A8E09A661F4D45680063EEE4 /* DatabaseManager.m in Sources */,
+				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
+				4E1C8E4D1F3E998200947604 /* ChartsView.m in Sources */,
+				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +914,9 @@
 /* Begin XCBuildConfiguration section */
 		3978F1631EBEAF16001FD643 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAF33B164F684CDBC08297E0 /* Pods-WalgreensDashboardAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -612,7 +931,9 @@
 		};
 		3978F1641EBEAF16001FD643 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFAB52812B6619A93CDF5CA0 /* Pods-WalgreensDashboardAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -711,15 +1032,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		A842C73F1EB023FB002ED089 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58F71D457A8E5549B6DB1252 /* Pods-WalgreensDashboardApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -728,14 +1053,20 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WalgreensDashboardApp/Supporting Files/WalgreensDashboardApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A842C7401EB023FB002ED089 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CF0AFDCB79E639C41000337 /* Pods-WalgreensDashboardApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = T45LG4J27C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -744,6 +1075,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.walgreensdashboardappteam.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WalgreensDashboardApp/Supporting Files/WalgreensDashboardApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
