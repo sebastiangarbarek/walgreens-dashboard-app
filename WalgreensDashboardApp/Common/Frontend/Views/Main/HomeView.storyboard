@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2104" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eBb-N7-dtP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="z4L-ca-iqS">
+            <objects>
+                <viewController id="eBb-N7-dtP" customClass="HomeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Opy-jv-3kb"/>
+                        <viewControllerLayoutGuide type="bottom" id="plc-Qg-ifo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ByS-Ti-qvt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rf-Ts-roG">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flS-3n-TBU">
+                                <rect key="frame" x="0.0" y="579" width="375" height="88"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Knw-Ct-hIC">
+                                        <rect key="frame" x="8" y="43" width="359" height="2"/>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requesting stores..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8q-v0-srO">
+                                        <rect key="frame" x="8" y="14" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBB-95-7gO">
+                                        <rect key="frame" x="8" y="53" width="359" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="wBB-95-7gO" firstAttribute="leading" secondItem="flS-3n-TBU" secondAttribute="leading" constant="8" id="01f-NQ-pFD"/>
+                                    <constraint firstAttribute="trailing" secondItem="wBB-95-7gO" secondAttribute="trailing" constant="8" id="B9P-iH-t3T"/>
+                                    <constraint firstAttribute="trailing" secondItem="Knw-Ct-hIC" secondAttribute="trailing" constant="8" id="IR4-jV-mOh"/>
+                                    <constraint firstItem="Knw-Ct-hIC" firstAttribute="top" secondItem="u8q-v0-srO" secondAttribute="bottom" constant="8" id="Ok4-dZ-aHF"/>
+                                    <constraint firstAttribute="bottom" secondItem="wBB-95-7gO" secondAttribute="bottom" constant="14" id="QPO-jV-1f2"/>
+                                    <constraint firstAttribute="trailing" secondItem="u8q-v0-srO" secondAttribute="trailing" constant="8" id="Voe-4g-atP"/>
+                                    <constraint firstItem="u8q-v0-srO" firstAttribute="top" secondItem="flS-3n-TBU" secondAttribute="top" constant="14" id="XRa-wo-c0L"/>
+                                    <constraint firstItem="u8q-v0-srO" firstAttribute="leading" secondItem="flS-3n-TBU" secondAttribute="leading" constant="8" id="cx5-ef-KRW"/>
+                                    <constraint firstItem="wBB-95-7gO" firstAttribute="top" secondItem="Knw-Ct-hIC" secondAttribute="bottom" constant="8" id="k5E-Sf-NG3"/>
+                                    <constraint firstItem="Knw-Ct-hIC" firstAttribute="leading" secondItem="flS-3n-TBU" secondAttribute="leading" constant="8" id="w8O-ZP-9IV"/>
+                                    <constraint firstAttribute="height" constant="88" id="xEa-CZ-Tfc"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Md7-BH-TDa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="Date" id="XyO-VJ-Pcj">
+                                        <barButtonItem key="leftBarButtonItem" title="Previous" id="xCm-NG-P3u">
+                                            <connections>
+                                                <action selector="previousButton:" destination="eBb-N7-dtP" id="8I9-pt-7Ly"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Next" id="BK0-BT-EhS">
+                                            <connections>
+                                                <action selector="nextButton:" destination="eBb-N7-dtP" id="0Mq-sy-wLk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4Y-n0-nWs">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="Dashboard" id="BqE-gI-euV">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Back" id="3zu-LT-UZY">
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="backButton:" destination="eBb-N7-dtP" id="9kz-3m-7po"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Md7-BH-TDa" firstAttribute="top" secondItem="q4Y-n0-nWs" secondAttribute="bottom" id="3Dc-53-2hE"/>
+                            <constraint firstItem="flS-3n-TBU" firstAttribute="leading" secondItem="ByS-Ti-qvt" secondAttribute="leading" id="3xw-03-Gsq"/>
+                            <constraint firstItem="0Rf-Ts-roG" firstAttribute="top" secondItem="Md7-BH-TDa" secondAttribute="bottom" id="5yY-aM-lEW"/>
+                            <constraint firstItem="q4Y-n0-nWs" firstAttribute="top" secondItem="Opy-jv-3kb" secondAttribute="bottom" id="7MR-La-jt4"/>
+                            <constraint firstItem="q4Y-n0-nWs" firstAttribute="leading" secondItem="ByS-Ti-qvt" secondAttribute="leading" id="Hvh-Lb-6Kx"/>
+                            <constraint firstAttribute="trailing" secondItem="q4Y-n0-nWs" secondAttribute="trailing" id="SUo-C6-FTB"/>
+                            <constraint firstAttribute="trailing" secondItem="0Rf-Ts-roG" secondAttribute="trailing" id="Txz-WF-nyU"/>
+                            <constraint firstAttribute="trailing" secondItem="flS-3n-TBU" secondAttribute="trailing" id="cMz-RJ-FYR"/>
+                            <constraint firstItem="plc-Qg-ifo" firstAttribute="top" secondItem="flS-3n-TBU" secondAttribute="bottom" id="dVV-j2-bwh"/>
+                            <constraint firstItem="plc-Qg-ifo" firstAttribute="top" secondItem="0Rf-Ts-roG" secondAttribute="bottom" id="e2L-X2-dZn"/>
+                            <constraint firstItem="Md7-BH-TDa" firstAttribute="leading" secondItem="ByS-Ti-qvt" secondAttribute="leading" id="mOQ-tk-Flt"/>
+                            <constraint firstItem="0Rf-Ts-roG" firstAttribute="leading" secondItem="ByS-Ti-qvt" secondAttribute="leading" id="oPm-Pp-QpZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Md7-BH-TDa" secondAttribute="trailing" id="zWg-fr-lSn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="3zu-LT-UZY" id="jZx-ZP-XZk"/>
+                        <outlet property="containerView" destination="0Rf-Ts-roG" id="ioG-FE-t5T"/>
+                        <outlet property="datePicker" destination="Md7-BH-TDa" id="SVr-VR-W7m"/>
+                        <outlet property="dateTitle" destination="XyO-VJ-Pcj" id="b4Z-uD-byS"/>
+                        <outlet property="navigationBar" destination="q4Y-n0-nWs" id="qCb-XL-3RZ"/>
+                        <outlet property="nextButton" destination="BK0-BT-EhS" id="e9V-gT-j6E"/>
+                        <outlet property="notificationsLabel" destination="u8q-v0-srO" id="OwL-am-7oa"/>
+                        <outlet property="percentCompleteLabel" destination="wBB-95-7gO" id="d6m-Yk-nzN"/>
+                        <outlet property="previousButton" destination="xCm-NG-P3u" id="ibf-e0-SXZ"/>
+                        <outlet property="progressView" destination="flS-3n-TBU" id="BBh-lj-cdj"/>
+                        <outlet property="requestProgressView" destination="Knw-Ct-hIC" id="qim-SQ-JFl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbi-k0-FP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2974" y="-671"/>
+        </scene>
+    </scenes>
+</document>
