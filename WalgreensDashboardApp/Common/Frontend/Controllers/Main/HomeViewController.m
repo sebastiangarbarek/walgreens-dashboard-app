@@ -4,40 +4,65 @@
 //
 //  Created by Sebastian Garbarek on 31/07/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
-//  Naomi Wu modified on 16/08/2017.
 //
 
 #import "HomeViewController.h"
 #import "UpdateTableViewController.h"
 #import "HistoryTableViewController.h"
-#import "OfflineTableViewController.h"
-#import "OnlineTableViewController.h"
-
-@interface HomeViewController (){
-
-}
-
-@end
 
 @implementation HomeViewController
 
-@dynamic dateTitle;
-@dynamic nextButton;
+@dynamic dateNavigationBar;
+@dynamic dateNavigationItem;
 @dynamic previousButton;
+@dynamic nextButton;
 
-#pragma mark - View Controller
+@dynamic mainNavigationBar;
+@dynamic mainNavigationItem;
+@dynamic backButton;
+@dynamic homeButton;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    _navigationStack = [NSMutableArray new];
-    [self setDateForView:[DateHelper currentDate]];
-    [self checkDates];
-    
-    // Remove navigation bar bottom borders.
-    [self.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    
+@dynamic containerView;
+
+#pragma mark - Parent Methods -
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self createDatabaseConnection];
+    [self initializeViews];
+    [self initializeNavigationStacks];
+    [self addNotifications];
+    [self updatePreviousAndNext];
+}
+
+- (void)createDatabaseConnection {
+    self.databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    [self.databaseManagerApp openCreateDatabase];
+}
+
+- (void)initializeViews {
+    UIViewController *initialViewController = [self appropriateHomeViewController];
+    [self setHomeViewController:initialViewController withDate:[DateHelper currentDate]];
+    [self setCurrentViewController:initialViewController withDate:[DateHelper currentDate]];
+    [self addShadowToUpdateView];
+}
+
+- (void)addShadowToUpdateView {
+    CGRect updateViewBounds = self.updateView.bounds;
+    updateViewBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:updateViewBounds];
+    self.updateView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.updateView.layer.shadowOffset = CGSizeMake(0.0f, -0.1f);
+    self.updateView.layer.shadowOpacity = 0.25f;
+    self.updateView.layer.shadowPath = shadowPath.CGPath;
+}
+
+- (void)initializeNavigationStacks {
+    self.horizontalNavigationStack = [NSMutableArray new];
+    self.verticalNavigationStack = [NSMutableArray new];
+}
+
+- (void)addNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(progressViewUpdate)
                                                  name:@"Store online"
@@ -54,112 +79,63 @@
                                              selector:@selector(connectedUpdate)
                                                  name:@"Connected"
                                                object:nil];
-    // Remove progress view.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(requestsCompleteUpdate)
                                                  name:@"Requests complete"
                                                object:nil];
-    
+}
 
+- (void)updatePreviousAndNext {
     
-    // Add shadow to date picker.
-    CGRect datePickerBounds = self.datePicker.bounds;
-    datePickerBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
-    datePickerBounds.origin.y = datePickerBounds.size.height / 2;
-    datePickerBounds.size.height = datePickerBounds.size.height / 2;
-    UIBezierPath *datePickerShadowPath = [UIBezierPath bezierPathWithRect:datePickerBounds];
-    self.datePicker.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.datePicker.layer.shadowOffset = CGSizeMake(0.0f, 0.1f);
-    self.datePicker.layer.shadowOpacity = 0.25f;
-    self.datePicker.layer.shadowPath = datePickerShadowPath.CGPath;
+}
+
+- (UIViewController *)appropriateHomeViewController {
+    UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
+    UIStoryboard *historyStoryBoard = [UIStoryboard storyboardWithName:@"HistoryView" bundle:nil];
     
-    // Add shadow to update view.
-    CGRect updateViewBounds = self.progressView.bounds;
-    updateViewBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
-    UIBezierPath *updateViewShadowPath = [UIBezierPath bezierPathWithRect:updateViewBounds];
-    self.progressView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.progressView.layer.shadowOffset = CGSizeMake(0.0f, -0.1f);
-    self.progressView.layer.shadowOpacity = 0.25f;
-    self.progressView.layer.shadowPath = updateViewShadowPath.CGPath;
+    NSInteger numberOfStoresInDatabase = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+    NSInteger numberOfStoresInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
     
-    [self embedInitialTableView];
+    UIViewController *viewController;
+    
+    if ((numberOfStoresInDatabase - numberOfStoresInTemp) && [self.currentDate isEqualToString:[DateHelper currentDate]]) {
+        [self updateMainTitle:@"Dashboard"];
+        viewController = [updateStoryBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
+    } else {
+        [self updateMainTitle:@"History"];
+        viewController = [historyStoryBoard instantiateViewControllerWithIdentifier:@"History Table View"];
+    }
+    
+    return viewController;
+}
+
+- (void)checkDates {
+    NSString *nextDate = [self.databaseManagerApp.selectCommands selectNextUpdateDateInHistoryTableWithDate:self.date];
+    
+    if (![self.date isEqualToString:[DateHelper currentDate]]) {
+        if (!nextDate) {
+            // Check if next date is current date.
+            NSDate *laterDate = [[DateHelper dateWithString:[DateHelper currentDate]] laterDate:[DateHelper dateWithString:self.date]];
+            ([laterDate isEqualToDate:[DateHelper dateWithString:[DateHelper currentDate]]]) ? [self enableButtonWithNextDate:[DateHelper currentDate]] : [self disableNextDateButton];
+        } else {
+            [self enableButtonWithNextDate:nextDate];
+        }
+    } else {
+        // Equal to current day.
+        [self disableNextDateButton];
+    }
+    
+    NSString *previousDate = [self.databaseManagerApp.selectCommands selectPreviousUpdateDateInHistoryTableWithDate:self.date];
+    
+    if (!previousDate) {
+        // Can't go forward in time so no check for current.
+        [self disablePreviousDateButton];
+    } else {
+        [self enableButtonWithPreviousDate:previousDate];
+    }
 }
 
 #pragma mark - Container View
-
-- (void)animateTransitionTo:(UITableViewController *)newVc transition:(Transition)transition {
-    UITableViewController *current = self.currentTableViewController;
-    
-    [current willMoveToParentViewController:nil];
-    [self addChildViewController:newVc];
-    
-    CGFloat width = self.containerView.bounds.size.width;
-    CGFloat height = self.containerView.bounds.size.height;
-    
-    switch (transition) {
-        case RightToLeft:
-            newVc.view.frame = CGRectMake(width, 0, width, height);
-            break;
-        case LeftToRight:
-            newVc.view.frame = CGRectMake(-width, 0, width, height);
-            break;
-        case Push:
-            newVc.view.frame = CGRectMake(width, 0, width, height);
-            break;
-        default:
-            break;
-    }
-    
-    [self transitionFromViewController:current toViewController:newVc duration:0.25 options:0 animations:^{
-        newVc.view.frame = self.containerView.bounds;
-        switch (transition) {
-            case RightToLeft:
-                current.view.frame = CGRectMake(-width, 0, width, height);
-                break;
-            case LeftToRight:
-                current.view.frame = CGRectMake(width, 0, width, height);
-                break;
-            default:
-                break;
-        }
-    } completion:^(BOOL finished) {
-        [newVc didMoveToParentViewController:self];
-        [current removeFromParentViewController];
-        
-        self.currentTableViewController = newVc;
-        
-        if (transition == Push) {
-            [self.navigationStack push:newVc];
-        }
-    }];
-}
-
-
-- (void)popAnimate:(UITableViewController *)newVc {
-    // Add the table view controller as a child to this.
-    [self addChildViewController:newVc];
-    
-    // Size the new table view controller to fit in the container view.
-    newVc.view.frame = self.containerView.bounds;
-    
-    // Add the view as a subview to the container view.
-    [self.containerView addSubview:newVc.view];
-    
-    // Bring current view controller to the front for pop animation.
-    [self.containerView bringSubviewToFront:self.currentTableViewController.view];
-    
-    CGFloat width = self.containerView.bounds.size.width;
-    CGFloat height = self.containerView.bounds.size.height;
-    [UIView animateWithDuration:0.25 animations:^ {
-        self.currentTableViewController.view.frame = CGRectMake(width, 0, width, height);
-    } completion:^(BOOL finised) {
-        [self.currentTableViewController.view removeFromSuperview];
-        [self.currentTableViewController removeFromParentViewController];
-        
-        [self.navigationStack push:newVc];
-        self.currentTableViewController = newVc;
-    }];
-}
 
 - (void)embedInitialTableView {
     UITableViewController *homeTableView = [self homeTableView];
@@ -182,26 +158,6 @@
         [self.currentTableViewController.view removeFromSuperview];
         [self.currentTableViewController removeFromParentViewController];
     }
-}
-
-- (UITableViewController *)homeTableView {
-    UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
-    UIStoryboard *historyStoryBoard = [UIStoryboard storyboardWithName:@"HistoryView" bundle:nil];
-    
-    UITableViewController *tableViewController;
-    
-    NSInteger numberOfStoresInDatabase = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
-    NSInteger numberOfStoresInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
-    
-    if ((numberOfStoresInDatabase - numberOfStoresInTemp) && [self.date isEqualToString:[DateHelper currentDate]]) {
-        self.navigationBar.topItem.title = @"Dashboard";
-        tableViewController = [updateStoryBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
-    } else {
-        self.navigationBar.topItem.title = @"History";
-        tableViewController = [historyStoryBoard instantiateViewControllerWithIdentifier:@"History Table View"];
-    }
-    
-    return tableViewController;
 }
 
 - (void)datePickerSwapViewWithDirection:(Transition)direction {

@@ -16,7 +16,6 @@
 		7649FB6E2941621ED3FB9EEA /* Pods_WalgreensDashboardAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */; };
-		A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A82607041F3C828D00A412C8 /* CommonTableViewController.m */; };
 		A82949D91F4E4C9D00EA0BBD /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
@@ -102,8 +101,6 @@
 		5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
-		A82607031F3C828D00A412C8 /* CommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewController.h; sourceTree = "<group>"; };
-		A82607041F3C828D00A412C8 /* CommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewController.m; sourceTree = "<group>"; };
 		A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
 		A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -437,8 +434,6 @@
 			children = (
 				A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */,
 				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
-				A82607031F3C828D00A412C8 /* CommonTableViewController.h */,
-				A82607041F3C828D00A412C8 /* CommonTableViewController.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -879,7 +874,6 @@
 				A8E09A651F4D45680063EEE4 /* Commands.m in Sources */,
 				A8E09A6B1F4D45680063EEE4 /* TableCommands.m in Sources */,
 				4E1C8E491F3E758600947604 /* SetValueFormatter.m in Sources */,
-				A82607051F3C828D00A412C8 /* CommonTableViewController.m in Sources */,
 				4E3749451F3EEC1F004DBD53 /* DetailViewController.m in Sources */,
 				A80D3CF21F31F64900ED6BF2 /* DatePickerViewController.m in Sources */,
 				A8E09A661F4D45680063EEE4 /* DatabaseManager.m in Sources */,
