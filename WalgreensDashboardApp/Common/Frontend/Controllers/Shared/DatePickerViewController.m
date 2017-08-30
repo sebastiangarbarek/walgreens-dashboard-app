@@ -14,8 +14,9 @@ static double const AnimationDuration = 0.15;
 
 #pragma mark - Parent Methods -
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.navigationStack = [NSMutableArray new];
     [self embedInitialViewController];
 }
 
@@ -53,48 +54,60 @@ static double const AnimationDuration = 0.15;
 
 - (void)presentHomeViewController {
     if (_currentViewController != _homeViewController) {
-        if (!_horizontalNavigationStack.isEmpty) {
-            
-        } else if (!_verticalNavigationStack.isEmpty) {
-            
-        } else {
-            
-        }
+        [self animateTransitionWithViewController:_homeViewController transition:RightToLeft];
+        [self updateDateTitle:_homeDate];
     }
 }
 
 - (void)presentNextViewController {
+    // Disable the next button.
     self.nextButton.enabled = NO;
-    
-    if (_previousViewController) {
-        
+    if (_nextViewController) {
+        if (!_navigationStack.isEmpty) {
+            // User switched dates while nested. Delegate call should set top view controller.
+            [self.delegate datePickerViewControllerDidSwitchDatesWhileNested:self];
+        }
+        [self animateTransitionWithViewController:_nextViewController
+                                       transition:RightToLeft];
+        [self updateDateTitle:_nextDate];
     }
 }
 
 - (void)presentPreviousViewController {
+    // Disable the previous button.
     self.previousButton.enabled = NO;
-    
     if (_previousViewController) {
-        
+        if (!_navigationStack.isEmpty) {
+            // User switched dates while nested. Delegate call should set top view controller.
+            [self.delegate datePickerViewControllerDidSwitchDatesWhileNested:self];
+        }
+        [self animateTransitionWithViewController:_previousViewController
+                                       transition:LeftToRight];
+        [self updateDateTitle:_previousDate];
     }
 }
 
 - (void)pushViewController:(UIViewController *)viewController {
     if (viewController) {
-        
-        
+        // Push the current view controller onto the stack, not the new view controller.
+        [self.navigationStack push:_currentViewController];
+        [self animatePushWithViewController:viewController];
         [self enableBackButton];
     }
 }
 
 - (void)popViewController {
-    if (!_horizontalNavigationStack.isEmpty) {
-        
-    } else if (!_verticalNavigationStack.isEmpty) {
-        
-    } else {
-        [self disableBackButton];
+    if (!_navigationStack.isEmpty) {
+        [self animatePopWithViewController:_navigationStack.pop];
+    } else if (_topViewController) {
+        // User had switched dates while nested.
+        [self animatePopWithViewController:_topViewController];
+        // Destroy the reference to the top view controller for the next check.
+        _topViewController = nil;
     }
+    
+    if (_navigationStack.isEmpty && !_topViewController)
+        [self disableBackButton];
 }
 
 - (void)updateDateTitle:(NSString *)title {
@@ -134,13 +147,10 @@ static double const AnimationDuration = 0.15;
 - (void)animatePopWithViewController:(UIViewController *)newViewController {
     // Add the table view controller as a child to this.
     [self addChildViewController:newViewController];
-    
     // Size the new view controller to fit in the container view.
     newViewController.view.frame = self.containerView.bounds;
-    
     // Add the controller's view as a subview to the container view.
     [self.containerView addSubview:newViewController.view];
-    
     // Bring the current view controller to the front for pop animation.
     [self.containerView bringSubviewToFront:self.currentViewController.view];
     
@@ -194,15 +204,21 @@ static double const AnimationDuration = 0.15;
         [newViewController didMoveToParentViewController:self];
         [_currentViewController removeFromParentViewController];
         self.currentViewController = newViewController;
+        
+        // Delegate call should update the next and previous view controllers and buttons respectively.
+        [self.delegate datePickerViewController:self
+                       didPresentViewController:_previousViewController];
     }];
 }
 
 - (void)enableBackButton {
-    
+    [self.backButton setEnabled:YES];
+    [self.backButton setTintColor:nil];
 }
 
 - (void)disableBackButton {
-    
+    [self.backButton setEnabled:NO];
+    [self.backButton setTintColor:[UIColor clearColor]];
 }
 
 - (void)removeBottomNavigationBarLine {

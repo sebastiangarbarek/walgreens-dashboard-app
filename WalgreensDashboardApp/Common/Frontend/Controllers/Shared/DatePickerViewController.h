@@ -10,7 +10,11 @@
 
 #import "NSMutableArray+Stack.h"
 
+@protocol DatePickerViewControllerDelegate;
+
 @interface DatePickerViewController : UIViewController
+
+@property (nonatomic, weak) id <DatePickerViewControllerDelegate> delegate;
 
 typedef NS_ENUM(NSInteger, Transition) {
     RightToLeft,
@@ -38,13 +42,13 @@ typedef NS_ENUM(NSInteger, Transition) {
 
 #pragma mark - View Container -
 
-@property (strong, nonatomic) NSMutableArray *horizontalNavigationStack;
-@property (strong, nonatomic) NSMutableArray *verticalNavigationStack;
+@property (strong, nonatomic) NSMutableArray *navigationStack;
 
 @property (weak, nonatomic) UIViewController *currentViewController;
 @property (weak, nonatomic) UIViewController *homeViewController;
 @property (weak, nonatomic) UIViewController *nextViewController;
 @property (weak, nonatomic) UIViewController *previousViewController;
+@property (weak, nonatomic) UIViewController *topViewController;
 
 @property (weak, nonatomic) UIView *containerView;
 
@@ -54,6 +58,7 @@ typedef NS_ENUM(NSInteger, Transition) {
 - (void)setHomeViewController:(UIViewController *)viewController withDate:(NSString *)date;
 - (void)setNextViewController:(UIViewController *)viewController withDate:(NSString *)date;
 - (void)setPreviousViewController:(UIViewController *)viewController withDate:(NSString *)date;
+// Top view controller uses property mutator and current date.
 
 - (void)presentHomeViewController;
 - (void)presentNextViewController;
@@ -69,8 +74,9 @@ typedef NS_ENUM(NSInteger, Transition) {
 
 @protocol DatePickerViewControllerDelegate <NSObject>
 
-@optional
+@required
 - (void)datePickerViewController:(DatePickerViewController *)datePickerViewController
         didPresentViewController:(UIViewController *)viewController;
+- (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController;
 
 @end

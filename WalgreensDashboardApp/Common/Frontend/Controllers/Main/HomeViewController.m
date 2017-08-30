@@ -30,7 +30,6 @@
     [super awakeFromNib];
     [self createDatabaseConnection];
     [self initializeViews];
-    [self initializeNavigationStacks];
     [self addNotifications];
     [self updatePreviousAndNext];
 }
@@ -55,11 +54,6 @@
     self.updateView.layer.shadowOffset = CGSizeMake(0.0f, -0.1f);
     self.updateView.layer.shadowOpacity = 0.25f;
     self.updateView.layer.shadowPath = shadowPath.CGPath;
-}
-
-- (void)initializeNavigationStacks {
-    self.horizontalNavigationStack = [NSMutableArray new];
-    self.verticalNavigationStack = [NSMutableArray new];
 }
 
 - (void)addNotifications {
@@ -99,12 +93,12 @@
     UIViewController *viewController;
     
     if ((numberOfStoresInDatabase - numberOfStoresInTemp) && [self.currentDate isEqualToString:[DateHelper currentDate]]) {
-        [self updateMainTitle:@"Dashboard"];
         viewController = [updateStoryBoard instantiateViewControllerWithIdentifier:@"Update Table View"];
     } else {
-        [self updateMainTitle:@"History"];
         viewController = [historyStoryBoard instantiateViewControllerWithIdentifier:@"History Table View"];
     }
+    
+    [self updateMainTitle:@"Dashboard"];
     
     return viewController;
 }
@@ -183,16 +177,6 @@
 }
 
 #pragma mark - Buttons
-
-- (void)switchBackButton {
-    if ([self.backButton isEnabled]) {
-        [self.backButton setEnabled:NO];
-        [self.backButton setTintColor:[UIColor clearColor]];
-    } else {
-        [self.backButton setEnabled:YES];
-        [self.backButton setTintColor:nil];
-    }
-}
 
 - (IBAction)backButton:(id)sender {
     if ([self.navigationStack count]) {
