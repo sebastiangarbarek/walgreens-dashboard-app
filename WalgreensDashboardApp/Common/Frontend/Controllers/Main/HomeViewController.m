@@ -52,7 +52,6 @@
 - (void)initializeViews {
     UIViewController *initialViewController = [self appropriateHomeViewController];
     [self setHomeViewController:initialViewController withDate:[DateHelper currentDate]];
-    [self setCurrentViewController:initialViewController withDate:[DateHelper currentDate]];
     [self addShadowToUpdateView];
 }
 
@@ -89,12 +88,43 @@
                                                object:nil];
 }
 
-#pragma mark - View Controller Methods -
+#pragma mark - Controller Methods -
 
 - (void)updatePreviousAndNext {
+    // Note history table does not store current date if updating.
+    NSString *nextDate = [self.databaseManagerApp.selectCommands
+                          selectNextUpdateDateInHistoryTableWithDate:self.currentDate];
     
+    if (![self.currentDate isEqualToString:[DateHelper currentDate]]) {
+        // Current date is not equal to today.
+        if (!nextDate) {
+            // Database didn't return a next date.
+            NSDate *laterDate = [[DateHelper dateWithString:[DateHelper currentDate]] laterDate:[DateHelper dateWithString:self.currentDate]];
+            if ([laterDate isEqualToDate:[DateHelper dateWithString:[DateHelper currentDate]]]) {
+                // Next date is today's date that is currently updating.
+                [self setNextViewController:[self appropriateHomeViewController] withDate:self.homeDate];
+            }
+        } else {
+            // There is a next date that is not today's date.
+            [self setNextViewController:[self appopriateNextPreviousViewController] withDate:nextDate];
+        }
+    } else {
+        // Current date is today's date so there is no next.
+    }
+    
+    NSString *previousDate = [self.databaseManagerApp.selectCommands selectPreviousUpdateDateInHistoryTableWithDate:self.currentDate];
+    
+    if (previousDate) {
+        [self setPreviousViewController:[self appopriateNextPreviousViewController] withDate:previousDate];
+    } else {
+        // No need to check further.
+    }
 }
 
+/*!Creates a new home screen.
+ The home/dashboard screen is different depending if the current day is updating or not.
+ * \returns The correct home screen.
+ */
 - (UIViewController *)appropriateHomeViewController {
     UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
     UIStoryboard *historyStoryBoard = [UIStoryboard storyboardWithName:@"HistoryView" bundle:nil];
@@ -115,56 +145,20 @@
     return viewController;
 }
 
-- (void)checkDates {
-    NSString *nextDate = [self.databaseManagerApp.selectCommands selectNextUpdateDateInHistoryTableWithDate:self.date];
-    
-    if (![self.date isEqualToString:[DateHelper currentDate]]) {
-        if (!nextDate) {
-            // Check if next date is current date.
-            NSDate *laterDate = [[DateHelper dateWithString:[DateHelper currentDate]] laterDate:[DateHelper dateWithString:self.date]];
-            ([laterDate isEqualToDate:[DateHelper dateWithString:[DateHelper currentDate]]]) ? [self enableButtonWithNextDate:[DateHelper currentDate]] : [self disableNextDateButton];
-        } else {
-            [self enableButtonWithNextDate:nextDate];
-        }
-    } else {
-        // Equal to current day.
-        [self disableNextDateButton];
+/*!Creates a new next/previous screen.
+ The next/previous screen is different depending on which class is currently being displayed.
+ * \returns The correct next/previous screen.
+ */
+- (UIViewController *)appopriateNextPreviousViewController {
+    if ([self.currentViewController isKindOfClass:[DatePickerView class]]) {
+        return [((DatePickerView *)self.currentViewController) newInstance];
     }
-    
-    NSString *previousDate = [self.databaseManagerApp.selectCommands selectPreviousUpdateDateInHistoryTableWithDate:self.date];
-    
-    if (!previousDate) {
-        // Can't go forward in time so no check for current.
-        [self disablePreviousDateButton];
-    } else {
-        [self enableButtonWithPreviousDate:previousDate];
-    }
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:@"Must extend DatePickerView"]
+                                 userInfo:nil];
 }
 
 #pragma mark - Container View
-
-- (void)embedInitialTableView {
-    UITableViewController *homeTableView = [self homeTableView];
-    [self embedTableView:homeTableView];
-    [self.navigationStack push:homeTableView];
-}
-
-- (void)embedTableView:(UITableViewController *)tableViewController {
-    [self removeTableView];
-    [self addChildViewController:tableViewController];
-    tableViewController.view.frame = self.containerView.bounds;
-    [self.containerView addSubview:tableViewController.view];
-    [tableViewController didMoveToParentViewController:self];
-    self.currentTableViewController = tableViewController;
-}
-
-- (void)removeTableView {
-    if (self.currentTableViewController != nil) {
-        [self.currentTableViewController willMoveToParentViewController:nil];
-        [self.currentTableViewController.view removeFromSuperview];
-        [self.currentTableViewController removeFromParentViewController];
-    }
-}
 
 - (void)datePickerSwapViewWithDirection:(Transition)direction {
     UITableViewController *tableViewController;
@@ -188,35 +182,11 @@
     [self.navigationStack push:tableViewController];
 }
 
-#pragma mark - Buttons
+#pragma mark - Button Actions -
 
-- (IBAction)backButton:(id)sender {
-    if ([self.navigationStack count]) {
-        // Pop off current.
-        [self.navigationStack pop];
-        [self setDateForView:((CommonTableViewController *)[self.navigationStack peek]).date];
-        [self popAnimate:[self.navigationStack pop]];
-        [self checkDates];
-    }
-    
-    if ([self.navigationStack count] == 0) {
-        [self switchBackButton];
-    }
-}
 
-- (IBAction)nextButton:(id)sender {
-    [self setDateForView:self.nextDate];
-    [self datePickerSwapViewWithDirection:RightToLeft];
-    [self checkDates];
-}
 
-- (IBAction)previousButton:(id)sender {
-    [self setDateForView:self.previousDate];
-    [self datePickerSwapViewWithDirection:LeftToRight];
-    [self checkDates];
-}
-
-#pragma mark - Progress View
+#pragma mark - Update Methods -
 
 - (void)progressViewUpdate {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -236,12 +206,10 @@
 }
 
 - (void)storeOnlineUpdate:(NSNotification *)notification {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         NSDictionary *onlineStore = notification.userInfo;
         self.notificationsLabel.textColor = [UIColor redColor];
         self.notificationsLabel.text = [NSString stringWithFormat:@"Store #%@ is online", [onlineStore objectForKey:@"Store Number"]];
-        
     });
 }
 
@@ -263,8 +231,6 @@
 - (void)connectedUpdate {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        self.notificationsLabel.textColor = [UIColor darkTextColor];
-        self.notificationsLabel.text = @"Requesting stores...";
     });
 }
 
@@ -276,7 +242,11 @@
 }
 
 - (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController {
-    
+    if ([self.currentDate isEqualToString:[DateHelper currentDate]]) {
+        [self setTopViewController:[self appropriateHomeViewController]];
+    } else if ([self.topViewController isKindOfClass:[DatePickerView class]]) {
+        [self setTopViewController:[((DatePickerView *)self.topViewController) newInstance]];
+    }
 }
 
 @end

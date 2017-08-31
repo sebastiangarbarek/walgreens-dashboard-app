@@ -11,10 +11,12 @@
 #import "NSMutableArray+Stack.h"
 
 @protocol DatePickerViewControllerDelegate;
+@protocol DatePickerViewDelegate;
 
 @interface DatePickerViewController : UIViewController
 
-@property (nonatomic, weak) id <DatePickerViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DatePickerViewControllerDelegate> datePickerViewControllerDelegate;
+@property (nonatomic, weak) id <DatePickerViewDelegate> datePickerViewDelegate;
 
 typedef NS_ENUM(NSInteger, Transition) {
     RightToLeft,
@@ -47,6 +49,7 @@ typedef NS_ENUM(NSInteger, Transition) {
 @property (weak, nonatomic) UIViewController *homeViewController;
 @property (weak, nonatomic) UIViewController *nextViewController;
 @property (weak, nonatomic) UIViewController *previousViewController;
+@property (weak, nonatomic) UIViewController *currentViewController;
 @property (weak, nonatomic) UIViewController *topViewController;
 
 @property (weak, nonatomic) UIView *containerView;
@@ -73,8 +76,14 @@ typedef NS_ENUM(NSInteger, Transition) {
 @protocol DatePickerViewControllerDelegate <NSObject>
 
 @required
-- (void)datePickerViewController:(DatePickerViewController *)datePickerViewController
-        didPresentViewController:(UIViewController *)viewController;
+- (void)datePickerViewController:(DatePickerViewController *)datePickerViewController didPresentViewController:(UIViewController *)viewController;
 - (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController;
+
+@end
+
+@protocol DatePickerViewDelegate <NSObject>
+
+@required
+- (UIViewController *)datePickerViewControllerDidRequestNewInstance:(DatePickerViewController *)datePickerViewController;
 
 @end

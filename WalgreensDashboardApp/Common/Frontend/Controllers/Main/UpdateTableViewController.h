@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CommonTableViewController.h"
 #import "WalgreensDashboardApp-Bridging-Header.h"
+#import "DatePickerViewController.h"
 #import "DateHelper.h"
 
-@interface UpdateTableViewController : CommonTableViewController
+@interface UpdateTableViewController : UITableViewController <DatePickerViewDelegate>
+
+@property (weak, nonatomic) NSString *date;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;

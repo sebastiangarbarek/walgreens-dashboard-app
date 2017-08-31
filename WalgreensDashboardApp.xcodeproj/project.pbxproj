@@ -21,6 +21,7 @@
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
 		A85A2E671F35C94C00417C2C /* UpdateView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E661F35C94C00417C2C /* UpdateView.storyboard */; };
 		A85A2E691F35C96100417C2C /* HistoryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A85A2E681F35C96100417C2C /* HistoryView.storyboard */; };
+		A86971891F57AFC90071D0AE /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A86971881F57AFC90071D0AE /* DatePickerView.m */; };
 		A86A06831F2DA820005A0936 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06801F2DA820005A0936 /* HomeView.storyboard */; };
 		A86A06841F2DA820005A0936 /* OfflineView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06811F2DA820005A0936 /* OfflineView.storyboard */; };
 		A86A06851F2DA820005A0936 /* StoreView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A06821F2DA820005A0936 /* StoreView.storyboard */; };
@@ -108,6 +109,8 @@
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A85A2E661F35C94C00417C2C /* UpdateView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateView.storyboard; sourceTree = "<group>"; };
 		A85A2E681F35C96100417C2C /* HistoryView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HistoryView.storyboard; sourceTree = "<group>"; };
+		A86971871F57AFC90071D0AE /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
+		A86971881F57AFC90071D0AE /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		A86A06801F2DA820005A0936 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		A86A06811F2DA820005A0936 /* OfflineView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OfflineView.storyboard; sourceTree = "<group>"; };
 		A86A06821F2DA820005A0936 /* StoreView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreView.storyboard; sourceTree = "<group>"; };
@@ -434,6 +437,8 @@
 			children = (
 				A80D3CF01F31F63200ED6BF2 /* DatePickerViewController.h */,
 				A80D3CF11F31F64900ED6BF2 /* DatePickerViewController.m */,
+				A86971871F57AFC90071D0AE /* DatePickerView.h */,
+				A86971881F57AFC90071D0AE /* DatePickerView.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A86971891F57AFC90071D0AE /* DatePickerView.m in Sources */,
 				A8E09A671F4D45680063EEE4 /* DatabaseManagerApp.m in Sources */,
 				A8B5AD4A1F3AEE440040A2E8 /* NSMutableArray+Stack.m in Sources */,
 				A8E09A491F4D45560063EEE4 /* Controller.m in Sources */,

@@ -10,10 +10,7 @@
 
 static double const AnimationDuration = 0.15;
 
-@implementation DatePickerViewController {
-    // Private tracking of current view controller.
-    UIViewController *currentViewController;
-}
+@implementation DatePickerViewController
 
 #pragma mark - Parent Methods -
 
@@ -53,7 +50,7 @@ static double const AnimationDuration = 0.15;
 }
 
 - (void)presentHomeViewController {
-    if (currentViewController != _homeViewController) {
+    if (_currentViewController != _homeViewController) {
         [self animateTransitionWithViewController:_homeViewController transition:RightToLeft];
         _currentDate = _homeDate;
         [self updateDateTitle:_homeDate];
@@ -94,8 +91,13 @@ static double const AnimationDuration = 0.15;
     // No date updates required.
     
     if (viewController) {
+        if (!_topViewController) {
+            // Pushing onto the top view controller.
+            _topViewController = _currentViewController;
+        }
+        
         // Push the current view controller onto the stack, not the new view controller.
-        [self.navigationStack push:currentViewController];
+        [self.navigationStack push:_currentViewController];
         [self animatePushWithViewController:viewController];
         [self enableBackButton];
     }
@@ -133,27 +135,27 @@ static double const AnimationDuration = 0.15;
     [self.containerView addSubview:_homeViewController.view];
     [_homeViewController didMoveToParentViewController:self];
     // Must be set to current.
-    currentViewController = _homeViewController;
+    _currentViewController = _homeViewController;
     [self updateDateTitle:_homeDate];
 }
 
 - (void)animatePushWithViewController:(UIViewController *)newViewController {
-    [currentViewController willMoveToParentViewController:nil];
+    [_currentViewController willMoveToParentViewController:nil];
     [self addChildViewController:newViewController];
     
     CGFloat width = self.containerView.bounds.size.width;
     CGFloat height = self.containerView.bounds.size.height;
     newViewController.view.frame = CGRectMake(width, 0, width, height);
     
-    [self transitionFromViewController:currentViewController
+    [self transitionFromViewController:_currentViewController
                       toViewController:newViewController
                               duration:AnimationDuration
                                options:0
                             animations:^{ newViewController.view.frame = self.containerView.bounds; }
                             completion:^(BOOL finished) {
         [newViewController didMoveToParentViewController:self];
-        [currentViewController removeFromParentViewController];
-        currentViewController = newViewController;
+        [_currentViewController removeFromParentViewController];
+        _currentViewController = newViewController;
     }];
 }
 
@@ -165,22 +167,22 @@ static double const AnimationDuration = 0.15;
     // Add the controller's view as a subview to the container view.
     [self.containerView addSubview:newViewController.view];
     // Bring the current view controller to the front for pop animation.
-    [self.containerView bringSubviewToFront:currentViewController.view];
+    [self.containerView bringSubviewToFront:_currentViewController.view];
     
     CGFloat width = self.containerView.bounds.size.width;
     CGFloat height = self.containerView.bounds.size.height;
     
     [UIView animateWithDuration:AnimationDuration
-                     animations:^ { currentViewController.view.frame = CGRectMake(width, 0, width, height); }
+                     animations:^ { _currentViewController.view.frame = CGRectMake(width, 0, width, height); }
                      completion:^(BOOL finised) {
-        [currentViewController.view removeFromSuperview];
-        [currentViewController removeFromParentViewController];
-        currentViewController = newViewController;
+        [_currentViewController.view removeFromSuperview];
+        [_currentViewController removeFromParentViewController];
+        _currentViewController = newViewController;
     }];
 }
 
 - (void)animateTransitionWithViewController:(UIViewController *)newViewController transition:(Transition)transition {
-    [currentViewController willMoveToParentViewController:nil];
+    [_currentViewController willMoveToParentViewController:nil];
     [self addChildViewController:newViewController];
     
     CGFloat width = self.containerView.bounds.size.width;
@@ -197,7 +199,7 @@ static double const AnimationDuration = 0.15;
             break;
     }
     
-    [self transitionFromViewController:currentViewController
+    [self transitionFromViewController:_currentViewController
                       toViewController:newViewController
                               duration:AnimationDuration
                                options:0
@@ -205,18 +207,18 @@ static double const AnimationDuration = 0.15;
         newViewController.view.frame = self.containerView.bounds;
         switch (transition) {
             case RightToLeft:
-                currentViewController.view.frame = CGRectMake(-width, 0, width, height);
+                _currentViewController.view.frame = CGRectMake(-width, 0, width, height);
                 break;
             case LeftToRight:
-                currentViewController.view.frame = CGRectMake(width, 0, width, height);
+                _currentViewController.view.frame = CGRectMake(width, 0, width, height);
                 break;
             default:
                 break;
         }
     } completion:^(BOOL finished) {
         [newViewController didMoveToParentViewController:self];
-        [currentViewController removeFromParentViewController];
-        currentViewController = newViewController;
+        [_currentViewController removeFromParentViewController];
+        _currentViewController = newViewController;
         
         // Delegate call should update the next and previous view controllers and buttons respectively.
         [self.delegate datePickerViewController:self
