@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, Transition) {
 
 @property (strong, nonatomic) NSMutableArray *navigationStack;
 
-@property (weak, nonatomic) UIViewController *currentViewController;
 @property (weak, nonatomic) UIViewController *homeViewController;
 @property (weak, nonatomic) UIViewController *nextViewController;
 @property (weak, nonatomic) UIViewController *previousViewController;
@@ -54,7 +53,6 @@ typedef NS_ENUM(NSInteger, Transition) {
 
 #pragma mark - Public Methods -
 
-- (void)setCurrentViewController:(UIViewController *)currentViewController withDate:(NSString *)date;
 - (void)setHomeViewController:(UIViewController *)viewController withDate:(NSString *)date;
 - (void)setNextViewController:(UIViewController *)viewController withDate:(NSString *)date;
 - (void)setPreviousViewController:(UIViewController *)viewController withDate:(NSString *)date;

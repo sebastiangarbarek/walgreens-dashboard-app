@@ -11,7 +11,7 @@
 #import "DatePickerViewController.h"
 #import "DatabaseManagerApp.h"
 
-@interface HomeViewController : DatePickerViewController
+@interface HomeViewController : DatePickerViewController <DatePickerViewControllerDelegate>
 
 @property DatabaseManagerApp *databaseManagerApp;
 

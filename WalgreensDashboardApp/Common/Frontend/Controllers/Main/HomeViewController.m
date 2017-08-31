@@ -12,6 +12,12 @@
 
 @implementation HomeViewController
 
+/*
+ For future portability in design improvements,
+ @dynamic should be removed and replaced with U.I.
+ being implemented programmatically from DatePickerViewController.
+ */
+
 @dynamic dateNavigationBar;
 @dynamic dateNavigationItem;
 @dynamic previousButton;
@@ -27,12 +33,16 @@
 #pragma mark - Parent Methods -
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
     [self createDatabaseConnection];
     [self initializeViews];
     [self addNotifications];
     [self updatePreviousAndNext];
+    
+    // DatePickerViewController awakeFromNib should be called last.
+    [super awakeFromNib];
 }
+
+#pragma mark - Initialization Methods -
 
 - (void)createDatabaseConnection {
     self.databaseManagerApp = [[DatabaseManagerApp alloc] init];
@@ -78,6 +88,8 @@
                                                  name:@"Requests complete"
                                                object:nil];
 }
+
+#pragma mark - View Controller Methods -
 
 - (void)updatePreviousAndNext {
     
@@ -254,6 +266,17 @@
         self.notificationsLabel.textColor = [UIColor darkTextColor];
         self.notificationsLabel.text = @"Requesting stores...";
     });
+}
+
+#pragma mark - Delegate Methods -
+
+- (void)datePickerViewController:(DatePickerViewController *)datePickerViewController
+        didPresentViewController:(UIViewController *)viewController {
+    [self updatePreviousAndNext];
+}
+
+- (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController {
+    
 }
 
 @end
