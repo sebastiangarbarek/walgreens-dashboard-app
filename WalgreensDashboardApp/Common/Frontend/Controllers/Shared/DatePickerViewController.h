@@ -11,12 +11,10 @@
 #import "NSMutableArray+Stack.h"
 
 @protocol DatePickerViewControllerDelegate;
-@protocol DatePickerViewDelegate;
 
 @interface DatePickerViewController : UIViewController
 
-@property (nonatomic, weak) id <DatePickerViewControllerDelegate> datePickerViewControllerDelegate;
-@property (nonatomic, weak) id <DatePickerViewDelegate> datePickerViewDelegate;
+@property (nonatomic, weak) id <DatePickerViewControllerDelegate> delegate;
 
 typedef NS_ENUM(NSInteger, Transition) {
     RightToLeft,
@@ -76,14 +74,9 @@ typedef NS_ENUM(NSInteger, Transition) {
 @protocol DatePickerViewControllerDelegate <NSObject>
 
 @required
+// Implementing class must update left/previous and right/next view controllers.
 - (void)datePickerViewController:(DatePickerViewController *)datePickerViewController didPresentViewController:(UIViewController *)viewController;
+// Implementing class must update top view controller.
 - (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController;
-
-@end
-
-@protocol DatePickerViewDelegate <NSObject>
-
-@required
-- (UIViewController *)datePickerViewControllerDidRequestNewInstance:(DatePickerViewController *)datePickerViewController;
 
 @end

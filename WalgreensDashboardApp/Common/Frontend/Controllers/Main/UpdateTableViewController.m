@@ -17,10 +17,6 @@
     ChartsView *chartView;
     BOOL completed;
 }
-@property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
-@property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
-
-
 
 @end
 
@@ -179,9 +175,14 @@
 
 - (UIViewController *)datePickerViewControllerDidRequestNewInstance:(DatePickerViewController *)datePickerViewController {
     UIViewController *instance;
+    // Unique case where view can change. Other class implementations are not so complicated.
+    HomeViewController *homeViewController = (HomeViewController *)self.parentViewController;
+    instance = [homeViewController appropriateHomeViewController];
     
-    UIStoryboard *updateStoryBoard = [UIStoryboard storyboardWithName:@"UpdateView" bundle:nil];
+    // Pass date so that data loads.
+    instance.date = self.date;
     
+    return instance;
 }
 
 @end

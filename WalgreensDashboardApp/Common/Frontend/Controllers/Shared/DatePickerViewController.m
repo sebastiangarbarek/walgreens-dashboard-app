@@ -51,6 +51,8 @@ static double const AnimationDuration = 0.15;
 
 - (void)presentHomeViewController {
     if (_currentViewController != _homeViewController) {
+        // We are moving to a top view controller.
+        _topViewController = nil;
         [self animateTransitionWithViewController:_homeViewController transition:RightToLeft];
         _currentDate = _homeDate;
         [self updateDateTitle:_homeDate];

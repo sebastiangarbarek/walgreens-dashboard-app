@@ -15,6 +15,7 @@
 @interface HomeViewController : DatePickerViewController <DatePickerViewControllerDelegate>
 
 @property DatabaseManagerApp *databaseManagerApp;
+- (UIViewController *)appropriateHomeViewController;
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationBar *datePicker;

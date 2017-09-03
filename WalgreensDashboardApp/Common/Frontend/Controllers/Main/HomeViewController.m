@@ -13,9 +13,9 @@
 @implementation HomeViewController
 
 /*
- For future portability in design improvements,
- @dynamic should be removed and replaced with U.I.
- being implemented programmatically from DatePickerViewController.
+ For future portability and code reduction in use...
+ Storyboard and @dynamic reference should be removed.
+ Replaced with programmatically implemented U.I.
  */
 
 @dynamic dateNavigationBar;
@@ -146,16 +146,11 @@
 }
 
 /*!Creates a new next/previous screen.
- The next/previous screen is different depending on which class is currently being displayed.
+ The next/previous screen could be different depending on which class is currently being displayed.
  * \returns The correct next/previous screen.
  */
 - (UIViewController *)appopriateNextPreviousViewController {
-    if ([self.currentViewController isKindOfClass:[DatePickerView class]]) {
-        return [((DatePickerView *)self.currentViewController) newInstance];
-    }
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:@"Must extend DatePickerView"]
-                                 userInfo:nil];
+    
 }
 
 #pragma mark - Container View
@@ -242,11 +237,7 @@
 }
 
 - (void)datePickerViewControllerDidSwitchDatesWhileNested:(DatePickerViewController *)datePickerViewController {
-    if ([self.currentDate isEqualToString:[DateHelper currentDate]]) {
-        [self setTopViewController:[self appropriateHomeViewController]];
-    } else if ([self.topViewController isKindOfClass:[DatePickerView class]]) {
-        [self setTopViewController:[((DatePickerView *)self.topViewController) newInstance]];
-    }
+    [self setTopViewController:[self appropriateHomeViewController]];
 }
 
 @end
