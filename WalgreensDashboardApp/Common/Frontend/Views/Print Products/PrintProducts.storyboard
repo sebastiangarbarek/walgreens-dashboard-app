@@ -41,7 +41,7 @@
         <!--Print Products-->
         <scene sceneID="AkK-2n-cVB">
             <objects>
-                <navigationController storyboardIdentifier="PrintProducts" id="QDf-L9-hFl" sceneMemberID="viewController">
+                <navigationController id="QDf-L9-hFl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Print Products" id="tif-wD-enJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kaE-YA-iF2">

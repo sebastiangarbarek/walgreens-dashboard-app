@@ -21,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self addNotifications];
+    [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -53,7 +53,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"store" forIndexPath:indexPath];
+    StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
     
     NSString *city = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"city"];
     NSString *state = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"state"];
@@ -62,7 +62,6 @@
         city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         cell.storeName.text = [NSString stringWithFormat:@"%@, %@", city, state];
     } else {
-        // Details unknown.
         cell.storeName.text = [NSString stringWithFormat:@"Store #%@ (details unknown)",
                                [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"storeNum"]];
         cell.userInteractionEnabled = NO;

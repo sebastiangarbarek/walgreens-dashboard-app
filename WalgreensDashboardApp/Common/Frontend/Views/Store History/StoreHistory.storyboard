@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="store" textLabel="Sfi-Xc-XHz" style="IBUITableViewCellStyleDefault" id="ZkX-Pb-sKh" customClass="StoreCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="Sfi-Xc-XHz" style="IBUITableViewCellStyleDefault" id="ZkX-Pb-sKh" customClass="StoreCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkX-Pb-sKh" id="7Vf-0L-NcB">
@@ -36,6 +36,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="storeName" destination="Sfi-Xc-XHz" id="l0P-yr-FDZ"/>
+                                    <segue destination="EMI-Rs-UTF" kind="show" id="x3C-4o-d0O"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -50,10 +51,18 @@
             </objects>
             <point key="canvasLocation" x="-74" y="40"/>
         </scene>
+        <!--StoreDetails-->
+        <scene sceneID="lbS-CE-gRZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="EMI-Rs-UTF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29O-1Q-QeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="39"/>
+        </scene>
         <!--Offline History-->
         <scene sceneID="qSn-wF-W6k">
             <objects>
-                <navigationController storyboardIdentifier="StoreHistory" id="baE-sr-ljD" sceneMemberID="viewController">
+                <navigationController id="baE-sr-ljD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Offline History" id="Bm3-Ib-ea4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXU-A7-uEs">
