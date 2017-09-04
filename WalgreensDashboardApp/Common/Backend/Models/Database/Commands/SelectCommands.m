@@ -114,6 +114,11 @@
         return nil;
 }
 
+- (NSMutableArray *)selectDatesInHistoryTable {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT date FROM %@", HistoryTableName];
+    return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"date"];
+}
+
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date {
     NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.date = '%@'", StoreTableName, HistoryTableName, HistoryTableName, StoreTableName, HistoryTableName, date];
     return [self.databaseManager executeQuery:[commandString UTF8String]];

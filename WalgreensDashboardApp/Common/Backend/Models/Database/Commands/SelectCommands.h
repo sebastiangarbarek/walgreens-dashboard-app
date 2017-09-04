@@ -30,6 +30,7 @@
 - (NSNumber *)countOnlineStoresInTempTable;
 
 // Return rows.
+- (NSMutableArray *)selectDatesInHistoryTable;
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
 
 // Return states without duplicates

@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +22,54 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Printicular Logo" translatesAutoresizingMaskIntoConstraints="NO" id="V8z-NN-Vbo">
+                                <rect key="frame" x="136" y="407" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Kga-Fh-3QX"/>
+                                    <constraint firstAttribute="width" constant="100" id="LJq-gK-34u"/>
+                                    <constraint firstAttribute="width" secondItem="V8z-NN-Vbo" secondAttribute="height" multiplier="1:1" id="aY9-KI-kkX"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walgreens Logo" translatesAutoresizingMaskIntoConstraints="NO" id="gSf-Je-D5x">
+                                <rect key="frame" x="136" y="267" width="102" height="132"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gSf-Je-D5x" secondAttribute="height" multiplier="17:22" id="Lmg-vq-1WO"/>
+                                    <constraint firstAttribute="width" constant="102" id="Vde-HF-0Yp"/>
+                                    <constraint firstAttribute="height" constant="132" id="heT-lg-v7O"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MEA Logo" translatesAutoresizingMaskIntoConstraints="NO" id="vsG-py-3lB">
+                                <rect key="frame" x="136" y="159" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="0EK-J4-SPX"/>
+                                    <constraint firstAttribute="width" constant="100" id="g88-w8-WRm"/>
+                                    <constraint firstAttribute="width" secondItem="vsG-py-3lB" secondAttribute="height" multiplier="1:1" id="iqD-2z-DP4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="V8z-NN-Vbo" secondAttribute="trailing" constant="123" id="DbM-he-c1f"/>
+                            <constraint firstItem="vsG-py-3lB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="120" id="Ikc-77-9US"/>
+                            <constraint firstItem="gSf-Je-D5x" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="120" id="PGY-fj-ZIG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vsG-py-3lB" secondAttribute="trailing" constant="123" id="SVq-6J-d3v"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="V8z-NN-Vbo" secondAttribute="bottom" constant="160" id="WRL-uN-SiN"/>
+                            <constraint firstItem="V8z-NN-Vbo" firstAttribute="top" secondItem="gSf-Je-D5x" secondAttribute="bottom" constant="8" id="hdG-AB-XMT"/>
+                            <constraint firstItem="V8z-NN-Vbo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="120" id="jjD-dF-pwZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gSf-Je-D5x" secondAttribute="trailing" constant="121" id="oab-cl-scP"/>
+                            <constraint firstItem="gSf-Je-D5x" firstAttribute="top" secondItem="vsG-py-3lB" secondAttribute="bottom" constant="8" id="rFE-80-9bh"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MEA Logo" width="200" height="200"/>
+        <image name="Printicular Logo" width="170" height="170"/>
+        <image name="Walgreens Logo" width="612" height="792"/>
+    </resources>
 </document>
