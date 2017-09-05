@@ -10,6 +10,8 @@
 
 @implementation DetailCell
 
-
+- (void)setTitle:(NSString *)title andDetail:(NSString *)detail {
+    
+}
 
 @end

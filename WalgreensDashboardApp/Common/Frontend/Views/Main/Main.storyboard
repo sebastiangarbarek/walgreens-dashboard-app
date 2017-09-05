@@ -48,10 +48,10 @@
             </objects>
             <point key="canvasLocation" x="446" y="-48"/>
         </scene>
-        <!--StoreData-->
+        <!--StoreCategory-->
         <scene sceneID="haV-4d-ylE">
             <objects>
-                <viewControllerPlaceholder storyboardName="StoreData" id="zaX-eO-TTl" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="StoreCategory" id="zaX-eO-TTl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="All Stores" id="Hbq-kg-rqC"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jh-KR-1UF" userLabel="First Responder" sceneMemberID="firstResponder"/>

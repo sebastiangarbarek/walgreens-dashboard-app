@@ -221,7 +221,7 @@
     chart.descriptionText = @"";
     
     //add animation
-    [chart animateWithXAxisDuration:1.0];
+    //[chart animateWithXAxisDuration:1.0];
     
     //remove the x lines
     chart.xAxis.drawGridLinesEnabled = NO;

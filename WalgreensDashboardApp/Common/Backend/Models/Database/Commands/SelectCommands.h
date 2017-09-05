@@ -31,6 +31,7 @@
 
 // Return rows.
 - (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;
+- (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
 - (NSMutableArray *)selectDatesInHistoryTable;
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
 

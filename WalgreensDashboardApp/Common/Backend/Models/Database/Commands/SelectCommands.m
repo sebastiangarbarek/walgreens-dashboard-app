@@ -119,6 +119,11 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+- (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber {
     NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];

@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *detail;
 
+- (void)setTitle:(NSString *)title andDetail:(NSString *)detail;
+
 @end

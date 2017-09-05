@@ -74,7 +74,10 @@
 #pragma mark - Navigation Methods -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"Store Details"]) {
+        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        
+    }
 }
 
 @end

@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+#import "MapPin.h"
+
 @interface MapCell : UITableViewCell <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+- (void)placeStoreOnMapWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
 
 @end

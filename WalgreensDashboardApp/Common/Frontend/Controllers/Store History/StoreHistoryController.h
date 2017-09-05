@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "StoreCell.h"
+#import "StoreDetailsController.h"
 
 @interface StoreHistoryController : TableViewController
 

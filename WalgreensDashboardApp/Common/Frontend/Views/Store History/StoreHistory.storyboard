@@ -36,7 +36,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="storeName" destination="Sfi-Xc-XHz" id="l0P-yr-FDZ"/>
-                                    <segue destination="EMI-Rs-UTF" kind="show" id="x3C-4o-d0O"/>
+                                    <segue destination="EMI-Rs-UTF" kind="show" identifier="Store Details" id="x3C-4o-d0O"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

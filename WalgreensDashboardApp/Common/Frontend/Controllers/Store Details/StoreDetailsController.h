@@ -7,6 +7,8 @@
 //
 
 #import "TableViewController.h"
+#import "MapCell.h"
+#import "DetailCell.h"
 
 @interface StoreDetailsController : TableViewController
 
