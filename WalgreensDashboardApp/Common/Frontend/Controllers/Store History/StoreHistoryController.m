@@ -55,15 +55,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
     
+    NSString *storeNum = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"storeNum"];
     NSString *city = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"city"];
     NSString *state = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"state"];
     
     if ([city length] != 0) {
         city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        cell.storeNumber = storeNum;
         cell.storeName.text = [NSString stringWithFormat:@"%@, %@", city, state];
     } else {
-        cell.storeName.text = [NSString stringWithFormat:@"Store #%@ (details unknown)",
-                               [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"storeNum"]];
+        cell.storeName.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", storeNum];
         cell.userInteractionEnabled = NO;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
@@ -75,8 +76,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"Store Details"]) {
-        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         
+        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        storeDetailsController.storeNumber = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"storeNum"];
     }
 }
 

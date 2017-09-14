@@ -10,6 +10,8 @@
 
 @interface StoreCell : UITableViewCell
 
+@property NSString *storeNumber;
+
 @property (weak, nonatomic) IBOutlet UILabel *storeName;
 
 @end
