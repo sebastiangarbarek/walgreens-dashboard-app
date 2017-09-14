@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--State-->
         <scene sceneID="nTc-kT-tBB">
             <objects>
-                <tableViewController storyboardIdentifier="Store State" id="Car-sc-feP" sceneMemberID="viewController">
+                <tableViewController id="Car-sc-feP" customClass="StoreStateController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RSq-q1-M8c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,6 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="TFg-Bg-jhz" kind="show" identifier="City List" id="vaL-B6-XtD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,7 +35,7 @@
                             <outlet property="delegate" destination="Car-sc-feP" id="pnu-g0-mpI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="G4j-P0-zWO"/>
+                    <navigationItem key="navigationItem" title="State" id="G4j-P0-zWO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lF-qN-g8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,6 +58,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0Y-ga-a9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-876" y="89"/>
+        </scene>
+        <!--City-->
+        <scene sceneID="zLP-Vc-92o">
+            <objects>
+                <tableViewController id="TFg-Bg-jhz" customClass="StoreStateController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zbc-5Q-dDK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sky-KI-3ou">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sky-KI-3ou" id="53R-aF-LA3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Q6e-X6-WQH" kind="show" identifier="Store List" trigger="accessoryAction" id="LjX-fF-l0C"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TFg-Bg-jhz" id="k1l-KA-6kp"/>
+                            <outlet property="delegate" destination="TFg-Bg-jhz" id="DI7-UJ-XKQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="City" id="aMJ-Ot-AkI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oh1-Zu-Maf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886" y="89"/>
+        </scene>
+        <!--Store-->
+        <scene sceneID="6lO-1U-tyO">
+            <objects>
+                <tableViewController id="Q6e-X6-WQH" customClass="StoreStateController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qJw-nY-6lI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="o8a-qa-TWW">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o8a-qa-TWW" id="dIK-Ji-mU7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="P7l-rF-clY" kind="show" identifier="Store Details" id="Bxb-fq-7cA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q6e-X6-WQH" id="7S9-3a-e24"/>
+                            <outlet property="delegate" destination="Q6e-X6-WQH" id="11S-0y-VER"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Store" id="rgP-L3-hfJ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o4I-hR-vf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1695" y="89"/>
+        </scene>
+        <!--StoreDetails-->
+        <scene sceneID="d1h-6X-6HL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="P7l-rF-clY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lpx-of-9ot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="88"/>
         </scene>
     </scenes>
 </document>

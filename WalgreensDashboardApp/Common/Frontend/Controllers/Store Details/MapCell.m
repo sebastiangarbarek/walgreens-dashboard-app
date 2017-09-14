@@ -12,6 +12,8 @@
 
 - (void)placeStoreOnMapWithLatitude:(NSString *)latitude longitude:(NSString *)longitude {
     if (latitude != nil && longitude != nil) {
+        NSLog(@"%@, %@", latitude, longitude);
+        
         double lat = [latitude doubleValue];
         double lng = [longitude doubleValue];
         

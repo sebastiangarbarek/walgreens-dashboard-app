@@ -178,8 +178,8 @@ static NSString *const kSunClose = @"sunClose";
     
     if (indexPath.section == 0) {
         MapCell *cell = [tableView dequeueReusableCellWithIdentifier:mapIdentifier];
-        [cell placeStoreOnMapWithLatitude:[storeData objectForKey:sectionTitles[indexPath.section]][0]
-                                longitude:[storeData objectForKey:sectionTitles[indexPath.section]][1]];
+        [cell placeStoreOnMapWithLatitude:[storeData objectForKey:sectionTitles[indexPath.section]][1]
+                                longitude:[storeData objectForKey:sectionTitles[indexPath.section]][0]];
         return cell;
     } else {
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:detailIdentifier];

@@ -10,6 +10,10 @@
 		4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3749381F3EE491004DBD53 /* MapKit.framework */; };
 		7649FB6E2941621ED3FB9EEA /* Pods_WalgreensDashboardAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
+		A80D3EB11F6A171000D9CBE6 /* StoreCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3EB01F6A171000D9CBE6 /* StoreCategoryController.m */; };
+		A80D3EB41F6A29F000D9CBE6 /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3EB31F6A29F000D9CBE6 /* StoreStateController.m */; };
+		A80D3EB71F6A2A1800D9CBE6 /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3EB61F6A2A1800D9CBE6 /* StoreCityController.m */; };
+		A80D3EBB1F6A2A4D00D9CBE6 /* StoreListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D3EBA1F6A2A4D00D9CBE6 /* StoreListController.m */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
 		A86CF4E31F5CCADC005889B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E21F5CCADC005889B7 /* Main.storyboard */; };
@@ -88,6 +92,14 @@
 		5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8074F501F58EA3C00C4406C /* UIViewController+DateTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DateTransition.m"; sourceTree = "<group>"; };
 		A8074F521F58EA4C00C4406C /* UIViewController+DateTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DateTransition.h"; sourceTree = "<group>"; };
+		A80D3EAF1F6A16FD00D9CBE6 /* StoreCategoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreCategoryController.h; sourceTree = "<group>"; };
+		A80D3EB01F6A171000D9CBE6 /* StoreCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCategoryController.m; sourceTree = "<group>"; };
+		A80D3EB21F6A29C300D9CBE6 /* StoreStateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreStateController.h; sourceTree = "<group>"; };
+		A80D3EB31F6A29F000D9CBE6 /* StoreStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreStateController.m; sourceTree = "<group>"; };
+		A80D3EB51F6A2A0900D9CBE6 /* StoreCityController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreCityController.h; sourceTree = "<group>"; };
+		A80D3EB61F6A2A1800D9CBE6 /* StoreCityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCityController.m; sourceTree = "<group>"; };
+		A80D3EB91F6A2A3D00D9CBE6 /* StoreListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreListController.h; sourceTree = "<group>"; };
+		A80D3EBA1F6A2A4D00D9CBE6 /* StoreListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreListController.m; sourceTree = "<group>"; };
 		A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
 		A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +269,21 @@
 			path = Chart;
 			sourceTree = "<group>";
 		};
+		A80D3EAC1F6A166E00D9CBE6 /* Store Category */ = {
+			isa = PBXGroup;
+			children = (
+				A80D3EAF1F6A16FD00D9CBE6 /* StoreCategoryController.h */,
+				A80D3EB01F6A171000D9CBE6 /* StoreCategoryController.m */,
+				A80D3EB21F6A29C300D9CBE6 /* StoreStateController.h */,
+				A80D3EB31F6A29F000D9CBE6 /* StoreStateController.m */,
+				A80D3EB51F6A2A0900D9CBE6 /* StoreCityController.h */,
+				A80D3EB61F6A2A1800D9CBE6 /* StoreCityController.m */,
+				A80D3EB91F6A2A3D00D9CBE6 /* StoreListController.h */,
+				A80D3EBA1F6A2A4D00D9CBE6 /* StoreListController.m */,
+			);
+			path = "Store Category";
+			sourceTree = "<group>";
+		};
 		A821BB241EDB95C700B878BA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +307,7 @@
 		A821BB2A1EDB960400B878BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A80D3EAC1F6A166E00D9CBE6 /* Store Category */,
 				A86CF51B1F5D3ED3005889B7 /* Store Details */,
 				A82949DD1F4E525A00EA0BBD /* Shared */,
 				A88A798D1F2F340300C99BFD /* Main */,
@@ -883,6 +911,7 @@
 				A86CF50B1F5D12C4005889B7 /* StoreHistoryController.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
 				A86CF4FB1F5CFC54005889B7 /* Reachability.m in Sources */,
+				A80D3EB71F6A2A1800D9CBE6 /* StoreCityController.m in Sources */,
 				A86CF51E1F5D3F59005889B7 /* MapPin.m in Sources */,
 				A86CF4FC1F5CFC54005889B7 /* WalgreensAPI.m in Sources */,
 				A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */,
@@ -890,6 +919,7 @@
 				A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */,
 				A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */,
 				A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */,
+				A80D3EB41F6A29F000D9CBE6 /* StoreStateController.m in Sources */,
 				A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */,
 				A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */,
 				A86CF5031F5CFC54005889B7 /* DatabaseManagerApp.m in Sources */,
@@ -904,7 +934,9 @@
 				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
+				A80D3EBB1F6A2A4D00D9CBE6 /* StoreListController.m in Sources */,
 				A86CF50E1F5D1CE6005889B7 /* StoreCell.m in Sources */,
+				A80D3EB11F6A171000D9CBE6 /* StoreCategoryController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
