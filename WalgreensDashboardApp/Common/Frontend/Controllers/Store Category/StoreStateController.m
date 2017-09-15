@@ -11,6 +11,7 @@
 @interface StoreStateController () {
 
     NSArray *sectionTitles;
+    NSArray *indexTitles;
     NSMutableDictionary *cellsToSection;
     
     NSArray *stateAbbreviations;
@@ -63,8 +64,10 @@
     
     // Finally set the data for the section titles.
     NSArray *keys = [cellsToSection allKeys];
-    NSOrderedSet *orderedKeys = [NSOrderedSet orderedSetWithArray:keys];
-    sectionTitles = [orderedKeys array];
+    sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    // Have the index display the entire alphabet.
+    // indexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
 }
 
 - (NSArray *)postalAbbreviationsToName:(NSArray *)postalAbbreviations {
@@ -141,6 +144,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[cellsToSection objectForKey:sectionTitles[section]] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [sectionTitles objectAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return sectionTitles;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [sectionTitles indexOfObject:title];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

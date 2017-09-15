@@ -63,7 +63,7 @@
                             <outlet property="delegate" destination="bJk-Ew-O0g" id="tps-kP-UJA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="States" id="7BR-v3-gPe">
+                    <navigationItem key="navigationItem" prompt="All Stores" id="7BR-v3-gPe">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="i6M-bK-IoO">
                             <rect key="frame" x="112.5" y="37" width="150" height="30"/>
