@@ -163,7 +163,7 @@
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {
         if([results[i] objectForKey:@"state"]!= nil){
-            [mutableArray addObject:results[i]];
+            [mutableArray addObject:[results[i] objectForKey:@"state"]];
         }
     }
     return mutableArray;
