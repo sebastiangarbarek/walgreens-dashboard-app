@@ -123,15 +123,13 @@
                                        @"WA": ^{[names addObject:@"Washington"];},
                                        @"WV": ^{[names addObject:@"West Virginia"];},
                                        @"WI": ^{[names addObject:@"Wisconsin"];},
-                                       @"WY": ^{[names addObject:@"Wyoming"];}};
+                                       @"WY": ^{[names addObject:@"Wyoming"];},
+                                       @"PR": ^{[names addObject:@"Puerto Rico"];},
+                                       @"VI": ^{[names addObject:@"Virgin Islands"];}};
     // No default...
     
     for (NSString *postalAbbreviation in postalAbbreviations) {
-        NSLog(@"%@", postalAbbreviation);
-        
-        if ([postalAbbreviation isEqualToString:@"AL"]) [names addObject:@"Alabama"];
-        //((CaseBlock)stringSwitchCase[postalAbbreviation])();
-        NSLog(@"%@", names);
+        ((CaseBlock)stringSwitchCase[postalAbbreviation])();
     }
     
     return names;
