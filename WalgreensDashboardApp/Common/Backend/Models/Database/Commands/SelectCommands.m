@@ -143,6 +143,11 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+- (NSArray *)selectStoresInState:(NSString *)state {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@'", StoreTableName, state];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {

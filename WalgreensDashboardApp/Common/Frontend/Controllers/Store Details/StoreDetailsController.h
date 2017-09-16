@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "MapCell.h"
 #import "DetailCell.h"
+#import "DatabaseConstants.h"
 
 @interface StoreDetailsController : TableViewController
 

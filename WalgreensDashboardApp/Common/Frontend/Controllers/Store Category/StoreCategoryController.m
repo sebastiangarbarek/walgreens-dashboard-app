@@ -24,16 +24,10 @@
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         // List.
         [self remove:self.mapController];
-        
-        // Pass data here.
-        
         [self add:self.listController];
     } else {
         // Map.
         [self remove:self.listController];
-        
-        // Pass data here.
-        
         [self add:self.mapController];
     }
 }
@@ -46,7 +40,7 @@
     viewController.view.frame = self.view.bounds;
     [self.view addSubview:viewController.view];
     
-    // Etiquette. Queue to refresh view.
+    // Etiquette.
     [viewController didMoveToParentViewController:self];
 }
 
@@ -96,8 +90,37 @@
     [self updateView];
 }
 
-- (void)child:(UIViewController *)viewController didCallSegueWithIdentifier:(NSString *)identifier {
-    [self performSegueWithIdentifier:identifier sender:self];
+/*
+ A very ugly way of pushing.
+ Could not use performSegue as awakeFromNib and viewDidLoad are called before prepareForSegue,
+ data would have to be loaded in viewDidAppear which is slow.
+ */
+- (void)child:(UIViewController *)childViewController willPushViewController:(NSString *)viewControllerIdentifier withSegueIdentifier:(NSString *)segueIdentifier {
+    /*
+    if ([segueIdentifier isEqualToString:@"State Cities"]) {
+        if ([viewControllerIdentifier isEqualToString:@"Cities"]) {
+            // Instantiate view controller manually.
+            StoreCityController *storeCityController = [[StoreCityController alloc] init];
+            
+            // Cast child view controller.
+            StoreStateController *storeStateController = ((StoreStateController *)childViewController);
+            
+            // Get index path from child.
+            NSIndexPath *indexPath = storeStateController.tableView.indexPathForSelectedRow;
+            
+            // Pass data to new controller.
+            storeCityController.state = [[storeStateController.cellsToSectionAbbr
+                                          objectForKey:[storeStateController.sectionTitles objectAtIndex:indexPath.section]]
+                                         objectAtIndex:indexPath.row];
+            storeCityController.navigationTitle = [[storeStateController.cellsToSection
+                                                    objectForKey:[storeStateController.sectionTitles objectAtIndex:indexPath.section]]
+                                                   objectAtIndex:indexPath.row];
+            
+            [self.navigationController pushViewController:storeCityController animated:YES];
+        }
+    }
+    */
+    [self performSegueWithIdentifier:segueIdentifier sender:childViewController];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -111,6 +134,8 @@
         storeCityController.state = [[storeStateController.cellsToSectionAbbr
                                       objectForKey:[storeStateController.sectionTitles objectAtIndex:indexPath.section]]
                                      objectAtIndex:indexPath.row];
+        storeCityController.navigationTitle =
+        [[storeStateController.cellsToSection objectForKey:[storeStateController.sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     }
 }
 

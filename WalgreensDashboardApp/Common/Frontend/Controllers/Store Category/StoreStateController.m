@@ -10,7 +10,6 @@
 
 @interface StoreStateController () {
     NSArray *indexTitles;
-    NSMutableDictionary *cellsToSection;
 }
 
 @end
@@ -21,8 +20,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    cellsToSection = [NSMutableDictionary new];
-    self.cellsToSectionAbbr = [NSMutableDictionary new];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [self initData];
     [self.tableView reloadData];
 }
@@ -30,6 +30,9 @@
 #pragma mark - Init Methods -
 
 - (void)initData {
+    self.cellsToSection = [NSMutableDictionary new];
+    self.cellsToSectionAbbr = [NSMutableDictionary new];
+    
     // Walgreens database only holds state abbreviations. Database query return states in alphabetical order.
     NSArray *stateAbbreviations = [self.databaseManagerApp.selectCommands selectStatesInStoreDetail];
     // Switch abbreviations for full names, array maintains order of elements.
@@ -51,7 +54,7 @@
         NSString *letter = [state substringToIndex:1];
         letter = [letter uppercaseString];
         
-        NSMutableArray *statesForLetter = [cellsToSection objectForKey:letter];
+        NSMutableArray *statesForLetter = [self.cellsToSection objectForKey:letter];
         NSMutableArray *statesForLetterAbbr = [self.cellsToSectionAbbr objectForKey:letter];
         
         // If this is the first state for the letter the mapping does not exist yet.
@@ -62,12 +65,12 @@
         
         [statesForLetter addObject:state];
         [statesForLetterAbbr addObject:stateAbbr];
-        [cellsToSection setObject:statesForLetter forKey:letter];
+        [self.cellsToSection setObject:statesForLetter forKey:letter];
         [self.cellsToSectionAbbr setObject:statesForLetterAbbr forKey:letter];
     }
     
     // Finally set the data for the section titles.
-    NSArray *keys = [cellsToSection allKeys];
+    NSArray *keys = [self.cellsToSection allKeys];
     self.sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     // Have the index display the entire alphabet.
@@ -149,7 +152,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[cellsToSection objectForKey:self.sectionTitles[section]] count];
+    return [[self.cellsToSection objectForKey:self.sectionTitles[section]] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -166,15 +169,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
-    cell.storeName.text = [[cellsToSection objectForKey:self.sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
+    cell.storeName.text = [[self.cellsToSection objectForKey:self.sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
     return cell;
 }
 
 #pragma mark - Navigation Methods -
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Should pass data here to keep code out of the parent.
-    [self.segueDelegate child:self didCallSegueWithIdentifier:@"State Cities"];
+    /*
+     Could skip delegation and use parentViewController,
+     however a child view controller shouldn't be responsible for a transition.
+     */
+    [self.segueDelegate child:self willPushViewController:@"Cities" withSegueIdentifier:@"State Cities"];
 }
 
 @end

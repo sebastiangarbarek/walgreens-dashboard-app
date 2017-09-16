@@ -61,10 +61,9 @@
     
     if ([city length] != 0) {
         city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        cell.storeNumber = storeNum;
         cell.storeName.text = [NSString stringWithFormat:@"%@, %@", city, state];
     } else {
-        cell.storeName.text = [NSString stringWithFormat:@"Store #%@ (details unknown)", storeNum];
+        cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
         cell.userInteractionEnabled = NO;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }

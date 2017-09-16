@@ -19,6 +19,7 @@
 @property (weak, nonatomic) id <SegueDelegate> segueDelegate;
 
 // Public as accessed by parent StoreCategoryController for segue. Could instead pass data using delegation.
+@property NSMutableDictionary *cellsToSection;
 @property NSMutableDictionary *cellsToSectionAbbr;
 @property NSArray *sectionTitles;
 

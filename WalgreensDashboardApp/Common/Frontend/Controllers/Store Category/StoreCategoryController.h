@@ -14,7 +14,7 @@
 @protocol SegueDelegate <NSObject>
 
 @required
-- (void)child:(UIViewController *)viewController didCallSegueWithIdentifier:(NSString *)identifier;
+- (void)child:(UIViewController *)childViewController willPushViewController:(NSString *)viewControllerIdentifier withSegueIdentifier:(NSString *)segueIdentifier;
 
 @end
 

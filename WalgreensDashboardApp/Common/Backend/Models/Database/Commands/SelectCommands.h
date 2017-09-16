@@ -34,6 +34,7 @@
 - (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
 - (NSMutableArray *)selectDatesInHistoryTable;
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
+- (NSArray *)selectStoresInState:(NSString *)state;
 
 // Return states without duplicates
 - (NSMutableArray *)selectStatesInStoreDetail;

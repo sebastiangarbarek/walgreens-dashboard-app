@@ -8,35 +8,6 @@
 
 #import "StoreDetailsController.h"
 
-/*
- Error prone keys.
- */
-static NSString *const kStoreNum = @"storeNum";
-static NSString *const kLat = @"latitude";
-static NSString *const kLong = @"longitude";
-static NSString *const kAddr = @"street";
-static NSString *const kCity = @"city";
-static NSString *const kState = @"state";
-static NSString *const kDistrict = @"districtNum";
-static NSString *const kArea = @"storeAreaCd";
-static NSString *const kTimeZone = @"timezone";
-static NSString *const kHours = @"twentyFourHr";
-static NSString *const kPhone = @"storePhoneNum";
-static NSString *const kMonOpen = @"monOpen";
-static NSString *const kMonClose = @"monClose";
-static NSString *const kTueOpen = @"tueOpen";
-static NSString *const kTueClose = @"tueClose";
-static NSString *const kWedOpen = @"wedOpen";
-static NSString *const kWedClose = @"wedClose";
-static NSString *const kThuOpen = @"thuOpen";
-static NSString *const kThuClose = @"thuClose";
-static NSString *const kFriOpen = @"friOpen";
-static NSString *const kFriClose = @"friClose";
-static NSString *const kSatOpen = @"satOpen";
-static NSString *const kSatClose = @"satClose";
-static NSString *const kSunOpen = @"sunOpen";
-static NSString *const kSunClose = @"sunClose";
-
 @interface StoreDetailsController () {
     NSArray *sectionTitles;
     NSDictionary *cellTitles;
@@ -52,7 +23,7 @@ static NSString *const kSunClose = @"sunClose";
     [super awakeFromNib];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self initData];
     [self.tableView reloadData];
 }

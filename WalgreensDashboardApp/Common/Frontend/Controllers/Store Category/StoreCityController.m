@@ -21,10 +21,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    cellsToSection = [NSMutableDictionary new];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self initData];
     [self.tableView reloadData];
 }
@@ -32,7 +31,31 @@
 #pragma mark - Init Methods -
 
 - (void)initData {
+    cellsToSection = [NSMutableDictionary new];
     
+    NSArray *stores = [self.databaseManagerApp.selectCommands selectStoresInState:self.state];
+    
+    for (NSDictionary *storeDictionary in stores) {
+        NSMutableArray *storesForCity = [cellsToSection objectForKey:[storeDictionary objectForKey:kCity]];
+        
+        // If this is the first store for the city the mapping does not exist yet.
+        if (!storesForCity) {
+            storesForCity = [NSMutableArray new];
+        }
+        
+        Store *store = [[Store alloc] init];
+        store.storeNumber = [storeDictionary objectForKey:kStoreNum];
+        store.descriptor = [storeDictionary objectForKey:kAddr];
+        [storesForCity addObject:store];
+        
+        [cellsToSection setObject:storesForCity forKey:[storeDictionary objectForKey:kCity]];
+    }
+    
+    // Finally set the data for the section titles.
+    NSArray *keys = [cellsToSection allKeys];
+    sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    self.navigationItem.title = self.navigationTitle;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -48,21 +71,49 @@
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return sectionTitles;
+    // Use a set to avoid repeating letters.
+    NSMutableSet *indexTitles = [NSMutableSet new];
+    
+    for (NSString *sectionTitle in sectionTitles)
+        [indexTitles addObject:[sectionTitle substringToIndex:1]];
+    
+    return [indexTitles allObjects];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return [sectionTitles indexOfObject:title];
+    for (int i = 0; i < [sectionTitles count]; i++) {
+        NSString *sectionTitle = sectionTitles[i];
+        if ([[sectionTitle substringToIndex:1] isEqualToString:title])
+            return i;
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
-    cell.storeName.text = [[cellsToSection objectForKey:sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
+    
+    // See initData and Store object for understanding.
+    NSString *street = [[[cellsToSection objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] descriptor];
+    
+    if ([street length] != 0) {
+        street = [street stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        // Fix casing.
+        street = [street lowercaseString];
+        street = [street capitalizedString];
+        cell.storeName.text = [NSString stringWithFormat:@"%@", street];
+    }
+    
     return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"Store Details"]) {
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        
+        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        storeDetailsController.storeNumber = [[[cellsToSection objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] storeNumber];
+    }
 }
 
 @end
