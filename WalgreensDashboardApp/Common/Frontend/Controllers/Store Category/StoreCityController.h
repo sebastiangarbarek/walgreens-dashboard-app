@@ -1,5 +1,5 @@
 //
-//  StoreStateController.h
+//  StoreCityController.h
 //  WalgreensDashboardApp
 //
 //  Created by Sebastian Garbarek on 15/09/17.
@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "StoreCell.h"
 #import "TableViewController.h"
-#import "StoreCityController.h"
 
-@interface StoreStateController : TableViewController
+@interface StoreCityController : TableViewController
 
+@property NSString *state;
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
 @end

@@ -9,13 +9,10 @@
 #import "StoreStateController.h"
 
 @interface StoreStateController () {
-
     NSArray *sectionTitles;
     NSArray *indexTitles;
     NSMutableDictionary *cellsToSection;
-    
-    NSArray *stateAbbreviations;
-    
+    NSMutableDictionary *cellsToSectionAbbr;
 }
 
 @end
@@ -27,9 +24,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     cellsToSection = [NSMutableDictionary new];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
+    cellsToSectionAbbr = [NSMutableDictionary new];
     [self initData];
     [self.tableView reloadData];
 }
@@ -38,7 +33,7 @@
 
 - (void)initData {
     // Walgreens database only holds state abbreviations. Database query return states in alphabetical order.
-    stateAbbreviations = [self.databaseManagerApp.selectCommands selectStatesInStoreDetail];
+    NSArray *stateAbbreviations = [self.databaseManagerApp.selectCommands selectStatesInStoreDetail];
     // Switch abbreviations for full names, array maintains order of elements.
     NSArray *states = [self postalAbbreviationsToName:stateAbbreviations];
     
@@ -47,19 +42,30 @@
      so for every state, get the first letter and capitalize it,
      retrieve an array from the dictionary using the letter as the key,
      add the state to the array and set the array to the letter key.
+     Standard for loop as we are iterating over two arrays,
+     this is because we need to keep track of abbreviations, as the
+     abbreviations are stored and used in the database for retrieval.
      */
-    for (NSString *state in states) {
+    for (int i = 0; i < [states count]; i++) {
+        NSString *state = [states objectAtIndex:i];
+        NSString *stateAbbr = [stateAbbreviations objectAtIndex:i];
+        
         NSString *letter = [state substringToIndex:1];
         letter = [letter uppercaseString];
         
         NSMutableArray *statesForLetter = [cellsToSection objectForKey:letter];
+        NSMutableArray *statesForLetterAbbr = [cellsToSectionAbbr objectForKey:letter];
         
         // If this is the first state for the letter the mapping does not exist yet.
-        if (!statesForLetter)
+        if (!statesForLetter) {
             statesForLetter = [NSMutableArray new];
+            statesForLetterAbbr = [NSMutableArray new];
+        }
         
         [statesForLetter addObject:state];
+        [statesForLetterAbbr addObject:stateAbbr];
         [cellsToSection setObject:statesForLetter forKey:letter];
+        [cellsToSectionAbbr setObject:statesForLetterAbbr forKey:letter];
     }
     
     // Finally set the data for the section titles.
@@ -165,7 +171,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"State Cities"]) {
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        StoreCityController *storeCityController = [segue destinationViewController];
+        // Retrieve and pass state abbreviation.
+        storeCityController.state = [[cellsToSectionAbbr objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    }
 }
 
 @end
