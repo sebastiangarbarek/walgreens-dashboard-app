@@ -67,22 +67,28 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [sectionTitles objectAtIndex:section];
+    // Walgreens API has a single space in front of every city...
+    return [[sectionTitles objectAtIndex:section] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     // Use a set to avoid repeating letters.
     NSMutableSet *indexTitles = [NSMutableSet new];
+
+    for (NSString *sectionTitle in sectionTitles) {
+        // Have to declare a new variable due to ARC.
+        NSString *sectionTitleNoWhiteSpace = [sectionTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        [indexTitles addObject:[sectionTitleNoWhiteSpace substringToIndex:1]];
+    }
     
-    for (NSString *sectionTitle in sectionTitles)
-        [indexTitles addObject:[sectionTitle substringToIndex:1]];
-    
-    return [indexTitles allObjects];
+    // Return sorted array.
+    return [[indexTitles allObjects] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
     for (int i = 0; i < [sectionTitles count]; i++) {
         NSString *sectionTitle = sectionTitles[i];
+        sectionTitle = [sectionTitle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if ([[sectionTitle substringToIndex:1] isEqualToString:title])
             return i;
     }
