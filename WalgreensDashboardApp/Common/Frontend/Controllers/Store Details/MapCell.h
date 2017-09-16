@@ -13,7 +13,7 @@
 
 @interface MapCell : UITableViewCell <MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (void)placeStoreOnMapWithLatitude:(NSString *)latitude longitude:(NSString *)longitude;
 

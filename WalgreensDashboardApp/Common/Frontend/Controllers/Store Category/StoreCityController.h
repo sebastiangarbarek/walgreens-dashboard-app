@@ -14,6 +14,4 @@
 
 @property NSString *state;
 
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
-
 @end

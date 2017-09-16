@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-876" y="89"/>
         </scene>
-        <!--View Controller-->
+        <!--Store Category Controller-->
         <scene sceneID="yxN-ma-CuN">
             <objects>
-                <viewController id="IGj-yy-y7c" sceneMemberID="viewController">
+                <viewController id="IGj-yy-y7c" customClass="StoreCategoryController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Qk-LY-xNN"/>
                         <viewControllerLayoutGuide type="bottom" id="p2s-Rg-Fh4"/>
@@ -38,18 +38,7 @@
                     <view key="view" contentMode="scaleToFill" id="5Ad-nV-mFo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZi-kN-xun">
-                                <rect key="frame" x="0.0" y="94" width="375" height="524"/>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bZi-kN-xun" firstAttribute="top" secondItem="9Qk-LY-xNN" secondAttribute="bottom" id="5qp-qy-5wK"/>
-                            <constraint firstItem="bZi-kN-xun" firstAttribute="leading" secondItem="5Ad-nV-mFo" secondAttribute="leading" id="98d-WJ-dpv"/>
-                            <constraint firstItem="p2s-Rg-Fh4" firstAttribute="top" secondItem="bZi-kN-xun" secondAttribute="bottom" id="Et2-Zx-zlp"/>
-                            <constraint firstAttribute="trailing" secondItem="bZi-kN-xun" secondAttribute="trailing" id="Voh-kj-ddY"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" prompt="All Stores" id="NBn-ua-lvM">
                         <nil key="title"/>
@@ -60,17 +49,24 @@
                                 <segment title="List"/>
                                 <segment title="Map"/>
                             </segments>
+                            <connections>
+                                <action selector="selectionDidChange:" destination="IGj-yy-y7c" eventType="valueChanged" id="ncW-06-bF1"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentedControl" destination="4yQ-6o-t0e" id="vSv-NX-ZZ0"/>
+                        <segue destination="wHn-uv-Y22" kind="show" identifier="State Cities" id="vad-lv-lKS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZt-65-AeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-47" y="89"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Controller-->
         <scene sceneID="XB8-YY-ISr">
             <objects>
-                <viewController storyboardIdentifier="Map" id="09l-Ec-BHu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Map" id="09l-Ec-BHu" customClass="MapController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dME-lA-xvZ"/>
                         <viewControllerLayoutGuide type="bottom" id="8cT-um-al2"/>
@@ -91,6 +87,9 @@
                             <constraint firstItem="8cT-um-al2" firstAttribute="top" secondItem="llF-ZO-pE6" secondAttribute="bottom" id="zcp-h4-eD0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="llF-ZO-pE6" id="UkR-sg-oaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MT5-eF-bN6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -123,7 +122,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="storeName" destination="dGF-3t-HON" id="m25-DD-NH4"/>
-                                    <segue destination="wHn-uv-Y22" kind="show" identifier="State Cities" id="lpT-Ef-YU5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -181,6 +179,20 @@
                             <outlet property="delegate" destination="wHn-uv-Y22" id="bqf-bZ-8jE"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" prompt="All Stores" id="eoF-Pl-SJt">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="iu0-0B-V8R">
+                            <rect key="frame" x="112.5" y="37" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="List"/>
+                                <segment title="Map"/>
+                            </segments>
+                            <connections>
+                                <action selector="selectionDidChange:" destination="IGj-yy-y7c" eventType="valueChanged" id="rP2-Ys-Ku5"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Khy-9l-2ox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,10 +9,8 @@
 #import "StoreStateController.h"
 
 @interface StoreStateController () {
-    NSArray *sectionTitles;
     NSArray *indexTitles;
     NSMutableDictionary *cellsToSection;
-    NSMutableDictionary *cellsToSectionAbbr;
 }
 
 @end
@@ -24,7 +22,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     cellsToSection = [NSMutableDictionary new];
-    cellsToSectionAbbr = [NSMutableDictionary new];
+    self.cellsToSectionAbbr = [NSMutableDictionary new];
     [self initData];
     [self.tableView reloadData];
 }
@@ -54,7 +52,7 @@
         letter = [letter uppercaseString];
         
         NSMutableArray *statesForLetter = [cellsToSection objectForKey:letter];
-        NSMutableArray *statesForLetterAbbr = [cellsToSectionAbbr objectForKey:letter];
+        NSMutableArray *statesForLetterAbbr = [self.cellsToSectionAbbr objectForKey:letter];
         
         // If this is the first state for the letter the mapping does not exist yet.
         if (!statesForLetter) {
@@ -65,12 +63,12 @@
         [statesForLetter addObject:state];
         [statesForLetterAbbr addObject:stateAbbr];
         [cellsToSection setObject:statesForLetter forKey:letter];
-        [cellsToSectionAbbr setObject:statesForLetterAbbr forKey:letter];
+        [self.cellsToSectionAbbr setObject:statesForLetterAbbr forKey:letter];
     }
     
     // Finally set the data for the section titles.
     NSArray *keys = [cellsToSection allKeys];
-    sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    self.sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
     // Have the index display the entire alphabet.
     // indexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
@@ -144,39 +142,39 @@
     return names;
 }
 
+#pragma mark - Table View Methods -
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return sectionTitles.count;
+    return self.sectionTitles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[cellsToSection objectForKey:sectionTitles[section]] count];
+    return [[cellsToSection objectForKey:self.sectionTitles[section]] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [sectionTitles objectAtIndex:section];
+    return [self.sectionTitles objectAtIndex:section];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return sectionTitles;
+    return self.sectionTitles;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return [sectionTitles indexOfObject:title];
+    return [self.sectionTitles indexOfObject:title];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
-    cell.storeName.text = [[cellsToSection objectForKey:sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
+    cell.storeName.text = [[cellsToSection objectForKey:self.sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
     return cell;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"State Cities"]) {
-        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        StoreCityController *storeCityController = [segue destinationViewController];
-        // Retrieve and pass state abbreviation.
-        storeCityController.state = [[cellsToSectionAbbr objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
-    }
+#pragma mark - Navigation Methods -
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Should pass data here to keep code out of the parent.
+    [self.segueDelegate child:self didCallSegueWithIdentifier:@"State Cities"];
 }
 
 @end

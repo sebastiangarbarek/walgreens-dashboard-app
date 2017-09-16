@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "StoreStateController.h"
+#import "StoreCityController.h"
 
-@interface StoreCategoryController : ViewController
+@protocol SegueDelegate <NSObject>
 
+@required
+- (void)child:(UIViewController *)viewController didCallSegueWithIdentifier:(NSString *)identifier;
 
+@end
+
+@interface StoreCategoryController : ViewController <SegueDelegate>
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
+@property (nonatomic) UIViewController *listController;
+@property (nonatomic) UIViewController *mapController;
 
 @end
