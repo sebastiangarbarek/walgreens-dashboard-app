@@ -72,6 +72,8 @@
                            [NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kSatOpen], [hoursDictionary objectForKey:kSatClose]],
                            [NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kSunOpen], [hoursDictionary objectForKey:kSunClose]]];
             
+            NSLog(@"%@", storeHours);
+            
             NSArray *hoursCells = @[@"Monday",
                                     @"Tuesday",
                                     @"Wednesday",
@@ -107,11 +109,7 @@
 #pragma mark - Table Methods -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (!storeHours || !storeHours.count)
-        return [sectionTitles count];
-    else
-        // Store hours are not available.
-        return [sectionTitles count] - 1;
+    return [sectionTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
