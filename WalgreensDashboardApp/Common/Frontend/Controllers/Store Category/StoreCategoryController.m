@@ -14,7 +14,7 @@
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad {
+- (void)viewWillAppear:(BOOL)animated {
     [self updateView];
 }
 
@@ -25,10 +25,12 @@
         // List.
         [self remove:self.mapController];
         [self add:self.listController];
+        ((StoreStateController *)_listController).segueDelegate = self;
     } else {
         // Map.
         [self remove:self.listController];
         [self add:self.mapController];
+        ((MapController *)_mapController).segueDelegate = self;
     }
 }
 
@@ -90,12 +92,12 @@
     [self updateView];
 }
 
-/*
- A very ugly way of pushing.
- Could not use performSegue as awakeFromNib and viewDidLoad are called before prepareForSegue,
- data would have to be loaded in viewDidAppear which is slow.
- */
-- (void)child:(UIViewController *)childViewController willPushViewController:(NSString *)viewControllerIdentifier withSegueIdentifier:(NSString *)segueIdentifier {
+- (void)child:(UIViewController *)childViewController willPerformSegueWithIdentifier:(NSString *)segueIdentifier {
+    /*
+     A very ugly way of pushing.
+     Could not use performSegue as awakeFromNib and viewDidLoad are called before prepareForSegue,
+     data would have to be loaded in viewDidAppear which is slow.
+     */
     /*
     if ([segueIdentifier isEqualToString:@"State Cities"]) {
         if ([viewControllerIdentifier isEqualToString:@"Cities"]) {
@@ -136,6 +138,11 @@
                                      objectAtIndex:indexPath.row];
         storeCityController.navigationTitle =
         [[storeStateController.cellsToSection objectForKey:[storeStateController.sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    } else if ([[segue identifier] isEqualToString:@"Store Details"]) {
+        MapController *mapController = (MapController *)sender;
+        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        // Pass the store number.
+        storeDetailsController.storeNumber = mapController.storeNumber;
     }
 }
 

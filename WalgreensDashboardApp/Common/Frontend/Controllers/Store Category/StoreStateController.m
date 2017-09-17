@@ -180,7 +180,7 @@
      Could skip delegation and use parentViewController,
      however a child view controller shouldn't be responsible for a transition.
      */
-    [self.segueDelegate child:self willPushViewController:@"Cities" withSegueIdentifier:@"State Cities"];
+    [self.segueDelegate child:self willPerformSegueWithIdentifier:@"State Cities"];
 }
 
 @end

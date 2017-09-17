@@ -144,7 +144,14 @@
 }
 
 - (NSArray *)selectStoresInState:(NSString *)state {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@'", StoreTableName, state];
+    // Select only print stores.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@' AND photoInd = 'true'", StoreTableName, state];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSArray *)selectAllStoreCords {
+    // Ignores null. Select only print stores.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, latitude, longitude FROM %@ WHERE photoInd = 'true' AND latitude IS NOT NULL", StoreTableName];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 

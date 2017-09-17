@@ -25,8 +25,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bFO-3a-B7a">
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFO-3a-B7a">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="xsq-Cc-7yW" id="Lyf-0g-Ntb"/>
+                                            </connections>
                                         </mapView>
                                     </subviews>
                                     <constraints>

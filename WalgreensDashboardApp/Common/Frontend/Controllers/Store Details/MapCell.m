@@ -30,4 +30,23 @@
     }
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    // This method helps save memory.
+    
+    // Try dequeue an existing view.
+    static NSString *identifier = @"annotation";
+    MKAnnotationView *annotationView = (MKAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    if (!annotationView) {
+        // If no view exists, create a new one with the identifier to be reused later.
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+    }
+    
+    // Load marker image.
+    annotationView.canShowCallout = YES;
+    annotationView.image = [UIImage imageNamed:@"Marker"];
+    
+    return annotationView;
+}
+
 @end

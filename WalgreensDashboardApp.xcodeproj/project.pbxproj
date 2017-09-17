@@ -49,6 +49,7 @@
 		A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891891F6CAC6E00E3388B /* MapController.m */; };
 		A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */; };
 		A8D891901F6D070A00E3388B /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918F1F6D070A00E3388B /* Store.m */; };
+		A8D891931F6E675200E3388B /* ClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891921F6E675200E3388B /* ClusterPin.m */; };
 		A8E1E2161F4E5ADE008DE876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2111F4E5ADE008DE876 /* main.m */; };
 		A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */; };
 		FD45EFD0CCED084D3801BDEF /* Pods_WalgreensDashboardApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */; };
@@ -147,6 +148,8 @@
 		A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConstants.m; sourceTree = "<group>"; };
 		A8D8918E1F6D06F900E3388B /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		A8D8918F1F6D070A00E3388B /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		A8D891911F6E673B00E3388B /* ClusterPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterPin.h; sourceTree = "<group>"; };
+		A8D891921F6E675200E3388B /* ClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterPin.m; sourceTree = "<group>"; };
 		A8E09A401F4D45560063EEE4 /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
 		A8E09A411F4D45560063EEE4 /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
 		A8E09A421F4D45560063EEE4 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
@@ -288,6 +291,8 @@
 				A8D891891F6CAC6E00E3388B /* MapController.m */,
 				A8D8918E1F6D06F900E3388B /* Store.h */,
 				A8D8918F1F6D070A00E3388B /* Store.m */,
+				A8D891911F6E673B00E3388B /* ClusterPin.h */,
+				A8D891921F6E675200E3388B /* ClusterPin.m */,
 			);
 			path = "Store Category";
 			sourceTree = "<group>";
@@ -860,10 +865,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -945,6 +952,7 @@
 				A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */,
 				A86CF4F81F5CF6C9005889B7 /* TableViewController.m in Sources */,
 				A86CF4F51F5CF475005889B7 /* ViewController.m in Sources */,
+				A8D891931F6E675200E3388B /* ClusterPin.m in Sources */,
 				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,

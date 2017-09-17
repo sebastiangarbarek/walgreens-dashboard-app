@@ -56,6 +56,7 @@
                     <connections>
                         <outlet property="segmentedControl" destination="4yQ-6o-t0e" id="vSv-NX-ZZ0"/>
                         <segue destination="wHn-uv-Y22" kind="show" identifier="State Cities" id="vad-lv-lKS"/>
+                        <segue destination="sv6-Tc-lqd" kind="show" identifier="Store Details" id="pjZ-jh-GvS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZt-65-AeH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,8 +75,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="llF-ZO-pE6">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llF-ZO-pE6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="09l-Ec-BHu" id="4MR-Sz-NPW"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,4 +191,7 @@
             <point key="canvasLocation" x="860" y="811"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="pjZ-jh-GvS"/>
+    </inferredMetricsTieBreakers>
 </document>
