@@ -47,7 +47,7 @@
                                   [storeDictionary objectForKey:kDistrict],
                                   [storeDictionary objectForKey:kArea],
                                   [storeDictionary objectForKey:kTimeZone],
-                                  [storeDictionary objectForKey:kHours],
+                                  [storeDictionary objectForKey:kTwentyFourHours],
                                   [storeDictionary objectForKey:kPhone]];
         
         NSArray *storeCells = @[@"Store Number",
@@ -71,8 +71,6 @@
                            [NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kFriOpen], [hoursDictionary objectForKey:kFriClose]],
                            [NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kSatOpen], [hoursDictionary objectForKey:kSatClose]],
                            [NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kSunOpen], [hoursDictionary objectForKey:kSunClose]]];
-            
-            NSLog(@"%@", storeHours);
             
             NSArray *hoursCells = @[@"Monday",
                                     @"Tuesday",

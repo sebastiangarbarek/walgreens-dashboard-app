@@ -50,6 +50,7 @@
 		A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */; };
 		A8D891901F6D070A00E3388B /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918F1F6D070A00E3388B /* Store.m */; };
 		A8D891931F6E675200E3388B /* ClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891921F6E675200E3388B /* ClusterPin.m */; };
+		A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891961F6F7A9500E3388B /* StoreTimes.m */; };
 		A8E1E2161F4E5ADE008DE876 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2111F4E5ADE008DE876 /* main.m */; };
 		A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */; };
 		FD45EFD0CCED084D3801BDEF /* Pods_WalgreensDashboardApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */; };
@@ -150,6 +151,8 @@
 		A8D8918F1F6D070A00E3388B /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
 		A8D891911F6E673B00E3388B /* ClusterPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterPin.h; sourceTree = "<group>"; };
 		A8D891921F6E675200E3388B /* ClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterPin.m; sourceTree = "<group>"; };
+		A8D891951F6F7A8500E3388B /* StoreTimes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreTimes.h; sourceTree = "<group>"; };
+		A8D891961F6F7A9500E3388B /* StoreTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimes.m; sourceTree = "<group>"; };
 		A8E09A401F4D45560063EEE4 /* StatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusController.m; sourceTree = "<group>"; };
 		A8E09A411F4D45560063EEE4 /* StatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusController.h; sourceTree = "<group>"; };
 		A8E09A421F4D45560063EEE4 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
@@ -443,8 +446,8 @@
 		A82949DB1F4E4EB500EA0BBD /* Date */ = {
 			isa = PBXGroup;
 			children = (
-				A8E1E2011F4E58CE008DE876 /* DateHelper.m */,
 				A8E1E2021F4E58CE008DE876 /* DateHelper.h */,
+				A8E1E2011F4E58CE008DE876 /* DateHelper.m */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 		A8A4CB611F2B46E000B87449 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A8D891941F6F79CF00E3388B /* Time */,
 				A8E09A4A1F4D45680063EEE4 /* Network */,
 				A8E09A511F4D45680063EEE4 /* Database */,
 			);
@@ -631,6 +635,16 @@
 			);
 			name = Helpers;
 			path = Common/Helpers;
+			sourceTree = "<group>";
+		};
+		A8D891941F6F79CF00E3388B /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				A8D891951F6F7A8500E3388B /* StoreTimes.h */,
+				A8D891961F6F7A9500E3388B /* StoreTimes.m */,
+			);
+			name = Time;
+			path = ../Time;
 			sourceTree = "<group>";
 		};
 		A8E09A4A1F4D45680063EEE4 /* Network */ = {
@@ -946,6 +960,7 @@
 				A86CF5041F5CFC54005889B7 /* Controller.m in Sources */,
 				A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */,
 				A86CF5061F5CFC54005889B7 /* DataController.m in Sources */,
+				A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */,
 				A86CF5071F5CFC54005889B7 /* StatusControllerApp.m in Sources */,
 				A86CF4F91F5CFC1A005889B7 /* DateHelper.m in Sources */,
 				A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */,

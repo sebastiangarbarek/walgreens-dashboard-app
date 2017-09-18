@@ -36,6 +36,7 @@
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
 - (NSArray *)selectStoresInState:(NSString *)state;
 - (NSArray *)selectAllStoreCords;
+- (NSArray *)selectAllPrintStoresAndHours;
 
 // Return states without duplicates
 - (NSMutableArray *)selectStatesInStoreDetail;

@@ -155,6 +155,11 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+- (NSArray *)selectAllPrintStoresAndHours {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL"];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {

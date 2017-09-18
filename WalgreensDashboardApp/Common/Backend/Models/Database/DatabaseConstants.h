@@ -17,7 +17,7 @@ extern NSString *const kState;
 extern NSString *const kDistrict;
 extern NSString *const kArea;
 extern NSString *const kTimeZone;
-extern NSString *const kHours;
+extern NSString *const kTwentyFourHours;
 extern NSString *const kPhone;
 extern NSString *const kMonOpen;
 extern NSString *const kMonClose;
