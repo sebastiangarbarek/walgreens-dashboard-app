@@ -19,13 +19,14 @@
  */
 
 typedef NS_ENUM(NSInteger, Day) {
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday
+    // Where for the Gregorian calendar N=7 and 1 is Sunday.
+    Monday = 2,
+    Tuesday = 3,
+    Wednesday = 4,
+    Thursday = 5,
+    Friday = 6,
+    Saturday = 7,
+    Sunday = 1
 };
 
 /*!Retrieves a store, processes and updates its physical status and returns the result.

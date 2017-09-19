@@ -65,27 +65,56 @@
         // The store is 24/7.
         return YES;
     else {
-        // Get current date and time.
-        NSString *currentDateTime = [DateHelper currentDateAndTime];
-        
-        // Get stores timezone code.
+        // Get stores time zone code.
         NSString *storesTimeZone = [store objectForKey:kTimeZone];
         NSString *timeZoneName = [self storeTimeZoneToId:storesTimeZone];
         
-        // Convert current date and time to stores timezone.
+        // Get current date and time.
+        NSString *currentDateTime = [DateHelper currentDateAndTime];
+        
+        // Convert current date and time to stores date and time with time zone.
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:timeZoneName]];
         [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
         NSDate *storeDateTime = [dateFormatter dateFromString:currentDateTime];
         
-        // Get weekday for stores timezone, as it could be different to user location.
+        // Store date and time in result.
+        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:@"currentDateTime"];
+        
+        // Get weekday for stores time zone, as it could be different to user location.
         Day day = [self timeZonesWeekDay:storeDateTime];
         
         // Get store times for weekday.
         NSArray *storeTimes = [self openCloseTimeWithDay:day store:store];
         
         // Check if store date time within store time.
+        [dateFormatter setDateFormat:@"hh:mma"];
+        NSDate *currentTime = [dateFormatter dateFromString:currentDateTime];
+        NSDate *openTime = [dateFormatter dateFromString:storeTimes[0]];
+        NSDate *closeTime = [dateFormatter dateFromString:storeTimes[1]];
         
+        switch ([currentTime compare:closeTime]) {
+            case NSOrderedAscending:
+                // date1 > date2
+                return NO;
+            case NSOrderedDescending: {
+                // date1 < date2
+                switch ([currentTime compare:openTime]) {
+                    case NSOrderedAscending:
+                        // date1 > date2
+                        return YES;
+                    case NSOrderedDescending:
+                        // date1 < date2
+                        return NO;
+                    case NSOrderedSame:
+                        // date1 = date2
+                        return YES;
+                }
+            }
+            case NSOrderedSame:
+                // date1 = date2
+                return NO;
+        }
     }
 }
 
@@ -118,11 +147,28 @@
 }
 
 - (enum Day)timeZonesWeekDay:(NSDate *)storeDateTime {
-    
+    return [[NSCalendar currentCalendar] component:NSCalendarUnitWeekday
+                                          fromDate:storeDateTime];
 }
 
 - (NSArray *)openCloseTimeWithDay:(enum Day)day store:(NSDictionary *)store {
-    
+    // Where array[0] is open time and array[1] is close time.
+    switch (day) {
+        case Monday:
+            return @[[store objectForKey:kMonOpen], [store objectForKey:kMonClose]];
+        case Tuesday:
+            return @[[store objectForKey:kTueOpen], [store objectForKey:kTueClose]];
+        case Wednesday:
+            return @[[store objectForKey:kWedOpen], [store objectForKey:kWedClose]];
+        case Thursday:
+            return @[[store objectForKey:kThuOpen], [store objectForKey:kThuClose]];
+        case Friday:
+            return @[[store objectForKey:kFriOpen], [store objectForKey:kFriClose]];
+        case Saturday:
+            return @[[store objectForKey:kSatOpen], [store objectForKey:kSunClose]];
+        case Sunday:
+            return @[[store objectForKey:kSunOpen], [store objectForKey:kSunClose]];
+    }
 }
 
 /*!Given the way the results from the database are currently returned,
