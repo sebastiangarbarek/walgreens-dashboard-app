@@ -92,6 +92,29 @@
 - (NSString *)storeTimeZoneToId:(NSString *)timeZone {
     // Uncomment to print all time zone IDs.
     // NSLog(@"%@", [NSTimeZone knownTimeZoneNames]);
+    
+    typedef void (^CaseBlock)();
+    
+    // Objective-C cannot perform a switch on NSString... We must improvise.
+    NSDictionary *stringSwitchCase = @{
+                                       @"EA": ^{return @"America/New_York";}, // Eastern.
+                                       @"CE": ^{return @"America/Chicago";}, // Central.
+                                       @"MO": ^{return @"America/Denver";}, // Mountain.
+                                       @"PA": ^{return @"America/Los_Angeles";}, // Pacific.
+                                       @"AT": ^{return @"America/Puerto_Rico";}, // Atlantic - Puerto Rico.
+                                       @"HA": ^{return @"Pacific/Honolulu";}, // Hawaii.
+                                       @"AL": ^{return @"America/Anchorage";}}; // Alaska.
+    // Reference: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    // No default...
+    
+    CaseBlock block = stringSwitchCase[timeZone];
+    // Execute block if retrieved successfully or throw an exception as default.
+    if (block) block(); else { @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                                              reason:[NSString stringWithFormat:@"%@ expected U.S. time zone", NSStringFromSelector(_cmd)]
+                                                            userInfo:nil]; }
+    
+    // All possible U.S. timezones are above. The exception will not be thrown unless the time zone abbreviation is mistyped by Walgreens, or outside U.S.
+    return nil;
 }
 
 - (enum Day)timeZonesWeekDay:(NSDate *)storeDateTime {
