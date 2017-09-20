@@ -70,7 +70,7 @@
         CKCluster *cluster = (CKCluster *)annotation;
         if (cluster.count > 1) {
             annotationView.canShowCallout = NO;
-            annotationView.image = [UIImage imageNamed:@"Cluster"];
+            annotationView.image = [UIImage imageNamed:@"MapCluster"];
             
         } else {
             // Add disclosure with action.
