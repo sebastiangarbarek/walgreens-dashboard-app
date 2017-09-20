@@ -11,15 +11,9 @@
 #import "StoreStateController.h"
 #import "StoreCityController.h"
 #import "MapController.h"
+#import "SegueProtocol.h"
 
-@protocol SegueDelegate <NSObject>
-
-@required
-- (void)child:(UIViewController *)childViewController willPerformSegueWithIdentifier:(NSString *)segueIdentifier;
-
-@end
-
-@interface StoreCategoryController : ViewController <SegueDelegate>
+@interface StoreCategoryController : ViewController <SegueProtocol>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 

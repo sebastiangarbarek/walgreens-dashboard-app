@@ -11,12 +11,11 @@
 #import "StoreCategoryController.h"
 #import "TableViewController.h"
 #import "StoreCityController.h"
-
-@protocol SegueDelegate;
+#import "SegueProtocol.h"
 
 @interface StoreStateController : TableViewController
 
-@property (weak, nonatomic) id <SegueDelegate> segueDelegate;
+@property (weak, nonatomic) id <SegueProtocol> segueDelegate;
 
 // Public as accessed by parent StoreCategoryController for segue. Could instead pass data using delegation.
 @property NSMutableDictionary *cellsToSection;

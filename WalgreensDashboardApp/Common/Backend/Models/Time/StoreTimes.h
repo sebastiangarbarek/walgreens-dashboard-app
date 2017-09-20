@@ -36,5 +36,6 @@ typedef NS_ENUM(NSInteger, Day) {
  Or nil if the store does not exist or hours data is not available for it.
  */
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime;
+- (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen;
 
 @end

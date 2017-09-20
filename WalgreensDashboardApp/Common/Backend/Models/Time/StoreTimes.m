@@ -56,6 +56,28 @@
      */
 }
 
+- (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen {
+    NSMutableArray *results = [NSMutableArray new];
+    for (NSDictionary *store in stores) {
+        NSDictionary *storeResult = [self queryStore:store withDateTime:dateTime];
+        if ([[storeResult objectForKey:kOpen] intValue] == 1 && requestOpen) {
+            [results addObject:storeResult];
+        } else if ([[storeResult objectForKey:kOpen] intValue] == 0 && !requestOpen) {
+            [results addObject:storeResult];
+        }
+    }
+    NSLog(@"%lu", (unsigned long)[results count]);
+    return results;
+}
+
+- (NSDictionary *)queryStore:(NSDictionary *)store withDateTime:(NSString *)dateTime {
+    if ([self isStoreOpen:store withDateTime:dateTime])
+        [store setValue:@YES forKey:kOpen];
+    else
+        [store setValue:@NO forKey:kOpen];
+    return store;
+}
+
 /*!Private helper method used to check if a store is currently open,
  given the provided date and time, store hours and timezone.
  * \returns YES if the store is open or NO at the given time.
@@ -96,19 +118,46 @@
         // Get store times for weekday.
         NSArray *storeTimes = [self openCloseTimeWithDay:day store:store];
         
-        // Check if store date time within store time.
+        // Get store date time string using time zone.
+        storeDateTimeString = [dateFormatter stringFromDate:storeDateTime];
+        
+        // Prepare the formatter to parse 24 hour time.
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm:ss"];
+        
+        // Substring the time.
+        storeDateTimeString = [storeDateTimeString substringFromIndex:11];
+        NSDate *currentTime24 = [dateFormatter dateFromString:storeDateTimeString];
+        
+        // Convert 24 hour time to 12 hour time.
         [dateFormatter setDateFormat:@"hh:mma"];
-        NSDate *time = [dateFormatter dateFromString:dateTime];
+        NSString *currentTime12 = [dateFormatter stringFromDate:currentTime24];
+
+        NSDate *time = [dateFormatter dateFromString:currentTime12];
         NSDate *openTime = [dateFormatter dateFromString:storeTimes[0]];
         NSDate *closeTime = [dateFormatter dateFromString:storeTimes[1]];
         
-        switch ([time compare:closeTime]) {
+        unsigned int flags = NSCalendarUnitHour | NSCalendarUnitMinute;
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        
+        // Make date and year neutral.
+        NSDateComponents* components = [calendar components:flags fromDate:time];
+        NSDate* timeOnly = [calendar dateFromComponents:components];
+        components = [calendar components:flags fromDate:openTime];
+        NSDate* openTimeOnly = [calendar dateFromComponents:components];
+        components = [calendar components:flags fromDate:closeTime];
+        NSDate* closeTimeOnly = [calendar dateFromComponents:components];
+        
+        // NSLog(@"%@, %@, %@", [dateFormatter stringFromDate:timeOnly], [dateFormatter stringFromDate:openTimeOnly], [dateFormatter stringFromDate:closeTimeOnly]);
+        
+        // Check if store date time within store time.
+        switch ([timeOnly compare:closeTimeOnly]) {
             case NSOrderedAscending:
                 // date1 > date2
                 return NO;
             case NSOrderedDescending: {
                 // date1 < date2
-                switch ([time compare:openTime]) {
+                switch ([timeOnly compare:openTimeOnly]) {
                     case NSOrderedAscending:
                         // date1 > date2
                         return YES;

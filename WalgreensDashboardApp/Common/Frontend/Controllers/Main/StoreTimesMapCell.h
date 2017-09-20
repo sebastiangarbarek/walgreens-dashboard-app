@@ -1,8 +1,8 @@
 //
-//  MapController.h
+//  StoreTimesMapCell.h
 //  WalgreensDashboardApp
 //
-//  Created by Sebastian Garbarek on 16/09/17.
+//  Created by Sebastian Garbarek on 20/09/17.
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
@@ -10,18 +10,19 @@
 #import <MapKit/MapKit.h>
 #import <ClusterKit/MKMapView+ClusterKit.h>
 #import "ClusterPin.h"
-#import "ViewController.h"
-#import "StoreCategoryController.h"
 #import "DatabaseConstants.h"
+#import "StoreTimes.h"
 #import "SegueProtocol.h"
 
-@interface MapController : ViewController <MKMapViewDelegate>
+@interface StoreTimesMapCell : UITableViewCell <MKMapViewDelegate>
 
 @property (weak, nonatomic) id <SegueProtocol> segueDelegate;
 
+@property NSArray *openStores;
+@property NSString *storeNumber;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-// Selected store number.
-@property NSString *storeNumber;
+- (void)initData;
 
 @end
