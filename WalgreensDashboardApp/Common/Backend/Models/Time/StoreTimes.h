@@ -10,6 +10,7 @@
 #import "DatabaseManagerApp.h"
 #import "DatabaseConstants.h"
 #import "DateHelper.h"
+#import "StoreTimesConstants.h"
 
 @interface StoreTimes : NSObject
 
@@ -30,10 +31,10 @@ typedef NS_ENUM(NSInteger, Day) {
 };
 
 /*!Retrieves a store, processes and updates its physical status and returns the result.
- Current date and time is retrieved each call to this method.
+ Current date and time should be passed to this method, or any other date and time.
  * \returns Relevant store details with an added entry indicating if the store is currently open or closed.
  Or nil if the store does not exist or hours data is not available for it.
  */
-- (NSDictionary *)retrieveStore:(NSString *)storeNumber;
+- (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime;
 
 @end

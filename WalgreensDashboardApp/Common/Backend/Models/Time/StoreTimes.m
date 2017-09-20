@@ -43,12 +43,16 @@
     stores = [databaseManagerApp.selectCommands selectAllPrintStoresAndHours];
 }
 
-- (NSDictionary *)retrieveStore:(NSString *)storeNumber {
+- (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime {
     NSDictionary *store = [self findStore:storeNumber];
-    if ([self isStoreOpen:store])
-        [store setValue:@YES forKey:@"currentlyOpen"];
+    NSArray *results = [self isStoreOpen:store withDateTime:dateTime];
+    
+    // If store dictionary was modified, pass it back.
+    if (!(results[1] == [NSNull null])) store = results[1];
+    if (results[0]) // Note [0].
+        [store setValue:@YES forKey:kOpen];
     else
-        [store setValue:@NO forKey:@"currentlyOpen"];
+        [store setValue:@NO forKey:kOpen];
     return store;
     /* Can add top to bottom overlay with alpha on MapView to show area of open stores.
      This will be helpful in identifying stores that aren't 24/7, and also helpful in 
@@ -57,29 +61,27 @@
 }
 
 /*!Private helper method used to check if a store is currently open,
- given the current date and time, store hours and timezone.
- * \returns YES if the store is currently open or NO.
+ given the provided date and time, store hours and timezone.
+ * \returns An array where array[0] is a BOOL and array[1] is the modified store dictionary.
+ BOOL is YES if the store is open or NO at the given time.
  */
-- (BOOL)isStoreOpen:(NSDictionary *)store {
+- (NSArray *)isStoreOpen:(NSDictionary *)store withDateTime:(NSString *)dateTime {
     if ([store objectForKey:kTwentyFourHours])
         // The store is 24/7.
-        return YES;
+        return @[@1, [NSNull null]];
     else {
         // Get stores time zone code.
         NSString *storesTimeZone = [store objectForKey:kTimeZone];
         NSString *timeZoneName = [self storeTimeZoneToId:storesTimeZone];
         
-        // Get current date and time.
-        NSString *currentDateTime = [DateHelper currentDateAndTime];
-        
         // Convert current date and time to stores date and time with time zone.
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:timeZoneName]];
         [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        NSDate *storeDateTime = [dateFormatter dateFromString:currentDateTime];
+        NSDate *storeDateTime = [dateFormatter dateFromString:dateTime];
         
         // Store date and time in result.
-        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:@"currentDateTime"];
+        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
         
         // Get weekday for stores time zone, as it could be different to user location.
         Day day = [self timeZonesWeekDay:storeDateTime];
@@ -89,31 +91,31 @@
         
         // Check if store date time within store time.
         [dateFormatter setDateFormat:@"hh:mma"];
-        NSDate *currentTime = [dateFormatter dateFromString:currentDateTime];
+        NSDate *time = [dateFormatter dateFromString:dateTime];
         NSDate *openTime = [dateFormatter dateFromString:storeTimes[0]];
         NSDate *closeTime = [dateFormatter dateFromString:storeTimes[1]];
         
-        switch ([currentTime compare:closeTime]) {
+        switch ([time compare:closeTime]) {
             case NSOrderedAscending:
                 // date1 > date2
-                return NO;
+                return @[@0, store];
             case NSOrderedDescending: {
                 // date1 < date2
-                switch ([currentTime compare:openTime]) {
+                switch ([time compare:openTime]) {
                     case NSOrderedAscending:
                         // date1 > date2
-                        return YES;
+                        return @[@1, store];
                     case NSOrderedDescending:
                         // date1 < date2
-                        return NO;
+                        return @[@0, store];
                     case NSOrderedSame:
                         // date1 = date2
-                        return YES;
+                        return @[@1, store];
                 }
             }
             case NSOrderedSame:
                 // date1 = date2
-                return NO;
+                return @[@0, store];
         }
     }
 }
@@ -179,7 +181,7 @@
  */
 - (NSDictionary *)findStore:(NSString *)storeNumber {
     for (NSDictionary *store in stores) {
-        if ([[store objectForKey:kStoreNum] isEqualToString:storeNumber])
+        if ([[[store objectForKey:kStoreNum] stringValue] isEqualToString:storeNumber])
             return store;
     }
     return nil;
