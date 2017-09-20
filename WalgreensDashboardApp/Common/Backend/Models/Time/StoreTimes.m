@@ -133,47 +133,35 @@
         [dateFormatter setDateFormat:@"hh:mma"];
         NSString *currentTime12 = [dateFormatter stringFromDate:currentTime24];
 
-        NSDate *time = [dateFormatter dateFromString:currentTime12];
-        NSDate *openTime = [dateFormatter dateFromString:storeTimes[0]];
-        NSDate *closeTime = [dateFormatter dateFromString:storeTimes[1]];
+        long locationTime = [self minutesSinceMidnight:[dateFormatter dateFromString:currentTime12]];
+        long openTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[0]]];
+        long closeTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[1]]];
         
-        unsigned int flags = NSCalendarUnitHour | NSCalendarUnitMinute;
-        NSCalendar* calendar = [NSCalendar currentCalendar];
-        
-        // Make date and year neutral.
-        NSDateComponents* components = [calendar components:flags fromDate:time];
-        NSDate* timeOnly = [calendar dateFromComponents:components];
-        components = [calendar components:flags fromDate:openTime];
-        NSDate* openTimeOnly = [calendar dateFromComponents:components];
-        components = [calendar components:flags fromDate:closeTime];
-        NSDate* closeTimeOnly = [calendar dateFromComponents:components];
-        
-        // NSLog(@"%@, %@, %@", [dateFormatter stringFromDate:timeOnly], [dateFormatter stringFromDate:openTimeOnly], [dateFormatter stringFromDate:closeTimeOnly]);
-        
-        // Check if store date time within store time.
-        switch ([timeOnly compare:closeTimeOnly]) {
-            case NSOrderedAscending:
-                // date1 > date2
-                return NO;
-            case NSOrderedDescending: {
-                // date1 < date2
-                switch ([timeOnly compare:openTimeOnly]) {
-                    case NSOrderedAscending:
-                        // date1 > date2
-                        return YES;
-                    case NSOrderedDescending:
-                        // date1 < date2
-                        return NO;
-                    case NSOrderedSame:
-                        // date1 = date2
-                        return YES;
-                }
-            }
-            case NSOrderedSame:
-                // date1 = date2
-                return NO;
+        if (locationTime < closeTime && locationTime > openTime) {
+            /*
+            NSLog(@"%@ is between %@ and %@",
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:currentTime12]],
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:storeTimes[0]]],
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:storeTimes[1]]]);
+             */
+            return YES;
+        } else {
+            /*
+            NSLog(@"%@ is not between %@ and %@",
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:currentTime12]],
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:storeTimes[0]]],
+                  [dateFormatter stringFromDate:[dateFormatter dateFromString:storeTimes[1]]]);
+             */
+            return NO;
         }
     }
+}
+
+- (long)minutesSinceMidnight:(NSDate *)date {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    unsigned unitFlags =  NSCalendarUnitHour | NSCalendarUnitMinute;
+    NSDateComponents *components = [gregorian components:unitFlags fromDate:date];
+    return 60 * [components hour] + [components minute];
 }
 
 - (NSString *)storeTimeZoneToId:(NSString *)timeZone {
