@@ -34,7 +34,7 @@
     // Returned date time is in the format: YYYY-MM-dd HH:mm:ss
     
     // The NZ date time to convert to a stores date time.
-    NSString *dateTime = @"2017-08-10 13:34:41";
+    NSString *dateTime = @"2017-08-10 13:34:41"; // Daylight saving time in the U.S.
     // The result store.
     NSDictionary *store;
     // The expected date time.
@@ -42,9 +42,45 @@
     // The result date time.
     NSString *actualDateTime;
     
-    // Houston, Texas.
+    // Texas, CE.
     store = [self.storeTimes retrieveStore:@"7005" withDateTime:dateTime];
     expectedDateTime = @"2017-08-09 20:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // California, PA.
+    store = [self.storeTimes retrieveStore:@"2306" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 18:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // Arizona, MO. Special case, Arizona ignores daylight saving time.
+    store = [self.storeTimes retrieveStore:@"3630" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 18:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // Florida, EA.
+    store = [self.storeTimes retrieveStore:@"4961" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 21:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // Puerto Rico, AT.
+    store = [self.storeTimes retrieveStore:@"12649" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 21:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // Hawaii, HA.
+    store = [self.storeTimes retrieveStore:@"13838" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 15:34:41";
+    actualDateTime = [store objectForKey:kDateTime];
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
+    
+    // Alaska, AL.
+    store = [self.storeTimes retrieveStore:@"12679" withDateTime:dateTime];
+    expectedDateTime = @"2017-08-09 17:34:41";
     actualDateTime = [store objectForKey:kDateTime];
     XCTAssertEqualObjects(expectedDateTime, actualDateTime);
     
@@ -54,6 +90,7 @@
      2. Forgot isEqual part in "[[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"]"
      3. storeTimeZoneToId: was returning nil.
      4. Fixed time zone conversion, reason was due to parsing incorrectly, losing time zone data.
+     5. Added special case for Arizona, which does not observe DST.
      */
 }
 

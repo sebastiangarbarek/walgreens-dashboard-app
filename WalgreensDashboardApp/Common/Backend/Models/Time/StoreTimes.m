@@ -75,9 +75,17 @@
         
         [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
         NSDate *aucklandDateTime = [dateFormatter dateFromString:dateTime];
-        [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
+        
+        NSDate *storeDateTime;
+        if ([[store objectForKey:kState] isEqualToString:@"AZ"]) {
+            // Arizona is a special case. Only state where DST is not observed.
+            [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+            [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-3600*7]]; // GMT-7.
+        } else {
+            [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
+        }
         NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
-        NSDate *storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
+        storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
         
         // Store date and time in result.
         [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
@@ -129,18 +137,21 @@
     
     // Objective-C cannot perform a switch on NSString... We must improvise.
     NSDictionary *stringSwitchCase = @{
-                                       @"EA": ^{timeZoneName = @"America/New_York";}, // Eastern.
-                                       @"CE": ^{timeZoneName = @"America/Chicago";}, // Central.
-                                       @"MO": ^{timeZoneName = @"America/Denver";}, // Mountain.
-                                       @"PA": ^{timeZoneName = @"America/Los_Angeles";}, // Pacific.
+                                       // United States has four major timezones.
+                                       @"EA": ^{timeZoneName = @"America/New_York";}, // Eastern (EDT).
+                                       @"CE": ^{timeZoneName = @"America/Chicago";}, // Central (CST).
+                                       @"MO": ^{timeZoneName = @"America/Denver";}, // Mountain (MST).
+                                       @"PA": ^{timeZoneName = @"America/Los_Angeles";}, // Pacific (PDT).
                                        @"AT": ^{timeZoneName = @"America/Puerto_Rico";}, // Atlantic - Puerto Rico.
-                                       @"HA": ^{timeZoneName = @"Pacific/Honolulu";}, // Hawaii.
+                                       @"HA": ^{timeZoneName = @"Pacific/Honolulu";}, // Hawaii (HST).
                                        @"AL": ^{timeZoneName = @"America/Anchorage";}}; // Alaska.
     // Reference: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+    // and
+    // NSLog(@"%@", [NSTimeZone abbreviationDictionary]);
     
     CaseBlock block = stringSwitchCase[timeZone];
     // Execute block if retrieved successfully or throw an exception as default.
-    if (block) block(); else { @throw [NSException exceptionWithName:NSInternalInconsistencyException
+    if (block) block(); else { @throw [NSException exceptionWithName:NSInvalidArgumentException
                                                               reason:[NSString stringWithFormat:@"%@ expected U.S. time zone", NSStringFromSelector(_cmd)]
                                                             userInfo:nil]; }
     
