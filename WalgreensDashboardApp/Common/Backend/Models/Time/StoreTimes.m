@@ -45,11 +45,7 @@
 
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime {
     NSDictionary *store = [self findStore:storeNumber];
-    NSArray *results = [self isStoreOpen:store withDateTime:dateTime];
-    
-    // If store dictionary was modified, pass it back.
-    if (!(results[1] == [NSNull null])) store = results[1];
-    if (results[0]) // Note [0].
+    if ([self isStoreOpen:store withDateTime:dateTime])
         [store setValue:@YES forKey:kOpen];
     else
         [store setValue:@NO forKey:kOpen];
@@ -62,23 +58,26 @@
 
 /*!Private helper method used to check if a store is currently open,
  given the provided date and time, store hours and timezone.
- * \returns An array where array[0] is a BOOL and array[1] is the modified store dictionary.
- BOOL is YES if the store is open or NO at the given time.
+ * \returns YES if the store is open or NO at the given time.
  */
-- (NSArray *)isStoreOpen:(NSDictionary *)store withDateTime:(NSString *)dateTime {
-    if ([store objectForKey:kTwentyFourHours])
+- (BOOL)isStoreOpen:(NSDictionary *)store withDateTime:(NSString *)dateTime {
+    if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"])
         // The store is 24/7.
-        return @[@1, [NSNull null]];
+        return YES;
     else {
         // Get stores time zone code.
         NSString *storesTimeZone = [store objectForKey:kTimeZone];
         NSString *timeZoneName = [self storeTimeZoneToId:storesTimeZone];
         
         // Convert current date and time to stores date and time with time zone.
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:timeZoneName]];
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        NSDate *storeDateTime = [dateFormatter dateFromString:dateTime];
+        
+        [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
+        NSDate *aucklandDateTime = [dateFormatter dateFromString:dateTime];
+        [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
+        NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
+        NSDate *storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
         
         // Store date and time in result.
         [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
@@ -98,24 +97,24 @@
         switch ([time compare:closeTime]) {
             case NSOrderedAscending:
                 // date1 > date2
-                return @[@0, store];
+                return NO;
             case NSOrderedDescending: {
                 // date1 < date2
                 switch ([time compare:openTime]) {
                     case NSOrderedAscending:
                         // date1 > date2
-                        return @[@1, store];
+                        return YES;
                     case NSOrderedDescending:
                         // date1 < date2
-                        return @[@0, store];
+                        return NO;
                     case NSOrderedSame:
                         // date1 = date2
-                        return @[@1, store];
+                        return YES;
                 }
             }
             case NSOrderedSame:
                 // date1 = date2
-                return @[@0, store];
+                return NO;
         }
     }
 }
@@ -124,19 +123,20 @@
     // Uncomment to print all time zone IDs.
     // NSLog(@"%@", [NSTimeZone knownTimeZoneNames]);
     
+    NSString __block *timeZoneName;
+    
     typedef void (^CaseBlock)();
     
     // Objective-C cannot perform a switch on NSString... We must improvise.
     NSDictionary *stringSwitchCase = @{
-                                       @"EA": ^{return @"America/New_York";}, // Eastern.
-                                       @"CE": ^{return @"America/Chicago";}, // Central.
-                                       @"MO": ^{return @"America/Denver";}, // Mountain.
-                                       @"PA": ^{return @"America/Los_Angeles";}, // Pacific.
-                                       @"AT": ^{return @"America/Puerto_Rico";}, // Atlantic - Puerto Rico.
-                                       @"HA": ^{return @"Pacific/Honolulu";}, // Hawaii.
-                                       @"AL": ^{return @"America/Anchorage";}}; // Alaska.
+                                       @"EA": ^{timeZoneName = @"America/New_York";}, // Eastern.
+                                       @"CE": ^{timeZoneName = @"America/Chicago";}, // Central.
+                                       @"MO": ^{timeZoneName = @"America/Denver";}, // Mountain.
+                                       @"PA": ^{timeZoneName = @"America/Los_Angeles";}, // Pacific.
+                                       @"AT": ^{timeZoneName = @"America/Puerto_Rico";}, // Atlantic - Puerto Rico.
+                                       @"HA": ^{timeZoneName = @"Pacific/Honolulu";}, // Hawaii.
+                                       @"AL": ^{timeZoneName = @"America/Anchorage";}}; // Alaska.
     // Reference: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-    // No default...
     
     CaseBlock block = stringSwitchCase[timeZone];
     // Execute block if retrieved successfully or throw an exception as default.
@@ -145,7 +145,7 @@
                                                             userInfo:nil]; }
     
     // All possible U.S. timezones are above. The exception will not be thrown unless the time zone abbreviation is mistyped by Walgreens, or outside U.S.
-    return nil;
+    return timeZoneName;
 }
 
 - (enum Day)timeZonesWeekDay:(NSDate *)storeDateTime {

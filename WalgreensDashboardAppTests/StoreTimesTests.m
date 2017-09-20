@@ -6,6 +6,8 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
+// Use 'TEST' as output filter to help with debugging.
+
 #import <XCTest/XCTest.h>
 #import "StoreTimes.h"
 #import "StoreTimesConstants.h"
@@ -44,12 +46,14 @@
     store = [self.storeTimes retrieveStore:@"7005" withDateTime:dateTime];
     expectedDateTime = @"2017-08-09 20:34:41";
     actualDateTime = [store objectForKey:kDateTime];
-    NSLog(@"[TEST] Asserting equal (%@, %@)...", expectedDateTime, actualDateTime);
-    XCTAssertEqual(expectedDateTime, actualDateTime);
+    XCTAssertEqualObjects(expectedDateTime, actualDateTime);
     
     /*
      List of errors fixed:
      1. Comparing NSNumber to NSString.
+     2. Forgot isEqual part in "[[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"]"
+     3. storeTimeZoneToId: was returning nil.
+     4. Fixed time zone conversion, reason was due to parsing incorrectly, losing time zone data.
      */
 }
 
