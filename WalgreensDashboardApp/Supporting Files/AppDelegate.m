@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "StatusControllerApp.h"
 
 @interface AppDelegate () {
     StatusControllerApp *statusControllerApp;
@@ -31,7 +30,7 @@
     // The app has approx. 5 seconds to return from this method.
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     printf("[APP] Stopping status controller...\n");
-    // There is a chance (applicationDidBecomeActive:) is called before stop executes.
+    // There is a chance (applicationDidBecomeActive:) is called before stop terminates.
     [statusControllerApp stop];
 }
 

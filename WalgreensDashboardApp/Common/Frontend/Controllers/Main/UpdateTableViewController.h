@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "CommonTableViewController.h"
 #import "WalgreensDashboardApp-Bridging-Header.h"
+#import "DatePickerViewController.h"
+#import "UIViewController+DateTransition.h"
 #import "DateHelper.h"
 
-@interface UpdateTableViewController : CommonTableViewController
+@interface UpdateTableViewController : UITableViewController <DatePickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIProgressView *requestProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *totalOnlineStoresLabel;
@@ -20,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *notificationsCell;
 @property (weak, nonatomic) IBOutlet UILabel *notificationsLabel;
 
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOnlineStores;
+@property (strong, nonatomic) IBOutlet LineChartView *graphForOfflineStores;
 @property (strong, nonatomic) NSMutableArray *xaixsWithDate;
-
 
 @end

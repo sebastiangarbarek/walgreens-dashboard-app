@@ -13,5 +13,6 @@
 - (void)push:(id)o;
 - (id)pop;
 - (id)peek;
+- (BOOL)isEmpty;
 
 @end
