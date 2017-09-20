@@ -66,7 +66,6 @@
             [results addObject:storeResult];
         }
     }
-    NSLog(@"%lu", (unsigned long)[results count]);
     return results;
 }
 

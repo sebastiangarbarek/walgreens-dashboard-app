@@ -104,6 +104,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         requestsComplete = YES;
+        [self.progressView setHidden:YES];
         [self initData];
     });
 }
