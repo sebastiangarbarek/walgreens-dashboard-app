@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="baE-sr-ljD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Offline History-->
+        <scene sceneID="vXP-lr-I2J">
+            <objects>
+                <tableViewController id="k9d-Yf-aq9" customClass="StoreHistoryController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uzz-xb-GyW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="Sfi-Xc-XHz" style="IBUITableViewCellStyleDefault" id="ZkX-Pb-sKh" customClass="StoreCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZkX-Pb-sKh" id="7Vf-0L-NcB">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sfi-Xc-XHz">
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="storeName" destination="Sfi-Xc-XHz" id="l0P-yr-FDZ"/>
+                                    <segue destination="EMI-Rs-UTF" kind="show" identifier="Store Details" id="x3C-4o-d0O"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="k9d-Yf-aq9" id="lTJ-AF-Uk2"/>
+                            <outlet property="delegate" destination="k9d-Yf-aq9" id="Zvy-gW-MSt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Offline History" id="ZFS-ed-oQA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KQE-rS-DbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74" y="40"/>
+        </scene>
+        <!--StoreDetails-->
+        <scene sceneID="lbS-CE-gRZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="EMI-Rs-UTF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="29O-1Q-QeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="727" y="39"/>
+        </scene>
+        <!--Offline History-->
+        <scene sceneID="qSn-wF-W6k">
+            <objects>
+                <navigationController id="baE-sr-ljD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Offline History" id="Bm3-Ib-ea4"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXU-A7-uEs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="k9d-Yf-aq9" kind="relationship" relationship="rootViewController" id="Eer-sr-OSc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQL-d2-TRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1026" y="40"/>
+        </scene>
+    </scenes>
+</document>

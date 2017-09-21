@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hsu-S7-dep">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fEA-4V-454">
+            <objects>
+                <tabBarController id="hsu-S7-dep" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="QYB-H8-Zhi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="sNs-3k-Jnu" kind="relationship" relationship="viewControllers" id="QXl-fT-TEk"/>
+                        <segue destination="g5Z-Kd-qoU" kind="relationship" relationship="viewControllers" id="ihN-kZ-jmP"/>
+                        <segue destination="zaX-eO-TTl" kind="relationship" relationship="viewControllers" id="uhn-6V-r7R"/>
+                        <segue destination="7mr-Ug-zjO" kind="relationship" relationship="viewControllers" id="Sly-s6-cec"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKD-k6-4Mc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-366" y="40"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="sk2-WW-eXz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Dashboard" id="sNs-3k-Jnu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" id="5qO-gX-bSN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5gc-Mp-3LS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="-248"/>
+        </scene>
+        <!--StoreHistory-->
+        <scene sceneID="ryg-L8-u9F">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreHistory" id="g5Z-Kd-qoU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Offline History" id="f4R-S8-G7V"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEe-Tp-38F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="-48"/>
+        </scene>
+        <!--StoreCategory-->
+        <scene sceneID="haV-4d-ylE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreCategory" id="zaX-eO-TTl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="All Stores" id="Hbq-kg-rqC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Jh-KR-1UF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="111"/>
+        </scene>
+        <!--PrintProducts-->
+        <scene sceneID="ZFX-vK-rec">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PrintProducts" id="7mr-Ug-zjO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Print Products" id="MWf-5H-WC2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JBc-QX-Oo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="327"/>
+        </scene>
+    </scenes>
+</document>

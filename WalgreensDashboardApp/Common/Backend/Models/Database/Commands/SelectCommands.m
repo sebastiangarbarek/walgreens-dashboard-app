@@ -114,8 +114,49 @@
         return nil;
 }
 
+- (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
+    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
+    if ([results count])
+        return YES;
+    else
+        return NO;
+}
+
+- (NSMutableArray *)selectDatesInHistoryTable {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT date FROM %@", HistoryTableName];
+    return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"date"];
+}
+
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date {
     NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.date = '%@'", StoreTableName, HistoryTableName, HistoryTableName, StoreTableName, HistoryTableName, date];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSArray *)selectStoresInState:(NSString *)state {
+    // Select only print stores.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@' AND photoInd = 'true'", StoreTableName, state];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSArray *)selectAllStoreCords {
+    // Ignores null. Select only print stores.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, latitude, longitude FROM %@ WHERE photoInd = 'true' AND latitude IS NOT NULL", StoreTableName];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSArray *)selectAllPrintStoresAndHours {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL AND twentyFourHr = 'N'"];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
@@ -139,162 +180,15 @@
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {
         if([results[i] objectForKey:@"state"]!= nil){
-            [mutableArray addObject:results[i]];
+            [mutableArray addObject:[results[i] objectForKey:@"state"]];
         }
     }
     return mutableArray;
 }
 
-/* Selects all the stores that open twenty four hours for whole week
- */
-
-- (NSNumber *) selectTwentyFourHourStores {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE twentyFourHr ='%s' && photoInd = true", StoreTableName, "Y"];
-    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-- (NSNumber *) selectMondayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE mon24hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-
-- (NSNumber *) selectTuesdaywentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE tue24hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
 
 
 
-- (NSNumber *) selectWednesdayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE wed4hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-
-
-- (NSNumber *) selectThusdayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE thu24hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-
-
-- (NSNumber *) selectFridayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE fri4hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-
-
-- (NSNumber *) selectSaturdayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE sat24hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-
-
-- (NSNumber *) selectSundayTwentyFourHour {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE sun24hrs = '%d'", StoreHourTableName, 1];
-    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-// Selects opening hours and store it in MutableArray
-
--(NSMutableDictionary *) selectMondayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, monOpen, monClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-
-}
-
--(NSMutableDictionary *) selectTuesdayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, tueOpen, tueClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-}
-
-
--(NSMutableDictionary *) selectWednesdayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, wedOpen, wedClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-    
-}
-
--(NSMutableDictionary *) selectThusdayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, thuOpen, thuClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-    
-}
-
--(NSMutableDictionary *) selectFridayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, friOpen, friClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-    
-}
-
--(NSMutableDictionary*) selectSaturdayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, satOpen, satClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-    
-}
-
--(NSMutableDictionary *) selectSundayOpeningHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, sunOpen, sunClose FROM %@", StoreHourTableName];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject: [self.databaseManager executeQuery: [commandString UTF8String]] forKey:@"storeNum"];
-    id object = [dict objectForKey:@"storeNum"];
-    return object;
-    
-}
 
 /*!
  * Selects all states from store_detail table

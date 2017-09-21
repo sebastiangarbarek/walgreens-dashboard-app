@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "StatusController.h"
+#import "StatusControllerApp.h"
 #import "DatabaseManagerApp.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

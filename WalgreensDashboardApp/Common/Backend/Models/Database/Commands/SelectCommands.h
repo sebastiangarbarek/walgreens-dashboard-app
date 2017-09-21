@@ -30,7 +30,13 @@
 - (NSNumber *)countOnlineStoresInTempTable;
 
 // Return rows.
+- (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;
+- (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
+- (NSMutableArray *)selectDatesInHistoryTable;
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
+- (NSArray *)selectStoresInState:(NSString *)state;
+- (NSArray *)selectAllStoreCords;
+- (NSArray *)selectAllPrintStoresAndHours;
 
 // Return states without duplicates
 - (NSMutableArray *)selectStatesInStoreDetail;
@@ -40,5 +46,8 @@
 
 // Return stores of one city
 - (NSMutableArray *)selectStoresInStoreDetailWithCity:(NSString *)city;
+
+// Boolean checks.
+- (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
 
 @end

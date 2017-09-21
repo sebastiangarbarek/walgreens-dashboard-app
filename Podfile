@@ -7,6 +7,7 @@ target 'WalgreensDashboardApp' do
 
   # Pods for WalgreensDashboardApp
   pod 'Charts'
+  pod 'ClusterKit/MapKit'
 
   target 'WalgreensDashboardAppTests' do
     inherit! :search_paths
