@@ -98,6 +98,9 @@
                                                 <constraint firstItem="f9S-YB-6yF" firstAttribute="trailing" secondItem="HEQ-Vl-rjn" secondAttribute="trailingMargin" id="thy-GI-ehe"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Xvv-CQ-3aN" kind="show" identifier="Offline History" id="wsD-KI-Wq7"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="132" id="Xeu-ZU-YyM">
                                         <rect key="frame" x="0.0" y="266" width="375" height="132"/>
@@ -135,6 +138,9 @@
                                                 <constraint firstItem="2mj-Zd-MvR" firstAttribute="top" secondItem="Kax-ZS-oCq" secondAttribute="bottom" constant="8" id="pLh-7E-9aE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gKB-A0-zvU" kind="show" identifier="Store Hours" id="t33-mN-d1w"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="132" id="9dJ-SK-JeM">
                                         <rect key="frame" x="0.0" y="398" width="375" height="132"/>
@@ -175,9 +181,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="ok6-02-asA">
-                                <cells/>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="G07-vr-p3X" id="mXL-6S-MYU"/>
@@ -186,12 +189,32 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Dashboard" id="xSR-Z2-G5D"/>
                     <connections>
+                        <outlet property="closedTotal" destination="MLF-Om-az6" id="up5-A0-wT2"/>
+                        <outlet property="offlineTotal" destination="eJy-Sy-4bj" id="arr-5Q-CoE"/>
+                        <outlet property="onlineTotal" destination="C8q-w1-SlA" id="zAP-wJ-vA8"/>
+                        <outlet property="openTotal" destination="Kax-ZS-oCq" id="VUz-QS-CbV"/>
                         <outlet property="progressView" destination="Par-ra-yNF" id="Yy2-EX-cq1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aOW-is-2em" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="376.80000000000001" y="130.43478260869566"/>
+        </scene>
+        <!--StoreHistory-->
+        <scene sceneID="vyn-y9-z60">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreHistory" id="Xvv-CQ-3aN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fup-pY-IjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="5"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="mfr-0m-n8H">
+            <objects>
+                <viewControllerPlaceholder id="gKB-A0-zvU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2X-4i-WMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="259"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Xmg-nh-PIe">
@@ -264,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWs-0R-eva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1591" y="255"/>
+            <point key="canvasLocation" x="-599" y="806"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="BXx-Us-d9q">

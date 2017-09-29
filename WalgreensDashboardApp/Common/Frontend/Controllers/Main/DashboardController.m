@@ -8,12 +8,6 @@
 
 #import "DashboardController.h"
 
-@interface DashboardController () {
-    BOOL requestsComplete;
-}
-
-@end
-
 @implementation DashboardController
 
 #pragma mark - Parent Methods -
@@ -109,7 +103,11 @@
 #pragma mark - Navigation Methods -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"Offline History"]) {
+        
+    } else if ([[segue identifier] isEqualToString:@"Store Hours"]) {
+        
+    }
 }
 
 @end

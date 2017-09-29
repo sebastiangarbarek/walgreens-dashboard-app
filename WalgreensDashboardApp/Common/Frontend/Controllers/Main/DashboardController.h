@@ -15,4 +15,9 @@
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
+@property (weak, nonatomic) IBOutlet UILabel *onlineTotal;
+@property (weak, nonatomic) IBOutlet UILabel *offlineTotal;
+@property (weak, nonatomic) IBOutlet UILabel *openTotal;
+@property (weak, nonatomic) IBOutlet UILabel *closedTotal;
+
 @end
