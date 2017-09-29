@@ -26,7 +26,7 @@
 
 - (void)addNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateProgressView)
+                                             selector:@selector(updateStoresOnline)
                                                  name:@"Store online"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -67,12 +67,16 @@
 - (void)updateStoresOnline {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateProgressView];
+        self.onlineTotal.text = [NSString stringWithFormat:@"%i",
+                                 [[self.databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
     });
 }
 
 - (void)updateStoresOffline {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateProgressView];
+        self.offlineTotal.text = [NSString stringWithFormat:@"%i",
+                                  [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue]];
     });
 }
 
