@@ -26,9 +26,22 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    /*
+     Uncomment if using invalidating timer.
+    if ([self.storeTimes hasUpdateHourPassed]) {
+        // Open closed only update if the last recorded next update hour has passed.
+        [self updateOpenClosedStores];
+    } else {
+        // Restart timer from invalidation.
+        [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
+    }
+    */
 }
 
+/*
+ Uncomment to force the view to update open and closed stores only when
+ the user is on the screen or when the user returns and the next update hour
+ has passed. Allows the view to deallocate.
 - (void)viewWillDisappear:(BOOL)animated {
     // Prevent retain cycle.
     if (self.storeTimer != nil) {
@@ -36,6 +49,7 @@
         self.storeTimer = nil;
     }
 }
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,18 +137,22 @@
 #pragma mark - Time Methods -
 
 - (void)updateOpenClosedStores {
+    // Update the number of open and closed stores.
     NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
     self.openTotal.text = [NSString stringWithFormat:@"%li", [openStores count]];
     self.closedTotal.text = [NSString stringWithFormat:@"%li", [closedStores count]];
-}
-
-- (void)startStoreTimerWithSeconds:(NSInteger *)seconds {
     
+    // Start a timer to update the totals again on the next hour.
+    [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
 }
 
-- (BOOL)hasHourPassed {
-    return nil;
+- (void)startStoreTimerWithSeconds:(float)seconds {
+    self.storeTimer = [NSTimer scheduledTimerWithTimeInterval:seconds
+                                     target:self
+                                   selector:@selector(updateOpenClosedStores)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 
 #pragma mark - Navigation Methods -

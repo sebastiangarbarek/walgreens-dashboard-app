@@ -14,6 +14,8 @@
 
 @interface StoreTimes : NSObject
 
+@property long updateHour;
+
 /*
  This class can be used to check which stores are open and closed periodically.
  Periodic checking should not be implemented in this class. But by the class that uses this.
@@ -37,6 +39,7 @@ typedef NS_ENUM(NSInteger, Day) {
  */
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime;
 - (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen;
-- (long)secondsUntilNextHour;
+- (long)secondsToNextHour;
+- (BOOL)hasUpdateHourPassed;
 
 @end

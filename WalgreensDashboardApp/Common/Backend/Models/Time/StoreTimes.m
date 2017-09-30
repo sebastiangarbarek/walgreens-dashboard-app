@@ -166,7 +166,7 @@
     return 60 * [components hour] + [components minute];
 }
 
-- (long)secondsUntilNextHour {
+- (long)secondsToNextHour {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -186,14 +186,33 @@
     minute  = [components minute];
     second  = [components second];
     
-    long nextHour = ((hour * 60) + minute) * 60 + second;
+    self.updateHour = ((hour * 60) + minute) * 60 + second;
     
-    long seconds = nextHour - now;
+    long seconds = self.updateHour - now;
     
     // Uncomment to debug.
     // NSLog(@"Seconds until next hour: %li", seconds);
     
     return seconds;
+}
+
+- (BOOL)hasUpdateHourPassed {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
+    
+    long hour = [components hour];
+    long minute  = [components minute];
+    long second  = [components second];
+    
+    long now = ((hour * 60) + minute) * 60 + second;
+    
+    if (self.updateHour - now <= 0) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (NSString *)storeTimeZoneToId:(NSString *)timeZone {
