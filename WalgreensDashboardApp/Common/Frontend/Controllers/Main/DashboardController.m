@@ -18,7 +18,10 @@
     [self addNotifications];
     
     self.storeTimes = [[StoreTimes alloc] init];
-    
+}
+
+- (void)viewDidLoad {
+    // Methods that update labels etc. must be called after the view has loaded.
     [self initData];
 }
 
@@ -26,7 +29,6 @@
     
 }
 
-/*
 - (void)viewWillDisappear:(BOOL)animated {
     // Prevent retain cycle.
     if (self.storeTimer != nil) {
@@ -34,7 +36,6 @@
         self.storeTimer = nil;
     }
 }
-*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -122,12 +123,10 @@
 #pragma mark - Time Methods -
 
 - (void)updateOpenClosedStores {
-    //self.openTotal.text = [self.storeTimes retrieveStoresWithDateTime:<#(NSString *)#> requestOpen:YES];
-    //self.closedTotal.text = [self.storeTimes retrieveStoresWithDateTime:<#(NSString *)#> requestOpen:NO];
-}
-
-- (NSInteger *)secondsUntilNextHour {
-    return nil;
+    NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
+    NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
+    self.openTotal.text = [NSString stringWithFormat:@"%li", [openStores count]];
+    self.closedTotal.text = [NSString stringWithFormat:@"%li", [closedStores count]];
 }
 
 - (void)startStoreTimerWithSeconds:(NSInteger *)seconds {

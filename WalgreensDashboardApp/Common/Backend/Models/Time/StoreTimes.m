@@ -116,6 +116,9 @@
         
         // Get store times for weekday.
         NSArray *storeTimes = [self openCloseTimeWithDay:day store:store];
+        if ([storeTimes[0] isEqualToString:@"CLOSED"] || [storeTimes[1] isEqualToString:@"CLOSED"]) {
+            return NO;
+        }
         
         // Get store date time string using time zone.
         storeDateTimeString = [dateFormatter stringFromDate:storeDateTime];
@@ -131,7 +134,7 @@
         // Convert 24 hour time to 12 hour time.
         [dateFormatter setDateFormat:@"hh:mma"];
         NSString *currentTime12 = [dateFormatter stringFromDate:currentTime24];
-
+        
         long locationTime = [self minutesSinceMidnight:[dateFormatter dateFromString:currentTime12]];
         long openTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[0]]];
         long closeTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[1]]];
@@ -161,6 +164,36 @@
     unsigned unitFlags =  NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents *components = [gregorian components:unitFlags fromDate:date];
     return 60 * [components hour] + [components minute];
+}
+
+- (long)secondsUntilNextHour {
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
+    
+    long hour = [components hour];
+    long minute  = [components minute];
+    long second  = [components second];
+    
+    long now = ((hour * 60) + minute) * 60 + second;
+    
+    // Add one hour.
+    components.hour += 1;
+    components.minute = 0;
+    components.second = 0;
+    hour = [components hour];
+    minute  = [components minute];
+    second  = [components second];
+    
+    long nextHour = ((hour * 60) + minute) * 60 + second;
+    
+    long seconds = nextHour - now;
+    
+    // Uncomment to debug.
+    // NSLog(@"Seconds until next hour: %li", seconds);
+    
+    return seconds;
 }
 
 - (NSString *)storeTimeZoneToId:(NSString *)timeZone {
@@ -214,7 +247,7 @@
         case Friday:
             return @[[store objectForKey:kFriOpen], [store objectForKey:kFriClose]];
         case Saturday:
-            return @[[store objectForKey:kSatOpen], [store objectForKey:kSunClose]];
+            return @[[store objectForKey:kSatOpen], [store objectForKey:kSatClose]];
         case Sunday:
             return @[[store objectForKey:kSunOpen], [store objectForKey:kSunClose]];
     }

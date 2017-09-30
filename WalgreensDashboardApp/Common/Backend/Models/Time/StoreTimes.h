@@ -37,5 +37,6 @@ typedef NS_ENUM(NSInteger, Day) {
  */
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime;
 - (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen;
+- (long)secondsUntilNextHour;
 
 @end
