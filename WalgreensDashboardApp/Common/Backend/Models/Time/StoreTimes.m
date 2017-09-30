@@ -11,7 +11,17 @@
 /*
  Apple recommends to cache formatters for efficiency: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW10 see "Cache Formatters for Efficiency".
  */
-static NSDateFormatter *sDateFormatter = nil;
+static NSDateFormatter *sNzDateFormatter = nil;
+static NSDateFormatter *sAzDateFormatter = nil;
+static NSDateFormatter *sEaDateFormatter = nil;
+static NSDateFormatter *sCeDateFormatter = nil;
+static NSDateFormatter *sMoDateFormatter = nil;
+static NSDateFormatter *sPaDateFormatter = nil;
+static NSDateFormatter *sAtDateFormatter = nil;
+static NSDateFormatter *sHaDateFormatter = nil;
+static NSDateFormatter *sAlDateFormatter = nil;
+static NSDateFormatter *s12DateFormatter = nil;
+static NSDateFormatter *s24DateFormatter = nil;
 
 @interface StoreTimes () {
     // Objects should not access the data structures in this class directly.
@@ -101,40 +111,50 @@ static NSDateFormatter *sDateFormatter = nil;
         return YES;
     else {
         /* 
-         Prepare current date and time.
+         Prepare NZ date and time.
          */
         
-        if (sDateFormatter == nil) {
+        if (sNzDateFormatter == nil) {
             // Alloc and init static formatter if not allocated.
-            sDateFormatter = [[NSDateFormatter alloc] init];
+            sNzDateFormatter = [[NSDateFormatter alloc] init];
+            [sNzDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+            [sNzDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
         }
         
-        [sDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        [sDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
-        NSDate *aucklandDateTime = [sDateFormatter dateFromString:dateTime];
+        NSDate *aucklandDateTime = [sNzDateFormatter dateFromString:dateTime];
         
         /*
          Convert NZ date and time to stores date and time with time zone.
          */
         
         NSDate *storeDateTime;
+        NSDateFormatter *dateFormatter;
+        
         // Get stores time zone code.
         NSString *storesTimeZone = [store objectForKey:kTimeZone];
-        NSString *timeZoneName = [self storeTimeZoneToId:storesTimeZone];
         
         if ([[store objectForKey:kState] isEqualToString:@"AZ"]) {
             // Arizona is a special case. Only state where DST is not observed.
-            [sDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-            [sDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-3600*7]]; // GMT-7.
+            if (sAzDateFormatter == nil) {
+                sAzDateFormatter = [[NSDateFormatter alloc] init];
+                [sAzDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                [sAzDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+                [sAzDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-3600*7]]; // GMT-7.
+            }
+            dateFormatter = sAzDateFormatter;
         } else {
-            [sDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
+            dateFormatter = [self storeTimeZoneToDf:storesTimeZone];
         }
         
-        NSString *storeDateTimeString = [sDateFormatter stringFromDate:aucklandDateTime];
-        storeDateTime = [sDateFormatter dateFromString:storeDateTimeString];
+        NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
+        storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
+        
+        //NSLog(@"%@", dateFormatter.timeZone);
+        //NSLog(@"%@", aucklandDateTime);
+        //NSLog(@"%@", storeDateTime);
         
         // Store date and time in result.
-        [store setValue:[sDateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
+        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
         
         /*
          Check if the store is open during NZ time.
@@ -150,23 +170,29 @@ static NSDateFormatter *sDateFormatter = nil;
         }
         
         // Get store date time string using time zone.
-        storeDateTimeString = [sDateFormatter stringFromDate:storeDateTime];
+        storeDateTimeString = [dateFormatter stringFromDate:storeDateTime];
         
         // Prepare the formatter to parse 24 hour time.
-        sDateFormatter = [[NSDateFormatter alloc] init];
-        [sDateFormatter setDateFormat:@"HH:mm:ss"];
-        
+        if (s24DateFormatter == nil) {
+            s24DateFormatter = [[NSDateFormatter alloc] init];
+            [s24DateFormatter setDateFormat:@"HH:mm:ss"];
+        }
+
         // Substring the time.
         storeDateTimeString = [storeDateTimeString substringFromIndex:11];
-        NSDate *currentTime24 = [sDateFormatter dateFromString:storeDateTimeString];
+        NSDate *currentTime24 = [s24DateFormatter dateFromString:storeDateTimeString];
         
         // Convert 24 hour time to 12 hour time.
-        [sDateFormatter setDateFormat:@"hh:mma"];
-        NSString *currentTime12 = [sDateFormatter stringFromDate:currentTime24];
+        if (s12DateFormatter == nil) {
+            s12DateFormatter = [[NSDateFormatter alloc] init];
+            [s12DateFormatter setDateFormat:@"hh:mma"];
+        }
         
-        long locationTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:currentTime12]];
-        long openTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:storeTimes[0]]];
-        long closeTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:storeTimes[1]]];
+        NSString *currentTime12 = [s12DateFormatter stringFromDate:currentTime24];
+        
+        long locationTime = [self minutesSinceMidnight:[s12DateFormatter dateFromString:currentTime12]];
+        long openTime = [self minutesSinceMidnight:[s12DateFormatter dateFromString:storeTimes[0]]];
+        long closeTime = [self minutesSinceMidnight:[s12DateFormatter dateFromString:storeTimes[1]]];
         
         if (locationTime < closeTime && locationTime > openTime) {
             /*
@@ -244,24 +270,80 @@ static NSDateFormatter *sDateFormatter = nil;
     return NO;
 }
 
-- (NSString *)storeTimeZoneToId:(NSString *)timeZone {
+- (NSDateFormatter *)storeTimeZoneToDf:(NSString *)timeZone {
     // Uncomment to print all time zone IDs.
     // NSLog(@"%@", [NSTimeZone knownTimeZoneNames]);
     
-    NSString __block *timeZoneName;
+    NSDateFormatter __block *dateFormatter;
     
     typedef void (^CaseBlock)();
     
     // Objective-C cannot perform a switch on NSString... We must improvise.
     NSDictionary *stringSwitchCase = @{
                                        // United States has four major timezones.
-                                       @"EA": ^{timeZoneName = @"America/New_York";}, // Eastern (EDT).
-                                       @"CE": ^{timeZoneName = @"America/Chicago";}, // Central (CST).
-                                       @"MO": ^{timeZoneName = @"America/Denver";}, // Mountain (MST).
-                                       @"PA": ^{timeZoneName = @"America/Los_Angeles";}, // Pacific (PDT).
-                                       @"AT": ^{timeZoneName = @"America/Puerto_Rico";}, // Atlantic - Puerto Rico.
-                                       @"HA": ^{timeZoneName = @"Pacific/Honolulu";}, // Hawaii (HST).
-                                       @"AL": ^{timeZoneName = @"America/Anchorage";}}; // Alaska.
+                                       @"EA": ^{
+                                           // Eastern (EDT).
+                                           if (sEaDateFormatter == nil) {
+                                               sEaDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sEaDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sEaDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/New_York"]];
+                                           }
+                                           dateFormatter = sEaDateFormatter;
+                                       },
+                                       @"CE": ^{
+                                           // Central (CST).
+                                           if (sCeDateFormatter == nil) {
+                                               sCeDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sCeDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sCeDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/Chicago"]];
+                                           }
+                                           dateFormatter = sCeDateFormatter;
+                                       },
+                                       @"MO": ^{
+                                           // Mountain (MST).
+                                           if (sMoDateFormatter == nil) {
+                                               sMoDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sMoDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sMoDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/Denver"]];
+                                           }
+                                           dateFormatter = sMoDateFormatter;
+                                       },
+                                       @"PA": ^{
+                                           // Pacific (PDT).
+                                           if (sPaDateFormatter == nil) {
+                                               sPaDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sPaDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sPaDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/Los_Angeles"]];
+                                           }
+                                           dateFormatter = sPaDateFormatter;
+                                       },
+                                       @"AT": ^{
+                                           // Atlantic - Puerto Rico.
+                                           if (sAtDateFormatter == nil) {
+                                               sAtDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sAtDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sAtDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/Puerto_Rico"]];
+                                           }
+                                           dateFormatter = sAtDateFormatter;
+                                       },
+                                       @"HA": ^{
+                                           // Hawaii (HST).
+                                           if (sHaDateFormatter == nil) {
+                                               sHaDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sHaDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sHaDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Honolulu"]];
+                                           }
+                                           dateFormatter = sHaDateFormatter;
+                                       },
+                                       @"AL": ^{
+                                           // Alaska.
+                                           if (sAlDateFormatter == nil) {
+                                               sAlDateFormatter = [[NSDateFormatter alloc] init];
+                                               [sAlDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                                               [sAlDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"America/Anchorage"]];
+                                           }
+                                           dateFormatter = sAlDateFormatter;
+                                       }};
     // Reference: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
     // and
     // NSLog(@"%@", [NSTimeZone abbreviationDictionary]);
@@ -273,7 +355,7 @@ static NSDateFormatter *sDateFormatter = nil;
                                                             userInfo:nil]; }
     
     // All possible U.S. timezones are above. The exception will not be thrown unless the time zone abbreviation is mistyped by Walgreens, or outside U.S.
-    return timeZoneName;
+    return dateFormatter;
 }
 
 - (enum Day)timeZonesWeekDay:(NSDate *)storeDateTime {

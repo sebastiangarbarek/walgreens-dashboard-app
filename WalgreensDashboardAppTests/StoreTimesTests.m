@@ -13,7 +13,10 @@
 #import "StoreTimesConstants.h"
 
 @interface StoreTimesTests : XCTestCase
+
 @property StoreTimes *storeTimes;
+@property NSArray *preparedOpenClosedStores;
+
 @end
 
 @implementation StoreTimesTests
@@ -22,6 +25,7 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.storeTimes = [[StoreTimes alloc] init];
+    self.preparedOpenClosedStores = [self.storeTimes retrieveStoresWithDateTime:@"2017-09-30 17:15:00"];
 }
 
 - (void)tearDown {
@@ -98,7 +102,7 @@
     // Xcode executes and performs the procedure in this block ten times and returns the average.
     [self measureBlock:^{
         // Fixed date and time to prevent variation.
-        [self.storeTimes retrieveStoresWithDateTime:@"2017-09-30 17:15:00" requestOpen:YES];
+        [self.storeTimes retrieveStoresWithDateTime:@"2017-09-30 17:15:00"];
     }];
     
     /*
@@ -109,7 +113,27 @@
      
      NSDateFormatter optimization:
      [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 3.078, relative standard deviation: 3.212%, values: [3.109066, 2.953633, 3.210005, 2.999866, 3.147465, 3.066309, 2.935010, 3.237892, 3.003315, 3.112947]
+     
+     Further optimization:
+     [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 1.647, relative standard deviation: 6.351%, values: [1.563152, 1.820012, 1.498568, 1.601850, 1.832638, 1.561427, 1.657410, 1.697017, 1.584261, 1.656093]
      */
+}
+
+- (void)testTimeCountingOpenStores {
+    [self measureBlock:^{
+        int count = 0;
+        for (NSDictionary *store in self.preparedOpenClosedStores) {
+            if ([[store objectForKey:kOpen] intValue] == 1) {
+                count++;
+            }
+        }
+        NSLog(@"%i stores open stores counted.", count);
+        
+        /*
+         Results:
+         Average time of 0.003s. Iteration over store array and accessing contained store detail dictionaries has no impact on performance as expected.
+         */
+    }];
 }
 
 @end
