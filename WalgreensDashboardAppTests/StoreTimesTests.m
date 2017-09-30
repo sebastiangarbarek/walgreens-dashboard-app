@@ -116,6 +116,9 @@
      
      Further optimization:
      [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 1.647, relative standard deviation: 6.351%, values: [1.563152, 1.820012, 1.498568, 1.601850, 1.832638, 1.561427, 1.657410, 1.697017, 1.584261, 1.656093]
+     
+     Calender optimization:
+     [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 1.542, relative standard deviation: 8.090%, values: [1.575420, 1.698424, 1.467607, 1.463339, 1.801212, 1.458536, 1.406584, 1.623095, 1.514912, 1.406236]
      */
 }
 

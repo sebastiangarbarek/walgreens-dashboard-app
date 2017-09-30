@@ -22,6 +22,7 @@ static NSDateFormatter *sHaDateFormatter = nil;
 static NSDateFormatter *sAlDateFormatter = nil;
 static NSDateFormatter *s12DateFormatter = nil;
 static NSDateFormatter *s24DateFormatter = nil;
+static NSCalendar *sCalender = nil;
 
 @interface StoreTimes () {
     // Objects should not access the data structures in this class directly.
@@ -215,17 +216,20 @@ static NSDateFormatter *s24DateFormatter = nil;
 }
 
 - (long)minutesSinceMidnight:(NSDate *)date {
-    NSCalendar *gregorian = [NSCalendar currentCalendar];
+    if (sCalender == nil) {
+        sCalender = [NSCalendar currentCalendar];
+    }
+    
     unsigned unitFlags =  NSCalendarUnitHour | NSCalendarUnitMinute;
-    NSDateComponents *components = [gregorian components:unitFlags fromDate:date];
+    NSDateComponents *components = [sCalender components:unitFlags fromDate:date];
     return 60 * [components hour] + [components minute];
 }
 
 - (long)secondsToNextHour {
-    NSCalendar *gregorian = [NSCalendar currentCalendar];
+    NSCalendar *calender = [NSCalendar currentCalendar];
     
     const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
+    NSDateComponents* components = [calender components:units fromDate:[NSDate new]];
     
     long hour = [components hour];
     long minute  = [components minute];
@@ -252,10 +256,10 @@ static NSDateFormatter *s24DateFormatter = nil;
 }
 
 - (BOOL)hasUpdateHourPassed {
-    NSCalendar *gregorian = [NSCalendar currentCalendar];
+    NSCalendar *calender = [NSCalendar currentCalendar];
     
     const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
+    NSDateComponents* components = [calender components:units fromDate:[NSDate new]];
     
     long hour = [components hour];
     long minute  = [components minute];
@@ -359,8 +363,11 @@ static NSDateFormatter *s24DateFormatter = nil;
 }
 
 - (enum Day)timeZonesWeekDay:(NSDate *)storeDateTime {
-    return [[NSCalendar currentCalendar] component:NSCalendarUnitWeekday
-                                          fromDate:storeDateTime];
+    if (sCalender == nil) {
+        sCalender = [NSCalendar currentCalendar];
+    }
+    
+    return [sCalender component:NSCalendarUnitWeekday fromDate:storeDateTime];
 }
 
 - (NSArray *)openCloseTimeWithDay:(enum Day)day store:(NSDictionary *)store {
