@@ -61,6 +61,15 @@ static NSDateFormatter *sDateFormatter = nil;
      */
 }
 
+- (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime {
+    NSMutableArray *results = [NSMutableArray new];
+    for (NSDictionary *store in stores) {
+        NSDictionary *storeResult = [self queryStore:store withDateTime:dateTime];
+        [results addObject:storeResult];
+    }
+    return results;
+}
+
 - (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen {
     NSMutableArray *results = [NSMutableArray new];
     for (NSDictionary *store in stores) {
