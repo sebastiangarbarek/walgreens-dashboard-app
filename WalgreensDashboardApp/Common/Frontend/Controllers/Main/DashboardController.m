@@ -148,11 +148,12 @@
 }
 
 - (void)startStoreTimerWithSeconds:(float)seconds {
+    // Keep reference to manually invalidate to allow view to dealloc.
     self.storeTimer = [NSTimer scheduledTimerWithTimeInterval:seconds
                                      target:self
                                    selector:@selector(updateOpenClosedStores)
                                    userInfo:nil
-                                    repeats:NO];
+                                    repeats:NO]; // Yes, it repeats. See selector.
 }
 
 #pragma mark - Navigation Methods -

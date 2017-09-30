@@ -94,13 +94,22 @@
      */
 }
 
-/*
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
+- (void)testTimeRetrievingOpenStores {
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        // Xcode executes and performs the procedure in this block ten times and returns the average.
+        [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     }];
+    
+    /*
+     Results:
+     
+     Results vary with day and time.
+     
+     SATURDAY 30/09/2017 5:15 PM
+     [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 4.169, relative standard deviation: 2.959%, values: [4.402160, 4.106100, 3.995885, 4.141522, 4.156160, 4.319162, 4.296052, 4.058589, 4.059162, 4.160188]
+     
+     
+     */
 }
-*/
 
 @end
