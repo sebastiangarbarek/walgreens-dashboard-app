@@ -9,4 +9,4 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const kOpen;
-extern NSString *const kDateTime;
+extern NSString *const kTime;

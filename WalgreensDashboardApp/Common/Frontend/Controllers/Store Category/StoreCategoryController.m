@@ -14,7 +14,7 @@
     [super awakeFromNib];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
     [self updateView];
 }
 

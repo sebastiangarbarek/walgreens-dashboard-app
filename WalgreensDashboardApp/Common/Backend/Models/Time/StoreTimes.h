@@ -38,7 +38,11 @@ typedef NS_ENUM(NSInteger, Day) {
  Or nil if the store does not exist or hours data is not available for it.
  */
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime;
+// Returns both open and closed stores, receiver will have to identify which is which.
+- (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime;
+// Method to retrieve only open stores or only closed stores.
 - (NSArray *)retrieveStoresWithDateTime:(NSString *)dateTime requestOpen:(BOOL)requestOpen;
+- (BOOL)isStoreOpen:(NSDictionary *)store withDateTime:(NSString *)dateTime;
 - (long)secondsToNextHour;
 - (BOOL)hasUpdateHourPassed;
 

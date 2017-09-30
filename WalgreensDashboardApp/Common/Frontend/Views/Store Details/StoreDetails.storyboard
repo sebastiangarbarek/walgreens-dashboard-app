@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12120"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,8 +44,49 @@
                                     <outlet property="mapView" destination="bFO-3a-B7a" id="FCk-2H-g3K"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Time" rowHeight="88" id="DCG-Oz-zKv" customClass="StoreTimeCell">
+                                <rect key="frame" x="0.0" y="292" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCG-Oz-zKv" id="UrD-by-SLo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:45 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR0-w5-bva">
+                                            <rect key="frame" x="8" y="8" width="359" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="46" id="GMh-Hj-ZJd"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPa-7Y-Zw5">
+                                            <rect key="frame" x="8" y="62" width="359" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="ZHd-YH-LnM"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iR0-w5-bva" firstAttribute="leading" secondItem="UrD-by-SLo" secondAttribute="leadingMargin" id="B8g-4j-aIT"/>
+                                        <constraint firstItem="VPa-7Y-Zw5" firstAttribute="leading" secondItem="UrD-by-SLo" secondAttribute="leadingMargin" id="Bd5-6b-9Gy"/>
+                                        <constraint firstItem="iR0-w5-bva" firstAttribute="top" secondItem="UrD-by-SLo" secondAttribute="topMargin" id="Tw5-bn-AOz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="VPa-7Y-Zw5" secondAttribute="bottom" constant="-3" id="e7x-BU-rST"/>
+                                        <constraint firstItem="VPa-7Y-Zw5" firstAttribute="top" secondItem="iR0-w5-bva" secondAttribute="bottom" constant="8" id="fVS-3o-1YT"/>
+                                        <constraint firstItem="iR0-w5-bva" firstAttribute="trailing" secondItem="UrD-by-SLo" secondAttribute="trailingMargin" id="lz4-mQ-2fM"/>
+                                        <constraint firstItem="VPa-7Y-Zw5" firstAttribute="trailing" secondItem="UrD-by-SLo" secondAttribute="trailingMargin" id="vzq-eX-mQZ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="statusLabel" destination="VPa-7Y-Zw5" id="0P4-X0-k9Z"/>
+                                    <outlet property="timeLabel" destination="iR0-w5-bva" id="H25-e4-Atb"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" textLabel="ncZ-s7-QXx" detailTextLabel="jCp-bh-QoF" style="IBUITableViewCellStyleValue1" id="cQm-SE-gUy" customClass="DetailCell">
-                                <rect key="frame" x="0.0" y="292" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="380" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cQm-SE-gUy" id="3c7-2C-SLJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
