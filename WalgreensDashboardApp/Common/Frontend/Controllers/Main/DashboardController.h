@@ -12,6 +12,8 @@
 @interface DashboardController : TableViewController
 
 @property StoreTimes *storeTimes;
+@property NSTimer *storeTimer;
+@property NSDate *updateTime;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 

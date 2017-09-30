@@ -200,13 +200,13 @@
             </objects>
             <point key="canvasLocation" x="376.80000000000001" y="130.43478260869566"/>
         </scene>
-        <!--StoreHistory-->
+        <!--Storyboard Reference-->
         <scene sceneID="vyn-y9-z60">
             <objects>
-                <viewControllerPlaceholder storyboardName="StoreHistory" id="Xvv-CQ-3aN" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder id="Xvv-CQ-3aN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fup-pY-IjB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="5"/>
+            <point key="canvasLocation" x="1121" y="-14"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="mfr-0m-n8H">
@@ -287,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GWs-0R-eva" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-599" y="806"/>
+            <point key="canvasLocation" x="1777" y="130"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="BXx-Us-d9q">

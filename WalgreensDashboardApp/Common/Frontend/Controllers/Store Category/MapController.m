@@ -25,6 +25,11 @@
     [self initData];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"[WARNING] Browse stores map received memory warning.");
+}
+
 - (void)initData {
     annotations = [NSMutableArray new];
     

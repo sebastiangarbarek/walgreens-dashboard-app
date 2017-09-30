@@ -22,6 +22,25 @@
     [self initData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+}
+
+/*
+- (void)viewWillDisappear:(BOOL)animated {
+    // Prevent retain cycle.
+    if (self.storeTimer != nil) {
+        [self.storeTimer invalidate];
+        self.storeTimer = nil;
+    }
+}
+*/
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"[WARNING] Dashboard received memory warning.");
+}
+
 #pragma mark - Init Methods -
 
 - (void)addNotifications {
@@ -80,10 +99,6 @@
     });
 }
 
-- (void)updateOpenClosedStores {
-    
-}
-
 - (void)requestsComplete {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -102,6 +117,25 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     });
+}
+
+#pragma mark - Time Methods -
+
+- (void)updateOpenClosedStores {
+    //self.openTotal.text = [self.storeTimes retrieveStoresWithDateTime:<#(NSString *)#> requestOpen:YES];
+    //self.closedTotal.text = [self.storeTimes retrieveStoresWithDateTime:<#(NSString *)#> requestOpen:NO];
+}
+
+- (NSInteger *)secondsUntilNextHour {
+    return nil;
+}
+
+- (void)startStoreTimerWithSeconds:(NSInteger *)seconds {
+    
+}
+
+- (BOOL)hasHourPassed {
+    return nil;
 }
 
 #pragma mark - Navigation Methods -

@@ -28,6 +28,11 @@
     [self.tableView reloadData];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"[WARNING] Store details received memory warning.");
+}
+
 #pragma mark - Init Methods -
 
 - (void)initData {
