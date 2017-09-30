@@ -156,7 +156,7 @@
 }
 
 - (NSArray *)selectAllPrintStoresAndHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL AND twentyFourHr = 'N'"];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL"];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 

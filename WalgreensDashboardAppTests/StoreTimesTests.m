@@ -95,20 +95,20 @@
 }
 
 - (void)testTimeRetrievingOpenStores {
+    // Xcode executes and performs the procedure in this block ten times and returns the average.
     [self measureBlock:^{
-        // Xcode executes and performs the procedure in this block ten times and returns the average.
-        [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
+        // Fixed date and time to prevent variation.
+        [self.storeTimes retrieveStoresWithDateTime:@"2017-09-30 17:15:00" requestOpen:YES];
     }];
     
     /*
      Results:
      
-     Results vary with day and time.
-     
-     SATURDAY 30/09/2017 5:15 PM
+     First test:
      [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 4.169, relative standard deviation: 2.959%, values: [4.402160, 4.106100, 3.995885, 4.141522, 4.156160, 4.319162, 4.296052, 4.058589, 4.059162, 4.160188]
      
-     
+     NSDateFormatter optimization:
+     [StoreTimesTests testTimeRetrievingOpenStores]' measured [Time, seconds] average: 3.078, relative standard deviation: 3.212%, values: [3.109066, 2.953633, 3.210005, 2.999866, 3.147465, 3.066309, 2.935010, 3.237892, 3.003315, 3.112947]
      */
 }
 

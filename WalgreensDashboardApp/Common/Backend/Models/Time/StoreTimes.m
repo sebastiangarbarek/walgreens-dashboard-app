@@ -8,6 +8,11 @@
 
 #import "StoreTimes.h"
 
+/*
+ Apple recommends to cache formatters for efficiency: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DataFormatting/Articles/dfDateFormatting10_4.html#//apple_ref/doc/uid/TP40002369-SW10 see "Cache Formatters for Efficiency".
+ */
+static NSDateFormatter *sDateFormatter = nil;
+
 @interface StoreTimes () {
     // Objects should not access the data structures in this class directly.
     
@@ -77,7 +82,7 @@
     return store;
 }
 
-/*!Private helper method used to check if a store is currently open,
+/*!Helper method used to check if a store is currently open,
  given the provided date and time, store hours and timezone.
  * \returns YES if the store is open or NO at the given time.
  */
@@ -86,30 +91,45 @@
         // The store is 24/7.
         return YES;
     else {
+        /* 
+         Prepare current date and time.
+         */
+        
+        if (sDateFormatter == nil) {
+            // Alloc and init static formatter if not allocated.
+            sDateFormatter = [[NSDateFormatter alloc] init];
+        }
+        
+        [sDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+        [sDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
+        NSDate *aucklandDateTime = [sDateFormatter dateFromString:dateTime];
+        
+        /*
+         Convert NZ date and time to stores date and time with time zone.
+         */
+        
+        NSDate *storeDateTime;
         // Get stores time zone code.
         NSString *storesTimeZone = [store objectForKey:kTimeZone];
         NSString *timeZoneName = [self storeTimeZoneToId:storesTimeZone];
         
-        // Convert current date and time to stores date and time with time zone.
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-        
-        [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:@"Pacific/Auckland"]];
-        NSDate *aucklandDateTime = [dateFormatter dateFromString:dateTime];
-        
-        NSDate *storeDateTime;
         if ([[store objectForKey:kState] isEqualToString:@"AZ"]) {
             // Arizona is a special case. Only state where DST is not observed.
-            [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-            [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-3600*7]]; // GMT-7.
+            [sDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+            [sDateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:-3600*7]]; // GMT-7.
         } else {
-            [dateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
+            [sDateFormatter setTimeZone:[[NSTimeZone alloc] initWithName:timeZoneName]];
         }
-        NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
-        storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
+        
+        NSString *storeDateTimeString = [sDateFormatter stringFromDate:aucklandDateTime];
+        storeDateTime = [sDateFormatter dateFromString:storeDateTimeString];
         
         // Store date and time in result.
-        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
+        [store setValue:[sDateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
+        
+        /*
+         Check if the store is open during NZ time.
+         */
         
         // Get weekday for stores time zone, as it could be different to user location.
         Day day = [self timeZonesWeekDay:storeDateTime];
@@ -121,23 +141,23 @@
         }
         
         // Get store date time string using time zone.
-        storeDateTimeString = [dateFormatter stringFromDate:storeDateTime];
+        storeDateTimeString = [sDateFormatter stringFromDate:storeDateTime];
         
         // Prepare the formatter to parse 24 hour time.
-        dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"HH:mm:ss"];
+        sDateFormatter = [[NSDateFormatter alloc] init];
+        [sDateFormatter setDateFormat:@"HH:mm:ss"];
         
         // Substring the time.
         storeDateTimeString = [storeDateTimeString substringFromIndex:11];
-        NSDate *currentTime24 = [dateFormatter dateFromString:storeDateTimeString];
+        NSDate *currentTime24 = [sDateFormatter dateFromString:storeDateTimeString];
         
         // Convert 24 hour time to 12 hour time.
-        [dateFormatter setDateFormat:@"hh:mma"];
-        NSString *currentTime12 = [dateFormatter stringFromDate:currentTime24];
+        [sDateFormatter setDateFormat:@"hh:mma"];
+        NSString *currentTime12 = [sDateFormatter stringFromDate:currentTime24];
         
-        long locationTime = [self minutesSinceMidnight:[dateFormatter dateFromString:currentTime12]];
-        long openTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[0]]];
-        long closeTime = [self minutesSinceMidnight:[dateFormatter dateFromString:storeTimes[1]]];
+        long locationTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:currentTime12]];
+        long openTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:storeTimes[0]]];
+        long closeTime = [self minutesSinceMidnight:[sDateFormatter dateFromString:storeTimes[1]]];
         
         if (locationTime < closeTime && locationTime > openTime) {
             /*
@@ -160,14 +180,14 @@
 }
 
 - (long)minutesSinceMidnight:(NSDate *)date {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
     unsigned unitFlags =  NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents *components = [gregorian components:unitFlags fromDate:date];
     return 60 * [components hour] + [components minute];
 }
 
 - (long)secondsToNextHour {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
@@ -197,7 +217,7 @@
 }
 
 - (BOOL)hasUpdateHourPassed {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
     
     const unsigned units = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* components = [gregorian components:units fromDate:[NSDate new]];
@@ -276,7 +296,7 @@
  we have to iterate an array of 7,000+ results, checking each dictionary for the store number.
  If speed is an issue, this can be made faster if a dictionary was used in place of the array.
  However, only if the returned rows have a guaranteed unique identifier.
- * \returns YES if the store is currently open or NO.
+ * \returns The store or nil if not found.
  */
 - (NSDictionary *)findStore:(NSString *)storeNumber {
     for (NSDictionary *store in stores) {
