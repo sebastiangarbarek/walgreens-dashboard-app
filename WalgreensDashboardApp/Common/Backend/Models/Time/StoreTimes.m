@@ -150,13 +150,6 @@ static NSCalendar *sCalender = nil;
         NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
         storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
         
-        //NSLog(@"%@", dateFormatter.timeZone);
-        //NSLog(@"%@", aucklandDateTime);
-        //NSLog(@"%@", storeDateTime);
-        
-        // Store date and time in result.
-        [store setValue:[dateFormatter stringFromDate:storeDateTime] forKey:kDateTime];
-        
         /*
          Check if the store is open during NZ time.
          */
@@ -190,6 +183,8 @@ static NSCalendar *sCalender = nil;
         }
         
         NSString *currentTime12 = [s12DateFormatter stringFromDate:currentTime24];
+        // Store time in result.
+        [store setValue:currentTime12 forKey:kTime];
         
         long locationTime = [self minutesSinceMidnight:[s12DateFormatter dateFromString:currentTime12]];
         long openTime = [self minutesSinceMidnight:[s12DateFormatter dateFromString:storeTimes[0]]];

@@ -9,4 +9,4 @@
 #import "StoreTimesConstants.h"
 
 NSString *const kOpen = @"isOpen";
-NSString *const kDateTime = @"dateTime";
+NSString *const kTime = @"time";
