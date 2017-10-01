@@ -19,6 +19,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="sNs-3k-Jnu" kind="relationship" relationship="viewControllers" id="QXl-fT-TEk"/>
+                        <segue destination="zWK-pM-2zC" kind="relationship" relationship="viewControllers" id="1Fx-dF-5Qo"/>
                         <segue destination="g5Z-Kd-qoU" kind="relationship" relationship="viewControllers" id="ihN-kZ-jmP"/>
                         <segue destination="zaX-eO-TTl" kind="relationship" relationship="viewControllers" id="uhn-6V-r7R"/>
                         <segue destination="7mr-Ug-zjO" kind="relationship" relationship="viewControllers" id="Sly-s6-cec"/>
@@ -57,6 +58,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Jh-KR-1UF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="446" y="111"/>
+        </scene>
+        <!--StoreHours-->
+        <scene sceneID="cwU-qh-P7I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreHours" id="zWK-pM-2zC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Store Time" id="lcb-Qc-fmk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Up-5v-jTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="452" y="219"/>
         </scene>
         <!--PrintProducts-->
         <scene sceneID="ZFX-vK-rec">

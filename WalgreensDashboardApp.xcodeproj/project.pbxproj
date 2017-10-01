@@ -45,6 +45,7 @@
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
 		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
 		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
+		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
@@ -146,6 +147,7 @@
 		A89EA2841F726CF800A50E3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
 		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
+		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
 		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
 		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -339,6 +341,7 @@
 		A821BB2A1EDB960400B878BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A8AE355E1F80CDE00017C904 /* Store Hours */,
 				A80D3EAC1F6A166E00D9CBE6 /* Store Category */,
 				A86CF51B1F5D3ED3005889B7 /* Store Details */,
 				A82949DD1F4E525A00EA0BBD /* Shared */,
@@ -554,6 +557,7 @@
 		A86CF5121F5D2A3C005889B7 /* Store Hours */ = {
 			isa = PBXGroup;
 			children = (
+				A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */,
 			);
 			path = "Store Hours";
 			sourceTree = "<group>";
@@ -647,6 +651,13 @@
 			);
 			name = Models;
 			path = Models/Database;
+			sourceTree = "<group>";
+		};
+		A8AE355E1F80CDE00017C904 /* Store Hours */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Store Hours";
 			sourceTree = "<group>";
 		};
 		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
@@ -841,6 +852,7 @@
 				A86CF51A1F5D37DB005889B7 /* StoreDetails.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
+				A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */,
 				A86CF4EE1F5CCE40005889B7 /* Dashboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
