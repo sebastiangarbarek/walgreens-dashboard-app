@@ -46,6 +46,8 @@
 		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
 		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
 		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
+		A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35631F80F1750017C904 /* StoreHoursController.m */; };
+		A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE356D1F810AA00017C904 /* SingleLabelCell.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
@@ -140,14 +142,18 @@
 		A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTableViewController.h; sourceTree = "<group>"; };
 		A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTableViewController.m; sourceTree = "<group>"; };
-		A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimesMapCell.h; sourceTree = "<group>"; };
-		A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimesMapCell.m; sourceTree = "<group>"; };
+		A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTimesMapCell.h; path = Main/StoreTimesMapCell.h; sourceTree = "<group>"; };
+		A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTimesMapCell.m; path = Main/StoreTimesMapCell.m; sourceTree = "<group>"; };
 		A89EA2801F72661D00A50E3B /* SegueProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueProtocol.h; sourceTree = "<group>"; };
 		A89EA2831F726CF800A50E3B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		A89EA2841F726CF800A50E3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
 		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
 		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
+		A8AE35621F80F1750017C904 /* StoreHoursController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHoursController.h; sourceTree = "<group>"; };
+		A8AE35631F80F1750017C904 /* StoreHoursController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHoursController.m; sourceTree = "<group>"; };
+		A8AE356C1F810AA00017C904 /* SingleLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLabelCell.h; sourceTree = "<group>"; };
+		A8AE356D1F810AA00017C904 /* SingleLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLabelCell.m; sourceTree = "<group>"; };
 		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
 		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -614,8 +620,6 @@
 				A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */,
 				A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */,
 				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
-				A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */,
-				A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */,
 				A89EA2831F726CF800A50E3B /* MessageCell.h */,
 				A89EA2841F726CF800A50E3B /* MessageCell.m */,
 			);
@@ -656,8 +660,22 @@
 		A8AE355E1F80CDE00017C904 /* Store Hours */ = {
 			isa = PBXGroup;
 			children = (
+				A8AE35681F80FA660017C904 /* Cells */,
+				A8AE35621F80F1750017C904 /* StoreHoursController.h */,
+				A8AE35631F80F1750017C904 /* StoreHoursController.m */,
 			);
 			name = "Store Hours";
+			sourceTree = "<group>";
+		};
+		A8AE35681F80FA660017C904 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */,
+				A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */,
+				A8AE356C1F810AA00017C904 /* SingleLabelCell.h */,
+				A8AE356D1F810AA00017C904 /* SingleLabelCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
@@ -979,6 +997,7 @@
 				A86CF4FA1F5CFC54005889B7 /* NetworkUtility.m in Sources */,
 				A86CF50B1F5D12C4005889B7 /* StoreHistoryController.m in Sources */,
 				A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */,
+				A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
 				A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */,
 				A86CF4FB1F5CFC54005889B7 /* Reachability.m in Sources */,
@@ -1013,6 +1032,7 @@
 				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
+				A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */,
 				A86CF50E1F5D1CE6005889B7 /* StoreCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

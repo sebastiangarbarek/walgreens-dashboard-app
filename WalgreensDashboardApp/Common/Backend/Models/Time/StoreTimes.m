@@ -148,6 +148,8 @@ static NSCalendar *sCalender = nil;
         }
         
         NSString *storeDateTimeString = [dateFormatter stringFromDate:aucklandDateTime];
+        // Store date time in result.
+        [store setValue:storeDateTimeString forKey:kDateTime];
         storeDateTime = [dateFormatter dateFromString:storeDateTimeString];
         
         /*

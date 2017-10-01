@@ -63,7 +63,7 @@
         <scene sceneID="cwU-qh-P7I">
             <objects>
                 <viewControllerPlaceholder storyboardName="StoreHours" id="zWK-pM-2zC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store Time" id="lcb-Qc-fmk"/>
+                    <tabBarItem key="tabBarItem" title="Store Status" id="lcb-Qc-fmk"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Up-5v-jTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

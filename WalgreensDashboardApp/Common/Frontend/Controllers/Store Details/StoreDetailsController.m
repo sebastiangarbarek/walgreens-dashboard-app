@@ -23,9 +23,8 @@
     [super awakeFromNib];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
     [self initData];
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
