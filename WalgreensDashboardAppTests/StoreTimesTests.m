@@ -146,6 +146,24 @@
      */
 }
 
+- (void)testTimeInit {
+    [self measureBlock:^{
+        StoreTimes *testStoreTimes = [[StoreTimes alloc] init];
+    }];
+    
+    /*
+     Results:
+     
+     First test:
+     [StoreTimesTests testTimeInit]' measured [Time, seconds] average: 0.871, relative standard deviation: 7.306%, values: [1.001965, 0.813176, 0.903298, 0.870737, 0.881291, 0.936410, 0.892455, 0.785109, 0.805535, 0.821381]
+     
+     Restricted retrieval:
+     [StoreTimesTests testTimeInit]' measured [Time, seconds] average: 0.296, relative standard deviation: 4.396%, values: [0.279154, 0.293583, 0.286782, 0.298162, 0.283910, 0.280064, 0.310791, 0.310890, 0.303043, 0.316691]
+     
+     Currently, fetching all print stores and their hours takes too long.
+     */
+}
+
 - (void)testTimeCountingOpenStores {
     [self measureBlock:^{
         int count = 0;
@@ -155,12 +173,12 @@
             }
         }
         NSLog(@"%i stores open stores counted.", count);
-        
-        /*
-         Results:
-         Average time of 0.003s. Iteration over store array and accessing contained store detail dictionaries has no impact on performance as expected.
-         */
     }];
+    
+    /*
+     Results:
+     Average time of 0.003s. Iteration over store array and accessing contained store detail dictionaries has no impact on performance as expected.
+     */
 }
 
 @end
