@@ -133,6 +133,7 @@
         case 2: {
             StoreTimesMapCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Map" forIndexPath:indexPath];
             if (timesCalculated) {
+                cell.segueDelegate = self;
                 [cell loadWithStores:openStores];
             } else {
                 [cell loadWithoutStores];
@@ -185,8 +186,16 @@
 
 #pragma mark - Navigation Methods -
 
+- (void)child:(id)child willPerformSegueWithIdentifier:(NSString *)segueIdentifier {
+    [self performSegueWithIdentifier:segueIdentifier sender:child];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([[segue identifier] isEqualToString:@"Store Details"]) {
+        StoreTimesMapCell *storeTimesMapCell = (StoreTimesMapCell *)sender;
+        StoreDetailsController *storeDetailsController = [segue destinationViewController];
+        storeDetailsController.storeNumber = storeTimesMapCell.storeNumber;
+    }
 }
 
 @end

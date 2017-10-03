@@ -10,8 +10,10 @@
 #import "SingleLabelCell.h"
 #import "StoreTimesMapCell.h"
 #import "DetailCell.h"
+#import "SegueProtocol.h"
+#import "StoreDetailsController.h"
 
-@interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource, SegueProtocol>
 
 @property StoreTimes *storeTimes;
 @property NSString *dateTime;

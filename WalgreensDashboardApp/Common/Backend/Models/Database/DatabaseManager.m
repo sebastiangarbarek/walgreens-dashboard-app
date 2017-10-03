@@ -88,13 +88,10 @@
     
     if (statement != nil) {
         int code;
-        BOOL retry;
         do {
-            retry = NO;
             code = sqlite3_step(statement);
             switch (code) {
                 case SQLITE_BUSY:
-                    retry = YES;
                     break;
                 case SQLITE_ROW: {
                     int totalColumns = sqlite3_column_count(statement);
