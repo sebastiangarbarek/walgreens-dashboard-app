@@ -42,6 +42,8 @@
 		A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5201F5D3FA4005889B7 /* MapCell.m */; };
 		A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5231F5D4058005889B7 /* DetailCell.m */; };
 		A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */; };
+		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
+		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
 		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
 		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
@@ -142,6 +144,10 @@
 		A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 		A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTableViewController.h; sourceTree = "<group>"; };
 		A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTableViewController.m; sourceTree = "<group>"; };
+		A89B0A211F8500C10016A698 /* ProductListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListController.h; sourceTree = "<group>"; };
+		A89B0A221F8500C10016A698 /* ProductListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductListController.m; sourceTree = "<group>"; };
+		A89B0A241F85076F0016A698 /* ProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
+		A89B0A251F85076F0016A698 /* ProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTimesMapCell.h; path = Main/StoreTimesMapCell.h; sourceTree = "<group>"; };
 		A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTimesMapCell.m; path = Main/StoreTimesMapCell.m; sourceTree = "<group>"; };
 		A89EA2801F72661D00A50E3B /* SegueProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueProtocol.h; sourceTree = "<group>"; };
@@ -347,6 +353,7 @@
 		A821BB2A1EDB960400B878BA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A89B0A201F8500800016A698 /* Product List */,
 				A8AE355E1F80CDE00017C904 /* Store Hours */,
 				A80D3EAC1F6A166E00D9CBE6 /* Store Category */,
 				A86CF51B1F5D3ED3005889B7 /* Store Details */,
@@ -634,6 +641,25 @@
 				A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */,
 			);
 			path = Offline;
+			sourceTree = "<group>";
+		};
+		A89B0A201F8500800016A698 /* Product List */ = {
+			isa = PBXGroup;
+			children = (
+				A89B0A271F8507850016A698 /* Cells */,
+				A89B0A211F8500C10016A698 /* ProductListController.h */,
+				A89B0A221F8500C10016A698 /* ProductListController.m */,
+			);
+			path = "Product List";
+			sourceTree = "<group>";
+		};
+		A89B0A271F8507850016A698 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A89B0A241F85076F0016A698 /* ProductCell.h */,
+				A89B0A251F85076F0016A698 /* ProductCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A8A4CB5F1F2B433200B87449 /* Backend */ = {
@@ -999,6 +1025,7 @@
 				A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */,
 				A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
+				A89B0A261F85076F0016A698 /* ProductCell.m in Sources */,
 				A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */,
 				A86CF4FB1F5CFC54005889B7 /* Reachability.m in Sources */,
 				A86CF51E1F5D3F59005889B7 /* MapPin.m in Sources */,
@@ -1007,6 +1034,7 @@
 				A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */,
 				A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */,
 				A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */,
+				A89B0A231F8500C10016A698 /* ProductListController.m in Sources */,
 				A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */,
 				A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */,
 				A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */,
