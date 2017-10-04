@@ -57,11 +57,9 @@
     
     NSString *storeNum = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"storeNum"];
     NSString *city = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"city"];
-    NSString *state = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"state"];
     
     if ([city length] != 0) {
-        city = [city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        cell.storeName.text = [NSString stringWithFormat:@"%@, %@", city, state];
+        cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
     } else {
         cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
         cell.userInteractionEnabled = NO;

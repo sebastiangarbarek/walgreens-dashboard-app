@@ -190,8 +190,101 @@
             </objects>
             <point key="canvasLocation" x="860" y="811"/>
         </scene>
+        <!--Store State Controller-->
+        <scene sceneID="EKe-Uh-FrL">
+            <objects>
+                <tableViewController storyboardIdentifier="States - Custom" id="QPf-WC-SNa" customClass="StoreStateController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SC6-hX-Qae">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="fdF-iU-9cu" style="IBUITableViewCellStyleDefault" id="wUX-bj-eGP" customClass="StoreCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUX-bj-eGP" id="LWV-am-NsO">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdF-iU-9cu">
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="storeName" destination="fdF-iU-9cu" id="y1o-C0-90b"/>
+                                    <segue destination="skP-yz-rNb" kind="show" identifier="State Cities - Custom" id="174-RV-5db"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="QPf-WC-SNa" id="P4n-M7-wKy"/>
+                            <outlet property="delegate" destination="QPf-WC-SNa" id="QbB-fI-pHZ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbO-JX-3RB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-47" y="1464"/>
+        </scene>
+        <!--Store City Controller-->
+        <scene sceneID="i0x-RC-WD8">
+            <objects>
+                <tableViewController id="skP-yz-rNb" customClass="StoreCityController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="feG-6J-O8k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="Ztn-bj-E37" style="IBUITableViewCellStyleDefault" id="vHl-fJ-9ZS" customClass="StoreCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHl-fJ-9ZS" id="M4p-g0-nuF">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ztn-bj-E37">
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="storeName" destination="Ztn-bj-E37" id="wOh-k5-ye1"/>
+                                    <segue destination="JQ4-lr-juL" kind="show" identifier="Store Details" id="5xf-zh-Amy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="skP-yz-rNb" id="JnK-gH-gVd"/>
+                            <outlet property="delegate" destination="skP-yz-rNb" id="PgS-6P-3nI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bfV-L3-5HL">
+                        <nil key="title"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0lA-0b-hDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="860" y="1463"/>
+        </scene>
+        <!--StoreDetails-->
+        <scene sceneID="YIn-vX-P5s">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="JQ4-lr-juL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BV-i6-oTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1558" y="1462"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pjZ-jh-GvS"/>
+        <segue reference="pbo-fM-wMt"/>
     </inferredMetricsTieBreakers>
 </document>

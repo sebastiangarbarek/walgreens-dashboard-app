@@ -17,6 +17,9 @@
 
 @property (weak, nonatomic) id <SegueProtocol> segueDelegate;
 
+// Can pass in filtered stores by setting this, e.g. currently open stores.
+@property NSArray *stores;
+
 // Public as accessed by parent StoreCategoryController for segue. Could instead pass data using delegation.
 @property NSMutableDictionary *cellsToSection;
 @property NSMutableDictionary *cellsToSectionAbbr;

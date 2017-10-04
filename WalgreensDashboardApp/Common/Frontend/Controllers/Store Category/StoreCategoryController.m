@@ -14,8 +14,13 @@
     [super awakeFromNib];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
     [self updateView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"[WARNING] Browse stores received memory warning.");
 }
 
 #pragma mark - Container View Methods -

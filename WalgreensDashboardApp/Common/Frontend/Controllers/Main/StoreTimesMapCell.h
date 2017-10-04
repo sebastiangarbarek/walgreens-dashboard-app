@@ -18,11 +18,11 @@
 
 @property (weak, nonatomic) id <SegueProtocol> segueDelegate;
 
-@property NSArray *openStores;
 @property NSString *storeNumber;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-- (void)initData;
+- (void)loadWithoutStores;
+- (void)loadWithStores:(NSArray *)stores;
 
 @end

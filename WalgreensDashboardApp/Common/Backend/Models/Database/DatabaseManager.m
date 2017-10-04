@@ -88,13 +88,10 @@
     
     if (statement != nil) {
         int code;
-        BOOL retry;
         do {
-            retry = NO;
             code = sqlite3_step(statement);
             switch (code) {
                 case SQLITE_BUSY:
-                    retry = YES;
                     break;
                 case SQLITE_ROW: {
                     int totalColumns = sqlite3_column_count(statement);
@@ -131,6 +128,21 @@
     }
     
     return results;
+}
+
+- (NSDate *)sqliteDateFromString:(NSString *)dateString {
+    sqlite3_stmt *statement = [self createStatementWithCommand:"SELECT strftime('%s', ?)"];
+    sqlite3_bind_text(statement, 1, [dateString UTF8String], -1, SQLITE_STATIC);
+    
+    int code;
+    do {
+        code = sqlite3_step(statement);
+    } while (code == SQLITE_BUSY);
+    
+    sqlite3_int64 interval = sqlite3_column_int64(statement, 0);
+    sqlite3_finalize(statement);
+    
+    return [NSDate dateWithTimeIntervalSince1970:interval];
 }
 
 - (BOOL)databaseExists {
