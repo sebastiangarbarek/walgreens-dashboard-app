@@ -47,6 +47,7 @@
 #pragma mark - Data Methods -
 
 - (void)loadInitialData {
+    self.storeTimes = [[StoreTimes alloc] init];
     notification = @"Checking Store Times";
     date = @"Today";
     timesCalculated = NO;
@@ -63,7 +64,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         if (self.storeTimes == nil) {
-            self.storeTimes = [[StoreTimes alloc] init];
+            [self.storeTimes loadStores];
         }
         
         // Perform algorithm in background thread to prevent blocking.
@@ -148,6 +149,13 @@
             DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Open" forIndexPath:indexPath];
             if (timesCalculated) {
                 cell.detail.text = [NSString stringWithFormat:@"%li", [openStores count]];
+                if ([openStores count] == 0) {
+                    cell.userInteractionEnabled = NO;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                } else {
+                    cell.userInteractionEnabled = YES;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
             }
             return cell;
         }
@@ -155,6 +163,13 @@
             DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Closed" forIndexPath:indexPath];
             if (timesCalculated) {
                 cell.detail.text = [NSString stringWithFormat:@"%li", [closedStores count]];
+                if ([closedStores count] == 0) {
+                    cell.userInteractionEnabled = NO;
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                } else {
+                    cell.userInteractionEnabled = YES;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
             }
             return cell;
         }

@@ -32,6 +32,10 @@ typedef NS_ENUM(NSInteger, Day) {
     Sunday = 1
 };
 
+- (void)loadStores;
+// Returns a dictionary mapping timezones to their time for provided NZ date and time.
+- (NSDictionary *)generalizedTimesInUSWithDateTime:(NSString *)dateTime;
+
 /*!Retrieves a store, processes and updates its physical status and returns the result.
  Current date and time should be passed to this method, or any other date and time.
  * \returns Relevant store details with an added entry indicating if the store is currently open or closed.

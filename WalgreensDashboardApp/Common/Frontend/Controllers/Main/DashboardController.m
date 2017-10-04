@@ -18,6 +18,7 @@
     [self addNotifications];
     
     self.storeTimes = [[StoreTimes alloc] init];
+    [self.storeTimes loadStores];
 }
 
 - (void)viewDidLoad {

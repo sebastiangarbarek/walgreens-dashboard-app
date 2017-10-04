@@ -45,7 +45,6 @@ static NSCalendar *sCalender = nil;
 - (instancetype)init {
     if (self = [super init]) {
         [self createDatabaseConnection];
-        [self loadData];
     }
     return self;
 }
@@ -55,7 +54,7 @@ static NSCalendar *sCalender = nil;
     [databaseManagerApp openCreateDatabase];
 }
 
-- (void)loadData {
+- (void)loadStores {
     stores = [databaseManagerApp.selectCommands selectAllPrintStoresAndHours];
 }
 
