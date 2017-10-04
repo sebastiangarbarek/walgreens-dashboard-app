@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ProductCell.h"
+#import "DatabaseConstants.h"
+#import "Reachability.h"
 
 @interface ProductListController : ViewController <UITableViewDelegate, UITableViewDataSource>
 

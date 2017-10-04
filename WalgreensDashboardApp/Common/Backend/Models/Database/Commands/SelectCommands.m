@@ -160,6 +160,11 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+- (NSArray *)selectAllProducts {
+    NSString *commandString = @"SELECT * FROM product_detail";
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {

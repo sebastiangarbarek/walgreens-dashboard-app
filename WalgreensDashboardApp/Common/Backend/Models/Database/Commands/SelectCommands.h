@@ -37,6 +37,7 @@
 - (NSArray *)selectStoresInState:(NSString *)state;
 - (NSArray *)selectAllStoreCords;
 - (NSArray *)selectAllPrintStoresAndHours;
+- (NSArray *)selectAllProducts;
 
 // Return states without duplicates
 - (NSMutableArray *)selectStatesInStoreDetail;
