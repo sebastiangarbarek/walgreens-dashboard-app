@@ -63,9 +63,7 @@
 - (void)updateStoresWithDateTime:(NSString *)dateTime {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        if (self.storeTimes == nil) {
-            [self.storeTimes loadStores];
-        }
+        [self.storeTimes loadStores];
         
         // Perform algorithm in background thread to prevent blocking.
         NSArray *stores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime]];
@@ -201,6 +199,10 @@
     }
     
     return 0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation Methods -

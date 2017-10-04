@@ -11,6 +11,7 @@
 @interface ProductListController () {
     NSArray *products;
     Reachability *reach;
+    BOOL updated;
 }
 
 @end
@@ -30,11 +31,13 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self presentNotification:@"Checking Products" backgroundColor:[UIColor greenColor]];
-    if ([reach isReachable]) {
-        [self fetchProducts];
-    } else {
-        [self presentNotification:@"Waiting For Network" backgroundColor:[UIColor orangeColor]];
+    if (!updated) {
+        [self presentNotification:@"Checking Products" backgroundColor:[UIColor greenColor]];
+        if ([reach isReachable]) {
+            [self fetchProducts];
+        } else {
+            [self presentNotification:@"Waiting For Network" backgroundColor:[UIColor orangeColor]];
+        }
     }
 }
 
@@ -54,8 +57,8 @@
     self.notificationView.backgroundColor = color;
     self.notificationLabel.text = notification;
     self.notificationView.hidden = NO;
-    // Display notification for 2 seconds.
-    [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(hideNotification) userInfo:nil repeats:NO];
+    // Display notification for 3 seconds.
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(hideNotification) userInfo:nil repeats:NO];
 }
 
 - (void)hideNotification {
@@ -75,10 +78,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProductCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"Product"];
     productCell.idLabel.text = [products[indexPath.row] objectForKey:kProId];
-    productCell.groupLabel.text = [products[indexPath.row] objectForKey:kProGroup];
+    
+    NSString *productGroup = [products[indexPath.row] objectForKey:kProGroup];
+    if ([productGroup isEqualToString:@"SQR01"]) {
+        productCell.groupLabel.text = @"Square Print";
+    } else if ([productGroup isEqualToString:@"STDPR"]) {
+        productCell.groupLabel.text = @"Standard Print";
+    } else {
+        productCell.groupLabel.text = productGroup;
+    }
+    
     productCell.sizeLabel.text = [products[indexPath.row] objectForKey:kProSize];
     productCell.priceLabel.text = [NSString stringWithFormat:@"$%@ USD", [products[indexPath.row] objectForKey:kProPrice]];
     return productCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 132;
 }
 
 #pragma mark - Network Methods -
@@ -90,6 +106,7 @@
     
     // Update database.
     
+    updated = YES;
 }
 
 #pragma mark - Action Methods -
