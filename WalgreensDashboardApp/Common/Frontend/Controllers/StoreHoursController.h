@@ -12,6 +12,7 @@
 #import "DetailCell.h"
 #import "SegueProtocol.h"
 #import "StoreDetailsController.h"
+#import "StoreStateController.h"
 
 @interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource, SegueProtocol>
 

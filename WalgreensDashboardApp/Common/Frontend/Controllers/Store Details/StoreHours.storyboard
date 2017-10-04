@@ -209,14 +209,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="imH-Bm-nF4">
-                                                    <rect key="frame" x="15" y="12" width="33" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="42" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ro-uA-1Rx">
-                                                    <rect key="frame" x="296" y="12" width="44" height="21"/>
+                                                    <rect key="frame" x="329.5" y="12" width="10.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -227,6 +227,7 @@
                                         <connections>
                                             <outlet property="detail" destination="0ro-uA-1Rx" id="sWw-Zb-jSz"/>
                                             <outlet property="title" destination="imH-Bm-nF4" id="eyl-DM-x3T"/>
+                                            <segue destination="BAR-Fb-Q97" kind="show" identifier="States (Open)" id="LBT-Dw-qk0"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Closed" textLabel="rXN-hK-SRt" detailTextLabel="mEg-ih-aGx" style="IBUITableViewCellStyleValue1" id="68n-kh-1j9" customClass="DetailCell">
@@ -255,6 +256,7 @@
                                         <connections>
                                             <outlet property="detail" destination="mEg-ih-aGx" id="a81-ut-5OC"/>
                                             <outlet property="title" destination="rXN-hK-SRt" id="koz-be-u2g"/>
+                                            <segue destination="0E9-eB-YS9" kind="show" identifier="States (Closed)" id="UIm-9u-6h3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -278,6 +280,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTZ-S5-1go" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="520.79999999999995" y="156.97151424287858"/>
+        </scene>
+        <!--States - Custom-->
+        <scene sceneID="TfY-Lq-dNh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreCategory" referencedIdentifier="States - Custom" id="BAR-Fb-Q97" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9G-MG-81c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="-13"/>
+        </scene>
+        <!--States - Custom-->
+        <scene sceneID="eHJ-q7-tb9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreCategory" referencedIdentifier="States - Custom" id="0E9-eB-YS9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCN-eO-Lq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="309"/>
         </scene>
     </scenes>
 </document>

@@ -31,6 +31,7 @@
     static dispatch_once_t onceToken;
     // Dispatch once is synchronous.
     dispatch_once (&onceToken, ^{
+        // Storing and using date time as param so custom date time can be used in the future.
         self.dateTime = [DateHelper currentDateAndTime];
         // Once the view has appeared, then calculate store times.
         [self updateStoresWithDateTime:self.dateTime];
@@ -51,7 +52,10 @@
     timesCalculated = NO;
 }
 
+// Wrapper for selector.
 - (void)updateStores {
+    // Storing and using date time as param so custom date time can be used in the future.
+    self.dateTime = [DateHelper currentDateAndTime];
     [self updateStoresWithDateTime:self.dateTime];
 }
 
@@ -195,6 +199,12 @@
         StoreTimesMapCell *storeTimesMapCell = (StoreTimesMapCell *)sender;
         StoreDetailsController *storeDetailsController = [segue destinationViewController];
         storeDetailsController.storeNumber = storeTimesMapCell.storeNumber;
+    } else if ([[segue identifier] isEqualToString:@"States (Open)"]) {
+        StoreStateController *storeStateController = [segue destinationViewController];
+        storeStateController.stores = openStores;
+    } else if ([[segue identifier] isEqualToString:@"States (Closed)"]) {
+        StoreStateController *storeStateController = [segue destinationViewController];
+        storeStateController.stores = closedStores;
     }
 }
 

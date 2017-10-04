@@ -15,6 +15,9 @@
 
 @interface StoreCityController : TableViewController
 
+// Can pass in filtered stores by setting this, e.g. currently open stores.
+@property NSArray *stores;
+
 @property NSString *state;
 @property NSString *navigationTitle;
 
