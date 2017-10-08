@@ -11,6 +11,7 @@
 @interface StoreCityController () {
     NSArray *sectionTitles;
     NSMutableDictionary *cellsToSection;
+    int numberOfResults;
 }
 
 @end
@@ -33,7 +34,26 @@
 - (void)initData {
     cellsToSection = [NSMutableDictionary new];
     
+    if (self.stores) {
+        [self initUsingCustomStoreSet];
+    } else {
+        [self initUsingAllPrintStores];
+    }
+    
+    // Finally set the data for the section titles.
+    NSArray *keys = [cellsToSection allKeys];
+    sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    self.navigationItem.title = self.navigationTitle;
+}
+
+- (void)initUsingAllPrintStores {
     NSArray *stores = [self.databaseManagerApp.selectCommands selectStoresInState:self.state];
+    [self mapStateStoresToCities:stores];
+}
+
+- (void)mapStateStoresToCities:(NSArray *)stores {
+    numberOfResults = [stores count];
     
     for (NSDictionary *storeDictionary in stores) {
         NSMutableArray *storesForCity = [cellsToSection objectForKey:[storeDictionary objectForKey:kCity]];
@@ -50,13 +70,15 @@
         
         [cellsToSection setObject:storesForCity forKey:[storeDictionary objectForKey:kCity]];
     }
-    
-    // Finally set the data for the section titles.
-    NSArray *keys = [cellsToSection allKeys];
-    sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    self.navigationItem.title = self.navigationTitle;
 }
+
+#pragma mark - Custom Set Init Methods -
+
+- (void)initUsingCustomStoreSet {
+    [self mapStateStoresToCities:self.stores];
+}
+
+#pragma mark - Table View Methods -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return sectionTitles.count;
@@ -113,10 +135,18 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == ([sectionTitles count] - 1)) {
+        return [NSString stringWithFormat:@"%i result(s)", numberOfResults];
+    }
+    return @"";
+}
+
+#pragma mark - Navigation Methods -
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"Store Details"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        
         StoreDetailsController *storeDetailsController = [segue destinationViewController];
         storeDetailsController.storeNumber = [[[cellsToSection objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] storeNumber];
     }

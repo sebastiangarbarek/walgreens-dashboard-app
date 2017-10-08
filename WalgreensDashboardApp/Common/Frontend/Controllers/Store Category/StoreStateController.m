@@ -10,6 +10,7 @@
 
 @interface StoreStateController () {
     NSArray *indexTitles;
+    int numberOfResults;
 }
 
 @end
@@ -22,9 +23,8 @@
     [super awakeFromNib];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
     [self initData];
-    [self.tableView reloadData];
 }
 
 #pragma mark - Init Methods -
@@ -33,10 +33,32 @@
     self.cellsToSection = [NSMutableDictionary new];
     self.cellsToSectionAbbr = [NSMutableDictionary new];
     
+    if (self.stores) {
+        [self initUsingCustomStoreSet];
+    } else {
+        [self initUsingAllPrintStores];
+    }
+    
+    // Finally set the data for the section titles.
+    NSArray *keys = [self.cellsToSection allKeys];
+    self.sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    // (Optional) Have the index display the entire alphabet.
+    // indexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
+}
+
+- (void)initUsingAllPrintStores {
     // Walgreens database only holds state abbreviations. Database query return states in alphabetical order.
     NSArray *stateAbbreviations = [self.databaseManagerApp.selectCommands selectStatesInStoreDetail];
     // Switch abbreviations for full names, array maintains order of elements.
     NSArray *states = [self postalAbbreviationsToName:stateAbbreviations];
+    
+    [self mapStates:states abbreviations:stateAbbreviations];
+}
+
+// Takes an array of states (full name) and an array of abbreviations from the data set.
+- (void)mapStates:(NSArray *)states abbreviations:(NSArray *)stateAbbreviations {
+    numberOfResults = [states count];
     
     /*
      The dictionary will map array of state names to their first letter,
@@ -65,17 +87,33 @@
         
         [statesForLetter addObject:state];
         [statesForLetterAbbr addObject:stateAbbr];
+        
+        // Set the data to display.
         [self.cellsToSection setObject:statesForLetter forKey:letter];
         [self.cellsToSectionAbbr setObject:statesForLetterAbbr forKey:letter];
     }
-    
-    // Finally set the data for the section titles.
-    NSArray *keys = [self.cellsToSection allKeys];
-    self.sectionTitles = [keys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    // Have the index display the entire alphabet.
-    // indexTitles = @[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z"];
 }
+
+#pragma mark - Custom Set Init Methods -
+
+- (void)initUsingCustomStoreSet {
+    NSArray *stateAbbreviations = [self statesFrom:self.stores];
+    NSArray *states = [self postalAbbreviationsToName:stateAbbreviations];
+    
+    [self mapStates:states abbreviations:stateAbbreviations];
+}
+
+// Returns an array of state string abbreviations.
+- (NSArray *)statesFrom:(NSArray *)storeSet {
+    // Set data structure to rid duplicates.
+    NSMutableOrderedSet *states = [NSMutableOrderedSet new];
+    for (NSDictionary *store in storeSet) {
+        [states addObject:[store objectForKey:kState]];
+    }
+    return [states array];
+}
+
+#pragma mark - Helper Methods -
 
 - (NSArray *)postalAbbreviationsToName:(NSArray *)postalAbbreviations {
     NSMutableArray *names = [NSMutableArray new];
@@ -173,6 +211,13 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == ([self.sectionTitles count] - 1)) {
+        return [NSString stringWithFormat:@"%i result(s)", numberOfResults];
+    }
+    return @"";
+}
+
 #pragma mark - Navigation Methods -
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -181,6 +226,38 @@
      however a child view controller shouldn't be responsible for a transition.
      */
     [self.segueDelegate child:self willPerformSegueWithIdentifier:@"State Cities"];
+}
+
+- (NSArray *)storesInState:(NSString *)selectedState {
+    NSMutableArray *storesInState = [NSMutableArray new];
+    for (NSDictionary *store in self.stores) {
+        if ([[store objectForKey:kState] isEqualToString:selectedState]) {
+            [storesInState addObject:store];
+        }
+    }
+    return storesInState;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Only use this segue if stores are custom set.
+    if (self.stores) {
+        if ([[segue identifier] isEqualToString:@"State Cities - Custom"]) {
+            NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+
+            // Pass state information.
+            NSString *selectedState = [[self.cellsToSectionAbbr
+                                          objectForKey:[self.sectionTitles objectAtIndex:indexPath.section]]
+                                         objectAtIndex:indexPath.row];
+            
+            // Pass the custom set of stores.
+            StoreCityController *storeCityController = [segue destinationViewController];
+            // Only pass stores for the selected state to save memory.
+            storeCityController.stores = [self storesInState:selectedState];
+            
+            storeCityController.navigationTitle =
+            [[self.cellsToSection objectForKey:[self.sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+        }
+    }
 }
 
 @end

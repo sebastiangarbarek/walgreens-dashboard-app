@@ -33,4 +33,6 @@ static NSString *const databaseName = @"walgreensapidb.sql";
 @property SelectCommands* selectCommands;
 @property UpdateCommands* updateCommands;
 
+- (NSDate *)sqliteDateFromString:(NSString *)string;
+
 @end

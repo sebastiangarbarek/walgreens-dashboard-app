@@ -7,15 +7,18 @@
 //
 
 #import "TableViewController.h"
-#import "StoreCell.h"
-#import "MessageCell.h"
-#import "StoreTimesMapCell.h"
-#import "StoreDetailsController.h"
-#import "SegueProtocol.h"
+#import "StoreTimes.h"
 
-@interface DashboardController : TableViewController <SegueProtocol>
+@interface DashboardController : TableViewController
 
 @property StoreTimes *storeTimes;
+@property NSTimer *storeTimer;
+
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+
+@property (weak, nonatomic) IBOutlet UILabel *onlineTotal;
+@property (weak, nonatomic) IBOutlet UILabel *offlineTotal;
+@property (weak, nonatomic) IBOutlet UILabel *openTotal;
+@property (weak, nonatomic) IBOutlet UILabel *closedTotal;
 
 @end

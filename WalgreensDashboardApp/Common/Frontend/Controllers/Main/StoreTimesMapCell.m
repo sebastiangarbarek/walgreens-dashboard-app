@@ -16,7 +16,11 @@
 
 @implementation StoreTimesMapCell
 
-- (void)initData {
+- (void)loadWithoutStores {
+    [self displayUnitedStates];
+}
+
+- (void)loadWithStores:(NSArray *)stores {
     annotations = [NSMutableArray new];
     
     // Apply cluster algorithm.
@@ -24,7 +28,7 @@
     self.mapView.clusterManager.algorithm = algorithm;
     
     // Build annotation array.
-    for (NSDictionary *store in self.openStores) {
+    for (NSDictionary *store in stores) {
         ClusterPin *pin = [[ClusterPin alloc] init];
         pin.storeNumber = [store objectForKey:kStoreNum];
         pin.title = [[[store objectForKey:kAddr] lowercaseString] capitalizedString];
@@ -36,13 +40,17 @@
     // Load annotation data into map.
     self.mapView.clusterManager.annotations = annotations;
     
+    [self displayUnitedStates];
+}
+
+- (void)displayUnitedStates {
     // Set region to centre the United States.
     CLLocationCoordinate2D unitedStates = CLLocationCoordinate2DMake(36.2158881, -113.6882983);
-    MKCoordinateRegion region = MKCoordinateRegionMake(unitedStates, MKCoordinateSpanMake(75, 100));
+    MKCoordinateRegion region = MKCoordinateRegionMake(unitedStates, MKCoordinateSpanMake(100, 100));
     [self.mapView setRegion:region animated:NO];
 }
 
-#pragma mark Cluster Kit Delegate Methods
+#pragma mark - Cluster Kit Methods -
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     // Try dequeue an existing view.

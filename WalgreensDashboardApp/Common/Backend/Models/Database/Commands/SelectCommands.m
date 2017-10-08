@@ -156,7 +156,12 @@
 }
 
 - (NSArray *)selectAllPrintStoresAndHours {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL AND twentyFourHr = 'N'"];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT store_hour.storeNum, store_detail.twentyFourHr, store_detail.street, store_detail.state, store_detail.city, store_detail.latitude, store_detail.longitude, store_detail.timezone, store_hour.monOpen, store_hour.monClose, store_hour.tueOpen, store_hour.tueClose, store_hour.wedOpen, store_hour.wedClose, store_hour.thuOpen, store_hour.thuClose, store_hour.friOpen, store_hour.friClose, store_hour.satOpen, store_hour.satClose, store_hour.sunOpen, store_hour.sunClose FROM store_detail INNER JOIN store_hour ON store_hour.storeNum = store_detail.storeNum WHERE photoInd = 'true' AND monOpen IS NOT NULL"];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSArray *)selectAllProducts {
+    NSString *commandString = @"SELECT * FROM product_detail";
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 

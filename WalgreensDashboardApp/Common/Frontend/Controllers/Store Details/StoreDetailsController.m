@@ -23,9 +23,13 @@
     [super awakeFromNib];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
     [self initData];
-    [self.tableView reloadData];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    NSLog(@"[WARNING] Store details received memory warning.");
 }
 
 #pragma mark - Init Methods -

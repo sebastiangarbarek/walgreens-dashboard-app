@@ -6,8 +6,7 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-// Error prone.
-
+// Store detail.
 extern NSString *const kStoreNum;
 extern NSString *const kLat;
 extern NSString *const kLong;
@@ -33,3 +32,9 @@ extern NSString *const kSatOpen;
 extern NSString *const kSatClose;
 extern NSString *const kSunOpen;
 extern NSString *const kSunClose;
+
+// Product detail.
+extern NSString *const kProId;
+extern NSString *const kProGroup;
+extern NSString *const kProSize;
+extern NSString *const kProPrice;
