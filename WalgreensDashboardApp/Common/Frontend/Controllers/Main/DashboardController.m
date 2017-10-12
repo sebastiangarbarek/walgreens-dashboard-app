@@ -14,47 +14,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    [self initStoreTimes];
     [self addNotifications];
-    
-    self.storeTimes = [[StoreTimes alloc] init];
-    [self.storeTimes loadStores];
 }
 
 - (void)viewDidLoad {
-    // Methods that update labels etc. must be called after the view has loaded.
     [self initData];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    /*
-     Uncomment if using invalidating timer.
-    if ([self.storeTimes hasUpdateHourPassed]) {
-        // Open closed only update if the last recorded next update hour has passed.
-        [self updateOpenClosedStores];
-    } else {
-        // Restart timer from invalidation.
-        [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
-    }
-    */
-}
-
-/*
- Uncomment to force the view to update open and closed stores only when
- the user is on the screen or when the user returns and the next update hour
- has passed. Allows the view to deallocate.
-- (void)viewWillDisappear:(BOOL)animated {
-    // Prevent retain cycle.
-    if (self.storeTimer != nil) {
-        [self.storeTimer invalidate];
-        self.storeTimer = nil;
-    }
-}
-*/
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    NSLog(@"[WARNING] Dashboard received memory warning.");
+    for (int i = 0; i < 3; i++)
+        NSLog(@"Dashboard received memory warning.");
 }
 
 #pragma mark - Init Methods -
@@ -82,6 +53,11 @@
                                                object:nil];
 }
 
+- (void)initStoreTimes {
+    self.storeTimes = [[StoreTimes alloc] init];
+    [self.storeTimes loadStores];
+}
+
 - (void)initData {
     [self updateProgressView];
     [self updateStoresOnline];
@@ -89,7 +65,72 @@
     [self updateOpenClosedStores];
 }
 
+#pragma mark - Collection Methods -
+
+// We do not use the collection view dynamically.
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    // Online, offline, open and closed.
+    return 4;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    DashboardCountCell *dashboardCountCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Count Cell" forIndexPath:indexPath];
+    
+    dashboardCountCell.countLabel.adjustsFontSizeToFitWidth = YES;
+    dashboardCountCell.descriptionLabel.adjustsFontSizeToFitWidth = YES;
+    
+    switch (indexPath.row) {
+        case 0:
+            dashboardCountCell.descriptionLabel.text = @"Online Stores";
+            // Blue.
+            dashboardCountCell.backgroundColor = [UIColor printBlue];
+            break;
+        case 1:
+            dashboardCountCell.descriptionLabel.text = @"Offline Stores";
+            // Yellow.
+            dashboardCountCell.backgroundColor = [UIColor printYellow];
+            break;
+        case 2:
+            dashboardCountCell.descriptionLabel.text = @"Open Stores";
+            // Yellow.
+            dashboardCountCell.backgroundColor = [UIColor printYellow];
+            break;
+        case 3:
+            dashboardCountCell.descriptionLabel.text = @"Closed Stores";
+            // Red.
+            dashboardCountCell.backgroundColor = [UIColor printRed];
+            break;
+    }
+    
+    return dashboardCountCell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    // We want each cell's height and width to to be 50% of the available screen's height and width.
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    // No spacing between the cells.
+    return 0;
+}
+
 #pragma mark - Update Methods -
+
+- (void)updateOpenClosedStores {
+    // Update the number of open and closed stores.
+    NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
+    NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
+    self.openTotal.text = [NSString stringWithFormat:@"%li", [openStores count]];
+    self.closedTotal.text = [NSString stringWithFormat:@"%li", [closedStores count]];
+    
+    // Start a timer to update the totals again on the next hour.
+    [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
+}
 
 - (void)updateProgressView {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -135,36 +176,15 @@
     });
 }
 
-#pragma mark - Time Methods -
-
-- (void)updateOpenClosedStores {
-    // Update the number of open and closed stores.
-    NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
-    NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
-    self.openTotal.text = [NSString stringWithFormat:@"%li", [openStores count]];
-    self.closedTotal.text = [NSString stringWithFormat:@"%li", [closedStores count]];
-    
-    // Start a timer to update the totals again on the next hour.
-    [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
-}
+#pragma mark - Helper Methods -
 
 - (void)startStoreTimerWithSeconds:(float)seconds {
-    // Keep reference to manually invalidate to allow view to dealloc.
+    // Keep reference to the timer to invalidate and allow the view to dealloc, if required.
     self.storeTimer = [NSTimer scheduledTimerWithTimeInterval:seconds
                                      target:self
                                    selector:@selector(updateOpenClosedStores)
                                    userInfo:nil
-                                    repeats:NO]; // Yes, it repeats. See selector.
-}
-
-#pragma mark - Navigation Methods -
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"Offline History"]) {
-        
-    } else if ([[segue identifier] isEqualToString:@"Store Hours"]) {
-        
-    }
+                                    repeats:NO];
 }
 
 @end

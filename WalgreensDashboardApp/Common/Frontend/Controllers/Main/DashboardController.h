@@ -6,19 +6,22 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "ViewController.h"
 #import "StoreTimes.h"
+#import "DashboardCountCell.h"
+#import "UIColor+AppTheme.h"
 
-@interface DashboardController : TableViewController
+@interface DashboardController : ViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 @property StoreTimes *storeTimes;
 @property NSTimer *storeTimer;
 
+// Progress view at the top of the screen below the navigation bar.
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 
-@property (weak, nonatomic) IBOutlet UILabel *onlineTotal;
-@property (weak, nonatomic) IBOutlet UILabel *offlineTotal;
-@property (weak, nonatomic) IBOutlet UILabel *openTotal;
-@property (weak, nonatomic) IBOutlet UILabel *closedTotal;
+// Notification view overlay at the top of the screen below the navigation bar.
+@property (weak, nonatomic) IBOutlet UIView *notificationView;
+@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+
 
 @end

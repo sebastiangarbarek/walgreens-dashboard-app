@@ -42,6 +42,8 @@
 		A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5201F5D3FA4005889B7 /* MapCell.m */; };
 		A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5231F5D4058005889B7 /* DetailCell.m */; };
 		A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */; };
+		A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */; };
+		A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */; };
 		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
@@ -138,6 +140,10 @@
 		A86CF5231F5D4058005889B7 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		A86CF5251F5D40E9005889B7 /* StoreDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailsController.h; sourceTree = "<group>"; };
 		A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailsController.m; sourceTree = "<group>"; };
+		A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCountCell.h; sourceTree = "<group>"; };
+		A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCell.m; sourceTree = "<group>"; };
+		A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppTheme.h"; sourceTree = "<group>"; };
+		A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppTheme.m"; sourceTree = "<group>"; };
 		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
 		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
 		A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
@@ -608,6 +614,15 @@
 			path = "Store Details";
 			sourceTree = "<group>";
 		};
+		A86DE40E1F8AECEC00D3E486 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */,
+				A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		A88A79861F2F14BA00C99BFD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +636,7 @@
 		A88A798D1F2F340300C99BFD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A86DE40E1F8AECEC00D3E486 /* Cells */,
 				A86CF4F01F5CF437005889B7 /* DashboardController.h */,
 				A86CF4F11F5CF437005889B7 /* DashboardController.m */,
 				A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */,
@@ -629,6 +645,8 @@
 				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
 				A89EA2831F726CF800A50E3B /* MessageCell.h */,
 				A89EA2841F726CF800A50E3B /* MessageCell.m */,
+				A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */,
+				A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1031,6 +1049,7 @@
 				A86CF51E1F5D3F59005889B7 /* MapPin.m in Sources */,
 				A86CF4FC1F5CFC54005889B7 /* WalgreensAPI.m in Sources */,
 				A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */,
+				A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */,
 				A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */,
 				A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */,
 				A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */,
@@ -1056,6 +1075,7 @@
 				A86CF4F81F5CF6C9005889B7 /* TableViewController.m in Sources */,
 				A86CF4F51F5CF475005889B7 /* ViewController.m in Sources */,
 				A8D891931F6E675200E3388B /* ClusterPin.m in Sources */,
+				A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */,
 				A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */,
 				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
