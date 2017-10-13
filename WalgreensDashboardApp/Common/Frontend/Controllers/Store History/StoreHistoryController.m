@@ -60,6 +60,8 @@
     
     if ([city length] != 0) {
         cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
+        cell.userInteractionEnabled = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
         cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
         cell.userInteractionEnabled = NO;

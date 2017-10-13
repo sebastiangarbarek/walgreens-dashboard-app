@@ -57,10 +57,17 @@
                 printf("[HARVESTER 🍏] A thread has returned from (requestStoreList:) completion handler.\n");
             } else {
                 printf("[HARVESTER 🍏] No stores left to check today.\n");
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
+                
                 dispatch_semaphore_signal(startingThreadSemaphore);
             }
         } else {
             failed = YES;
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
+            
             printf("[HARVESTER 🍎] Failed to retrieve store list...\n");
             dispatch_semaphore_signal(startingThreadSemaphore);
         }
