@@ -48,6 +48,7 @@
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
 		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
+		A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */; };
 		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
 		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
 		A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35631F80F1750017C904 /* StoreHoursController.m */; };
@@ -159,6 +160,8 @@
 		A89EA2801F72661D00A50E3B /* SegueProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueProtocol.h; sourceTree = "<group>"; };
 		A89EA2831F726CF800A50E3B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		A89EA2841F726CF800A50E3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
+		A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
 		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
 		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
 		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -619,6 +622,8 @@
 			children = (
 				A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */,
 				A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */,
+				A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */,
+				A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1050,6 +1055,7 @@
 				A86CF4FC1F5CFC54005889B7 /* WalgreensAPI.m in Sources */,
 				A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */,
 				A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */,
+				A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */,
 				A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */,
 				A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */,
 				A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */,

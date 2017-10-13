@@ -10,8 +10,11 @@
 
 @interface UIColor (AppTheme)
 
-+ (UIColor *)printBlue;
-+ (UIColor *)printYellow;
-+ (UIColor *)printRed;
++ (UIColor *)printicularBlue;
++ (UIColor *)printicularYellow;
++ (UIColor *)printicularRed;
++ (UIColor *)softBlue;
++ (UIColor *)softYellow;
++ (UIColor *)softRed;
 
 @end

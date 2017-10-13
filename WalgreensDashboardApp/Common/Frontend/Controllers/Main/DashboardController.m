@@ -8,6 +8,12 @@
 
 #import "DashboardController.h"
 
+@interface DashboardController () {
+    NSMutableArray<DashboardCountCellData *> *cellCollection;
+}
+
+@end
+
 @implementation DashboardController
 
 #pragma mark - Parent Methods -
@@ -19,7 +25,13 @@
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self initData];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self configureView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +44,7 @@
 
 - (void)addNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateStoresOnline)
+                                             selector:@selector(updateProgressView)
                                                  name:@"Store online"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -59,15 +71,72 @@
 }
 
 - (void)initData {
-    [self updateProgressView];
-    [self updateStoresOnline];
-    [self updateStoresOffline];
-    [self updateOpenClosedStores];
+    // Get the numbers.
+    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
+    int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
+    int online = numberOfPrintStores - offline;
+    NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
+    NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
+    NSUInteger open = [openStores count];
+    NSUInteger closed = [closedStores count];
+    
+    // Assign cell data.
+    cellCollection = [NSMutableArray new];
+    
+    DashboardCountCellData *onlineCell = [DashboardCountCellData new];
+    DashboardCountCellData *offlineCell = [DashboardCountCellData new];
+    DashboardCountCellData *openCell = [DashboardCountCellData new];
+    DashboardCountCellData *closedCell = [DashboardCountCellData new];
+    
+    onlineCell.backgroundColor = [UIColor printicularBlue];
+    onlineCell.title = @"Stores Online";
+    onlineCell.count = [NSString stringWithFormat:@"%i", online];
+    
+    offlineCell.backgroundColor = [UIColor printicularYellow];
+    offlineCell.title = @"Stores Offline";
+    offlineCell.count = [NSString stringWithFormat:@"%i", offline];
+    
+    openCell.backgroundColor = [UIColor printicularYellow];
+    openCell.title = @"Stores Open";
+    openCell.count = [NSString stringWithFormat:@"%li", open];
+    
+    closedCell.backgroundColor = [UIColor printicularRed];
+    closedCell.title = @"Stores Closed";
+    closedCell.count = [NSString stringWithFormat:@"%li", closed];
+    
+    [cellCollection addObject:onlineCell];
+    [cellCollection addObject:offlineCell];
+    [cellCollection addObject:openCell];
+    [cellCollection addObject:closedCell];
+}
+
+- (void)configureView {
+    [self setBackgroundColorSelectedTabItem];
+    [self setTextColorTabItem];
+    // Set background color of navigation bar.
+    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
+}
+
+- (void)setBackgroundColorSelectedTabItem {
+    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
+    
+    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
+    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
+    [[UIColor printicularBlue] setFill];
+    [path fill];
+    UIImage* background = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self.tabBarController.tabBar setSelectionIndicatorImage:background];
+}
+
+- (void)setTextColorTabItem {
+    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
 }
 
 #pragma mark - Collection Methods -
 
-// We do not use the collection view dynamically.
+// The collection view won't be used dynamically.
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -81,42 +150,29 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DashboardCountCell *dashboardCountCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Count Cell" forIndexPath:indexPath];
     
+    // Configure.
     dashboardCountCell.countLabel.adjustsFontSizeToFitWidth = YES;
     dashboardCountCell.descriptionLabel.adjustsFontSizeToFitWidth = YES;
     
-    switch (indexPath.row) {
-        case 0:
-            dashboardCountCell.descriptionLabel.text = @"Online Stores";
-            // Blue.
-            dashboardCountCell.backgroundColor = [UIColor printBlue];
-            break;
-        case 1:
-            dashboardCountCell.descriptionLabel.text = @"Offline Stores";
-            // Yellow.
-            dashboardCountCell.backgroundColor = [UIColor printYellow];
-            break;
-        case 2:
-            dashboardCountCell.descriptionLabel.text = @"Open Stores";
-            // Yellow.
-            dashboardCountCell.backgroundColor = [UIColor printYellow];
-            break;
-        case 3:
-            dashboardCountCell.descriptionLabel.text = @"Closed Stores";
-            // Red.
-            dashboardCountCell.backgroundColor = [UIColor printRed];
-            break;
-    }
+    // Assign.
+    dashboardCountCell.backgroundColor = [cellCollection objectAtIndex:indexPath.row].backgroundColor;
+    dashboardCountCell.descriptionLabel.text = [cellCollection objectAtIndex:indexPath.row].title;
+    dashboardCountCell.countLabel.text = [cellCollection objectAtIndex:indexPath.row].count;
     
     return dashboardCountCell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    // We want each cell's height and width to to be 50% of the available screen's height and width.
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    // No spacing between the cells.
-    return 0;
+    // We want each of the 4 cell's height and width to to be 50% of the available screen's height and width.
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    
+    float navigationBarHeight = self.navigationController.navigationBar.bounds.size.height;
+    float progressViewHeight = self.progressView.bounds.size.height;
+    float tabBarHeight = self.tabBarController.tabBar.bounds.size.height;
+    float statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
+    float availableHeight = screen.size.height - navigationBarHeight - progressViewHeight - tabBarHeight - statusBarHeight;
+    
+    return CGSizeMake(screen.size.width / 2, availableHeight / 2);
 }
 
 #pragma mark - Update Methods -
@@ -125,8 +181,24 @@
     // Update the number of open and closed stores.
     NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
-    self.openTotal.text = [NSString stringWithFormat:@"%li", [openStores count]];
-    self.closedTotal.text = [NSString stringWithFormat:@"%li", [closedStores count]];
+    NSUInteger open = [openStores count];
+    NSUInteger closed = [closedStores count];
+    
+    // Update cell data.
+    [cellCollection objectAtIndex:2].count = [NSString stringWithFormat:@"%li", open];
+    [cellCollection objectAtIndex:3].count = [NSString stringWithFormat:@"%li", closed];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Uncomment to disable flashing.
+        //[UIView setAnimationsEnabled:NO];
+        NSMutableArray *indexPaths = [NSMutableArray new];
+        NSIndexPath *openIndexPath = [NSIndexPath indexPathForItem:2 inSection:0];
+        NSIndexPath *closedIndexPath = [NSIndexPath indexPathForItem:3 inSection:0];
+        [indexPaths addObject:openIndexPath];
+        [indexPaths addObject:closedIndexPath];
+        [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+        //[UIView setAnimationsEnabled:animationsEnabled];
+    });
     
     // Start a timer to update the totals again on the next hour.
     [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
@@ -140,27 +212,38 @@
     });
 }
 
-- (void)updateStoresOnline {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateProgressView];
-        self.onlineTotal.text = [NSString stringWithFormat:@"%i",
-                                 [[self.databaseManagerApp.selectCommands countOnlineStoresInTempTable] intValue]];
-    });
-}
-
 - (void)updateStoresOffline {
     dispatch_async(dispatch_get_main_queue(), ^{
+        // Update the progress view.
         [self updateProgressView];
-        self.offlineTotal.text = [NSString stringWithFormat:@"%i",
-                                  [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue]];
+        
+        // Update the number of online and offline stores.
+        int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
+        int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
+        int online = numberOfPrintStores - offline;
+        
+        // Update cell data.
+        [cellCollection objectAtIndex:0].count = [NSString stringWithFormat:@"%i", online];
+        [cellCollection objectAtIndex:1].count = [NSString stringWithFormat:@"%i", offline];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Uncomment to disable flashing.
+            //[UIView setAnimationsEnabled:NO];
+            NSMutableArray *indexPaths = [NSMutableArray new];
+            NSIndexPath *onlineIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+            NSIndexPath *offlineIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+            [indexPaths addObject:onlineIndexPath];
+            [indexPaths addObject:offlineIndexPath];
+            [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+            //[UIView setAnimationsEnabled:animationsEnabled];
+        });
     });
 }
 
 - (void)requestsComplete {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self.progressView removeFromSuperview];
-        [self initData];
+        [self.progressView setHidden:YES];
     });
 }
 

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "StoreTimes.h"
 #import "DashboardCountCell.h"
+#import "DashboardCountCellData.h"
 #import "UIColor+AppTheme.h"
 
 @interface DashboardController : ViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
@@ -23,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIView *notificationView;
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
