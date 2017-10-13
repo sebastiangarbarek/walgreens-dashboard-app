@@ -90,19 +90,23 @@
     
     onlineCell.backgroundColor = [UIColor printicularBlue];
     onlineCell.title = @"Stores Online";
-    onlineCell.count = [NSString stringWithFormat:@"%i", online];
+    onlineCell.count = [NSNumberFormatter localizedStringFromNumber:@(online)
+                                                        numberStyle:NSNumberFormatterDecimalStyle];
     
     offlineCell.backgroundColor = [UIColor printicularYellow];
     offlineCell.title = @"Stores Offline";
-    offlineCell.count = [NSString stringWithFormat:@"%i", offline];
+    offlineCell.count = [NSNumberFormatter localizedStringFromNumber:@(offline)
+                                                         numberStyle:NSNumberFormatterDecimalStyle];
     
     openCell.backgroundColor = [UIColor printicularYellow];
     openCell.title = @"Stores Open";
-    openCell.count = [NSString stringWithFormat:@"%li", open];
+    openCell.count = [NSNumberFormatter localizedStringFromNumber:@(open)
+                                                      numberStyle:NSNumberFormatterDecimalStyle];
     
     closedCell.backgroundColor = [UIColor printicularRed];
     closedCell.title = @"Stores Closed";
-    closedCell.count = [NSString stringWithFormat:@"%li", closed];
+    closedCell.count = [NSNumberFormatter localizedStringFromNumber:@(closed)
+                                                        numberStyle:NSNumberFormatterDecimalStyle];
     
     [cellCollection addObject:onlineCell];
     [cellCollection addObject:offlineCell];
@@ -185,8 +189,10 @@
     NSUInteger closed = [closedStores count];
     
     // Update cell data.
-    [cellCollection objectAtIndex:2].count = [NSString stringWithFormat:@"%li", open];
-    [cellCollection objectAtIndex:3].count = [NSString stringWithFormat:@"%li", closed];
+    [cellCollection objectAtIndex:2].count = [NSNumberFormatter localizedStringFromNumber:@(open)
+                                                                              numberStyle:NSNumberFormatterDecimalStyle];
+    [cellCollection objectAtIndex:3].count = [NSNumberFormatter localizedStringFromNumber:@(closed)
+                                                                              numberStyle:NSNumberFormatterDecimalStyle];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         // Uncomment to disable flashing.
@@ -223,8 +229,10 @@
         int online = numberOfPrintStores - offline;
         
         // Update cell data.
-        [cellCollection objectAtIndex:0].count = [NSString stringWithFormat:@"%i", online];
-        [cellCollection objectAtIndex:1].count = [NSString stringWithFormat:@"%i", offline];
+        [cellCollection objectAtIndex:0].count = [NSNumberFormatter localizedStringFromNumber:@(online)
+                                                                                  numberStyle:NSNumberFormatterDecimalStyle];
+        [cellCollection objectAtIndex:1].count = [NSNumberFormatter localizedStringFromNumber:@(offline)
+                                                                                  numberStyle:NSNumberFormatterDecimalStyle];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Uncomment to disable flashing.
