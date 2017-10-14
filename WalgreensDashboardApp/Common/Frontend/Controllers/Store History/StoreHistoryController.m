@@ -59,6 +59,7 @@
     NSString *city = [[[storesToDate objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"city"];
     
     if ([city length] != 0) {
+        // Cells are resusable, therefore need to set interaction and accessory type.
         cell.storeName.text = [NSString stringWithFormat:@"Store #%@", storeNum];
         cell.userInteractionEnabled = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

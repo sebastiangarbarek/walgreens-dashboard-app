@@ -26,10 +26,12 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    printf("[APP] Application did enter background, saving temporary statuses...\n");
+    [statusControllerApp saveStoreStatuses];
     self.inForeground = NO;
     // The app has approx. 5 seconds to return from this method.
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    printf("[APP] Stopping status controller...\n");
+    printf("[APP] Application did enter background, stopping status controller...\n");
     // There is a chance (applicationDidBecomeActive:) is called before stop terminates.
     [statusControllerApp stop];
 }
@@ -48,7 +50,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    printf("[APP] Stopping status controller...\n");
+    printf("[APP] Application will terminate, stopping status controller...\n");
     [statusControllerApp stop];
     [databaseManagerApp closeDatabase];
 }

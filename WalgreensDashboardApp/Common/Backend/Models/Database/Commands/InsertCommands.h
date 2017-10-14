@@ -20,6 +20,5 @@
 - (void)insertProductsWithData:(NSDictionary *)responseData;
 
 - (void)insertOfflineHistoryWithStore:(NSString *)storeNumber;
-- (void)insertTempStatusWithStore:(NSString *)storeNumber online:(BOOL)online;
 
 @end

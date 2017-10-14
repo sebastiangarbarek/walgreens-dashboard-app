@@ -10,8 +10,13 @@
 
 #import "Controller.h"
 
+static NSString *const plistStatus = @"statuses.plist";
+
 @interface StatusController : Controller <WalgreensAPIDelegate>
 
+@property NSMutableDictionary *storeStatuses;
+
 - (BOOL)updateStoreStatusesForToday;
+- (void)saveStoreStatuses;
 
 @end

@@ -22,10 +22,10 @@ static NSString *const storeDetailServiceUrl = @"https://services-qa.walgreens.c
 
 @required
 - (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber;
-@required
 - (void)walgreensApiDidFailStore:(WalgreensAPI *)sender forStore:(NSString *)storeNumber;
-@required
 - (void)walgreensApiDidSendAll:(WalgreensAPI *)sender;
+@optional
+- (void)walgreensApiIsDown;
 
 @end
 

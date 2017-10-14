@@ -187,18 +187,6 @@
     [self.databaseManager executeStatement:statement];
 }
 
-- (void)insertTempStatusWithStore:(NSString *)storeNumber online:(BOOL)online {
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, date, status) VALUES (?, ?, ?)", TempStatusTableName];
-    const char *command = [commandString UTF8String];
-    sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
-    
-    sqlite3_bind_int(statement, 1, [storeNumber intValue]);
-    sqlite3_bind_text(statement, 2, [[[DateHelper currentDate] description] UTF8String], -1, SQLITE_STATIC);
-    sqlite3_bind_int(statement, 3, (online) ? 1 : 0);
-    
-    [self.databaseManager executeStatement:statement];
-}
-
 - (void)bindIntValue:(id)value withPosition:(int)position andStatement:(sqlite3_stmt *)stmt {
     ([NSNull null] == value) ? sqlite3_bind_null(stmt, position) : sqlite3_bind_int(stmt, position, [value intValue]);
 }
