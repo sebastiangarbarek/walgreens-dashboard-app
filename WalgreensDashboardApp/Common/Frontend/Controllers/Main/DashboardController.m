@@ -46,11 +46,11 @@
 
 - (void)addNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateStoresOnline)
+                                             selector:@selector(updateStoresOnline:)
                                                  name:@"Store online"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateStoresOffline)
+                                             selector:@selector(updateStoresOffline:)
                                                  name:@"Store offline"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -221,15 +221,14 @@
     [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
 }
 
-- (void)updateProgressView {
+- (void)updateProgressView:(NSInteger)numberOfStoresRequested {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger storesInTemp = [[self.databaseManagerApp.selectCommands countStoresInTempTable] integerValue];
-        NSInteger storesToRequest = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
-        self.progressView.progress = (float)storesInTemp / storesToRequest;
+        NSInteger numberOfStoresToRequest = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+        self.progressView.progress = (float) numberOfStoresRequested / numberOfStoresToRequest;
     });
 }
 
-- (void)updateStoresOnline {
+- (void)updateStoresOnline:(NSNotification *) notification {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Store(s) are being retrieved successfully.
         failureState = NO;
@@ -240,15 +239,17 @@
             // This will not be called if showing a timed checking stores notification however.
         }
         
-        // Update progress bar.
-        [self updateProgressView];
+        NSDictionary *data = notification.userInfo;
+        // Update the progress view.
+        [self updateProgressView:[[data objectForKey:@"Number of stores requested"] integerValue]];
     });
 }
 
-- (void)updateStoresOffline {
+- (void)updateStoresOffline:(NSNotification *) notification {
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *data = notification.userInfo;
         // Update the progress view.
-        [self updateProgressView];
+        [self updateProgressView:[[data objectForKey:@"Number of stores requested"] integerValue]];
         
         // Update the number of online and offline stores.
         int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];

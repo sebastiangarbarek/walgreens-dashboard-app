@@ -14,7 +14,7 @@ static NSString *const plistStatus = @"statuses.plist";
 
 @interface StatusController : Controller <WalgreensAPIDelegate>
 
-@property NSMutableDictionary *storeStatuses;
+@property (atomic) NSMutableDictionary *storeStatuses;
 
 - (BOOL)updateStoreStatusesForToday;
 - (void)saveStoreStatuses;

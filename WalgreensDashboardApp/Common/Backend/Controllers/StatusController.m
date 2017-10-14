@@ -122,26 +122,14 @@
     [self.storeStatuses writeToFile:plistStatusPath atomically:YES];
 }
 
-/*
- TODO:
- - Use dictionary to store temporary network status.
- - Load plist -> dictionary if exists
- - If today's date is greater than plist date
-    - Delete plist
-    - Create new dictionary
- - Store current date in dictionary
- - Store ALL statuses in dictionary (key: store number value: boolean)
-    - Store offline stores in database
- - Save plist in app delegate methods through StatusController
- - If service is down -> batch insert all stores as offline
- - In offline history, if service was down, make obvious (if > 7,000)
- */
-
 - (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber {
     printf("[HARVESTER 🍏] Store #%s is online.\n", [[storeNumber description] UTF8String]);
     // Insert the store and its status into the dictionary.
     [self.storeStatuses setObject:@(YES) forKey:storeNumber];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store online" object:nil];
+    
+    // Pass number of stores checked.
+    NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store online" object:nil userInfo:data];
 }
 
 - (void)walgreensApiDidFailStore:(WalgreensAPI *)sender forStore:(NSString *)storeNumber {
@@ -150,7 +138,10 @@
     [self.storeStatuses setObject:@(NO) forKey:storeNumber];
     // Insert the offline status into the database.
     [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil];
+    
+    // Pass number of stores checked.
+    NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
 }
 
 - (void)walgreensApiDidSendAll:(WalgreensAPI *)sender {
@@ -166,6 +157,8 @@
 }
 
 - (void)walgreensApiIsDown {
+    // Notification sent from WalgreensAPI notifies DashboardController.
+    
     printf("[HARVESTER 🍎] API service is down.\n");
     // Create a new dictionary containing all stores as offline.
     
