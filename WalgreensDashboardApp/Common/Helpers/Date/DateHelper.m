@@ -8,51 +8,64 @@
 
 #import "DateHelper.h"
 
+static NSDateFormatter *sDateFormatter = nil;
+
 @implementation DateHelper
 
 + (NSString *)stringWithDate:(NSDate *)date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [dateFormatter stringFromDate:date];
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [sDateFormatter stringFromDate:date];
 }
 
 + (NSDate *)dateWithString:(NSString *)date {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [dateFormatter dateFromString:date];
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [sDateFormatter dateFromString:date];
 }
 
 + (NSString *)currentDate {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [dateFormatter stringFromDate:[NSDate date]];
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [sDateFormatter stringFromDate:[NSDate date]];
 }
 
 + (NSString *)currentDateAndTime {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    return [dateFormatter stringFromDate:[NSDate date]];
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    return [sDateFormatter stringFromDate:[NSDate date]];
 }
 
-+ (NSString *)dateFormatForGraph: (NSString *)dateString{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
-    NSDate *date = [dateFormatter dateFromString:dateString];
-    [dateFormatter setDateFormat:@"dd/MM"];
-    dateString = [dateFormatter stringFromDate:date];
++ (NSString *)dateFormatForGraph:(NSString *)dateString{
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
+    NSDate *date = [sDateFormatter dateFromString:dateString];
+    [sDateFormatter setDateFormat:@"dd/MM"];
+    dateString = [sDateFormatter stringFromDate:date];
     return dateString;
 }
 
-//Set date format for graph data
 + (NSString *)dateFormatForGraphData: (NSString *)dateString{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy"];
-    NSDate *dateYear =[NSDate date];
-    NSInteger currentYear =[[dateFormatter stringFromDate:dateYear] integerValue];
-    [dateFormatter setDateFormat:@"dd/MM"];
-    NSDate *date = [dateFormatter dateFromString:dateString];
-    [dateFormatter setDateFormat:@"MM-dd"];
-    dateString = [dateFormatter stringFromDate:date];
+    if (sDateFormatter == nil) {
+        sDateFormatter = [[NSDateFormatter alloc] init];
+    }
+    [sDateFormatter setDateFormat:@"yyyy"];
+    NSDate *dateYear = [NSDate date];
+    NSInteger currentYear = [[sDateFormatter stringFromDate:dateYear] integerValue];
+    [sDateFormatter setDateFormat:@"dd/MM"];
+    NSDate *date = [sDateFormatter dateFromString:dateString];
+    [sDateFormatter setDateFormat:@"MM-dd"];
+    dateString = [sDateFormatter stringFromDate:date];
     dateString = [NSString stringWithFormat:@"%ld-%@",(long)currentYear,dateString];
     return dateString;
 }

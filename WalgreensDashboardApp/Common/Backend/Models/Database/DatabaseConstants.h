@@ -38,3 +38,7 @@ extern NSString *const kProId;
 extern NSString *const kProGroup;
 extern NSString *const kProSize;
 extern NSString *const kProPrice;
+
+// Offline history.
+extern NSString *const kOfflineDateTime;
+extern NSString *const kOnlineDateTime;

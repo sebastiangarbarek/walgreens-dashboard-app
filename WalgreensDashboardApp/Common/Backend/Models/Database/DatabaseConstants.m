@@ -38,3 +38,6 @@ NSString *const kProId = @"productId";
 NSString *const kProGroup = @"productGroupId";
 NSString *const kProSize = @"productSize";
 NSString *const kProPrice = @"productPrice";
+
+NSString *const kOfflineDateTime = @"offlineDateTime";
+NSString *const kOnlineDateTime = @"onlineDateTime";

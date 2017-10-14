@@ -207,6 +207,7 @@
     
     // If the service hasn't been detected as down for at least an hour or at all.
     
+    
     // Notify view controller(s).
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
     

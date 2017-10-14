@@ -51,4 +51,7 @@
 // Boolean checks.
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
 
+// Offline history.
+
+
 @end
