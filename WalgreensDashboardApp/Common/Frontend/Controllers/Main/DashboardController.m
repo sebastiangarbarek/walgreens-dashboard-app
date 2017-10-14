@@ -34,6 +34,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self configureView];
+    
+    if (self.notificationView.isHidden) {
+        [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -270,6 +274,7 @@
         [self.progressView setHidden:YES];
         
         requestsComplete = YES;
+        failureState = NO;
     });
 }
 
@@ -278,9 +283,11 @@
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         // Guaranteed to be hidden after 1. a store is retrieved successfully or 2. requests are complete.
         [self.notificationView setHidden:NO];
+        
         self.notificationLabel.text = @"Waiting For Network 📡";
         
         failureState = YES;
+        [self updateOnlineOfflineCells];
     });
 }
 

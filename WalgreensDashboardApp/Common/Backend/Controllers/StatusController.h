@@ -7,16 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AppDelegate.h"
 #import "Controller.h"
+#import "DatabaseManagerApp.h"
 
 static NSString *const plistStatus = @"statuses.plist";
 
-@interface StatusController : Controller <WalgreensAPIDelegate>
+@interface StatusController : Controller <WalgreensAPIDelegate> {
+    NSThread *requestThread;
+}
 
+// Temporarily saved to disk as .plist.
 @property (atomic) NSMutableDictionary *storeStatuses;
 
 - (BOOL)updateStoreStatusesForToday;
 - (void)saveStoreStatuses;
+
+// Process.
+- (void)start;
+- (void)stop;
 
 @end

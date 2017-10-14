@@ -33,7 +33,6 @@
 		A86CF5041F5CFC54005889B7 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A441F4D45560063EEE4 /* Controller.m */; };
 		A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A401F4D45560063EEE4 /* StatusController.m */; };
 		A86CF5061F5CFC54005889B7 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A421F4D45560063EEE4 /* DataController.m */; };
-		A86CF5071F5CFC54005889B7 /* StatusControllerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */; };
 		A86CF50B1F5D12C4005889B7 /* StoreHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF50A1F5D12C4005889B7 /* StoreHistoryController.m */; };
 		A86CF50E1F5D1CE6005889B7 /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF50D1F5D1CE6005889B7 /* StoreCell.m */; };
 		A86CF5161F5D366C005889B7 /* StoreCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF5151F5D366C005889B7 /* StoreCategory.storyboard */; };
@@ -109,8 +108,6 @@
 		5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8074F501F58EA3C00C4406C /* UIViewController+DateTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DateTransition.m"; sourceTree = "<group>"; };
 		A8074F521F58EA4C00C4406C /* UIViewController+DateTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DateTransition.h"; sourceTree = "<group>"; };
-		A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusControllerApp.h; sourceTree = "<group>"; };
-		A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusControllerApp.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C7361EB023FB002ED089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -449,15 +446,6 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		A82949D51F4E4BFE00EA0BBD /* App */ = {
-			isa = PBXGroup;
-			children = (
-				A82949D71F4E4C9D00EA0BBD /* StatusControllerApp.h */,
-				A82949D81F4E4C9D00EA0BBD /* StatusControllerApp.m */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		A82949D61F4E4C4D00EA0BBD /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,7 +532,6 @@
 				A8E09A401F4D45560063EEE4 /* StatusController.m */,
 				A8E09A431F4D45560063EEE4 /* DataController.h */,
 				A8E09A421F4D45560063EEE4 /* DataController.m */,
-				A82949D51F4E4BFE00EA0BBD /* App */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1074,7 +1061,6 @@
 				A8D8919C1F71F6B200E3388B /* StoreTimesConstants.m in Sources */,
 				A86CF5061F5CFC54005889B7 /* DataController.m in Sources */,
 				A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */,
-				A86CF5071F5CFC54005889B7 /* StatusControllerApp.m in Sources */,
 				A86CF4F91F5CFC1A005889B7 /* DateHelper.m in Sources */,
 				A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */,
 				A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */,

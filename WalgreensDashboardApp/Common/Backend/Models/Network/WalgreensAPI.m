@@ -76,7 +76,6 @@
     dispatch_group_notify(dispatchGroup, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         if ([failedStores count]) {
             printf("[HARVESTER 🍏] Starting a new background thread for (requestAllStoresInList:).\n");
-            
             [self requestAllStoresInList:failedStores];
         } else {
             [self.delegate walgreensApiDidSendAll:self];
@@ -107,8 +106,7 @@
                         } else {
                             // Service is temporarily unavailable.
                             if ([responseDictionary valueForKey:@"fault"]) {
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
-                                // Service being down counts are store being offline.
+                                // Service being down is registered as all stores offline.
                                 [self.delegate walgreensApiDidFailStore:self forStore:storeNumber];
                             } else {
                                 // Give store a chance.
