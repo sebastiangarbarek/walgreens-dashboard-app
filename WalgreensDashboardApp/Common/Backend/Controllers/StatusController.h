@@ -10,8 +10,10 @@
 #import "AppDelegate.h"
 #import "Controller.h"
 #import "DatabaseManagerApp.h"
+#import "DatabaseConstants.h"
 
 static NSString *const plistStatus = @"statuses.plist";
+static long const kIntervalMinutesOfDowntime = 10;
 
 @interface StatusController : Controller <WalgreensAPIDelegate> {
     NSThread *requestThread;

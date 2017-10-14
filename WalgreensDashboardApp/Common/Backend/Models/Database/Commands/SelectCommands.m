@@ -165,6 +165,32 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+#pragma mark - Offline History -
+
+- (NSDictionary *)selectLastDowntime {
+    NSString *commandString = @"SELECT * FROM offline_history ORDER BY date DESC LIMIT 1";
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return results[0];
+    } else {
+        return nil;
+    }
+}
+
+- (NSDictionary *)selectLastDowntimeToday {
+    /*
+     Offline history table stores results in date time format, which is why we perform a LIKE query using only date.
+     We return the most recent date and time with ORDER BY and limit the retrieval to one row.
+     */
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' ORDER BY date DESC LIMIT 1", [DateHelper currentDate]];
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return results[0];
+    } else {
+        return nil;
+    }
+}
+
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {
     NSMutableArray *mutableArray = [NSMutableArray new];
     for (int i = 0; i < [results count]; i++) {

@@ -8,22 +8,21 @@
 
 #import "StatusController.h"
 
+@interface StatusController () {
+    int timesCheckedDowntime;
+}
+
+@end
+
 @implementation StatusController
 
 #pragma mark - Init Methods -
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        walgreensApi.delegate = self;
-    }
-    return self;
-}
 
 - (instancetype)initWithManager:(DatabaseManager *)dbManager {
     self = [super initWithManager:dbManager];
     
     if (self) {
+        timesCheckedDowntime = 0;
         walgreensApi.delegate = self;
         [self startNewRequestThread];
     }
@@ -44,6 +43,7 @@
         // Something went wrong.
         [NSThread sleepForTimeInterval:0.5f];
     }
+    
     /*
      If the thread is in the middle of requesting and critically fails (e.g. downtime)
      we can't simply pass back a BOOL at this point notifying failure like we can before starting the requests.
@@ -174,8 +174,21 @@
 
 - (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber {
     printf("[HARVESTER 🍏] Store #%s is online.\n", [[storeNumber description] UTF8String]);
+    
+    // Check if the last downtime hasn't recorded the time service was confirmed online.
+    NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
+    if (lastDownTime) {
+        if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
+            // Update history to show when detected online.
+            [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
+                                                         offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
+                                                          onlineDateTime:[DateHelper currentDateAndTime]];
+        }
+    }
+    
     // Insert the store and its status into the dictionary.
     [self.storeStatuses setObject:@(YES) forKey:storeNumber];
+    
     // Pass the number of stores checked to controller(s).
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Store online" object:nil userInfo:data];
@@ -183,10 +196,13 @@
 
 - (void)walgreensApiDidFailStore:(WalgreensAPI *)sender forStore:(NSString *)storeNumber {
     printf("[HARVESTER 🍎] Store #%s is offline.\n", [[storeNumber description] UTF8String]);
+    
     // Insert the store and its status into the dictionary.
     [self.storeStatuses setObject:@(NO) forKey:storeNumber];
+    
     // Insert the offline status into the database.
     [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber];
+    
     // Pass number of stores checked to controller(s).
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
@@ -194,10 +210,14 @@
 
 - (void)walgreensApiDidSendAll:(WalgreensAPI *)sender {
     printf("[HARVESTER 🍏] Requests for all stores complete.\n");
+    
+    // Notify view controller(s).
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
+    
     // Save .plist.
     printf("[HARVESTER 🍏] Saving temporary statuses...\n");
     [self saveStoreStatuses];
+    
     // Return thread.
     dispatch_semaphore_signal(startingThreadSemaphore);
 }
@@ -205,14 +225,38 @@
 - (void)walgreensApiIsDown {
     printf("[HARVESTER 🍎] API service is down.\n");
     
-    // If the service hasn't been detected as down for at least an hour or at all.
+    NSDictionary *lastDownTimeToday = [databaseManager.selectCommands selectLastDowntimeToday];
     
-    
-    // Notify view controller(s).
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
-    
-    // Insert special key that all stores were offline into history table.
-    
+    /*
+     If the service has been detected as down for longer than a set period of time.
+     Or if the service hasn't been detected as down yet.
+     We must set a time limit because when a service goes down,
+     it is checked to see if it has gone back up in second intervals.
+     We do this to prevent adding to the history data store every second.
+     */
+    if (lastDownTimeToday == nil) {
+        if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
+            // Service could have went down and up again in this session.
+            printf("[HARVESTER 🍏] Service was online last checked.\n");
+            timesCheckedDowntime = 0;
+        }
+        
+        if ([DateHelper currentDateTimeIsAtLeastMinutes:kIntervalMinutesOfDowntime
+                                                aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
+                                           timesChecked:timesCheckedDowntime
+                                               interval:kIntervalMinutesOfDowntime]) {
+            // Increment the number of times interval passed.
+            timesCheckedDowntime++;
+            
+            // Notify view controller(s).
+            printf("[HARVESTER 🍏] It has been at least %li minute(s) since last downtime.\n", kIntervalMinutesOfDowntime);
+            printf("[HARVESTER 🍏] Notifying view controller(s)\n");
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
+            
+            // Insert special key that all stores were offline into history table.
+            [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All"];
+        }
+    }
     
     // Return thread.
     dispatch_semaphore_signal(startingThreadSemaphore);

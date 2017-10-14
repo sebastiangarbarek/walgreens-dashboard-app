@@ -52,6 +52,7 @@
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
 
 // Offline history.
-
+- (NSDictionary *)selectLastDowntime;
+- (NSDictionary *)selectLastDowntimeToday;
 
 @end

@@ -21,4 +21,12 @@
     [self.databaseManager executeCommand:[commandString UTF8String]];
 }
 
+#pragma mark - Offline History -
+
+- (void)updateDateTimeOnlineForStore:(NSString *)storeNumber offlineDateTime:(NSString *)offlineDateTime onlineDateTime:(NSString *)onlineDateTime {
+    NSString *commandString = [NSString stringWithFormat:@"UPDATE offline_history SET onlineDateTime = '%@' WHERE storeNum = '%@' AND offlineDateTime = '%@'",
+                               onlineDateTime, storeNumber, offlineDateTime];
+    [self.databaseManager executeCommand:[commandString UTF8String]];
+}
+
 @end

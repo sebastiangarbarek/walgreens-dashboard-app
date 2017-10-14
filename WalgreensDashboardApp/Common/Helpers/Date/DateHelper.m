@@ -9,6 +9,7 @@
 #import "DateHelper.h"
 
 static NSDateFormatter *sDateFormatter = nil;
+static NSCalendar *sCalender = nil;
 
 @implementation DateHelper
 
@@ -42,6 +43,22 @@ static NSDateFormatter *sDateFormatter = nil;
     }
     [sDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     return [sDateFormatter stringFromDate:[NSDate date]];
+}
+
++ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked interval:(long)interval {
+    if (sCalender == nil) {
+        sCalender = [NSCalendar currentCalendar];
+    }
+    
+    unsigned unitFlags = NSCalendarUnitMinute;
+    NSDateComponents *results = [sCalender components:unitFlags fromDate:dateTime toDate:[NSDate date] options:0];
+    
+    // Must factor number of times checked and the interval.
+    if ([results minute] > (minutes + (timesChecked * interval))) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 + (NSString *)dateFormatForGraph:(NSString *)dateString{
