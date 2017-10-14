@@ -230,6 +230,8 @@
 
 - (void)updateStoresOnline:(NSNotification *) notification {
     dispatch_async(dispatch_get_main_queue(), ^{
+        BOOL wasInFailureState = failureState;
+        
         // Store(s) are being retrieved successfully.
         failureState = NO;
         
@@ -237,6 +239,11 @@
             // If the service is not available notification is showing, hide it.
             self.notificationView.hidden = YES;
             // This will not be called if showing a timed checking stores notification however.
+        }
+        
+        if (wasInFailureState) {
+            // The service was in a failure state before this, correctly show that stores are back online.
+            [self updateOnlineOfflineCells];
         }
         
         NSDictionary *data = notification.userInfo;
@@ -250,29 +257,8 @@
         NSDictionary *data = notification.userInfo;
         // Update the progress view.
         [self updateProgressView:[[data objectForKey:@"Number of stores requested"] integerValue]];
-        
         // Update the number of online and offline stores.
-        int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
-        int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
-        int online = numberOfPrintStores - offline;
-        
-        // Update cell data.
-        [cellCollection objectAtIndex:0].count = [NSNumberFormatter localizedStringFromNumber:@(online)
-                                                                                  numberStyle:NSNumberFormatterDecimalStyle];
-        [cellCollection objectAtIndex:1].count = [NSNumberFormatter localizedStringFromNumber:@(offline)
-                                                                                  numberStyle:NSNumberFormatterDecimalStyle];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Uncomment to disable flashing.
-            //[UIView setAnimationsEnabled:NO];
-            NSMutableArray *indexPaths = [NSMutableArray new];
-            NSIndexPath *onlineIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-            NSIndexPath *offlineIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
-            [indexPaths addObject:onlineIndexPath];
-            [indexPaths addObject:offlineIndexPath];
-            [self.collectionView reloadItemsAtIndexPaths:indexPaths];
-            //[UIView setAnimationsEnabled:animationsEnabled];
-        });
+        [self updateOnlineOfflineCells];
     });
 }
 
@@ -302,6 +288,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         // Guaranteed to be hidden after 1. a store is retrieved successfully or 2. requests are complete.
         [self.notificationView setHidden:NO];
+        
         self.notificationLabel.text = @"Service is Down 🚨";
         
         failureState = YES;
@@ -345,6 +332,34 @@
                                    selector:@selector(updateOpenClosedStores)
                                    userInfo:nil
                                     repeats:NO];
+}
+
+- (void)updateOnlineOfflineCells {
+    int online, offline;
+    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
+    if (failureState) {
+        online = 0;
+        offline = numberOfPrintStores;
+    } else {
+        offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
+        online = numberOfPrintStores - offline;
+    }
+
+    // Update cell data.
+    [cellCollection objectAtIndex:0].count = [NSNumberFormatter localizedStringFromNumber:@(online)
+                                                                              numberStyle:NSNumberFormatterDecimalStyle];
+    [cellCollection objectAtIndex:1].count = [NSNumberFormatter localizedStringFromNumber:@(offline)
+                                                                              numberStyle:NSNumberFormatterDecimalStyle];
+    
+    // Uncomment to disable fade animation.
+    //[UIView setAnimationsEnabled:NO];
+    NSMutableArray *indexPaths = [NSMutableArray new];
+    NSIndexPath *onlineIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    NSIndexPath *offlineIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+    [indexPaths addObject:onlineIndexPath];
+    [indexPaths addObject:offlineIndexPath];
+    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
+    //[UIView setAnimationsEnabled:animationsEnabled];
 }
 
 @end

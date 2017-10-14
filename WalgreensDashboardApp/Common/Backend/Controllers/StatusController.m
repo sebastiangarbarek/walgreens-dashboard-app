@@ -160,11 +160,10 @@
     // Notification sent from WalgreensAPI notifies DashboardController.
     
     printf("[HARVESTER 🍎] API service is down.\n");
-    // Create a new dictionary containing all stores as offline.
     
-    // Save temporary statuses as .plist.
+    // If the service hasn't been detected as down for at least an hour.
     
-    // Insert all stores into the history table as offline for today.
+    // Insert special key that all stores were offline into history table.
     
     // Return thread.
     dispatch_semaphore_signal(startingThreadSemaphore);
