@@ -184,6 +184,16 @@
     [self.storeStatuses writeToFile:plistStatusPath atomically:YES];
 }
 
+- (void)recordDowntime {
+    // Notify view controller(s).
+    printf("[HARVESTER 🍏] Notifying view controller(s).\n");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
+    
+    // Insert special key that all stores were offline into history table.
+    printf("[HARVESTER 🍏] Inserting new downtime entry into database.\n");
+    [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All"];
+}
+
 #pragma mark - Delegate Methods -
 
 - (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber {
@@ -272,23 +282,23 @@
         if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
             // Service could have went down and up again in this session.
             printf("[HARVESTER 🍏] Service was online last checked.\n");
+            
+            // Reset times checked.
             timesCheckedDowntime = 0;
-        }
-        
-        if ([DateHelper currentDateTimeIsAtLeastMinutes:kIntervalMinutesOfDowntime
-                                                aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
-                                           timesChecked:timesCheckedDowntime
-                                               interval:kIntervalMinutesOfDowntime]) {
-            // Increment the number of times interval passed.
-            timesCheckedDowntime++;
             
-            // Notify view controller(s).
-            printf("[HARVESTER 🍏] It has been at least %li minute(s) since last downtime.\n", kIntervalMinutesOfDowntime);
-            printf("[HARVESTER 🍏] Notifying view controller(s)\n");
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
-            
-            // Insert special key that all stores were offline into history table.
-            [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All"];
+            [self recordDowntime];
+        } else {
+            if ([DateHelper currentDateTimeIsAtLeastMinutes:kIntervalMinutesOfDowntime
+                                                    aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
+                                               timesChecked:timesCheckedDowntime
+                                                   interval:kIntervalMinutesOfDowntime]) {
+                // Increment the number of times interval passed.
+                timesCheckedDowntime++;
+                
+                printf("[HARVESTER 🍏] It has been at least %li minute(s) since last downtime.\n", kIntervalMinutesOfDowntime);
+                
+                [self recordDowntime];
+            }
         }
     }
     
