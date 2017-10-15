@@ -11,6 +11,16 @@
 
 @implementation SelectCommands
 
+- (BOOL)storeExists:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE storeNum = '%@'", StoreTableName, storeNumber];
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 /*! Selects IDs of stores that were inserted as online in the store table.
  This method can be used to check the difference of stores in the database to stores on the server.
  It helps retrieve new stores or store details that were unable to be retrieved previously.

@@ -190,7 +190,10 @@
     printf("[HARVESTER 🍏] Store #%s is online.\n", [[storeNumber description] UTF8String]);
     
     // Check if store exists in database.
-    
+    if ([databaseManager.selectCommands storeExists:storeNumber] == NO) {
+        // A new store has been found, so add it to the database.
+        [databaseManager.insertCommands insertOnlineStoreWithData:responseDictionary];
+    }
     
     // Check if the last downtime hasn't recorded the time service was confirmed online.
     NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];

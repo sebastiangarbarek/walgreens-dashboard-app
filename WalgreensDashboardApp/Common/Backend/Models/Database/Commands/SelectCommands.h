@@ -14,6 +14,8 @@
 
 @interface SelectCommands : Commands
 
+- (BOOL)storeExists:(NSString *)storeNumber;
+
 // Return IDs.
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
 - (NSMutableArray *)selectStoreIdsInTempTable;
