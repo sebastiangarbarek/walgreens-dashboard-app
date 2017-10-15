@@ -120,6 +120,15 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
+- (NSDictionary *)selectCityStateForStore:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT city, state FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    NSArray *result = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([result count])
+        return result[0];
+    else
+        return nil;
+}
+
 - (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber {
     NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
     return [self.databaseManager executeQuery:[commandString UTF8String]];

@@ -9,7 +9,7 @@
 #import "DashboardController.h"
 
 @interface DashboardController () {
-    BOOL requestsComplete, shownChecking, failureState;
+    BOOL requestsComplete, shownChecking, failureState, userOnScreen;
     NSMutableArray<DashboardCountCellData *> *cellCollection;
     NSTimer *notificationTimer;
 }
@@ -38,6 +38,17 @@
     if (self.notificationView.isHidden) {
         [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
     }
+    
+    // Store went offline off screen and the user has not seen the notification.
+    if (!self.offlineNotificationView.isHidden) {
+        [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(hideOfflineNotificationFromTimer) userInfo:nil repeats:NO];
+    }
+    
+    userOnScreen = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    userOnScreen = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -263,6 +274,14 @@
         [self updateProgressView:[[data objectForKey:@"Number of stores requested"] integerValue]];
         // Update the number of online and offline stores.
         [self updateOnlineOfflineCells];
+        // If user is on the screen display a timed notification.
+        if (userOnScreen) {
+            [self presentOfflineNotificationForStore:[data objectForKey:@"Store number"]];
+            [self startOfflineNotificationTimer];
+        } else {
+            // Will be timed when the user returns to the screen.
+            [self presentOfflineNotificationForStore:[data objectForKey:@"Store number"]];
+        }
     });
 }
 
@@ -315,7 +334,7 @@
     });
 }
 
-#pragma mark - View Methods -
+#pragma mark - Notification View Methods -
 
 - (void)presentTimedNotification:(NSString *)notification backgroundColor:(UIColor *)color {
     self.notificationView.backgroundColor = color;
@@ -328,6 +347,25 @@
 - (void)hideNotificationFromTimer {
     self.notificationView.hidden = YES;
     notificationTimer = nil;
+}
+
+- (void)hideOfflineNotificationFromTimer {
+    self.offlineNotificationView.hidden = YES;
+}
+
+- (void)presentOfflineNotificationForStore:(NSString *)storeNumber {
+    NSDictionary *cityState = [self.databaseManagerApp.selectCommands selectCityStateForStore:storeNumber];
+    
+    if ([[cityState objectForKey:kCity] length] != 0 && [[cityState objectForKey:kState] length] != 0) {
+        self.offlineNotificationView.hidden = NO;
+        self.offlineNotificationLabel.text = [NSString stringWithFormat:@"%@, %@ Is Offline", [cityState objectForKey:kCity], [cityState objectForKey:kState]];
+    }
+    
+    // Don't show notification if details unknown.
+}
+
+- (void)startOfflineNotificationTimer {
+    [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(hideOfflineNotificationFromTimer) userInfo:nil repeats:NO];
 }
 
 #pragma mark - Helper Methods -

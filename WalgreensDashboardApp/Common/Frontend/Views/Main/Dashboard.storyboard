@@ -101,10 +101,28 @@
                                     <constraint firstAttribute="trailing" secondItem="3lO-MY-6VF" secondAttribute="trailing" id="jMs-ik-VcQ"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SON-wS-W4e">
+                                <rect key="frame" x="0.0" y="596" width="375" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Is Offline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ho0-UG-OeJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="lmZ-GQ-a1a"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dOD-l9-gR6" firstAttribute="top" secondItem="8Ve-8h-edv" secondAttribute="bottom" id="4U6-s0-ouy"/>
+                            <constraint firstItem="3w4-Rq-bdX" firstAttribute="top" secondItem="SON-wS-W4e" secondAttribute="bottom" id="IlT-me-WL9"/>
+                            <constraint firstItem="SON-wS-W4e" firstAttribute="leading" secondItem="scK-wf-XNY" secondAttribute="leading" id="JmV-gN-sVF"/>
                             <constraint firstItem="dOD-l9-gR6" firstAttribute="leading" secondItem="scK-wf-XNY" secondAttribute="leading" id="K8U-BL-dhG"/>
                             <constraint firstItem="4Wn-sI-1z7" firstAttribute="top" secondItem="scK-wf-XNY" secondAttribute="top" constant="2" id="M35-PF-eio"/>
                             <constraint firstAttribute="trailing" secondItem="hPC-y8-8Sc" secondAttribute="trailing" id="PfL-Xl-ULS"/>
@@ -113,6 +131,7 @@
                             <constraint firstItem="hPC-y8-8Sc" firstAttribute="leading" secondItem="scK-wf-XNY" secondAttribute="leading" id="sWo-Gy-vU8"/>
                             <constraint firstItem="3w4-Rq-bdX" firstAttribute="top" secondItem="4Wn-sI-1z7" secondAttribute="bottom" id="tVy-k7-ABx"/>
                             <constraint firstAttribute="trailing" secondItem="4Wn-sI-1z7" secondAttribute="trailing" id="tw4-E2-Dak"/>
+                            <constraint firstAttribute="trailing" secondItem="SON-wS-W4e" secondAttribute="trailing" id="wBg-Jb-UAI"/>
                             <constraint firstItem="hPC-y8-8Sc" firstAttribute="top" secondItem="8Ve-8h-edv" secondAttribute="bottom" id="yjE-Y7-Tq1"/>
                         </constraints>
                     </view>
@@ -121,6 +140,8 @@
                         <outlet property="collectionView" destination="4Wn-sI-1z7" id="Xeb-zn-7Gc"/>
                         <outlet property="notificationLabel" destination="3lO-MY-6VF" id="6T0-c4-KVq"/>
                         <outlet property="notificationView" destination="hPC-y8-8Sc" id="MUL-X2-Yev"/>
+                        <outlet property="offlineNotificationLabel" destination="Ho0-UG-OeJ" id="Knk-r9-tMS"/>
+                        <outlet property="offlineNotificationView" destination="SON-wS-W4e" id="TFh-ai-dyK"/>
                         <outlet property="progressView" destination="dOD-l9-gR6" id="grZ-cf-Aob"/>
                     </connections>
                 </viewController>

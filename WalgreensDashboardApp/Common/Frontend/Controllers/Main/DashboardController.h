@@ -23,6 +23,8 @@
 // Notification view overlay at the top of the screen below the navigation bar.
 @property (weak, nonatomic) IBOutlet UIView *notificationView;
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+@property (weak, nonatomic) IBOutlet UIView *offlineNotificationView;
+@property (weak, nonatomic) IBOutlet UILabel *offlineNotificationLabel;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
