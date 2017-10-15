@@ -18,7 +18,6 @@
 
 // Return IDs.
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
-- (NSMutableArray *)selectStoreIdsInTempTable;
 - (NSMutableArray *)selectNonPrintStoreIdsInStoreTable;
 
 // Return date string.
@@ -27,8 +26,6 @@
 
 // Return count.
 - (NSNumber *)countPrintStoresInStoreTable;
-- (NSNumber *)countStoresInTempTable;
-- (NSNumber *)countOnlineStoresInTempTable;
 
 // Return rows.
 - (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;

@@ -201,6 +201,7 @@
     
     // Check if store exists in database.
     if ([databaseManager.selectCommands storeExists:storeNumber] == NO) {
+        printf("[HARVESTER 🍏] Store #%s does not exist in the database.\n", [[storeNumber description] UTF8String]);
         // A new store has been found, so add it to the database.
         [databaseManager.insertCommands insertOnlineStoreWithData:responseDictionary];
     }
@@ -209,6 +210,7 @@
     NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
     if (lastDownTime) {
         if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
+            printf("[HARVESTER 🍏] Service is now back online.\n");
             // Update history to show when detected online.
             [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
                                                          offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
@@ -220,6 +222,7 @@
     NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
     if (lastOfflineToday) {
         if ([lastOfflineToday objectForKey:kOnlineDateTime] == nil) {
+            printf("[HARVESTER 🍏] Store #%s was offline.\n", [[storeNumber description] UTF8String]);
             // Update history to show when detected online.
             [databaseManager.updateCommands updateDateTimeOnlineForStore:storeNumber
                                                          offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
@@ -279,6 +282,9 @@
      We do this to prevent adding to the history data store every second.
      */
     if (lastDownTimeToday == nil) {
+        timesCheckedDowntime = 0;
+        [self recordDowntime];
+    } else {
         if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
             // Service could have went down and up again in this session.
             printf("[HARVESTER 🍏] Service was online last checked.\n");

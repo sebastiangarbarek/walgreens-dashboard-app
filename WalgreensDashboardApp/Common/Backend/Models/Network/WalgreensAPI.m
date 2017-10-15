@@ -105,9 +105,10 @@
                             [self.delegate walgreensApiDidPassStore:self withData:responseDictionary forStore:storeNumber];
                         } else {
                             // Service is temporarily unavailable.
-                            if ([responseDictionary valueForKey:@"fault"]) {
+                            if ([responseDictionary objectForKey:@"fault"]) {
+                                NSLog(@"Fault: %@", [responseDictionary objectForKey:@"fault"]);
                                 // Service being down is registered as all stores offline.
-                                [self.delegate walgreensApiDidFailStore:self forStore:storeNumber];
+                                [self.delegate walgreensApiIsDown];
                             } else {
                                 // Give store a chance.
                                 [self failStore:storeNumber];

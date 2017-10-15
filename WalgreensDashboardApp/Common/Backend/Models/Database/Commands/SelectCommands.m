@@ -12,7 +12,7 @@
 @implementation SelectCommands
 
 - (BOOL)storeExists:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE storeNum = '%@'", StoreTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
         return YES;
@@ -33,19 +33,6 @@
     return [self stringArrayWithArray:results];
 }
 
-/*! Selects all store IDs for the current day in the temp status table.
- This method is used to check if all stores for the current day have been checked.
- *
- * \returns An array of IDs of stores that have been checked.
- */
-- (NSMutableArray *)selectStoreIdsInTempTable {
-    [self.databaseManager.updateCommands deletePastTempStatuses];
-    
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE date = '%@'", TempStatusTableName, [DateHelper currentDate]];
-    NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"storeNum"];
-    return [self stringArrayWithArray:results];
-}
-
 /*! Selects all non-print store IDs in the store table.
  This method is used to remove non-print stores from status comparison.
  *
@@ -62,8 +49,8 @@
  * \returns Date in string format or nil if no date before given date.
  */
 - (NSString *)selectPreviousUpdateDateInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT date FROM %@ WHERE date < '%@' ORDER BY date DESC LIMIT 1", HistoryTableName, date];
-    NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"date"];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime < '%@' ORDER BY offlineDateTime DESC LIMIT 1", HistoryTableName, date];
+    NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
     if ([results count])
         return results[0];
     else
@@ -75,8 +62,8 @@
  * \returns Date in string format or nil if no date after given date.
  */
 - (NSString *)selectNextUpdateDateInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT date FROM %@ WHERE date > '%@' LIMIT 1", HistoryTableName, date];
-    NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"date"];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime > '%@' LIMIT 1", HistoryTableName, date];
+    NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
     if ([results count])
         return results[0];
     else
@@ -90,24 +77,6 @@
  */
 - (NSNumber *)countPrintStoresInStoreTable {
     NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE photoInd = 'true'", StoreTableName];
-    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-- (NSNumber *)countStoresInTempTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE date = '%@'", TempStatusTableName, [DateHelper currentDate]];
-    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
-- (NSNumber *)countOnlineStoresInTempTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE date = '%@' AND status = 1", TempStatusTableName, [DateHelper currentDate]];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
     if ([results count])
         return (NSNumber *) results[0];
@@ -144,12 +113,12 @@
 }
 
 - (NSMutableArray *)selectDatesInHistoryTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT date FROM %@", HistoryTableName];
-    return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"date"];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@", HistoryTableName];
+    return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
 }
 
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.date = '%@'", StoreTableName, HistoryTableName, HistoryTableName, StoreTableName, HistoryTableName, date];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.offlineDateTime = '%@'", StoreTableName, HistoryTableName, HistoryTableName, StoreTableName, HistoryTableName, date];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
@@ -191,7 +160,7 @@
 }
 
 - (NSDictionary *)selectLastDowntime {
-    NSString *commandString = @"SELECT * FROM offline_history WHERE storeNum = 'All' ORDER BY date DESC LIMIT 1";
+    NSString *commandString = @"SELECT * FROM offline_history WHERE storeNum = 'All' ORDER BY offlineDateTime DESC LIMIT 1";
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
         return results[0];
