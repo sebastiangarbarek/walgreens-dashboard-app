@@ -18,8 +18,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Print simulator directory.
     NSLog(@"%@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
     return YES;
 }
 
@@ -28,14 +28,13 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    printf("[APP] Application did enter background, saving temporary statuses...\n");
+    printf("[APP BACKGROUND] Saving temporary statuses...\n");
     [statusController saveStoreStatuses];
-    self.inForeground = NO;
-    // The app has approx. 5 seconds to return from this method.
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    printf("[APP] Application did enter background, stopping status controller...\n");
-    // There is a chance (applicationDidBecomeActive:) is called before stop terminates.
-    [statusController stop];
+    
+    printf("[APP BACKGROUND] Stopping status controller...\n");
+    statusController.stop = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -43,17 +42,26 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    self.inForeground = YES;
-    printf("[APP] Initializing status controller...\n");
+    printf("[APP ACTIVE] Initializing status controller...\n");
+    
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [databaseManagerApp closeDatabase];
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    statusController= [[StatusController alloc] initWithManager:databaseManagerApp];
+    
+    if (databaseManagerApp == nil) {
+        databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    }
+    
+    if (statusController == nil) {
+        statusController = [[StatusController alloc] initWithManager:databaseManagerApp];
+    } else {
+        [statusController start];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    printf("[APP] Application will terminate, stopping status controller...\n");
-    [statusController stop];
+    printf("[APP TERMINATE] Stopping status controller...\n");
+    
+    statusController.stop = YES;
+    
     [databaseManagerApp closeDatabase];
 }
 

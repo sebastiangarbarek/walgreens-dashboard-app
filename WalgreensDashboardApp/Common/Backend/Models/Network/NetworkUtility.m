@@ -79,6 +79,17 @@
     return NO;
 }
 
++ (BOOL)did503:(NSURLResponse *)urlResponse {
+    if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]]) {
+        NSInteger statusCode = [(NSHTTPURLResponse *)urlResponse statusCode];
+        if (statusCode == 503) {
+            printf("[HARVESTER 🍎] HTTP response 503.\n");
+            return YES;
+        }
+    }
+    return NO;
+}
+
 + (BOOL)validResponse:(NSURLResponse *)urlResponse withError:(NSError *)sessionError andData:(NSData *)responseData {
     if (sessionError) {
         printf("[HARVESTER 🍎] Session error.\n");

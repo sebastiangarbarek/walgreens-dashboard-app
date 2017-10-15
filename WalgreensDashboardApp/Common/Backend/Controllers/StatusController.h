@@ -12,12 +12,13 @@
 #import "DatabaseManagerApp.h"
 #import "DatabaseConstants.h"
 
-static NSString *const plistStatus = @"statuses.plist";
+static NSString *const kStatusesFileName = @"statuses.plist";
 static long const kIntervalMinutesOfDowntime = 10;
 
-@interface StatusController : Controller <WalgreensAPIDelegate> {
-    NSThread *requestThread;
-}
+@interface StatusController : Controller <WalgreensAPIDelegate>
+
+// Should be thread safe.
+@property (atomic) BOOL stop;
 
 // Temporarily saved to disk as .plist.
 @property (atomic) NSMutableDictionary *storeStatuses;
@@ -27,6 +28,5 @@ static long const kIntervalMinutesOfDowntime = 10;
 
 // Process.
 - (void)start;
-- (void)stop;
 
 @end

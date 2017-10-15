@@ -16,6 +16,7 @@
 + (void)requestProductList:(void(^)(NSDictionary *productList))complete;
 + (NSMutableURLRequest *)buildRequestFrom:(NSString *)url andRequestData:(NSMutableDictionary *)requestData;
 + (BOOL)did404:(NSURLResponse *)urlResponse;
++ (BOOL)did503:(NSURLResponse *)urlResponse;
 + (BOOL)validResponse:(NSURLResponse *)urlResponse withError:(NSError *)sessionError andData:(NSData *)responseData;
 + (double)percentCompleteWithCount:(NSInteger)count andTotal:(NSInteger)total;
 

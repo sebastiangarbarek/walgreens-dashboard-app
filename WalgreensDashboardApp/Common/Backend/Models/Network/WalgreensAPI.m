@@ -40,8 +40,8 @@
     dispatchGroup = dispatch_group_create();
     reach = [Reachability reachabilityForInternetConnection];
     
-    // Storing a reference to the current executing thread gives control to the source.
-    self.currentExecutingThread = [NSThread currentThread];
+    // Storing a reference to the current thread gives control to the source.
+    self.thread = [NSThread currentThread];
     
     for (int i = 0; i < [storeList count]; i++) {
         // Exit before making another request or inserting into the database.
@@ -97,22 +97,19 @@
     [[session dataTaskWithRequest:[NetworkUtility buildRequestFrom:storeDetailServiceUrl andRequestData:requestDictionary]
                 completionHandler:^(NSData *responseData, NSURLResponse *urlResponse, NSError *sessionError) {
                     if ([NetworkUtility did404:urlResponse]) {
+                        // Store is offline.
                         [self.delegate walgreensApiDidFailStore:self forStore:storeNumber];
+                    } else if ([NetworkUtility did503:urlResponse]) {
+                        // Service being down is registered as all stores offline.
+                        [self.delegate walgreensApiIsDown];
                     } else if ([NetworkUtility validResponse:urlResponse withError:sessionError andData:responseData]) {
                         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                         NSDictionary *storeDetails = [responseDictionary objectForKey:@"store"];
                         if ([storeDetails valueForKey:@"storeNum"]) {
                             [self.delegate walgreensApiDidPassStore:self withData:responseDictionary forStore:storeNumber];
                         } else {
-                            // Service is temporarily unavailable.
-                            if ([responseDictionary objectForKey:@"fault"]) {
-                                NSLog(@"Fault: %@", [responseDictionary objectForKey:@"fault"]);
-                                // Service being down is registered as all stores offline.
-                                [self.delegate walgreensApiIsDown];
-                            } else {
-                                // Give store a chance.
-                                [self failStore:storeNumber];
-                            }
+                            // Give store a chance.
+                            [self failStore:storeNumber];
                         }
                     } else {
                         [self failStore:storeNumber];

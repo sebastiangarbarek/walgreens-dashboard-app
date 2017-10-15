@@ -32,7 +32,7 @@ static NSString *const storeDetailServiceUrl = @"https://services-qa.walgreens.c
 @interface WalgreensAPI : NSObject
 
 @property (nonatomic, weak) id <WalgreensAPIDelegate> delegate;
-@property (atomic, weak) NSThread *currentExecutingThread;
+@property (atomic, weak) NSThread *thread;
 
 - (instancetype)initWithSemaphore:(dispatch_semaphore_t)semaphore;
 - (void)requestAllStoresInList:(NSArray *)storeList;

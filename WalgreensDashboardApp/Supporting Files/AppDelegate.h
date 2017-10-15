@@ -15,6 +15,4 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (atomic) BOOL inForeground;
-
 @end

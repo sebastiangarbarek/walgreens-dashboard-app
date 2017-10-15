@@ -24,13 +24,8 @@
     if (self) {
         timesCheckedDowntime = 0;
         walgreensApi.delegate = self;
-        [self startNewRequestThread];
+        [self start];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(stopped)
-                                                 name:@"Stopped"
-                                               object:nil];
     
     return self;
 }
@@ -38,38 +33,22 @@
 #pragma mark - Process Methods -
 
 - (void)start {
-    // Used to restart using the same thread immediately.
-    while ([self updateStoreStatusesForToday] == NO) {
-        // Something went wrong.
-        [NSThread sleepForTimeInterval:0.5f];
-    }
+    printf("[STATUS] Starting a new request thread...\n");
+    [[[NSThread alloc] initWithTarget:self selector:@selector(request) object:nil] start];
+}
+
+- (void)request {
+    self.stop = NO;
     
-    /*
-     If the thread is in the middle of requesting and critically fails (e.g. downtime)
-     we can't simply pass back a BOOL at this point notifying failure like we can before starting the requests.
-     Instead, this method is returned terminating the thread that experienced the critical failure.
-     while a new thread is dispatched calling this method to restart.
-     */
-}
-
-- (void)stop {
+    do {
+        [self updateStoreStatusesForToday];
+        [NSThread sleepForTimeInterval:1.0f];
+    } while (!self.stop);
+    
+    printf("[STATUS] Stopped...\n");
+    
     // Running loops should check if cancelled and exit at an appropriate time. I.e. when not inserting into the database.
-    [walgreensApi.currentExecutingThread cancel];
-}
-
-- (void)stopped {
-    // There is a chance that foreground had been called before stop finished.
-    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] inForeground]) {
-        printf("[APP] App went into foreground before status controller stopped.\n");
-        // Reboot.
-        [self startNewRequestThread];
-    }
-}
-
-- (void)startNewRequestThread {
-    printf("[HARVESTER 🍏] Starting a new request thread...\n");
-    requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
-    [requestThread start];
+    [walgreensApi.thread cancel];
 }
 
 #pragma mark - Class Methods -
@@ -92,7 +71,7 @@
             
             NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documents = [directories firstObject];
-            NSString *plistStatusPath = [documents stringByAppendingPathComponent:plistStatus];
+            NSString *plistStatusPath = [documents stringByAppendingPathComponent:kStatusesFileName];
             
             // Check if .plist exists.
             if ([[NSFileManager defaultManager] fileExistsAtPath:plistStatusPath]) {
@@ -180,7 +159,7 @@
 - (void)saveStoreStatuses {
     NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documents = [directories firstObject];
-    NSString *plistStatusPath = [documents stringByAppendingPathComponent:plistStatus];
+    NSString *plistStatusPath = [documents stringByAppendingPathComponent:kStatusesFileName];
     [self.storeStatuses writeToFile:plistStatusPath atomically:YES];
 }
 
