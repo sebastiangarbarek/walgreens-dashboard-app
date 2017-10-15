@@ -189,12 +189,26 @@
 - (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber {
     printf("[HARVESTER 🍏] Store #%s is online.\n", [[storeNumber description] UTF8String]);
     
+    // Check if store exists in database.
+    
+    
     // Check if the last downtime hasn't recorded the time service was confirmed online.
     NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
     if (lastDownTime) {
         if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
             // Update history to show when detected online.
             [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
+                                                         offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
+                                                          onlineDateTime:[DateHelper currentDateAndTime]];
+        }
+    }
+    
+    // Check if store was offline and is now online.
+    NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
+    if (lastOfflineToday) {
+        if ([lastOfflineToday objectForKey:kOnlineDateTime] == nil) {
+            // Update history to show when detected online.
+            [databaseManager.updateCommands updateDateTimeOnlineForStore:storeNumber
                                                          offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
                                                           onlineDateTime:[DateHelper currentDateAndTime]];
         }

@@ -73,19 +73,6 @@
         return nil;
 }
 
-- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime {
-    // Seperate date and time.
-    NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
-    
-    // Count the unique number of stores that were offline at anytime today, and not including server downtime (all stores).
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All'", HistoryTableName, dateTimeSeperated[0]];
-    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(DISTINCT storeNum)"];
-    if ([results count])
-        return (NSNumber *) results[0];
-    else
-        return nil;
-}
-
 /*! Selects the count of print stores in store table.
  This method is used to subtract the difference from the offline history table to get online stores for a given day.
  *
@@ -171,8 +158,21 @@
 
 #pragma mark - Offline History -
 
+- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime {
+    // Seperate date and time.
+    NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
+    
+    // Count the unique number of stores that were offline at anytime today, that haven't be resolved as online and do not include server downtime (all stores).
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All' AND onlineDateTime IS NULL", HistoryTableName, dateTimeSeperated[0]];
+    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(DISTINCT storeNum)"];
+    if ([results count])
+        return (NSNumber *) results[0];
+    else
+        return nil;
+}
+
 - (NSDictionary *)selectLastDowntime {
-    NSString *commandString = @"SELECT * FROM offline_history ORDER BY date DESC LIMIT 1";
+    NSString *commandString = @"SELECT * FROM offline_history WHERE storeNum = 'All' ORDER BY date DESC LIMIT 1";
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
         return results[0];
@@ -186,7 +186,20 @@
      Offline history table stores results in date time format, which is why we perform a LIKE query using only date.
      We return the most recent date and time with ORDER BY and limit the retrieval to one row.
      */
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' ORDER BY date DESC LIMIT 1", [DateHelper currentDate]];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' AND storeNum = 'All' ORDER BY offlineDateTime DESC LIMIT 1",
+                               [DateHelper currentDate]];
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return results[0];
+    } else {
+        return nil;
+    }
+}
+
+- (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber {
+    // Selects most recent offline entry for the store today.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' AND storeNum = '%@' ORDER BY offlineDateTime DESC LIMIT 1",
+                               [DateHelper currentDate], storeNumber];
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
         return results[0];

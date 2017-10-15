@@ -24,7 +24,6 @@
 - (NSString *)selectNextUpdateDateInHistoryTableWithDate:(NSString *)date;
 
 // Return count.
-- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
 - (NSNumber *)countPrintStoresInStoreTable;
 - (NSNumber *)countStoresInTempTable;
 - (NSNumber *)countOnlineStoresInTempTable;
@@ -52,7 +51,9 @@
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
 
 // Offline history.
+- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
 - (NSDictionary *)selectLastDowntime;
 - (NSDictionary *)selectLastDowntimeToday;
+- (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber;
 
 @end
