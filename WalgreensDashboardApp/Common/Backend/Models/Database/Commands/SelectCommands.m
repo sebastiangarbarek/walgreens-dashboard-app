@@ -73,9 +73,13 @@
         return nil;
 }
 
-- (NSNumber *)countOfflineInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE date = '%@'", HistoryTableName, date];
-    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
+- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime {
+    // Seperate date and time.
+    NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
+    
+    // Count the unique number of stores that were offline at anytime today, and not including server downtime (all stores).
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All'", HistoryTableName, dateTimeSeperated[0]];
+    NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(DISTINCT storeNum)"];
     if ([results count])
         return (NSNumber *) results[0];
     else

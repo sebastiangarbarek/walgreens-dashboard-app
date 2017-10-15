@@ -67,6 +67,7 @@
 }
 
 - (void)startNewRequestThread {
+    printf("[HARVESTER 🍏] Starting a new request thread...\n");
     requestThread = [[NSThread alloc] initWithTarget:self selector:@selector(start) object:nil];
     [requestThread start];
 }
@@ -102,21 +103,14 @@
                 // Check if data is not relevant to today.
                 if (![[self.storeStatuses objectForKey:@"date"] isEqualToString:[DateHelper currentDate]]) {
                     printf("[HARVESTER 🍏] Temporary data is outdated...\n");
-                    // Delete the .plist and create a new dictionary.
-                    [[NSFileManager defaultManager] removeItemAtPath:plistStatusPath error:nil];
-                    printf("[HARVESTER 🍏] Creating a new temporary data store...\n");
-                    self.storeStatuses = [NSMutableDictionary new];
-                    // Store today's date.
-                    [self.storeStatuses setObject:[DateHelper currentDate] forKey:@"date"];
+                    [self deleteStoreStatuses:plistStatusPath];
+                    [self createNewTemporaryDataStore];
                 } else {
                     printf("[HARVESTER 🍏] Using existing temporary data store.\n");
                 }
             } else {
-                printf("[HARVESTER 🍏] Creating new temporary data store...\n");
                 // If .plist doesn't exist it will be created on app exit.
-                self.storeStatuses = [NSMutableDictionary new];
-                // Store today's date.
-                [self.storeStatuses setObject:[DateHelper currentDate] forKey:@"date"];
+                [self createNewTemporaryDataStore];
             }
             
             // Get all stores that have been checked.
@@ -135,10 +129,19 @@
                 [walgreensApi requestAllStoresInList:[serverStores copy]];
                 printf("[HARVESTER 🍏] A thread has returned from (requestStoreList:) completion handler.\n");
             } else {
-                printf("[HARVESTER 🍏] No stores left to check today.\n");
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
+                printf("[HARVESTER 🍏] Finished checking all stores.\n");
+                
+                // Uncomment to notify view controller(s)
+                // [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
+                
                 // Return thread.
                 dispatch_semaphore_signal(startingThreadSemaphore);
+                
+                // Delete temporary .plist statuses.
+                [self deleteStoreStatuses:plistStatusPath];
+                
+                // The app will restart checking.
+                [self startNewRequestThread];
             }
         } else {
             failed = YES;
@@ -161,6 +164,17 @@
     } else {
         return YES;
     }
+}
+
+- (void)createNewTemporaryDataStore {
+    printf("[HARVESTER 🍏] Creating a new temporary data store...\n");
+    self.storeStatuses = [NSMutableDictionary new];
+    // Store today's date.
+    [self.storeStatuses setObject:[DateHelper currentDate] forKey:@"date"];
+}
+
+- (void)deleteStoreStatuses:(NSString *)path {
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
 }
 
 - (void)saveStoreStatuses {
@@ -214,12 +228,15 @@
     // Notify view controller(s).
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
     
-    // Save .plist.
-    printf("[HARVESTER 🍏] Saving temporary statuses...\n");
-    [self saveStoreStatuses];
+    // Uncomment to save .plist if restricting to one check a day.
+    // printf("[HARVESTER 🍏] Saving temporary statuses...\n");
+    // [self saveStoreStatuses];
     
     // Return thread.
     dispatch_semaphore_signal(startingThreadSemaphore);
+    
+    // Will find that all stores have been checked and immediately restart.
+    [self startNewRequestThread];
 }
 
 - (void)walgreensApiIsDown {

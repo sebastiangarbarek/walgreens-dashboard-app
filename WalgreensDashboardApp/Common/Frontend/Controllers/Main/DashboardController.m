@@ -88,7 +88,7 @@
     
     // Get the numbers.
     int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
-    int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
+    int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
     int online = numberOfPrintStores - offline;
     NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
@@ -348,7 +348,7 @@
         online = 0;
         offline = numberOfPrintStores;
     } else {
-        offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDate:[DateHelper currentDate]] intValue];
+        offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
         online = numberOfPrintStores - offline;
     }
 
