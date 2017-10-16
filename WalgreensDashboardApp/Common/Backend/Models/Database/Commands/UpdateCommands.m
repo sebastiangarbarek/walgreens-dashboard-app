@@ -21,6 +21,11 @@
     [self.databaseManager executeCommand:[commandString UTF8String]];
 }
 
+- (void)deleteStoreFromStoreDetailTable:(NSString *)storeNumber {
+    NSString *commandString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    [self.databaseManager executeCommand:[commandString UTF8String]];
+}
+
 #pragma mark - Offline History -
 
 - (void)updateDateTimeOnlineForStore:(NSString *)storeNumber offlineDateTime:(NSString *)offlineDateTime onlineDateTime:(NSString *)onlineDateTime {

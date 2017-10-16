@@ -266,8 +266,13 @@
 
 - (void)walgreensApiOnlineStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
     [self insertStoreIntoDatabaseIfNotExists:storeNumber responseDictionary:responseDictionary];
-    [self updateStatusOfServerIfWasDown];
-    [self updateStoreStatusIfWasOffline:storeNumber];
+    
+    // Needs work.
+    // [self updateStatusOfServerIfWasDown];
+    
+    // Needs work.
+    // [self updateStoreStatusIfWasOffline:storeNumber];
+    
     [self addTemporary:storeNumber status:YES];
     
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
@@ -296,18 +301,29 @@
 }
 
 - (void)walgreensApiStoreDoesNotExistWithStoreNumber:(NSString *)storeNumber {
+    if ([databaseManager.selectCommands storeExists:storeNumber] == YES) {
+        printf("[STATUS] Discontinued store #%s exists in database.\n", [[storeNumber description] UTF8String]);
+        printf("[STATUS] Removing store #%s from database.\n", [[storeNumber description] UTF8String]);
+        [databaseManager.updateCommands deleteStoreFromStoreDetailTable:storeNumber];
+    }
     
+    // Store list and store detail on server might not be in sync.
+    [self addTemporary:storeNumber status:NO];
 }
 
 - (void)walgreensApiIsDown {
-    [self checkDowntime];
+    // Needs work.
+    // [self checkDowntime];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
 }
 
 - (void)offline:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
     [self insertStoreIntoDatabaseIfNotExists:storeNumber responseDictionary:responseDictionary];
-    [self updateStatusOfServerIfWasDown];
+    
+    // Needs work.
+    // [self updateStatusOfServerIfWasDown];
+    
     [self addTemporary:storeNumber status:NO];
     [self insertOfflineStore:storeNumber printStatus:[responseDictionary objectForKey:kPhotoStatus]];
 }
