@@ -10,32 +10,16 @@
 
 #import "NetworkUtility.h"
 #import "Reachability.h"
-
-static NSString *const apiKey = @"HaVvNTNGKqsZuZR8ARAC0q3rvAeuam5P";
-static NSString *const affId = @"photoapi";
-static NSString *const storeListServiceUrl = @"https://services-qa.walgreens.com/api/util/storenumber";
-static NSString *const storeDetailServiceUrl = @"https://services-qa.walgreens.com/api/stores/details";
-
-@class WalgreensAPI;
-
-@protocol WalgreensAPIDelegate <NSObject>
-
-@required
-- (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber;
-- (void)walgreensApiDidFailStore:(WalgreensAPI *)sender forStore:(NSString *)storeNumber;
-- (void)walgreensApiDidSendAll:(WalgreensAPI *)sender;
-@optional
-- (void)walgreensApiIsDown;
-
-@end
+#import "WalgreensAPIDelegate.h"
+#import "WalgreensAPIConstants.h"
 
 @interface WalgreensAPI : NSObject
 
 @property (nonatomic, weak) id <WalgreensAPIDelegate> delegate;
-@property (atomic, weak) NSThread *thread;
 
-- (instancetype)initWithSemaphore:(dispatch_semaphore_t)semaphore;
-- (void)requestAllStoresInList:(NSArray *)storeList;
-- (void)requestStore:(NSString *)storeId;
+@property (atomic) NSThread *thread;
+
+- (void)requestStoresInList:(NSArray *)storeList;
+- (void)requestStore:(NSString *)storeNumber;
 
 @end

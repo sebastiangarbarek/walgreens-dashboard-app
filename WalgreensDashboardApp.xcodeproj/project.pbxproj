@@ -48,6 +48,7 @@
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
 		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
 		A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */; };
+		A8A1B8271F945B90004A0BC3 /* WalgreensAPIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */; };
 		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
 		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
 		A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35631F80F1750017C904 /* StoreHoursController.m */; };
@@ -159,6 +160,9 @@
 		A89EA2841F726CF800A50E3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
 		A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
+		A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIDelegate.h; sourceTree = "<group>"; };
+		A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIConstants.h; sourceTree = "<group>"; };
+		A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPIConstants.m; sourceTree = "<group>"; };
 		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
 		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
 		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -746,6 +750,9 @@
 				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
 				A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */,
 				A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */,
+				A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */,
+				A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */,
+				A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */,
 			);
 			name = Network;
 			path = WalgreensDashboardApp/Common/Backend/Models/Network;
@@ -1059,6 +1066,7 @@
 				A86CF5041F5CFC54005889B7 /* Controller.m in Sources */,
 				A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */,
 				A8D8919C1F71F6B200E3388B /* StoreTimesConstants.m in Sources */,
+				A8A1B8271F945B90004A0BC3 /* WalgreensAPIConstants.m in Sources */,
 				A86CF5061F5CFC54005889B7 /* DataController.m in Sources */,
 				A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */,
 				A86CF4F91F5CFC1A005889B7 /* DateHelper.m in Sources */,

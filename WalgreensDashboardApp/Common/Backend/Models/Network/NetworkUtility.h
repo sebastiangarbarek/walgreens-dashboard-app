@@ -8,16 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "WalgreensAPI.h"
+#import "WalgreensAPIConstants.h"
 
 @interface NetworkUtility : NSObject
 
-+ (void)requestStoreList:(void(^)(NSArray *storeList, NSError *sessionError))complete;
++ (void)requestStoreList:(void(^)(NSArray *storeList))complete;
 + (void)requestProductList:(void(^)(NSDictionary *productList))complete;
-+ (NSMutableURLRequest *)buildRequestFrom:(NSString *)url andRequestData:(NSMutableDictionary *)requestData;
-+ (BOOL)did404:(NSURLResponse *)urlResponse;
-+ (BOOL)did503:(NSURLResponse *)urlResponse;
-+ (BOOL)validResponse:(NSURLResponse *)urlResponse withError:(NSError *)sessionError andData:(NSData *)responseData;
-+ (double)percentCompleteWithCount:(NSInteger)count andTotal:(NSInteger)total;
++ (NSMutableURLRequest *)buildRequestFrom:(NSString *)url requestData:(NSMutableDictionary *)requestData;
 
 @end
