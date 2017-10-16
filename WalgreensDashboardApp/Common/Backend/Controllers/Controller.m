@@ -13,17 +13,17 @@
 - (instancetype)init {
     self  = [super init];
     if (self) {
-        startingThreadSemaphore = dispatch_semaphore_create(0);
-        walgreensApi = [[WalgreensAPI alloc] initWithSemaphore:startingThreadSemaphore];
+        startSemaphore = dispatch_semaphore_create(0);
+        walgreensApi = [[WalgreensAPI alloc] initWithStartSemaphore:startSemaphore];
         databaseManager = [[DatabaseManager alloc] init];
     }
     return self;
 }
 
-- (instancetype)initWithManager:(DatabaseManager *)dbManager {
+- (instancetype)initWithManager:(DatabaseManager *)manager {
     self  = [self init];
     if (self) {
-        databaseManager = dbManager;
+        databaseManager = manager;
         [databaseManager openCreateDatabase];
     }
     return self;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const apiKey;
-extern NSString *const affId;
-extern NSString *const storeListServiceUrl;
-extern NSString *const storeDetailServiceUrl;
+extern NSString *const kApiKey;
+extern NSString *const kAffId;
+extern NSString *const kStoreListServiceUrl;
+extern NSString *const kStoreDetailServiceUrl;

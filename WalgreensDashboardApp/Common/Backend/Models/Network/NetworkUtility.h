@@ -12,8 +12,8 @@
 
 @interface NetworkUtility : NSObject
 
-+ (void)requestStoreList:(void(^)(NSArray *storeList))complete;
-+ (void)requestProductList:(void(^)(NSDictionary *productList))complete;
++ (void)requestStoreList:(void(^)(NSArray *storeList, BOOL notConnected))complete;
++ (void)requestProductList:(void(^)(NSDictionary *productList, BOOL notConnected))complete;
 + (NSMutableURLRequest *)buildRequestFrom:(NSString *)url requestData:(NSMutableDictionary *)requestData;
 
 @end

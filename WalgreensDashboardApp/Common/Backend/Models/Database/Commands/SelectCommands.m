@@ -186,14 +186,33 @@
 
 - (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber {
     // Selects most recent offline entry for the store today.
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' AND storeNum = '%@' ORDER BY offlineDateTime DESC LIMIT 1",
-                               [DateHelper currentDate], storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM offline_history WHERE offlineDateTime LIKE '%@%%' AND storeNum = '%@' ORDER BY offlineDateTime DESC LIMIT 1", [DateHelper currentDate], storeNumber];
+    
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    
     if ([results count]) {
-        return results[0];
-    } else {
+        NSDictionary *row = results[0];
+        
+        if ([[row objectForKey:@"status"] isEqualToString:@"C"]) {
+            return row;
+        }
+        
+        if ([[row objectForKey:@"status"] isEqualToString:@"M"]) {
+            return row;
+        }
+        
+        if ([[row objectForKey:@"status"] isEqualToString:@"T"]) {
+            return row;
+        }
+        
+        if ([row objectForKey:@"status"] == nil) {
+            return row;
+        }
+        
         return nil;
     }
+    
+    return nil;
 }
 
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {

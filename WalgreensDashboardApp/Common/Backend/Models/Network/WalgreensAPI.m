@@ -15,15 +15,18 @@
     NSInteger nStoresToRequest;
     NSInteger nStoresRequested;
     
+    dispatch_semaphore_t startSemaphore;
     dispatch_group_t requestGroup;
     
     Reachability *reach;
 }
 
-- (instancetype)init {
+- (instancetype)initWithStartSemaphore:(dispatch_semaphore_t)semaphore {
     self = [super init];
     
     if (self) {
+        startSemaphore = semaphore;
+        
         nStoresRequestedLock = [NSLock new];
     }
     
@@ -47,7 +50,7 @@
 
     for (int i = 0; i < [storeList count]; i++) {
         if ([[NSThread currentThread] isCancelled]) {
-            printf("[WALGREENS API 🍏] Requests thread cancelled.\n");
+            printf("[WALGREENS API] Requests thread cancelled.\n");
             
             // Do not send anymore requests.
             break;
@@ -77,7 +80,7 @@
             wasDisconnected = NO;
         }
         
-        printf("[WALGREENS API 🍏] Requesting store #%s...\n", [storeList[i] UTF8String]);
+        printf("[WALGREENS API] Requesting store #%s...\n", [storeList[i] UTF8String]);
         
         // Balanced request side.
         dispatch_group_enter(requestGroup);
@@ -89,30 +92,34 @@
         [NSThread sleepForTimeInterval:0.5f];
     }
     
+    printf("[WALGREENS API] Waiting for dispatch group.\n");
+    
     // Wait until all requests leave dispatch group.
     dispatch_group_wait(requestGroup, DISPATCH_TIME_FOREVER);
     
-    if ([[NSThread currentThread] isCancelled] == NO) {
-        if ([failedStores count]) {
-            // Recursive call.
-            [self requestStoresInList:failedStores];
-        }
+    if ([[NSThread currentThread] isCancelled] == NO && [failedStores count]) {
+        printf("[WALGREENS API] Retrying %li failed request(s).\n", [failedStores count]);
+        
+        // Recursive call.
+        [self requestStoresInList:failedStores];
+    } else {
+        printf("[WALGREENS API] Returning starting method.\n");
+        
+        // Return starting method in controller.
+        dispatch_semaphore_signal(startSemaphore);
     }
-    
-    // Return request thread.
-    printf("[WALGREENS API 🍏] Requests thread is returning.\n");
 }
 
 - (void)requestStore:(NSString *)storeNumber {
     NSMutableDictionary *requestDictionary = [NSMutableDictionary dictionary];
-    [requestDictionary setValue:apiKey forKey:@"apiKey"];
-    [requestDictionary setValue:affId forKey:@"affId"];
+    [requestDictionary setValue:kApiKey forKey:@"apiKey"];
+    [requestDictionary setValue:kAffId forKey:@"affId"];
     [requestDictionary setValue:storeNumber forKey:@"storeNo"];
     [requestDictionary setValue:@"storeDtl" forKey:@"act"];
     [requestDictionary setValue:@"storeDtlJSON" forKey:@"view"];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:[NetworkUtility buildRequestFrom:storeDetailServiceUrl requestData:requestDictionary]
+    [[session dataTaskWithRequest:[NetworkUtility buildRequestFrom:kStoreDetailServiceUrl requestData:requestDictionary]
                 completionHandler:^(NSData *responseData, NSURLResponse *urlResponse, NSError *sessionError) {
                     
                     if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -142,6 +149,10 @@
                                     printf("\t[#%s REQUEST 🍏] Store is down for unscheduled maintenance.\n", [storeNumber UTF8String]);
                                     
                                     [self.delegate walgreensApiUnscheduledMaintenanceStoreWithData:responseDictionary storeNumber:storeNumber];
+                                } else {
+                                    printf("\t[#%s REQUEST 🍏] Store is offline.\n", [storeNumber UTF8String]);
+                                    
+                                    [self.delegate walgreensApiOfflineStoreWithData:responseDictionary storeNumber:storeNumber];
                                 }
                             }
                         }
@@ -221,7 +232,7 @@
     [nStoresRequestedLock lock];
     
     nStoresRequested++;
-    printf("\t[#%s REQUEST 🍏] %.0f%% complete.\n", [storeNumber UTF8String], (100 * (double)nStoresRequested) / (double)nStoresToRequest);
+    printf("\t[#%s REQUEST] %.0f%% complete.\n", [storeNumber UTF8String], (100 * (double)nStoresRequested) / (double)nStoresToRequest);
     
     [nStoresRequestedLock unlock];
 }
@@ -229,6 +240,8 @@
 - (void)addToFailedRequestQueue:(NSString *)storeNumber {
     @synchronized (failedStores) {
         [failedStores addObject:storeNumber];
+        
+        printf("\t[#%s REQUEST] %li failed request(s) in queue.\n", [storeNumber UTF8String], [failedStores count]);
     }
 }
 

@@ -10,14 +10,16 @@
 
 @implementation NetworkUtility
 
-+ (void)requestStoreList:(void(^)(NSArray *storeList))complete {
++ (void)requestStoreList:(void(^)(NSArray *storeList, BOOL notConnected))complete {
     NSMutableDictionary *requestDictionary = [NSMutableDictionary dictionary];
-    [requestDictionary setValue:apiKey forKey:@"apiKey"];
-    [requestDictionary setValue:affId forKey:@"affId"];
+    [requestDictionary setValue:kApiKey forKey:@"apiKey"];
+    [requestDictionary setValue:kAffId forKey:@"affId"];
     [requestDictionary setValue:@"storeNumber" forKey:@"act"];
     
+    printf("[STORE LIST] Requesting store list...\n");
+    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [[session dataTaskWithRequest:[NetworkUtility buildRequestFrom:storeListServiceUrl requestData:requestDictionary]
+    [[session dataTaskWithRequest:[NetworkUtility buildRequestFrom:kStoreListServiceUrl requestData:requestDictionary]
                 completionHandler:^(NSData *responseData, NSURLResponse *urlResponse, NSError *sessionError) {
                     if ([urlResponse isKindOfClass:[NSHTTPURLResponse class]]) {
                         NSInteger statusCode = [(NSHTTPURLResponse *)urlResponse statusCode];
@@ -26,9 +28,9 @@
                             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
                             
                             if (!responseDictionary) {
-                                complete(nil);
+                                complete(nil, YES);
                             } else if ([responseDictionary valueForKey:@"store"]) {
-                                printf("[STORE LIST 🍏] Retrieved store list successfully.\n");
+                                printf("[STORE LIST 🍏] Store list retrieved successfully.\n");
                                 
                                 NSArray *list = [responseDictionary valueForKey:@"store"];
                                 
@@ -39,40 +41,43 @@
                                     [storeList addObject:[list[i] stringValue]];
                                 }
                                 
-                                complete(storeList);
+                                complete(storeList, YES);
                             }
                         }
                         else if (statusCode == 404) {
                             printf("[STORE LIST 🍎] Does not exist on the server.\n");
-                            complete(nil);
+                            complete(nil, YES);
                         }
                         else if (statusCode == 503) {
                             printf("[STORE LIST 🍎] Service is temporarily unavailable.\n");
-                            complete(nil);
+                            complete(nil, YES);
                         }
                         else if (statusCode == 504) {
                             printf("[STORE LIST 🍎] Request took too long to send.\n");
-                            complete(nil);
+                            complete(nil, YES);
                         }
                         else if (statusCode >= 506 && statusCode <= 512) {
                             printf("[STORE LIST 🍎] Service is down.\n");
-                            complete(nil);
+                            complete(nil, YES);
                         }
                         else if (sessionError) {
                             printf("[STORE LIST 🍎] Session error.\n");
-                            complete(nil);
+                            if (sessionError.code == NSURLErrorNotConnectedToInternet) {
+                                printf("[STORE LIST 🍎] Not connected to the internet.\n");
+                                complete(nil, NO);
+                            }
                         } else {
                             printf("[STORE LIST 🍎] Something went wrong.\n");
-                            complete(nil);
+                            complete(nil, YES);
                         }
                     } else {
                         printf("[STORE LIST 🍎] Invalid response.\n");
-                        complete(nil);
+                        complete(nil, YES);
                     }
                 }] resume];
 }
 
-+ (void)requestProductList:(void(^)(NSDictionary *productList))complete {
++ (void)requestProductList:(void(^)(NSDictionary *productList, BOOL notConnected))complete {
     
 }
 

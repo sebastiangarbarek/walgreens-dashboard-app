@@ -8,53 +8,40 @@
 
 #import "DateHelper.h"
 
-static NSDateFormatter *sDateFormatter = nil;
-static NSCalendar *sCalender = nil;
-
 @implementation DateHelper
 
 + (NSString *)stringWithDate:(NSDate *)date {
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [sDateFormatter stringFromDate:date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [dateFormatter stringFromDate:date];
 }
 
 + (NSDate *)dateWithString:(NSString *)date {
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [sDateFormatter dateFromString:date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [dateFormatter dateFromString:date];
 }
 
 + (NSString *)currentDate {
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
-    return [sDateFormatter stringFromDate:[NSDate date]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+    return [dateFormatter stringFromDate:[NSDate date]];
 }
 
 + (NSString *)currentDateAndTime {
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    return [sDateFormatter stringFromDate:[NSDate date]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    return [dateFormatter stringFromDate:[NSDate date]];
 }
 
-+ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked interval:(long)interval {
-    if (sCalender == nil) {
-        sCalender = [NSCalendar currentCalendar];
-    }
++ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked {
+    NSCalendar *calender = [NSCalendar currentCalendar];
     
     unsigned unitFlags = NSCalendarUnitMinute;
-    NSDateComponents *results = [sCalender components:unitFlags fromDate:dateTime toDate:[NSDate date] options:0];
+    NSDateComponents *results = [calender components:unitFlags fromDate:dateTime toDate:[NSDate date] options:0];
     
     // Must factor number of times checked and the interval.
-    if ([results minute] > (minutes + (timesChecked * interval))) {
+    if ([results minute] > (minutes + (timesChecked * minutes))) {
         return YES;
     } else {
         return NO;
@@ -62,27 +49,23 @@ static NSCalendar *sCalender = nil;
 }
 
 + (NSString *)dateFormatForGraph:(NSString *)dateString{
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"YYYY-MM-dd"];
-    NSDate *date = [sDateFormatter dateFromString:dateString];
-    [sDateFormatter setDateFormat:@"dd/MM"];
-    dateString = [sDateFormatter stringFromDate:date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd"];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    [dateFormatter setDateFormat:@"dd/MM"];
+    dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
 
 + (NSString *)dateFormatForGraphData: (NSString *)dateString{
-    if (sDateFormatter == nil) {
-        sDateFormatter = [[NSDateFormatter alloc] init];
-    }
-    [sDateFormatter setDateFormat:@"yyyy"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy"];
     NSDate *dateYear = [NSDate date];
-    NSInteger currentYear = [[sDateFormatter stringFromDate:dateYear] integerValue];
-    [sDateFormatter setDateFormat:@"dd/MM"];
-    NSDate *date = [sDateFormatter dateFromString:dateString];
-    [sDateFormatter setDateFormat:@"MM-dd"];
-    dateString = [sDateFormatter stringFromDate:date];
+    NSInteger currentYear = [[dateFormatter stringFromDate:dateYear] integerValue];
+    [dateFormatter setDateFormat:@"dd/MM"];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    [dateFormatter setDateFormat:@"MM-dd"];
+    dateString = [dateFormatter stringFromDate:date];
     dateString = [NSString stringWithFormat:@"%ld-%@",(long)currentYear,dateString];
     return dateString;
 }

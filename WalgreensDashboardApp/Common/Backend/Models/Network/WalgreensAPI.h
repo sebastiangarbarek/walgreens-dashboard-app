@@ -19,6 +19,8 @@
 
 @property (atomic) NSThread *thread;
 
+- (instancetype)initWithStartSemaphore:(dispatch_semaphore_t)semaphore;
+
 - (void)requestStoresInList:(NSArray *)storeList;
 - (void)requestStore:(NSString *)storeNumber;
 

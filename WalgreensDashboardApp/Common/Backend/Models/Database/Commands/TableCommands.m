@@ -35,7 +35,7 @@
 }
 
 - (void)createHistoryTable {
-    NSString *commandString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (storeNum TEXT, offlineDateTime TEXT, onlineDateTime TEXT, PRIMARY KEY (storeNum, offlineDateTime))", HistoryTableName];
+    NSString *commandString = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (storeNum TEXT, status TEXT, offlineDateTime TEXT, onlineDateTime TEXT, PRIMARY KEY (storeNum, offlineDateTime))", HistoryTableName];
     [self.databaseManager executeCommand:[commandString UTF8String]];
 }
 

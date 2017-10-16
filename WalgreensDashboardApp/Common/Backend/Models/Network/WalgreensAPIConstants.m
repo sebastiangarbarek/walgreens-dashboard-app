@@ -8,7 +8,7 @@
 
 #import "WalgreensAPIConstants.h"
 
-NSString *const apiKey = @"HaVvNTNGKqsZuZR8ARAC0q3rvAeuam5P";
-NSString *const affId = @"photoapi";
-NSString *const storeListServiceUrl = @"https://services-qa.walgreens.com/api/util/storenumber";
-NSString *const storeDetailServiceUrl = @"https://services-qa.walgreens.com/api/stores/details";
+NSString *const kApiKey = @"HaVvNTNGKqsZuZR8ARAC0q3rvAeuam5P";
+NSString *const kAffId = @"photoapi";
+NSString *const kStoreListServiceUrl = @"https://services-qa.walgreens.com/api/util/storenumber";
+NSString *const kStoreDetailServiceUrl = @"https://services-qa.walgreens.com/api/stores/details";
