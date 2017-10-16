@@ -199,6 +199,9 @@
                         
                         // Add to failed request queue to try again later.
                         [self addToFailedRequestQueue:storeNumber];
+                        
+                        // Notify service is down.
+                        [self.delegate walgreensApiIsDown];
                     }
                     
                     // Must leave request group.

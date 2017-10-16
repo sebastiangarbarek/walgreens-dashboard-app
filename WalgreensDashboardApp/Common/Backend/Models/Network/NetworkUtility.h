@@ -12,7 +12,7 @@
 
 @interface NetworkUtility : NSObject
 
-+ (void)requestStoreList:(void(^)(NSArray *storeList, BOOL notConnected))complete;
++ (void)requestStoreList:(void(^)(NSArray *storeList, BOOL notConnected, BOOL serviceDown))complete;
 + (void)requestProductList:(void(^)(NSDictionary *productList, BOOL notConnected))complete;
 + (NSMutableURLRequest *)buildRequestFrom:(NSString *)url requestData:(NSMutableDictionary *)requestData;
 

@@ -150,7 +150,7 @@
     // Seperate date and time.
     NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
     
-    // Count the unique number of stores that were offline at anytime today, that haven't be resolved as online and do not include server downtime (all stores).
+    // Count the unique number of stores that were offline at anytime today, that haven't be resolved as online and do not include server downtime.
     NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All' AND onlineDateTime IS NULL", HistoryTableName, dateTimeSeperated[0]];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(DISTINCT storeNum)"];
     if ([results count])

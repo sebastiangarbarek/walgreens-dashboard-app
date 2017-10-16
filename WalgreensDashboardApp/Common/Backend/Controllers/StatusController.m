@@ -74,12 +74,21 @@
 #pragma mark - Class Methods -
 
 - (void)requestStores {
-    [NetworkUtility requestStoreList:^(NSArray *storeList, BOOL notConnected) {
+    [NetworkUtility requestStoreList:^(NSArray *storeList, BOOL notConnected, BOOL serviceDown) {
         if (notConnected) {
             wasDisconnected = YES;
             
             // Notify view controller(s).
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Not connected" object:nil];
+            
+            // Try again.
+            dispatch_semaphore_signal(startSemaphore);
+        }
+        else if (serviceDown) {
+            wasDisconnected = YES;
+            
+            // Notify view controller(s).
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
             
             // Try again.
             dispatch_semaphore_signal(startSemaphore);
