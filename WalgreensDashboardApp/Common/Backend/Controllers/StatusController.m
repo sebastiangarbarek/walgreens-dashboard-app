@@ -290,14 +290,14 @@
     [self offline:responseDictionary storeNumber:storeNumber];
     
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store scheduled maintenance" object:nil userInfo:data];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
 }
 
 - (void)walgreensApiUnscheduledMaintenanceStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
     [self offline:responseDictionary storeNumber:storeNumber];
     
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store unscheduled maintenance" object:nil userInfo:data];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
 }
 
 - (void)walgreensApiStoreDoesNotExistWithStoreNumber:(NSString *)storeNumber {
