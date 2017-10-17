@@ -166,7 +166,7 @@
     // Get all stores that have been checked.
     NSMutableArray *storesChecked = [NSMutableArray arrayWithArray:[self.storeStatuses allKeys]];
     
-    NSMutableArray *remainingStores = [storeListWithoutNonPrintStores copy];
+    NSMutableArray *remainingStores = [NSMutableArray arrayWithArray:[storeListWithoutNonPrintStores copy]];
     // Extract the difference for the remaining print stores.
     [remainingStores removeObjectsInArray:storesChecked];
     
