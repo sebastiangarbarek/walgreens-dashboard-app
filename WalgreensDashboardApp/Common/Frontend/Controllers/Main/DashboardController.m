@@ -28,12 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupView];
     [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self configureView];
+    [self configureViewOnAppear];
     
     if (self.notificationView.isHidden) {
         [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
@@ -140,7 +141,23 @@
     [cellCollection addObject:closedCell];
 }
 
-- (void)configureView {
+- (void)setupView {
+    [self addPrinticularLogo];
+}
+
+- (void)addPrinticularLogo {
+    UIImage *image = [UIImage imageNamed:@"Printicular Logo"];
+    
+    // Use to automatically scale image.
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    button.adjustsImageWhenHighlighted = NO;
+    
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
+}
+
+- (void)configureViewOnAppear {
     [self setBackgroundColorSelectedTabItem];
     [self setTextColorTabItem];
     // Set background color of navigation bar.
