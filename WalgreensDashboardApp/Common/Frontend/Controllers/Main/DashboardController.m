@@ -413,15 +413,14 @@
     [cellCollection objectAtIndex:1].count = [NSNumberFormatter localizedStringFromNumber:@(offline)
                                                                               numberStyle:NSNumberFormatterDecimalStyle];
     
-    // Uncomment to disable fade animation.
-    //[UIView setAnimationsEnabled:NO];
+    [UIView setAnimationsEnabled:NO];
     NSMutableArray *indexPaths = [NSMutableArray new];
     NSIndexPath *onlineIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     NSIndexPath *offlineIndexPath = [NSIndexPath indexPathForItem:1 inSection:0];
     [indexPaths addObject:onlineIndexPath];
     [indexPaths addObject:offlineIndexPath];
     [self.collectionView reloadItemsAtIndexPaths:indexPaths];
-    //[UIView setAnimationsEnabled:animationsEnabled];
+    [UIView setAnimationsEnabled:YES];
 }
 
 @end
