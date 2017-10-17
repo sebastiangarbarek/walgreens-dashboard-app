@@ -156,7 +156,7 @@
         <scene sceneID="BXx-Us-d9q">
             <objects>
                 <navigationController id="Re1-2l-Nkg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dashboard" id="HJf-e4-Hwg"/>
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="Home Outline" selectedImage="Home Filled" id="HJf-e4-Hwg"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IZP-ef-piB">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -171,4 +171,8 @@
             <point key="canvasLocation" x="-598" y="131"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Home Filled" width="50" height="50"/>
+        <image name="Home Outline" width="50" height="50"/>
+    </resources>
 </document>
