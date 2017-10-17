@@ -15,10 +15,11 @@
 @interface Controller : NSObject {
     WalgreensAPI *walgreensApi;
     DatabaseManager *databaseManager;
-    dispatch_semaphore_t startingThreadSemaphore;
+    dispatch_semaphore_t startSemaphore;
 }
 
-- (instancetype)initWithManager:(DatabaseManager *)dbManager;
+- (instancetype)initWithManager:(DatabaseManager *)manager;
+
 - (void)closeDatabase;
 
 @end

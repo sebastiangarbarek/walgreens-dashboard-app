@@ -20,21 +20,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"%@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
     
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    statusController = [[StatusController alloc] initWithManager:databaseManagerApp];
+    
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    printf("[APP BACKGROUND] Saving temporary list of stores requested...\n");
     
+    [statusController saveTemporary];
+    
+    printf("[APP BACKGROUND] Stopping status controller...\n");
+    
+    [statusController stop];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    printf("[APP BACKGROUND] Saving temporary statuses...\n");
-    [statusController saveStoreStatuses];
     
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
-    printf("[APP BACKGROUND] Stopping status controller...\n");
-    statusController.stop = YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -42,27 +45,13 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    printf("[APP ACTIVE] Initializing status controller...\n");
+    printf("[APP ACTIVE] Starting status controller...\n");
     
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    
-    if (databaseManagerApp == nil) {
-        databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    }
-    
-    if (statusController == nil) {
-        statusController = [[StatusController alloc] initWithManager:databaseManagerApp];
-    } else {
-        [statusController start];
-    }
+    [statusController start];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    printf("[APP TERMINATE] Stopping status controller...\n");
     
-    statusController.stop = YES;
-    
-    [databaseManagerApp closeDatabase];
 }
 
 @end

@@ -9,7 +9,11 @@
 #import "StatusController.h"
 
 @interface StatusController () {
-    int timesCheckedDowntime;
+    NSString *requestedStoresFilePath;
+    
+    int nDowntime;
+    
+    BOOL wasDisconnected;
 }
 
 @end
@@ -18,13 +22,18 @@
 
 #pragma mark - Init Methods -
 
-- (instancetype)initWithManager:(DatabaseManager *)dbManager {
-    self = [super initWithManager:dbManager];
+- (instancetype)initWithManager:(DatabaseManager *)manager {
+    self = [super initWithManager:manager];
     
     if (self) {
-        timesCheckedDowntime = 0;
+        nDowntime = 0;
+        
         walgreensApi.delegate = self;
-        [self start];
+        
+        NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documents = [directories firstObject];
+        
+        requestedStoresFilePath = [documents stringByAppendingPathComponent:kRequestedStoresFileName];
     }
     
     return self;
@@ -32,266 +41,308 @@
 
 #pragma mark - Process Methods -
 
-- (void)start {
+- (void)start {    
     printf("[STATUS] Starting a new request thread...\n");
+    
+    // Do not need to keep a reference to this thread.
     [[[NSThread alloc] initWithTarget:self selector:@selector(request) object:nil] start];
 }
 
 - (void)request {
-    self.stop = NO;
-    
-    do {
-        [self updateStoreStatusesForToday];
+    while (!self.stopping) {
+        // Returns on store list failure, on completion of requests or cancelling.
+        [self requestStores];
+        
+        // Wait before starting requests again.
         [NSThread sleepForTimeInterval:1.0f];
-    } while (!self.stop);
+    }
     
-    printf("[STATUS] Stopped...\n");
+    printf("[STATUS] Stopped.\n");
     
-    // Running loops should check if cancelled and exit at an appropriate time. I.e. when not inserting into the database.
+    // Must be called after exiting loop.
+    self.stopping = NO;
+}
+
+- (void)stop {
+    // Must be called before calling cancel.
+    self.stopping = YES;
+    
+    // Because stopping needs to be set for return.
     [walgreensApi.thread cancel];
 }
 
 #pragma mark - Class Methods -
 
-- (BOOL)updateStoreStatusesForToday {
-    printf("[HARVESTER 🍏] Requesting store list...\n");
-    
-    __block BOOL failed;
-    [NetworkUtility requestStoreList:^(NSArray *storeList, NSError *sessionError) {
-        if (sessionError) {
-            if (sessionError.code == NSURLErrorNotConnectedToInternet) {
-                printf("[HARVESTER 🍎] Not connected to the internet.\n");
-                failed = YES;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"Not connected" object:nil];
-            }
-            // Return thread.
-            dispatch_semaphore_signal(startingThreadSemaphore);
-        } else if (storeList) {
-            printf("[HARVESTER 🍏] Store list retrieved successfully...\n");
+- (void)requestStores {
+    [NetworkUtility requestStoreList:^(NSArray *storeList, BOOL notConnected, BOOL serviceDown) {
+        if (notConnected) {
+            wasDisconnected = YES;
             
-            NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documents = [directories firstObject];
-            NSString *plistStatusPath = [documents stringByAppendingPathComponent:kStatusesFileName];
+            // Notify view controller(s).
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Not connected" object:nil];
             
-            // Check if .plist exists.
-            if ([[NSFileManager defaultManager] fileExistsAtPath:plistStatusPath]) {
-                printf("[HARVESTER 🍏] Checking existing temporary data store...\n");
-                self.storeStatuses = [NSMutableDictionary dictionaryWithContentsOfFile:plistStatusPath];
-                // Uncomment to print temporary data state.
-                // NSLog(@"%@", self.storeStatuses);
-                // Check if data is not relevant to today.
-                if (![[self.storeStatuses objectForKey:@"date"] isEqualToString:[DateHelper currentDate]]) {
-                    printf("[HARVESTER 🍏] Temporary data is outdated...\n");
-                    [self deleteStoreStatuses:plistStatusPath];
-                    [self createNewTemporaryDataStore];
-                } else {
-                    printf("[HARVESTER 🍏] Using existing temporary data store.\n");
-                }
-            } else {
-                // If .plist doesn't exist it will be created on app exit.
-                [self createNewTemporaryDataStore];
-            }
+            // Try again.
+            dispatch_semaphore_signal(startSemaphore);
+        }
+        else if (serviceDown) {
+            wasDisconnected = YES;
             
-            // Get all stores that have been checked.
-            NSMutableArray *stores = [NSMutableArray arrayWithArray:[self.storeStatuses allKeys]];
-            // Get all non-print stores that we are not interested in.
-            NSMutableArray *nonPrintStores = [databaseManager.selectCommands selectNonPrintStoreIdsInStoreTable];
-            // Get all stores from the server.
-            NSMutableArray *serverStores = [NSMutableArray arrayWithArray:storeList];
-            // Extract the difference for the remaining print stores.
-            [serverStores removeObjectsInArray:stores];
-            [serverStores removeObjectsInArray:nonPrintStores];
-            
-            // Check if there are stores left to check.
-            if ([serverStores count]) {
-                // Thread management is passed to WalgreensAPI object. This method is no longer in control.
-                [walgreensApi requestAllStoresInList:[serverStores copy]];
-                printf("[HARVESTER 🍏] A thread has returned from (requestStoreList:) completion handler.\n");
-            } else {
-                printf("[HARVESTER 🍏] Finished checking all stores.\n");
-                
-                // Uncomment to notify view controller(s)
-                // [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
-                
-                // Return thread.
-                dispatch_semaphore_signal(startingThreadSemaphore);
-                
-                // Delete temporary .plist statuses.
-                [self deleteStoreStatuses:plistStatusPath];
-                
-                // The app will restart checking.
-                [self startNewRequestThread];
-            }
-        } else {
-            failed = YES;
-            // Notify service is down.
+            // Notify view controller(s).
             [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
-            printf("[HARVESTER 🍎] Failed to retrieve store list...\n");
-            // Return thread.
-            dispatch_semaphore_signal(startingThreadSemaphore);
+            
+            // Try again.
+            dispatch_semaphore_signal(startSemaphore);
+        }
+        else if (storeList) {
+            if (wasDisconnected) {
+                // Notify view controller(s).
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Connected" object:nil];
+                
+                wasDisconnected = NO;
+            }
+            
+            NSArray *remainingStores = [self validateTemporary:storeList];
+            [walgreensApi requestStoresInList:remainingStores];
+        }
+        else {
+            // Try again.
+            dispatch_semaphore_signal(startSemaphore);
         }
     }];
     
-    printf("[HARVESTER 🍏] Waiting for threads to complete...\n");
-    // Wait for dispatched threads to complete.
-    dispatch_semaphore_wait(startingThreadSemaphore, DISPATCH_TIME_FOREVER);
-    printf("[HARVESTER 🍏] Closing...\n");
-    
-    // To restart immediately.
-    if (failed) {
-        return NO;
-    } else {
-        return YES;
-    }
+    dispatch_semaphore_wait(startSemaphore, DISPATCH_TIME_FOREVER);
 }
 
-- (void)createNewTemporaryDataStore {
-    printf("[HARVESTER 🍏] Creating a new temporary data store...\n");
+- (NSArray *)validateTemporary:(NSArray *)storeList {
+    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = [directories firstObject];
+    NSString *plistStatusPath = [documents stringByAppendingPathComponent:kRequestedStoresFileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:plistStatusPath]) {
+        printf("[STATUS] Checking temporary list of stores requested...\n");
+        
+        self.storeStatuses = [NSMutableDictionary dictionaryWithContentsOfFile:plistStatusPath];
+        
+        // Uncomment to print temporary list.
+        // NSLog(@"%@", self.storeStatuses);
+        
+        if ([[self.storeStatuses objectForKey:@"date"] isEqualToString:[DateHelper currentDate]] == NO) {
+            printf("[STATUS] List of requested stores is outdated.\n");
+            
+            [self deleteTemporary];
+            [self newTemporary];
+            
+            return [self removeNonPrintStores:storeList];
+        }
+    } else {
+        [self newTemporary];
+        
+        return [self removeNonPrintStores:storeList];
+    }
+    
+    return [self getRemainingStores:storeList];
+}
+
+- (void)newTemporary {
+    printf("[STATUS] Creating a new temporary list of requested stores...\n");
+    
     self.storeStatuses = [NSMutableDictionary new];
+    
     // Store today's date.
     [self.storeStatuses setObject:[DateHelper currentDate] forKey:@"date"];
 }
 
-- (void)deleteStoreStatuses:(NSString *)path {
-    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+- (void)deleteTemporary {
+    [[NSFileManager defaultManager] removeItemAtPath:requestedStoresFilePath error:nil];
 }
 
-- (void)saveStoreStatuses {
-    NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documents = [directories firstObject];
-    NSString *plistStatusPath = [documents stringByAppendingPathComponent:kStatusesFileName];
-    [self.storeStatuses writeToFile:plistStatusPath atomically:YES];
+- (void)saveTemporary {
+    [self.storeStatuses writeToFile:requestedStoresFilePath atomically:YES];
 }
 
-- (void)recordDowntime {
-    // Notify view controller(s).
-    printf("[HARVESTER 🍏] Notifying view controller(s).\n");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
+- (NSArray *)getRemainingStores:(NSArray *)storeList {
+    NSMutableArray *storeListWithoutNonPrintStores = [self removeNonPrintStores:storeList];
     
-    // Insert special key that all stores were offline into history table.
-    printf("[HARVESTER 🍏] Inserting new downtime entry into database.\n");
-    [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All"];
+    // Get all stores that have been checked.
+    NSMutableArray *storesChecked = [NSMutableArray arrayWithArray:[self.storeStatuses allKeys]];
+    
+    NSMutableArray *remainingStores = [storeListWithoutNonPrintStores copy];
+    // Extract the difference for the remaining print stores.
+    [remainingStores removeObjectsInArray:storesChecked];
+    
+    // If there are no remaining stores.
+    if ([remainingStores count] == 0) {
+        [self deleteTemporary];
+        [self newTemporary];
+        
+        return storeListWithoutNonPrintStores;
+    }
+    
+    return remainingStores;
+}
+
+- (NSMutableArray *)removeNonPrintStores:(NSArray *)storeList {
+    // Get all non-print stores that we are not interested in.
+    NSMutableArray *nonPrintStores = [databaseManager.selectCommands selectNonPrintStoreIdsInStoreTable];
+    
+    // Get all stores from the server.
+    NSMutableArray *serverStores = [NSMutableArray arrayWithArray:storeList];
+    
+    [serverStores removeObjectsInArray:nonPrintStores];
+    
+    return serverStores;
+}
+
+- (void)addTemporary:(NSString *)storeNumber status:(BOOL)status {
+    // Insert the store and its status into the dictionary.
+    [self.storeStatuses setObject:@(status) forKey:storeNumber];
+}
+
+- (void)insertOfflineStore:(NSString *)storeNumber printStatus:(NSString *)printStatus {
+    [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber status:printStatus];
+}
+
+- (void)insertStoreIntoDatabaseIfNotExists:(NSString *)storeNumber responseDictionary:(NSDictionary *)responseDictionary {
+    if ([databaseManager.selectCommands storeExists:storeNumber] == NO) {
+        printf("[STATUS] Store #%s does not exist in the database.\n", [[storeNumber description] UTF8String]);
+        printf("[STATUS] Inserting store #%s into database.\n", [[storeNumber description] UTF8String]);
+        [databaseManager.insertCommands insertOnlineStoreWithData:responseDictionary];
+    }
+}
+
+- (void)updateStatusOfServerIfWasDown {
+    NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
+    
+    if (lastDownTime) {
+        if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
+            NSString *offlineDateTime = [lastDownTime objectForKey:kOfflineDateTime];
+            
+            if (offlineDateTime) {
+                printf("[STATUS 🍏] Server is back online.\n");
+                
+                // Update history to show when detected online.
+                [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
+                                                             offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
+                                                              onlineDateTime:[DateHelper currentDateAndTime]];
+            }
+        }
+    }
+}
+
+- (void)updateStoreStatusIfWasOffline:(NSString *)storeNumber {
+    NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
+    
+    if (lastOfflineToday) {
+        if ([lastOfflineToday objectForKey:kOnlineDateTime] == nil) {
+            printf("[STATUS 🍏] Store #%s is back online.\n", [[storeNumber description] UTF8String]);
+            
+            // Update history to show when detected online.
+            [databaseManager.updateCommands updateDateTimeOnlineForStore:storeNumber
+                                                         offlineDateTime:[lastOfflineToday objectForKey:kOfflineDateTime]
+                                                          onlineDateTime:[DateHelper currentDateAndTime]];
+        }
+    }
+}
+
+- (void)checkDowntime {
+    NSDictionary *lastDownTimeToday = [databaseManager.selectCommands selectLastDowntimeToday];
+    
+    if (lastDownTimeToday == nil) {
+        nDowntime = 0;
+        
+        [self insertDowntime];
+    } else {
+        if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
+            printf("[STATUS] Server was online last checked.\n");
+            
+            nDowntime = 0;
+            
+            [self insertDowntime];
+        } else {
+            if ([lastDownTimeToday objectForKey:kOfflineDateTime]) {
+                if ([DateHelper currentDateTimeIsAtLeastMinutes:kInsertDowntimeIntoDatabaseEvery
+                                                        aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
+                                                   timesChecked:nDowntime]) {
+                    nDowntime++;
+                    
+                    printf("[STATUS] Server has been down for %li minute(s).\n", kInsertDowntimeIntoDatabaseEvery * nDowntime);
+                    
+                    [self insertDowntime];
+                }
+            }
+        }
+    }
+}
+
+- (void)insertDowntime {
+    printf("[STATUS] Inserting downtime into database...\n");
+    [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All" status:nil];
 }
 
 #pragma mark - Delegate Methods -
 
-- (void)walgreensApiDidPassStore:(WalgreensAPI *)sender withData:(NSDictionary *)responseDictionary forStore:(NSString *)storeNumber {
-    printf("[HARVESTER 🍏] Store #%s is online.\n", [[storeNumber description] UTF8String]);
+- (void)walgreensApiOnlineStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
+    [self insertStoreIntoDatabaseIfNotExists:storeNumber responseDictionary:responseDictionary];
     
-    // Check if store exists in database.
-    if ([databaseManager.selectCommands storeExists:storeNumber] == NO) {
-        printf("[HARVESTER 🍏] Store #%s does not exist in the database.\n", [[storeNumber description] UTF8String]);
-        // A new store has been found, so add it to the database.
-        [databaseManager.insertCommands insertOnlineStoreWithData:responseDictionary];
-    }
+    // Needs work.
+    // [self updateStatusOfServerIfWasDown];
     
-    // Check if the last downtime hasn't recorded the time service was confirmed online.
-    NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
-    if (lastDownTime) {
-        if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
-            printf("[HARVESTER 🍏] Service is now back online.\n");
-            // Update history to show when detected online.
-            [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
-                                                         offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
-                                                          onlineDateTime:[DateHelper currentDateAndTime]];
-        }
-    }
+    // Needs work.
+    // [self updateStoreStatusIfWasOffline:storeNumber];
     
-    // Check if store was offline and is now online.
-    NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
-    if (lastOfflineToday) {
-        if ([lastOfflineToday objectForKey:kOnlineDateTime] == nil) {
-            printf("[HARVESTER 🍏] Store #%s was offline.\n", [[storeNumber description] UTF8String]);
-            // Update history to show when detected online.
-            [databaseManager.updateCommands updateDateTimeOnlineForStore:storeNumber
-                                                         offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
-                                                          onlineDateTime:[DateHelper currentDateAndTime]];
-        }
-    }
+    [self addTemporary:storeNumber status:YES];
     
-    // Insert the store and its status into the dictionary.
-    [self.storeStatuses setObject:@(YES) forKey:storeNumber];
-    
-    // Pass the number of stores checked to controller(s).
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Store online" object:nil userInfo:data];
 }
 
-- (void)walgreensApiDidFailStore:(WalgreensAPI *)sender forStore:(NSString *)storeNumber {
-    printf("[HARVESTER 🍎] Store #%s is offline.\n", [[storeNumber description] UTF8String]);
+- (void)walgreensApiOfflineStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
+    [self offline:responseDictionary storeNumber:storeNumber];
     
-    // Insert the store and its status into the dictionary.
-    [self.storeStatuses setObject:@(NO) forKey:storeNumber];
-    
-    // Insert the offline status into the database.
-    [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber];
-    
-    // Pass number of stores checked to controller(s).
     NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
 }
 
-- (void)walgreensApiDidSendAll:(WalgreensAPI *)sender {
-    printf("[HARVESTER 🍏] Requests for all stores complete.\n");
+- (void)walgreensApiScheduledMaintenanceStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
+    [self offline:responseDictionary storeNumber:storeNumber];
     
-    // Notify view controller(s).
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Requests complete" object:nil];
+    NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
+}
+
+- (void)walgreensApiUnscheduledMaintenanceStoreWithData:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
+    [self offline:responseDictionary storeNumber:storeNumber];
     
-    // Uncomment to save .plist if restricting to one check a day.
-    // printf("[HARVESTER 🍏] Saving temporary statuses...\n");
-    // [self saveStoreStatuses];
+    NSDictionary *data = @{@"Number of stores requested" : @([self.storeStatuses count])};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Store offline" object:nil userInfo:data];
+}
+
+- (void)walgreensApiStoreDoesNotExistWithStoreNumber:(NSString *)storeNumber {
+    if ([databaseManager.selectCommands storeExists:storeNumber] == YES) {
+        printf("[STATUS] Discontinued store #%s exists in database.\n", [[storeNumber description] UTF8String]);
+        printf("[STATUS] Removing store #%s from database.\n", [[storeNumber description] UTF8String]);
+        [databaseManager.updateCommands deleteStoreFromStoreDetailTable:storeNumber];
+    }
     
-    // Return thread.
-    dispatch_semaphore_signal(startingThreadSemaphore);
-    
-    // Will find that all stores have been checked and immediately restart.
-    [self startNewRequestThread];
+    // Store list and store detail on server might not be in sync.
+    [self addTemporary:storeNumber status:NO];
 }
 
 - (void)walgreensApiIsDown {
-    printf("[HARVESTER 🍎] API service is down.\n");
+    // Needs work.
+    // [self checkDowntime];
     
-    NSDictionary *lastDownTimeToday = [databaseManager.selectCommands selectLastDowntimeToday];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Not available" object:nil];
+}
+
+- (void)offline:(NSDictionary *)responseDictionary storeNumber:(NSString *)storeNumber {
+    [self insertStoreIntoDatabaseIfNotExists:storeNumber responseDictionary:responseDictionary];
     
-    /*
-     If the service has been detected as down for longer than a set period of time.
-     Or if the service hasn't been detected as down yet.
-     We must set a time limit because when a service goes down,
-     it is checked to see if it has gone back up in second intervals.
-     We do this to prevent adding to the history data store every second.
-     */
-    if (lastDownTimeToday == nil) {
-        timesCheckedDowntime = 0;
-        [self recordDowntime];
-    } else {
-        if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
-            // Service could have went down and up again in this session.
-            printf("[HARVESTER 🍏] Service was online last checked.\n");
-            
-            // Reset times checked.
-            timesCheckedDowntime = 0;
-            
-            [self recordDowntime];
-        } else {
-            if ([DateHelper currentDateTimeIsAtLeastMinutes:kIntervalMinutesOfDowntime
-                                                    aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
-                                               timesChecked:timesCheckedDowntime
-                                                   interval:kIntervalMinutesOfDowntime]) {
-                // Increment the number of times interval passed.
-                timesCheckedDowntime++;
-                
-                printf("[HARVESTER 🍏] It has been at least %li minute(s) since last downtime.\n", kIntervalMinutesOfDowntime);
-                
-                [self recordDowntime];
-            }
-        }
-    }
+    // Needs work.
+    // [self updateStatusOfServerIfWasDown];
     
-    // Return thread.
-    dispatch_semaphore_signal(startingThreadSemaphore);
-    
-    // Start new request thread.
-    [self startNewRequestThread];
+    [self addTemporary:storeNumber status:NO];
+    [self insertOfflineStore:storeNumber printStatus:[responseDictionary objectForKey:kPhotoStatus]];
 }
 
 @end

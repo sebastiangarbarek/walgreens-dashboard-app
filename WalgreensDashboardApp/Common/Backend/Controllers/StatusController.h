@@ -7,26 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
+
 #import "Controller.h"
 #import "DatabaseManagerApp.h"
 #import "DatabaseConstants.h"
+#import "Reachability.h"
 
-static NSString *const kStatusesFileName = @"statuses.plist";
-static long const kIntervalMinutesOfDowntime = 10;
+static NSString *const kRequestedStoresFileName = @"stores.plist";
+static long const kInsertDowntimeIntoDatabaseEvery = 10;
 
 @interface StatusController : Controller <WalgreensAPIDelegate>
 
-// Should be thread safe.
-@property (atomic) BOOL stop;
+@property (atomic) BOOL stopping;
 
-// Temporarily saved to disk as .plist.
+// Saved to disk.
 @property (atomic) NSMutableDictionary *storeStatuses;
+- (void)saveTemporary;
 
-- (BOOL)updateStoreStatusesForToday;
-- (void)saveStoreStatuses;
-
-// Process.
+// Requests thread.
 - (void)start;
+- (void)stop;
 
 @end

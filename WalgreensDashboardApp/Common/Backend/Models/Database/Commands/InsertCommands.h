@@ -19,6 +19,6 @@
 
 - (void)insertProductsWithData:(NSDictionary *)responseData;
 
-- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber;
+- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status;
 
 @end

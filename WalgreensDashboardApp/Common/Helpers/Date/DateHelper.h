@@ -14,7 +14,7 @@
 + (NSDate *)dateWithString:(NSString *)date;
 + (NSString *)currentDate;
 + (NSString *)currentDateAndTime;
-+ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked interval:(long)interval;
++ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked;
 + (NSString *)dateFormatForGraph: (NSString *)dateString;
 + (NSString *)dateFormatForGraphData: (NSString *)dateString;
 

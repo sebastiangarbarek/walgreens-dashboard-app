@@ -176,13 +176,14 @@
     }
 }
 
-- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, offlineDateTime) VALUES (?,?)", HistoryTableName];
+- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status {
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime) VALUES (?,?,?)", HistoryTableName];
     const char *command = [commandString UTF8String];
     sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
     
     sqlite3_bind_text(statement, 1, [[storeNumber description] UTF8String], -1, SQLITE_STATIC);
-    sqlite3_bind_text(statement, 2, [[[DateHelper currentDateAndTime] description] UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_text(statement, 2, [[status description] UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_text(statement, 3, [[[DateHelper currentDateAndTime] description] UTF8String], -1, SQLITE_STATIC);
     
     [self.databaseManager executeStatement:statement];
 }

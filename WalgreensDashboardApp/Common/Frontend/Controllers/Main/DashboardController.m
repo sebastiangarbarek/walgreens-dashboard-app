@@ -306,7 +306,6 @@
         self.notificationLabel.text = @"Waiting For Network 📡";
         
         failureState = YES;
-        [self updateOnlineOfflineCells];
     });
 }
 
@@ -318,6 +317,7 @@
         self.notificationLabel.text = @"Service is Down 🚨";
         
         failureState = YES;
+        [self updateOnlineOfflineCells];
     });
 }
 
