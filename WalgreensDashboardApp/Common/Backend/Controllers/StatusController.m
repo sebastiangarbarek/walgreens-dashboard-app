@@ -132,12 +132,12 @@
             [self deleteTemporary];
             [self newTemporary];
             
-            return storeList;
+            return [self removeNonPrintStores:storeList];
         }
     } else {
         [self newTemporary];
         
-        return storeList;
+        return [self removeNonPrintStores:storeList];
     }
     
     return [self getRemainingStores:storeList];
@@ -161,26 +161,34 @@
 }
 
 - (NSArray *)getRemainingStores:(NSArray *)storeList {
-    // Get all stores that have been checked.
-    NSMutableArray *stores = [NSMutableArray arrayWithArray:[self.storeStatuses allKeys]];
+    NSMutableArray *storeListWithoutNonPrintStores = [self removeNonPrintStores:storeList];
     
+    // Get all stores that have been checked.
+    NSMutableArray *storesChecked = [NSMutableArray arrayWithArray:[self.storeStatuses allKeys]];
+    
+    NSMutableArray *remainingStores = [storeListWithoutNonPrintStores copy];
+    // Extract the difference for the remaining print stores.
+    [remainingStores removeObjectsInArray:storesChecked];
+    
+    // If there are no remaining stores.
+    if ([remainingStores count] == 0) {
+        [self deleteTemporary];
+        [self newTemporary];
+        
+        return storeListWithoutNonPrintStores;
+    }
+    
+    return remainingStores;
+}
+
+- (NSMutableArray *)removeNonPrintStores:(NSArray *)storeList {
     // Get all non-print stores that we are not interested in.
     NSMutableArray *nonPrintStores = [databaseManager.selectCommands selectNonPrintStoreIdsInStoreTable];
     
     // Get all stores from the server.
     NSMutableArray *serverStores = [NSMutableArray arrayWithArray:storeList];
     
-    // Extract the difference for the remaining print stores.
-    [serverStores removeObjectsInArray:stores];
     [serverStores removeObjectsInArray:nonPrintStores];
-    
-    // If there are no remaining stores.
-    if ([serverStores count] == 0) {
-        [self deleteTemporary];
-        [self newTemporary];
-        
-        return storeList;
-    }
     
     return serverStores;
 }
@@ -197,7 +205,7 @@
 - (void)insertStoreIntoDatabaseIfNotExists:(NSString *)storeNumber responseDictionary:(NSDictionary *)responseDictionary {
     if ([databaseManager.selectCommands storeExists:storeNumber] == NO) {
         printf("[STATUS] Store #%s does not exist in the database.\n", [[storeNumber description] UTF8String]);
-        
+        printf("[STATUS] Inserting store #%s into database.\n", [[storeNumber description] UTF8String]);
         [databaseManager.insertCommands insertOnlineStoreWithData:responseDictionary];
     }
 }

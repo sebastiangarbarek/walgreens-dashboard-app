@@ -146,6 +146,7 @@
 
 #pragma mark - Offline History -
 
+// Used for dashboard screen.
 - (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime {
     // Seperate date and time.
     NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
