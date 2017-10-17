@@ -9,7 +9,7 @@
 #import "DashboardController.h"
 
 @interface DashboardController () {
-    BOOL shownChecking, failureState, userOnScreen;
+    BOOL failureState, userOnScreen;
     NSMutableArray<DashboardCountCellData *> *cellCollection;
     NSTimer *notificationTimer;
 }
@@ -35,10 +35,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self configureViewOnAppear];
-    
-    if (self.notificationView.isHidden) {
-        [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
-    }
     
     // Store went offline off screen and the user has not seen the notification.
     if (!self.offlineNotificationView.isHidden) {
@@ -91,7 +87,6 @@
 - (void)initData {
     // Assume worst case scenario, as needs to be checked first.
     failureState = YES;
-    shownChecking = NO;
     
     // Get the numbers.
     int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
@@ -269,6 +264,7 @@
         }
         
         if (wasInFailureState) {
+            [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
             // The service was in a failure state before this, correctly show that stores are back online.
             [self updateOnlineOfflineCells];
         }
@@ -324,12 +320,6 @@
 - (void)connected {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        
-        // Dispatch checking stores notification once only.
-        if (!failureState && !shownChecking) {
-            [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
-            shownChecking = YES;
-        }
     });
 }
 
