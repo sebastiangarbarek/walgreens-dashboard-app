@@ -9,7 +9,7 @@
 #import "DashboardController.h"
 
 @interface DashboardController () {
-    BOOL requestsComplete, shownChecking, failureState, userOnScreen;
+    BOOL shownChecking, failureState, userOnScreen;
     NSMutableArray<DashboardCountCellData *> *cellCollection;
     NSTimer *notificationTimer;
 }
@@ -70,10 +70,6 @@
                                                  name:@"Store offline"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(requestsComplete)
-                                                 name:@"Requests complete"
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notConnected)
                                                  name:@"Not connected"
                                                object:nil];
@@ -96,7 +92,6 @@
     // Assume worst case scenario, as needs to be checked first.
     failureState = YES;
     shownChecking = NO;
-    requestsComplete = NO;
     
     // Get the numbers.
     int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
@@ -302,22 +297,10 @@
     });
 }
 
-- (void)requestsComplete {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-        // Don't require notifications anymore.
-        [self.progressView setHidden:YES];
-        
-        requestsComplete = YES;
-        failureState = NO;
-    });
-}
-
 - (void)notConnected {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        // Guaranteed to be hidden after 1. a store is retrieved successfully or 2. requests are complete.
+        // Guaranteed to be hidden after a store is retrieved successfully.
         [self.notificationView setHidden:NO];
         
         self.notificationLabel.text = @"Waiting For Network 📡";
@@ -328,7 +311,7 @@
 
 - (void)notAvailable {
     dispatch_async(dispatch_get_main_queue(), ^{
-        // Guaranteed to be hidden after 1. a store is retrieved successfully or 2. requests are complete.
+        // Guaranteed to be hidden after a store is retrieved successfully.
         [self.notificationView setHidden:NO];
         
         self.notificationLabel.text = @"Service is Down 🚨";
@@ -339,12 +322,11 @@
 }
 
 - (void)connected {
-    // This method fires as long as the user is connected to the internet.
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         
         // Dispatch checking stores notification once only.
-        if (!failureState && !requestsComplete && !shownChecking) {
+        if (!failureState && !shownChecking) {
             [self presentTimedNotification:@"Checking Stores" backgroundColor:[UIColor blackColor]];
             shownChecking = YES;
         }

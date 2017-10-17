@@ -101,6 +101,7 @@
                 wasDisconnected = NO;
             }
             
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             NSArray *remainingStores = [self validateTemporary:storeList];
             [walgreensApi requestStoresInList:remainingStores];
         }
