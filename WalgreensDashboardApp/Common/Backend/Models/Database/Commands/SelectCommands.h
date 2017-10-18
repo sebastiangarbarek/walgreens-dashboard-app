@@ -51,7 +51,11 @@
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
 
 // Offline history.
+- (NSArray *)selectDistinctYearsInHistory;
+- (NSArray *)selectDistinctMonthsForYear:(NSString *)year;
+
 - (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
+
 - (NSDictionary *)selectLastDowntime;
 - (NSDictionary *)selectLastDowntimeToday;
 - (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber;

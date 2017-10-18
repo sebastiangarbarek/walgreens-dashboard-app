@@ -146,6 +146,14 @@
 
 #pragma mark - Offline History -
 
+- (NSArray *)selectDistinctYearsInHistory {
+    
+}
+
+- (NSArray *)selectDistinctMonthsForYear:(NSString *)year {
+    
+}
+
 // Used for dashboard screen.
 - (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime {
     // Seperate date and time.
@@ -215,6 +223,8 @@
     
     return nil;
 }
+
+#pragma mark - Helper Methods -
 
 - (NSMutableArray *)arrayWithResults:(NSMutableArray *)results key:(NSString *)key {
     NSMutableArray *mutableArray = [NSMutableArray new];
