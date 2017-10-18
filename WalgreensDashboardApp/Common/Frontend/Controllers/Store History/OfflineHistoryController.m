@@ -67,7 +67,7 @@
             break;
         }
         case 1:
-            return [self smartDeqeueWithIdentifier:@"Online Trend"];
+            return [self smartDequeueWithIdentifier:@"Online Trend"];
         default:
             break;
     }
@@ -114,7 +114,7 @@
 
 #pragma mark - Helper Methods -
 
-- (OfflineHistoryCell *)smartDeqeueWithIdentifier:(NSString *)identifier {
+- (OfflineHistoryCell *)smartDequeueWithIdentifier:(NSString *)identifier {
     OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     [offlineHistoryCell loadCellDataWithOfflineStores:<#(NSArray *)#>;
     return offlineHistoryCell;
