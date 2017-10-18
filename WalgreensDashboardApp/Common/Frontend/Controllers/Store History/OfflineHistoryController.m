@@ -60,7 +60,7 @@
     [self setSelectedTabBackgroundImage];
     
     // Set background color of navigation bar.
-    self.navigationController.navigationBar.backgroundColor = [UIColor printicularRed];
+    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
 }
 
 - (void)setTextColorTabItem {
@@ -72,7 +72,7 @@
     
     UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
     UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
-    [[UIColor printicularRed] setFill];
+    [[UIColor printicularBlue] setFill];
     [path fill];
     UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

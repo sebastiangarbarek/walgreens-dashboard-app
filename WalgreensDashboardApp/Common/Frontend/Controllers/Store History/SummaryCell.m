@@ -29,7 +29,7 @@
     DashboardCountCellData *c2 = [DashboardCountCellData new];
     DashboardCountCellData *c3 = [DashboardCountCellData new];
     
-    c1.backgroundColor = [UIColor printicularBlue];
+    c1.backgroundColor = [UIColor printicularRed];
     c1.title = @"Offline";
     c1.count = [NSNumberFormatter localizedStringFromNumber:offline numberStyle:NSNumberFormatterDecimalStyle];
     
