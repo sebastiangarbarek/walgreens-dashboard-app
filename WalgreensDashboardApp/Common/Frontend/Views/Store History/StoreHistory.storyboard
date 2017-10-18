@@ -120,7 +120,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Summary" rowHeight="216" id="rWe-TM-cpx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Summary" rowHeight="216" id="rWe-TM-cpx" customClass="SummaryCell">
                                         <rect key="frame" x="0.0" y="640" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rWe-TM-cpx" id="6I3-bq-Knh">
@@ -128,9 +128,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U24-W5-o4G">
-                                                    <rect key="frame" x="8" y="8" width="359" height="199.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xHG-DR-X93">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="xHG-DR-X93">
                                                         <size key="itemSize" width="150" height="150"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -147,17 +147,18 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-Qq-Zj9">
                                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduled Maintenance" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LO-z5-f91">
                                                                         <rect key="frame" x="8" y="75" width="134" height="75"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <nil key="textColor"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                             </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="BW5-Qq-Zj9" firstAttribute="leading" secondItem="mqb-jy-7VJ" secondAttribute="leading" id="4LO-zx-beh"/>
                                                                 <constraint firstItem="BW5-Qq-Zj9" firstAttribute="top" secondItem="mqb-jy-7VJ" secondAttribute="top" id="7Ly-oG-jYY"/>
@@ -174,15 +175,22 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="rWe-TM-cpx" id="iaS-as-p3V"/>
+                                                        <outlet property="delegate" destination="rWe-TM-cpx" id="DHU-Fe-Oog"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="U24-W5-o4G" secondAttribute="bottom" id="7Fn-ch-2VX"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="U24-W5-o4G" secondAttribute="trailing" id="MeK-at-NDR"/>
-                                                <constraint firstItem="U24-W5-o4G" firstAttribute="top" secondItem="6I3-bq-Knh" secondAttribute="topMargin" id="OkC-9m-FY3"/>
-                                                <constraint firstItem="U24-W5-o4G" firstAttribute="leading" secondItem="6I3-bq-Knh" secondAttribute="leadingMargin" id="hCu-aF-6Qt"/>
+                                                <constraint firstItem="U24-W5-o4G" firstAttribute="leading" secondItem="6I3-bq-Knh" secondAttribute="leading" id="2Tm-lT-gKr"/>
+                                                <constraint firstAttribute="bottom" secondItem="U24-W5-o4G" secondAttribute="bottom" id="Ucs-6e-xzL"/>
+                                                <constraint firstAttribute="trailing" secondItem="U24-W5-o4G" secondAttribute="trailing" id="bf3-R7-EgV"/>
+                                                <constraint firstItem="U24-W5-o4G" firstAttribute="top" secondItem="6I3-bq-Knh" secondAttribute="top" id="cH3-vk-dNQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="U24-W5-o4G" id="AVl-5S-ob5"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Summary Description" id="XHE-cn-K3E">
                                         <rect key="frame" x="0.0" y="856" width="375" height="44"/>

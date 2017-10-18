@@ -33,9 +33,10 @@
     [super viewDidLoad];
     
     // Modify when adding or removing sections or rows.
-    sectionTitles = @[@"Create Report For", @"Online Trend"];
+    sectionTitles = @[@"Create Report For", @"Online Trend", @"Summary"];
     numberOfRowsToSection = @{sectionTitles[0] : @(1),
-                              sectionTitles[1] : @(1)};
+                              sectionTitles[1] : @(1),
+                              sectionTitles[2] : @(1)};
     
 }
 
@@ -106,6 +107,8 @@
         }
         case 1:
             return [self smartDequeueWithIdentifier:@"Online Trend"];
+        case 2:
+            return [self smartDequeueWithIdentifier:@"Summary"];
         default:
             break;
     }
@@ -122,15 +125,17 @@
             // Online trend.
             return 216;
             break;
+        case 2: {
+            // Summary.
+            CGRect screen = [[UIScreen mainScreen] bounds];
+            return screen.size.width;
+            break;
+        }
         default:
             break;
     }
     return 0;
 }
-
-#pragma mark - Collection Methods -
-
-
 
 #pragma mark - Picker Delegate Methods -
 

@@ -46,6 +46,7 @@
 		A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */; };
 		A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */; };
 		A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */; };
+		A873C6981F97DD0300BD41AE /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A873C6971F97DD0300BD41AE /* SummaryCell.m */; };
 		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
@@ -155,6 +156,8 @@
 		A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCell.m; sourceTree = "<group>"; };
 		A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppTheme.h"; sourceTree = "<group>"; };
 		A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppTheme.m"; sourceTree = "<group>"; };
+		A873C6961F97DD0300BD41AE /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryCell.h; sourceTree = "<group>"; };
+		A873C6971F97DD0300BD41AE /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
 		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
 		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
 		A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
@@ -558,6 +561,8 @@
 				A85D90C41F96C53200604683 /* DatePickerCell.m */,
 				A85D90D61F970D0A00604683 /* OnlineTrendCell.h */,
 				A85D90D71F970D0A00604683 /* OnlineTrendCell.m */,
+				A873C6961F97DD0300BD41AE /* SummaryCell.h */,
+				A873C6971F97DD0300BD41AE /* SummaryCell.m */,
 				A85D90CE1F96CC8700604683 /* Supporting Objects */,
 			);
 			name = Cells;
@@ -1126,6 +1131,7 @@
 				A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */,
 				A86CF4F81F5CF6C9005889B7 /* TableViewController.m in Sources */,
 				A86CF4F51F5CF475005889B7 /* ViewController.m in Sources */,
+				A873C6981F97DD0300BD41AE /* SummaryCell.m in Sources */,
 				A8D891931F6E675200E3388B /* ClusterPin.m in Sources */,
 				A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */,
 				A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */,
