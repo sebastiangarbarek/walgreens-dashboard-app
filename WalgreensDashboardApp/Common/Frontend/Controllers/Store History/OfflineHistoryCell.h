@@ -12,6 +12,6 @@
 
 @interface OfflineHistoryCell : UITableViewCell
 
-- (void)loadCellDataUsingDatabaseManager:(DatabaseManagerApp *)databaseManager;
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStores;
 
 @end

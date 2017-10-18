@@ -200,7 +200,10 @@
 }
 
 - (void)insertOfflineStore:(NSString *)storeNumber printStatus:(NSString *)printStatus {
-    [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber status:printStatus];
+    // Don't add the store as offline again if it hasn't been resolved as online yet.
+    if (![databaseManager.selectCommands storeHasLastBeenOfflineToday:storeNumber]) {
+        [databaseManager.insertCommands insertOfflineHistoryWithStore:storeNumber status:printStatus];
+    }
 }
 
 - (void)insertStoreIntoDatabaseIfNotExists:(NSString *)storeNumber responseDictionary:(NSDictionary *)responseDictionary {

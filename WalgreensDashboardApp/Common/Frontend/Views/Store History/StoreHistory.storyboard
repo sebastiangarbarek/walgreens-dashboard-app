@@ -70,7 +70,7 @@
                                             <outlet property="datePicker" destination="hIc-dz-0gi" id="wY8-S3-rKV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Online Trend" rowHeight="216" id="lpD-EH-Xjh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Online Trend" rowHeight="216" id="lpD-EH-Xjh" customClass="OnlineTrendCell">
                                         <rect key="frame" x="0.0" y="116" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lpD-EH-Xjh" id="SIU-UY-CNr">
@@ -89,6 +89,9 @@
                                                 <constraint firstItem="wOq-43-L94" firstAttribute="leading" secondItem="SIU-UY-CNr" secondAttribute="leadingMargin" id="uPl-13-qGL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lineChart" destination="wOq-43-L94" id="IyZ-Wc-qsy"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Offline Map" rowHeight="264" id="XmS-8G-K2W">
                                         <rect key="frame" x="0.0" y="332" width="375" height="264"/>

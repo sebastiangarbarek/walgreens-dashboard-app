@@ -17,6 +17,7 @@
 		A85D90C81F96C54C00604683 /* OfflineHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */; };
 		A85D90D11F96CCA800604683 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D01F96CCA800604683 /* Month.m */; };
 		A85D90D51F96E19D00604683 /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D31F96E19D00604683 /* StoreCell.m */; };
+		A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D71F970D0A00604683 /* OnlineTrendCell.m */; };
 		A86CF4E31F5CCADC005889B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E21F5CCADC005889B7 /* Main.storyboard */; };
 		A86CF4E81F5CCD6E005889B7 /* StoreHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E71F5CCD6E005889B7 /* StoreHistory.storyboard */; };
 		A86CF4EC1F5CCDB1005889B7 /* PrintProducts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4EB1F5CCDB1005889B7 /* PrintProducts.storyboard */; };
@@ -125,6 +126,8 @@
 		A85D90D01F96CCA800604683 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Month.m; sourceTree = "<group>"; };
 		A85D90D31F96E19D00604683 /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
 		A85D90D41F96E19D00604683 /* StoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCell.h; sourceTree = "<group>"; };
+		A85D90D61F970D0A00604683 /* OnlineTrendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTrendCell.h; sourceTree = "<group>"; };
+		A85D90D71F970D0A00604683 /* OnlineTrendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTrendCell.m; sourceTree = "<group>"; };
 		A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewController.h; sourceTree = "<group>"; };
 		A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewController.m; sourceTree = "<group>"; };
 		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
@@ -227,7 +230,7 @@
 		A8E09A611F4D45680063EEE4 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
 		A8E1E2011F4E58CE008DE876 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
 		A8E1E2021F4E58CE008DE876 /* DateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateHelper.h; sourceTree = "<group>"; };
-		A8E1E2101F4E5ADE008DE876 /* WalgreensDashboardApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WalgreensDashboardApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A8E1E2101F4E5ADE008DE876 /* Charts-Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Charts-Swift.h"; sourceTree = "<group>"; };
 		A8E1E2111F4E5ADE008DE876 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8E1E2121F4E5ADE008DE876 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
@@ -549,11 +552,13 @@
 		A85D90C21F96C51400604683 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90CE1F96CC8700604683 /* Supporting Objects */,
 				A85D90C61F96C54C00604683 /* OfflineHistoryCell.h */,
 				A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */,
 				A85D90C31F96C53200604683 /* DatePickerCell.h */,
 				A85D90C41F96C53200604683 /* DatePickerCell.m */,
+				A85D90D61F970D0A00604683 /* OnlineTrendCell.h */,
+				A85D90D71F970D0A00604683 /* OnlineTrendCell.m */,
+				A85D90CE1F96CC8700604683 /* Supporting Objects */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -818,7 +823,7 @@
 		A8E1E2051F4E5A1D008DE876 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A8E1E2101F4E5ADE008DE876 /* WalgreensDashboardApp-Bridging-Header.h */,
+				A8E1E2101F4E5ADE008DE876 /* Charts-Swift.h */,
 				A8E1E2111F4E5ADE008DE876 /* main.m */,
 				A8E1E2121F4E5ADE008DE876 /* Info.plist */,
 				A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */,
@@ -1127,6 +1132,7 @@
 				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
+				A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */,
 				A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

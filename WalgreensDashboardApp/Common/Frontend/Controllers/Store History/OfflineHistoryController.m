@@ -9,7 +9,10 @@
 #import "OfflineHistoryController.h"
 
 @interface OfflineHistoryController () {
+    NSArray *offlineStoresForMonthAndYear;
+    
     NSArray *sectionTitles;
+    NSDictionary *numberOfRowsToSection;
 }
 
 @end
@@ -26,7 +29,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    sectionTitles = @[@"Summary For"];
+    // Modify when adding or removing sections or rows.
+    sectionTitles = @[@"Report For", @"Online Trend"];
+    numberOfRowsToSection = @{sectionTitles[0] : @(1),
+                              sectionTitles[1] : @(1)};
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,12 +43,14 @@
 
 #pragma mark - Table Methods -
 
+// Table is treated statically. There is no dynamic adding or removing of rows.
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [sectionTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [[numberOfRowsToSection objectForKey:[sectionTitles objectAtIndex:section]] integerValue];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -49,15 +58,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        // Must set date picker delegate.
-        DatePickerCell *datePicker = [tableView dequeueReusableCellWithIdentifier:@"Date Picker"];
-        datePicker.delegate = self;
-        [datePicker loadCellDataUsingDatabaseManager:self.databaseManagerApp];
-        
-        return datePicker;
+    switch (indexPath.section) {
+        case 0: {
+            DatePickerCell *datePicker = [tableView dequeueReusableCellWithIdentifier:@"Date Picker"];
+            datePicker.delegate = self;
+            [datePicker loadDatePickerData:self.databaseManagerApp];
+            return datePicker;
+            break;
+        }
+        case 1:
+            return [self smartDeqeueWithIdentifier:@"Online Trend"];
+        default:
+            break;
     }
-    
     return nil;
 }
 
@@ -67,10 +80,13 @@
             // Date picker.
             return 88;
             break;
+        case 1:
+            // Online trend.
+            return 216;
+            break;
         default:
             break;
     }
-    
     return 0;
 }
 
@@ -80,14 +96,28 @@
 
 #pragma mark - Picker Delegate Methods -
 
+- (void)datePickerDidLoadWithInitialMonth:(NSString *)initialMonth initialYear:(NSString *)initialYear {
+    // Cells load in order.
+    offlineStoresForMonthAndYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+}
+
 - (void)datePickerDidSelectMonth:(NSString *)month withYear:(NSString *)year {
-    
+    offlineStoresForMonthAndYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:month year:year];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation Methods -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  
+}
+
+#pragma mark - Helper Methods -
+
+- (OfflineHistoryCell *)smartDeqeueWithIdentifier:(NSString *)identifier {
+    OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    [offlineHistoryCell loadCellDataWithOfflineStores:<#(NSArray *)#>;
+    return offlineHistoryCell;
 }
 
 @end

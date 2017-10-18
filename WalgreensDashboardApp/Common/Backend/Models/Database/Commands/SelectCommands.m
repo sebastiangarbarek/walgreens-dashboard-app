@@ -21,6 +21,17 @@
     }
 }
 
+- (BOOL)storeHasLastBeenOfflineToday:(NSString *)storeNumber {
+    NSString *currentDate = [DateHelper currentDate];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM offline_history WHERE storeNum = '%@' AND offlineDateTime LIKE '%@%%' AND onlineDateTime IS NULL ORDER BY offlineDateTime DESC LIMIT 1", storeNumber, currentDate];
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 /*! Selects IDs of stores that were inserted as online in the store table.
  This method can be used to check the difference of stores in the database to stores on the server.
  It helps retrieve new stores or store details that were unable to be retrieved previously.
@@ -160,6 +171,11 @@
     NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"month"];
     
     return results;
+}
+
+- (NSArray *)selectOfflineStoresForMonth:(NSString *)month year:(NSString *)year {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offline_history.storeNum, offline_history.offlineDateTime, offline_history.onlineDateTime, offline_history.status, store_detail.street, store_detail.city, store_detail.state, store_detail.longitude, store_detail.latitude FROM offline_history INNER JOIN store_detail ON store_detail.storeNum = offline_history.storeNum WHERE offline_history.month = '%@' AND offline.history.year = '%@'", month, year];
+    return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
 // Used for dashboard screen.

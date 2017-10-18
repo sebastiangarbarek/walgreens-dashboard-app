@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+#import "OfflineHistoryCell.h"
 #import "DatePickerDelegate.h"
 #import "DatePickerCell.h"
 

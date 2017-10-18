@@ -183,7 +183,7 @@
     
     NSString *currentDateTime = [DateHelper currentDateAndTime];
     
-    sqlite3_bind_text(statement, 1, [[storeNumber description] UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_int(statement, 1, [storeNumber intValue]);
     sqlite3_bind_text(statement, 2, [[status description] UTF8String], -1, SQLITE_STATIC);
     sqlite3_bind_text(statement, 3, [[currentDateTime description] UTF8String], -1, SQLITE_STATIC);
     

@@ -15,6 +15,7 @@
 @interface SelectCommands : Commands
 
 - (BOOL)storeExists:(NSString *)storeNumber;
+- (BOOL)storeHasLastBeenOfflineToday:(NSString *)storeNumber;
 
 // Return IDs.
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
@@ -53,6 +54,7 @@
 // Offline history.
 - (NSArray *)selectDistinctYearsInHistory;
 - (NSArray *)selectDistinctMonthsForYear:(NSString *)year;
+- (NSArray *)selectOfflineStoresForMonth:(NSString *)month year:(NSString *)year;
 
 - (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
 

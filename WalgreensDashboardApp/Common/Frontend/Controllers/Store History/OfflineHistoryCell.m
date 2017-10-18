@@ -10,7 +10,7 @@
 
 @implementation OfflineHistoryCell
 
-- (void)loadCellDataUsingDatabaseManager:(DatabaseManagerApp *)databaseManager {
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStores {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
                                    reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
                                  userInfo:nil];

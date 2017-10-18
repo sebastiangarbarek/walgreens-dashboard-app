@@ -6,14 +6,18 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import "OfflineHistoryCell.h"
+#import <UIKit/UIKit.h>
+
+#import "DatabaseManagerApp.h"
 #import "DatePickerDelegate.h"
 #import "Month.h"
 
-@interface DatePickerCell : OfflineHistoryCell <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface DatePickerCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) id <DatePickerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *datePicker;
+
+- (void)loadDatePickerData:(DatabaseManagerApp *)databaseManager;
 
 @end

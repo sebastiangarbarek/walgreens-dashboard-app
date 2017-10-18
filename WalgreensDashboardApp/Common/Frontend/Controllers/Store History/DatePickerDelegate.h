@@ -12,6 +12,7 @@
 
 @required
 - (void)datePickerDidSelectMonth:(NSString *)month withYear:(NSString *)year;
+- (void)datePickerDidLoadWithInitialMonth:(NSString *)initialMonth initialYear:(NSString *)initialYear;
 
 @end
 

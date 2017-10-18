@@ -20,7 +20,7 @@
 
 #pragma mark - Parent Methods
 
-- (void)loadCellDataUsingDatabaseManager:(DatabaseManagerApp *)databaseManager {
+- (void)loadDatePickerData:(DatabaseManagerApp *)databaseManager {
     monthsToYear = [NSMutableDictionary new];
     
     years = [databaseManager.selectCommands selectDistinctYearsInHistory];
@@ -33,10 +33,14 @@
             NSArray *monthsForYear = [self convertMonthNumbersToMonthObjects:[databaseManager.selectCommands selectDistinctMonthsForYear:year]];
             [monthsToYear setObject:monthsForYear forKey:year];
         }
+        
+        // Must reload all components with new data.
+        [self.datePicker reloadAllComponents];
+        
+        // Pass initial month and year to view controller.
+        [self.delegate datePickerDidLoadWithInitialMonth:[[[monthsToYear objectForKey:selectedYear] objectAtIndex:0] monthNumber]
+                                             initialYear:selectedYear];
     }
-    
-    // Must reload all components with new data.
-    [self.datePicker reloadAllComponents];
 }
 
 #pragma mark - Picker View Methods -
