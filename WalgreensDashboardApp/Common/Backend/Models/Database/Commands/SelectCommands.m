@@ -165,17 +165,29 @@
     return results;
 }
 
-- (NSArray *)selectDistinctMonthsForYear:(NSString *)year {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT DISTINCT month FROM offline_history WHERE year = '%@' ORDER BY offlineDateTime DESC", year];
+- (NSArray *)selectDistinctMonthsForYear:(NSNumber *)year {
+    // Returns in descending order i.e. most recent month is first in array.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT DISTINCT month FROM offline_history WHERE year = %@ ORDER BY offlineDateTime DESC", year];
     
     NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"month"];
     
     return results;
 }
 
-- (NSArray *)selectOfflineStoresForMonth:(NSString *)month year:(NSString *)year {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT offline_history.storeNum, offline_history.offlineDateTime, offline_history.onlineDateTime, offline_history.status, store_detail.street, store_detail.city, store_detail.state, store_detail.longitude, store_detail.latitude FROM offline_history INNER JOIN store_detail ON store_detail.storeNum = offline_history.storeNum WHERE offline_history.month = '%@' AND offline.history.year = '%@'", month, year];
+- (NSArray *)selectOfflineStoresForMonth:(NSNumber *)month year:(NSNumber *)year {
+    // Returns in ascending order i.e. oldest record is first in array.
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offline_history.storeNum, offline_history.offlineDateTime, offline_history.onlineDateTime, offline_history.status, store_detail.street, store_detail.city, store_detail.state, store_detail.longitude, store_detail.latitude FROM offline_history INNER JOIN store_detail ON store_detail.storeNum = offline_history.storeNum WHERE offline_history.month = %@ AND offline_history.year = %@ ORDER BY offline_history.offlineDateTime ASC", month, year];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
+}
+
+- (NSInteger)countOfflineStoresForDay:(NSString *)day inMonth:(NSNumber *)month year:(NSNumber *)year {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM offline_history WHERE day = %@ AND month = %@ AND year = %@", day, month, year];
+    NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
+    if ([results count]) {
+        return [[results[0] objectForKey:@"COUNT(DISTINCT storeNum)"] integerValue];
+    } else {
+        return 0;
+    }
 }
 
 // Used for dashboard screen.

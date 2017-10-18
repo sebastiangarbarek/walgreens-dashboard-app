@@ -11,8 +11,8 @@
 @protocol DatePickerDelegate <NSObject>
 
 @required
-- (void)datePickerDidSelectMonth:(NSString *)month withYear:(NSString *)year;
-- (void)datePickerDidLoadWithInitialMonth:(NSString *)initialMonth initialYear:(NSString *)initialYear;
+- (void)datePickerDidSelectMonth:(NSNumber *)month withYear:(NSNumber *)year;
+- (void)datePickerDidLoadWithInitialMonth:(NSNumber *)initialMonth initialYear:(NSNumber *)initialYear;
 
 @end
 

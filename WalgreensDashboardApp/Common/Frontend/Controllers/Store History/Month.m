@@ -10,13 +10,11 @@
 
 @implementation Month
 
-- (instancetype)initWithMonthNumberString:(NSString *)monthNumberString {
+- (instancetype)initWithMonthNumber:(NSNumber *)monthNumber {
     self = [super init];
     
     if (self) {
-        NSInteger monthNumber = [monthNumberString integerValue];
-        
-        switch (monthNumber) {
+        switch ([monthNumber integerValue]) {
             case 1:
                 self.monthName = @"Jan";
                 break;
@@ -57,7 +55,7 @@
                 break;
         }
         
-        self.monthNumber = monthNumberString;
+        self.monthNumber = monthNumber;
     }
     
     return self;

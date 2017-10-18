@@ -53,8 +53,9 @@
 
 // Offline history.
 - (NSArray *)selectDistinctYearsInHistory;
-- (NSArray *)selectDistinctMonthsForYear:(NSString *)year;
-- (NSArray *)selectOfflineStoresForMonth:(NSString *)month year:(NSString *)year;
+- (NSArray *)selectDistinctMonthsForYear:(NSNumber *)year;
+- (NSArray *)selectOfflineStoresForMonth:(NSNumber *)month year:(NSNumber *)year;
+- (NSInteger)countOfflineStoresForDay:(NSNumber *)day inMonth:(NSNumber *)month year:(NSNumber *)year;
 
 - (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
 

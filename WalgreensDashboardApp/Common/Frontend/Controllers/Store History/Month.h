@@ -11,8 +11,8 @@
 @interface Month : NSObject
 
 @property NSString *monthName;
-@property NSString *monthNumber;
+@property NSNumber *monthNumber;
 
-- (instancetype)initWithMonthNumberString:(NSString *)monthNumberString;
+- (instancetype)initWithMonthNumber:(NSNumber *)monthNumber;
 
 @end

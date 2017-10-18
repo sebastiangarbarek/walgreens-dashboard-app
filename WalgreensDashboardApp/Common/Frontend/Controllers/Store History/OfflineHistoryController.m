@@ -9,7 +9,9 @@
 #import "OfflineHistoryController.h"
 
 @interface OfflineHistoryController () {
-    NSArray *offlineStoresForMonthAndYear;
+    NSNumber *selectedMonth;
+    NSNumber *selectedYear;
+    NSArray *offlineStoresForMonthInYear;
     
     NSArray *sectionTitles;
     NSDictionary *numberOfRowsToSection;
@@ -23,7 +25,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 }
 
 - (void)viewDidLoad {
@@ -38,7 +39,8 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
+    for (int i = 0; i < 3; i++)
+        NSLog(@"Offline history screen received memory warning.");
 }
 
 #pragma mark - Table Methods -
@@ -96,27 +98,31 @@
 
 #pragma mark - Picker Delegate Methods -
 
-- (void)datePickerDidLoadWithInitialMonth:(NSString *)initialMonth initialYear:(NSString *)initialYear {
+- (void)datePickerDidLoadWithInitialMonth:(NSNumber *)initialMonth initialYear:(NSNumber *)initialYear {
     // Cells load in order.
-    offlineStoresForMonthAndYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+    selectedMonth = initialMonth;
+    selectedYear = initialYear;
+    offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
 }
 
-- (void)datePickerDidSelectMonth:(NSString *)month withYear:(NSString *)year {
-    offlineStoresForMonthAndYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:month year:year];
+- (void)datePickerDidSelectMonth:(NSNumber *)month withYear:(NSNumber *)year {
+    selectedMonth = month;
+    selectedYear = year;
+    offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:month year:year];
     [self.tableView reloadData];
 }
 
 #pragma mark - Navigation Methods -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- 
+    
 }
 
 #pragma mark - Helper Methods -
 
 - (OfflineHistoryCell *)smartDequeueWithIdentifier:(NSString *)identifier {
     OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    [offlineHistoryCell loadCellDataWithOfflineStores:<#(NSArray *)#>;
+    [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManagerApp];
     return offlineHistoryCell;
 }
 

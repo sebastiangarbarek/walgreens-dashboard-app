@@ -10,6 +10,7 @@
 
 #import "UIColor+AppTheme.h"
 #import "Charts-Swift.h"
+#import "DatabaseConstants.h"
 
 @interface OnlineTrendCell : OfflineHistoryCell
 

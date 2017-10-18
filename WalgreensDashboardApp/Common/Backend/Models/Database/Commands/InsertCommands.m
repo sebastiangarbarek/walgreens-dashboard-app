@@ -177,7 +177,7 @@
 }
 
 - (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status {
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, year, month) VALUES (?,?,?,?,?)", HistoryTableName];
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", HistoryTableName];
     const char *command = [commandString UTF8String];
     sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
     
@@ -188,13 +188,16 @@
     sqlite3_bind_text(statement, 3, [[currentDateTime description] UTF8String], -1, SQLITE_STATIC);
     
     // Date format will never change. SQLite only takes YYYY-MM-dd.
-    NSRange range = NSMakeRange(5, 2);
-    NSString *month = [currentDateTime substringWithRange:range];
+    NSRange range = NSMakeRange(8, 2);
+    int day = [[[currentDateTime substringWithRange:range] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] intValue];
+    range = NSMakeRange(5, 2);
+    int month = [[currentDateTime substringWithRange:range] intValue];
     range = NSMakeRange(0, 4);
-    NSString *year = [currentDateTime substringWithRange:range];
+    int year = [[currentDateTime substringWithRange:range] intValue];
     
-    sqlite3_bind_text(statement, 4, [[year description] UTF8String], -1, SQLITE_STATIC);
-    sqlite3_bind_text(statement, 5, [[month description] UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_int(statement, 4, day);
+    sqlite3_bind_int(statement, 5, month);
+    sqlite3_bind_int(statement, 6, year);
     
     [self.databaseManager executeStatement:statement];
 }

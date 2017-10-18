@@ -11,7 +11,7 @@
 @interface DatePickerCell () {
     NSArray *years;
     NSMutableDictionary *monthsToYear;
-    NSString *selectedYear;
+    NSNumber *selectedYear;
 }
 
 @end
@@ -29,7 +29,7 @@
         selectedYear = years[0];
         
         // Set months for each year.
-        for (NSString *year in years) {
+        for (NSNumber *year in years) {
             NSArray *monthsForYear = [self convertMonthNumbersToMonthObjects:[databaseManager.selectCommands selectDistinctMonthsForYear:year]];
             [monthsToYear setObject:monthsForYear forKey:year];
         }
@@ -74,7 +74,7 @@
             break;
         case 1:
             // Years.
-            return [years objectAtIndex:row];
+            return [[years objectAtIndex:row] stringValue];
             break;
         default:
             break;
@@ -103,7 +103,7 @@
 #pragma mark - Helper Methods -
 
 - (void)updateMonthWithRow:(NSInteger)row {
-    NSString *selectedMonth = [[[monthsToYear objectForKey:selectedYear] objectAtIndex:row] monthNumber];
+    NSNumber *selectedMonth = [[[monthsToYear objectForKey:selectedYear] objectAtIndex:row] monthNumber];
     
     [self.delegate datePickerDidSelectMonth:selectedMonth withYear:selectedYear];
 }
@@ -130,15 +130,15 @@
 - (NSArray *)convertMonthNumbersToMonthObjects:(NSArray *)monthNumbers {
     NSMutableArray *months = [NSMutableArray new];
     
-    for (NSString *monthNumber in monthNumbers) {
-        Month *month = [[Month alloc] initWithMonthNumberString:monthNumber];
+    for (NSNumber *monthNumber in monthNumbers) {
+        Month *month = [[Month alloc] initWithMonthNumber:monthNumber];
         [months addObject:month];
     }
     
     return months;
 }
 
-- (BOOL)doesContainMonth:(NSString *)monthName inYear:(NSString *)year {
+- (BOOL)doesContainMonth:(NSString *)monthName inYear:(NSNumber *)year {
     NSArray *months = [monthsToYear objectForKey:year];
     
     for (Month *month in months) {

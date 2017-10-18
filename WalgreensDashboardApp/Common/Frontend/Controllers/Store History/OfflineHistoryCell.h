@@ -12,6 +12,6 @@
 
 @interface OfflineHistoryCell : UITableViewCell
 
-- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStores;
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManagerApp *)databaseManager;
 
 @end
