@@ -131,19 +131,47 @@
                                                     <rect key="frame" x="8" y="8" width="359" height="199.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xHG-DR-X93">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                        <size key="itemSize" width="150" height="150"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mqb-jy-7VJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Count Cell" id="mqb-jy-7VJ" customClass="DashboardCountCell">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW5-Qq-Zj9">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduled Maintenance" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LO-z5-f91">
+                                                                        <rect key="frame" x="8" y="75" width="134" height="75"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
                                                             </view>
+                                                            <constraints>
+                                                                <constraint firstItem="BW5-Qq-Zj9" firstAttribute="leading" secondItem="mqb-jy-7VJ" secondAttribute="leading" id="4LO-zx-beh"/>
+                                                                <constraint firstItem="BW5-Qq-Zj9" firstAttribute="top" secondItem="mqb-jy-7VJ" secondAttribute="top" id="7Ly-oG-jYY"/>
+                                                                <constraint firstItem="4LO-z5-f91" firstAttribute="top" secondItem="mqb-jy-7VJ" secondAttribute="top" constant="75" id="7YZ-Jm-Lan"/>
+                                                                <constraint firstAttribute="bottom" secondItem="BW5-Qq-Zj9" secondAttribute="bottom" id="ACh-9K-QTU"/>
+                                                                <constraint firstAttribute="bottom" secondItem="4LO-z5-f91" secondAttribute="bottom" id="NiQ-vP-ehr"/>
+                                                                <constraint firstItem="4LO-z5-f91" firstAttribute="leading" secondItem="mqb-jy-7VJ" secondAttribute="leading" constant="8" id="hNs-gU-EdO"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4LO-z5-f91" secondAttribute="trailing" constant="8" id="knj-KG-zAV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="BW5-Qq-Zj9" secondAttribute="trailing" id="xPb-7N-gkA"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="countLabel" destination="BW5-Qq-Zj9" id="XKh-pH-W5p"/>
+                                                                <outlet property="descriptionLabel" destination="4LO-z5-f91" id="aPz-4J-Ok0"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
