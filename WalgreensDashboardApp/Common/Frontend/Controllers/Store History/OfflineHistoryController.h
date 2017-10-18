@@ -12,6 +12,7 @@
 #import "DatePickerDelegate.h"
 #import "DatePickerCell.h"
 #import "DatabaseConstants.h"
+#import "UIColor+AppTheme.h"
 
 @interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate>
 

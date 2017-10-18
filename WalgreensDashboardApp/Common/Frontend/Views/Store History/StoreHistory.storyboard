@@ -14,7 +14,7 @@
         <scene sceneID="qSn-wF-W6k">
             <objects>
                 <navigationController id="baE-sr-ljD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Offline History" id="Bm3-Ib-ea4"/>
+                    <tabBarItem key="tabBarItem" title="Offline History" image="History Outline" selectedImage="History Filled" id="Bm3-Ib-ea4"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXU-A7-uEs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -191,4 +191,8 @@
             <point key="canvasLocation" x="-18.399999999999999" y="37.781109445277366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="History Filled" width="25" height="25"/>
+        <image name="History Outline" width="25" height="25"/>
+    </resources>
 </document>

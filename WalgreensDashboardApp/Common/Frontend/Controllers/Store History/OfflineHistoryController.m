@@ -15,6 +15,8 @@
     
     NSArray *sectionTitles;
     NSDictionary *numberOfRowsToSection;
+    
+    BOOL didLoadInitialGraph;
 }
 
 @end
@@ -31,16 +33,50 @@
     [super viewDidLoad];
     
     // Modify when adding or removing sections or rows.
-    sectionTitles = @[@"Report For", @"Online Trend"];
+    sectionTitles = @[@"Create Report For", @"Online Trend"];
     numberOfRowsToSection = @{sectionTitles[0] : @(1),
                               sectionTitles[1] : @(1)};
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self configureViewOnAppear];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     for (int i = 0; i < 3; i++)
         NSLog(@"Offline history screen received memory warning.");
+}
+
+#pragma mark - Init Methods -
+
+- (void)configureViewOnAppear {
+    [self setTextColorTabItem];
+    // Different for each screen.
+    [self setSelectedTabBackgroundImage];
+    
+    // Set background color of navigation bar.
+    self.navigationController.navigationBar.backgroundColor = [UIColor printicularRed];
+}
+
+- (void)setTextColorTabItem {
+    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
+}
+
+- (void)setSelectedTabBackgroundImage {
+    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
+    
+    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
+    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
+    [[UIColor printicularRed] setFill];
+    [path fill];
+    UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [self.tabBarController.tabBar setSelectionIndicatorImage:selectedBackground];
 }
 
 #pragma mark - Table Methods -
@@ -99,10 +135,13 @@
 #pragma mark - Picker Delegate Methods -
 
 - (void)datePickerDidLoadWithInitialMonth:(NSNumber *)initialMonth initialYear:(NSNumber *)initialYear {
-    // Cells load in order.
-    selectedMonth = initialMonth;
-    selectedYear = initialYear;
-    offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+    if (!didLoadInitialGraph) {
+        // Cells load in order.
+        selectedMonth = initialMonth;
+        selectedYear = initialYear;
+        offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+        didLoadInitialGraph = YES;
+    }
 }
 
 - (void)datePickerDidSelectMonth:(NSNumber *)month withYear:(NSNumber *)year {
