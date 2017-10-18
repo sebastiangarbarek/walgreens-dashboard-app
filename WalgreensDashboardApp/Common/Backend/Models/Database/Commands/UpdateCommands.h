@@ -15,5 +15,8 @@
 
 - (void)deleteOfflineStoresInDetailTable;
 - (void)deletePastTempStatuses;
+- (void)deleteStoreFromStoreDetailTable:(NSString *)storeNumber;
+
+- (void)updateDateTimeOnlineForStore:(NSString *)storeNumber offlineDateTime:(NSString *)offlineDateTime onlineDateTime:(NSString *)onlineDateTime;
 
 @end

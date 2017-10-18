@@ -32,9 +32,14 @@ extern NSString *const kSatOpen;
 extern NSString *const kSatClose;
 extern NSString *const kSunOpen;
 extern NSString *const kSunClose;
+extern NSString *const kPhotoStatus;
 
 // Product detail.
 extern NSString *const kProId;
 extern NSString *const kProGroup;
 extern NSString *const kProSize;
 extern NSString *const kProPrice;
+
+// Offline history.
+extern NSString *const kOfflineDateTime;
+extern NSString *const kOnlineDateTime;

@@ -14,9 +14,13 @@
 
 @interface SelectCommands : Commands
 
+- (BOOL)storeExists:(NSString *)storeNumber;
+- (BOOL)storeHasLastBeenOfflineToday:(NSString *)storeNumber;
+
 // Return IDs.
+- (NSArray *)selectAllPrintStoreIds;
+
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
-- (NSMutableArray *)selectStoreIdsInTempTable;
 - (NSMutableArray *)selectNonPrintStoreIdsInStoreTable;
 
 // Return date string.
@@ -24,13 +28,11 @@
 - (NSString *)selectNextUpdateDateInHistoryTableWithDate:(NSString *)date;
 
 // Return count.
-- (NSNumber *)countOfflineInHistoryTableWithDate:(NSString *)date;
 - (NSNumber *)countPrintStoresInStoreTable;
-- (NSNumber *)countStoresInTempTable;
-- (NSNumber *)countOnlineStoresInTempTable;
 
 // Return rows.
 - (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;
+- (NSDictionary *)selectCityStateForStore:(NSString *)storeNumber;
 - (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
 - (NSMutableArray *)selectDatesInHistoryTable;
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
@@ -50,5 +52,17 @@
 
 // Boolean checks.
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
+
+// Offline history.
+- (NSArray *)selectDistinctYearsInHistory;
+- (NSArray *)selectDistinctMonthsForYear:(NSNumber *)year;
+- (NSArray *)selectOfflineStoresForMonth:(NSNumber *)month year:(NSNumber *)year;
+- (NSInteger)countOfflineStoresForDay:(NSNumber *)day inMonth:(NSNumber *)month year:(NSNumber *)year;
+
+- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
+
+- (NSDictionary *)selectLastDowntime;
+- (NSDictionary *)selectLastDowntimeToday;
+- (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber;
 
 @end
