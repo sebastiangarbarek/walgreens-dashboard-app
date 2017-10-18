@@ -13,6 +13,6 @@
 @property NSString *monthName;
 @property NSString *monthNumber;
 
-- (instancetype)initWithMonthNumberString:(NSString *)monthNumberString
+- (instancetype)initWithMonthNumberString:(NSString *)monthNumberString;
 
 @end

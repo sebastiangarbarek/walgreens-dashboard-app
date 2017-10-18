@@ -83,10 +83,12 @@
     switch (component) {
         case 0: {
             // Months.
+            [self updateMonthWithRow:row];
             break;
         }
         case 1: {
             // Years.
+            [self updateYearWithRow:row];
             break;
         }
         default:
@@ -97,9 +99,9 @@
 #pragma mark - Helper Methods -
 
 - (void)updateMonthWithRow:(NSInteger)row {
-    NSString *selectedMonth = [[monthsToYear objectForKey:selectedYear] monthNumber];
+    NSString *selectedMonth = [[[monthsToYear objectForKey:selectedYear] objectAtIndex:row] monthNumber];
     
-    [self.datePickerDelegate datePickerDidSelectMonth:selectedMonth withYear:selectedYear];
+    [self.delegate datePickerDidSelectMonth:selectedMonth withYear:selectedYear];
 }
 
 - (void)updateYearWithRow:(NSInteger)row {
@@ -111,10 +113,10 @@
     
     if ([self doesContainMonth:currentMonth.monthName inYear:selectedYear]) {
         // Call update delegate with current month.
-        [self.datePickerDelegate datePickerDidSelectMonth:currentMonth.monthNumber withYear:selectedYear];
+        [self.delegate datePickerDidSelectMonth:currentMonth.monthNumber withYear:selectedYear];
     } else {
         // Call update delegate with first recorded month of the year.
-        [self.datePickerDelegate datePickerDidSelectMonth:[[[monthsToYear objectForKey:selectedYear] objectAtIndex:0] monthNumber] withYear:selectedYear];
+        [self.delegate datePickerDidSelectMonth:[[[monthsToYear objectForKey:selectedYear] objectAtIndex:0] monthNumber] withYear:selectedYear];
     }
     
     // Update months for year using selected year variable.
@@ -122,10 +124,11 @@
 }
 
 - (NSArray *)convertMonthNumbersToMonthObjects:(NSArray *)monthNumbers {
-    NSMutableArray *months;
+    NSMutableArray *months = [NSMutableArray new];
     
     for (NSString *monthNumber in monthNumbers) {
-        [months addObject:[[Month alloc] initWithMonthNumberString:monthNumber]];
+        Month *month = [[Month alloc] initWithMonthNumberString:monthNumber];
+        [months addObject:month];
     }
     
     return months;

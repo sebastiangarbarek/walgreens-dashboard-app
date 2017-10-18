@@ -147,11 +147,19 @@
 #pragma mark - Offline History -
 
 - (NSArray *)selectDistinctYearsInHistory {
+    NSString *commandString = @"SELECT DISTINCT year FROM offline_history ORDER BY offlineDateTime DESC";
     
+    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"year"];
+    
+    return results;
 }
 
 - (NSArray *)selectDistinctMonthsForYear:(NSString *)year {
+    NSString *commandString = [NSString stringWithFormat:@"SELECT DISTINCT month FROM offline_history WHERE year = '%@' ORDER BY offlineDateTime DESC", year];
     
+    NSArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"month"];
+    
+    return results;
 }
 
 // Used for dashboard screen.

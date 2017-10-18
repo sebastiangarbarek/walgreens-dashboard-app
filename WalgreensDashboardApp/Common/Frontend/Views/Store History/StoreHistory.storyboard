@@ -53,6 +53,10 @@
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIc-dz-0gi">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="BsI-WT-RTL" id="BUG-oa-BlP"/>
+                                                        <outlet property="delegate" destination="BsI-WT-RTL" id="UXt-Wf-yo6"/>
+                                                    </connections>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>

@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource>
+#import "DatePickerDelegate.h"
+#import "DatePickerCell.h"
+
+@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

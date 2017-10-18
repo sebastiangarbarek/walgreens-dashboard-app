@@ -12,7 +12,7 @@
 
 @interface DatePickerCell : OfflineHistoryCell <UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (weak, nonatomic) id <DatePickerDelegate> datePickerDelegate;
+@property (weak, nonatomic) id <DatePickerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *datePicker;
 

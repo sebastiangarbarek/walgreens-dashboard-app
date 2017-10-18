@@ -550,7 +550,6 @@
 			isa = PBXGroup;
 			children = (
 				A85D90CE1F96CC8700604683 /* Supporting Objects */,
-				A85D90CC1F96CB9E00604683 /* Custom Delegates */,
 				A85D90C61F96C54C00604683 /* OfflineHistoryCell.h */,
 				A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */,
 				A85D90C31F96C53200604683 /* DatePickerCell.h */,
@@ -559,12 +558,12 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
-		A85D90CC1F96CB9E00604683 /* Custom Delegates */ = {
+		A85D90CC1F96CB9E00604683 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				A85D90CD1F96CBBD00604683 /* DatePickerDelegate.h */,
 			);
-			name = "Custom Delegates";
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		A85D90CE1F96CC8700604683 /* Supporting Objects */ = {
@@ -607,6 +606,7 @@
 				A85D90C21F96C51400604683 /* Cells */,
 				A85D90BF1F96C15C00604683 /* OfflineHistoryController.h */,
 				A85D90C01F96C15C00604683 /* OfflineHistoryController.m */,
+				A85D90CC1F96CB9E00604683 /* Delegates */,
 			);
 			path = "Store History";
 			sourceTree = "<group>";
