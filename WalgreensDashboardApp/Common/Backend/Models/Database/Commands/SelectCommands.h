@@ -18,6 +18,8 @@
 - (BOOL)storeHasLastBeenOfflineToday:(NSString *)storeNumber;
 
 // Return IDs.
+- (NSArray *)selectAllPrintStoreIds;
+
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
 - (NSMutableArray *)selectNonPrintStoreIdsInStoreTable;
 

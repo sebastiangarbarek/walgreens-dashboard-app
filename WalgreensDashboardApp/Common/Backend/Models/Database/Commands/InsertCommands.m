@@ -202,6 +202,27 @@
     [self.databaseManager executeStatement:statement];
 }
 
+- (void)insertOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year {
+    printf("Inserting %s as %s on %s-%s\n", [[storeNumber stringValue] UTF8String], [status UTF8String], [[day stringValue] UTF8String], [[month stringValue] UTF8String]);
+    
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", HistoryTableName];
+    const char *command = [commandString UTF8String];
+    sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
+    
+    // Only do months 1 - 9.
+    NSString *currentDateTime = [NSString stringWithFormat:@"%@-0%@-%@ 22:10:20", year, month, day];
+    
+    sqlite3_bind_int(statement, 1, [storeNumber intValue]);
+    sqlite3_bind_text(statement, 2, [[status description] UTF8String], -1, SQLITE_STATIC);
+    sqlite3_bind_text(statement, 3, [[currentDateTime description] UTF8String], -1, SQLITE_STATIC);
+    
+    sqlite3_bind_int(statement, 4, [day intValue]);
+    sqlite3_bind_int(statement, 5, [month intValue]);
+    sqlite3_bind_int(statement, 6, [year intValue]);
+    
+    [self.databaseManager executeStatement:statement];
+}
+
 - (void)bindIntValue:(id)value withPosition:(int)position andStatement:(sqlite3_stmt *)stmt {
     ([NSNull null] == value) ? sqlite3_bind_null(stmt, position) : sqlite3_bind_int(stmt, position, [value intValue]);
 }

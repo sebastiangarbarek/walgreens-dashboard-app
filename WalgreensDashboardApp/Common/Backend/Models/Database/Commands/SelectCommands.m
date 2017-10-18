@@ -32,6 +32,11 @@
     }
 }
 
+- (NSArray *)selectAllPrintStoreIds {
+    NSString *commandString = @"SELECT storeNum FROM store_detail WHERE photoInd = 'true'";
+    return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"storeNum"];
+}
+
 /*! Selects IDs of stores that were inserted as online in the store table.
  This method can be used to check the difference of stores in the database to stores on the server.
  It helps retrieve new stores or store details that were unable to be retrieved previously.
