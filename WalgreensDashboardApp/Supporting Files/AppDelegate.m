@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate () {
-    StatusControllerApp *statusControllerApp;
+    StatusController *statusController;
     DatabaseManagerApp *databaseManagerApp;
 }
 
@@ -18,20 +18,29 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"%@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
+    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    
+    //[self randomOfflineHistory];
+    
+    statusController = [[StatusController alloc] initWithManager:databaseManagerApp];
+    
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    printf("[APP BACKGROUND] Saving temporary list of stores requested...\n");
     
+    [statusController saveTemporary];
+    
+    printf("[APP BACKGROUND] Stopping status controller...\n");
+    
+    [statusController stop];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    self.inForeground = NO;
-    // The app has approx. 5 seconds to return from this method.
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    printf("[APP] Stopping status controller...\n");
-    // There is a chance (applicationDidBecomeActive:) is called before stop terminates.
-    [statusControllerApp stop];
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -39,18 +48,64 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    self.inForeground = YES;
-    printf("[APP] Initializing status controller...\n");
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [databaseManagerApp closeDatabase];
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    statusControllerApp = [[StatusControllerApp alloc] initWithManager:databaseManagerApp];
+    printf("[APP ACTIVE] Starting status controller...\n");
+    
+    [statusController start];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    printf("[APP] Stopping status controller...\n");
-    [statusControllerApp stop];
-    [databaseManagerApp closeDatabase];
+    
+}
+
+- (void)randomOfflineHistory {
+    [databaseManagerApp openCreateDatabase];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    
+    NSArray *printStores = [databaseManagerApp.selectCommands selectAllPrintStoreIds];
+    
+    for (int i = 1; i <= 9; i++) {
+        [components setYear:2017];
+        [components setMonth:i];
+        
+        NSDate *date = [calendar dateFromComponents:components];
+        NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
+        
+        for (int j = 1; j <= range.length; j++) {
+            NSInteger lowerBound = 0;
+            NSInteger upperBound = 150;
+            NSInteger rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+            
+            for (int k = 0; k < rndValue; k++) {
+                lowerBound = 0;
+                upperBound = 3;
+                rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+                
+                NSString *status;
+                switch (rndValue) {
+                    case 0:
+                        status = @"M";
+                        break;
+                    case 1:
+                        status = @"C";
+                        break;
+                    case 2:
+                        status = @"T";
+                        break;
+                    default:
+                        status = @"C";
+                        break;
+                }
+                
+                lowerBound = 0;
+                upperBound = [printStores count];
+                rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+                
+                [databaseManagerApp.insertCommands insertOfflineHistoryWithStore:[printStores objectAtIndex:rndValue] status:status day:@(j) month:@(i) year:@(2017)];
+            }
+        }
+    }
 }
 
 @end

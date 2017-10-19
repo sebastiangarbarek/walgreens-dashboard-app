@@ -19,7 +19,8 @@
 
 - (void)insertProductsWithData:(NSDictionary *)responseData;
 
-- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber;
-- (void)insertTempStatusWithStore:(NSString *)storeNumber online:(BOOL)online;
+- (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status;
+
+- (void)insertOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year;
 
 @end

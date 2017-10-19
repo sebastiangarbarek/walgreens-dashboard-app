@@ -34,7 +34,21 @@
     return [dateFormatter stringFromDate:[NSDate date]];
 }
 
-+ (NSString *)dateFormatForGraph: (NSString *)dateString{
++ (BOOL)currentDateTimeIsAtLeastMinutes:(long)minutes aheadOf:(NSDate *)dateTime timesChecked:(int)timesChecked {
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    
+    unsigned unitFlags = NSCalendarUnitMinute;
+    NSDateComponents *results = [calender components:unitFlags fromDate:dateTime toDate:[NSDate date] options:0];
+    
+    // Must factor number of times checked and the interval.
+    if ([results minute] > (minutes + (timesChecked * minutes))) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
++ (NSString *)dateFormatForGraph:(NSString *)dateString{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYY-MM-dd"];
     NSDate *date = [dateFormatter dateFromString:dateString];
@@ -43,12 +57,11 @@
     return dateString;
 }
 
-//Set date format for graph data
 + (NSString *)dateFormatForGraphData: (NSString *)dateString{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy"];
-    NSDate *dateYear =[NSDate date];
-    NSInteger currentYear =[[dateFormatter stringFromDate:dateYear] integerValue];
+    NSDate *dateYear = [NSDate date];
+    NSInteger currentYear = [[dateFormatter stringFromDate:dateYear] integerValue];
     [dateFormatter setDateFormat:@"dd/MM"];
     NSDate *date = [dateFormatter dateFromString:dateString];
     [dateFormatter setDateFormat:@"MM-dd"];

@@ -7,11 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIkit.h>
 
 #import "Controller.h"
+#import "DatabaseManagerApp.h"
+#import "DatabaseConstants.h"
+#import "Reachability.h"
+
+static NSString *const kRequestedStoresFileName = @"stores.plist";
+static long const kInsertDowntimeIntoDatabaseEvery = 10;
 
 @interface StatusController : Controller <WalgreensAPIDelegate>
 
-- (BOOL)updateStoreStatusesForToday;
+@property (atomic) BOOL stopping;
+
+// Saved to disk.
+@property (atomic) NSMutableDictionary *storeStatuses;
+- (void)saveTemporary;
+
+// Requests thread.
+- (void)start;
+- (void)stop;
 
 @end

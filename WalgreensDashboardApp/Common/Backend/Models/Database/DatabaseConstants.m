@@ -33,8 +33,12 @@ NSString *const kSatOpen = @"satOpen";
 NSString *const kSatClose = @"satClose";
 NSString *const kSunOpen = @"sunOpen";
 NSString *const kSunClose = @"sunClose";
+NSString *const kPhotoStatus = @"photoStatusCd";
 
 NSString *const kProId = @"productId";
 NSString *const kProGroup = @"productGroupId";
 NSString *const kProSize = @"productSize";
 NSString *const kProPrice = @"productPrice";
+
+NSString *const kOfflineDateTime = @"offlineDateTime";
+NSString *const kOnlineDateTime = @"onlineDateTime";
