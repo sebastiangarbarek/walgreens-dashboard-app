@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
     [self initData];
 }
 
@@ -129,22 +128,6 @@
     [cellCollection addObject:offlineCell];
     [cellCollection addObject:openCell];
     [cellCollection addObject:closedCell];
-}
-
-- (void)setupView {
-    [self addPrinticularLogo];
-}
-
-- (void)addPrinticularLogo {
-    UIImage *image = [UIImage imageNamed:@"Printicular Logo"];
-    
-    // Use to automatically scale image.
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    button.adjustsImageWhenHighlighted = NO;
-    
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = leftBarButton;
 }
 
 - (void)configureViewOnAppear {
