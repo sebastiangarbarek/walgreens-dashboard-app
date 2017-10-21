@@ -62,12 +62,18 @@
                                             <subviews>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-5j-WfP">
                                                     <rect key="frame" x="0.0" y="44" width="375" height="264"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="264" id="y7K-vJ-KNG"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="delegate" destination="QZF-cW-YUu" id="SlE-Ma-T0g"/>
                                                     </connections>
                                                 </mapView>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ks-fI-72i">
                                                     <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="zTL-hF-zcl"/>
+                                                    </constraints>
                                                     <segments>
                                                         <segment title="All"/>
                                                         <segment title="24/7"/>
@@ -76,14 +82,13 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" constant="8" id="DsE-xF-nTQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="XeV-5j-WfP" secondAttribute="bottom" id="XCf-kU-IRT"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="topMargin" id="czz-Kn-62i"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leadingMargin" id="dLX-fB-TVL"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="edl-1v-8tp"/>
-                                                <constraint firstAttribute="trailing" secondItem="XeV-5j-WfP" secondAttribute="trailing" id="pma-PZ-CAo"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="trailing" secondItem="TqE-1H-tfs" secondAttribute="trailingMargin" id="qgn-hG-gTE"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" constant="8" id="tMW-av-ga3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XeV-5j-WfP" secondAttribute="bottom" constant="-8" id="3rc-Xf-Cl5"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" constant="8" id="7sD-bD-Ra9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XeV-5j-WfP" secondAttribute="trailing" constant="-8" id="R8s-Um-5oe"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="trailing" secondItem="TqE-1H-tfs" secondAttribute="trailingMargin" id="giH-B7-i9W"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leadingMargin" id="k3U-gC-QXe"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leadingMargin" constant="-8" id="qSt-Xc-WsH"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="topMargin" id="s4o-Ht-5Mb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

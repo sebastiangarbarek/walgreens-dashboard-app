@@ -9,7 +9,7 @@
 #import "OpenClosedCell.h"
 
 @interface OpenClosedCell () {
-    NSMutableArray *cellCollection;
+    NSMutableArray<DashboardCountCellData *> *cellCollection;
 }
 
 @end
@@ -18,7 +18,7 @@
 
 #pragma mark - Init Methods -
 
-- (void)loadWithOpen:(NSNumber *)open closed:(NSNumber *)closed {
+- (void)loadWithStores:(NSNumber *)open closed:(NSNumber *)closed {
     cellCollection = [NSMutableArray new];
     
     DashboardCountCellData *c1 = [DashboardCountCellData new];

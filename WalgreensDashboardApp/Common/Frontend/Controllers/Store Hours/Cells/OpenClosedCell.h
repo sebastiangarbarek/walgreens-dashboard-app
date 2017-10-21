@@ -16,6 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-- (void)loadWithOpen:(NSNumber *)open closed:(NSNumber *)closed;
+- (void)loadWithStores:(NSNumber *)open closed:(NSNumber *)closed;
 
 @end

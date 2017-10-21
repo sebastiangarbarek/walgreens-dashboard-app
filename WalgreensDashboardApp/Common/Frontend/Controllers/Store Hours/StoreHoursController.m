@@ -9,8 +9,6 @@
 #import "StoreHoursController.h"
 
 @interface StoreHoursController () {
-    NSString *notification;
-    NSString *date;
     BOOL timesCalculated;
     NSMutableArray *openStores;
     NSMutableArray *closedStores;
@@ -31,6 +29,8 @@
     static dispatch_once_t onceToken;
     // Dispatch once is synchronous.
     dispatch_once (&onceToken, ^{
+        // Show update notification.
+        self.notificationView.hidden = NO;
         // Storing and using date time as param so custom date time can be used in the future.
         self.dateTime = [DateHelper currentDateAndTime];
         // Once the view has appeared, then calculate store times.
@@ -48,8 +48,8 @@
 
 - (void)loadInitialData {
     self.storeTimes = [[StoreTimes alloc] init];
-    notification = @"Checking Store Times";
-    date = @"Today";
+    openStores = [NSMutableArray new];
+    closedStores = [NSMutableArray new];
     timesCalculated = NO;
 }
 
@@ -89,12 +89,6 @@
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
                                   withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:1 inSection:0], nil]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:3 inSection:0], nil]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:4 inSection:0], nil]
                                   withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView endUpdates];
             
@@ -138,6 +132,7 @@
         }
         case 1: {
             OpenClosedCell *openClosedCell = [tableView dequeueReusableCellWithIdentifier:@"Open Closed" forIndexPath:indexPath];
+            [openClosedCell loadWithStores:@([openStores count]) closed:@([closedStores count])];
             return openClosedCell;
         }
         default:
@@ -150,7 +145,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            return 264;
+            return 308;
         case 1: {
             CGRect screen = [[UIScreen mainScreen] bounds];
             return screen.size.width;

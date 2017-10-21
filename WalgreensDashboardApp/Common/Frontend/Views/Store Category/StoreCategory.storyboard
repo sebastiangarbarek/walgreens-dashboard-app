@@ -199,7 +199,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="fdF-iU-9cu" style="IBUITableViewCellStyleDefault" id="wUX-bj-eGP" customClass="StoreCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="fdF-iU-9cu" style="IBUITableViewCellStyleDefault" id="wUX-bj-eGP" customClass="BasicCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUX-bj-eGP" id="LWV-am-NsO">
@@ -216,7 +216,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storeName" destination="fdF-iU-9cu" id="y1o-C0-90b"/>
+                                    <outlet property="label" destination="fdF-iU-9cu" id="QTr-VR-hAN"/>
                                     <segue destination="skP-yz-rNb" kind="show" identifier="State Cities - Custom" id="174-RV-5db"/>
                                 </connections>
                             </tableViewCell>
@@ -240,7 +240,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="Ztn-bj-E37" style="IBUITableViewCellStyleDefault" id="vHl-fJ-9ZS" customClass="StoreCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="Ztn-bj-E37" style="IBUITableViewCellStyleDefault" id="vHl-fJ-9ZS" customClass="BasicCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHl-fJ-9ZS" id="M4p-g0-nuF">
@@ -257,7 +257,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storeName" destination="Ztn-bj-E37" id="wOh-k5-ye1"/>
+                                    <outlet property="label" destination="Ztn-bj-E37" id="msq-c4-lnE"/>
                                     <segue destination="JQ4-lr-juL" kind="show" identifier="Store Details" id="5xf-zh-Amy"/>
                                 </connections>
                             </tableViewCell>
