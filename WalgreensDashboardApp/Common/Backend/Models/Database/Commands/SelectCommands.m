@@ -139,7 +139,7 @@
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
-- (NSInteger)countOfflineStoresForDay:(NSString *)day inMonth:(NSNumber *)month year:(NSNumber *)year {
+- (NSInteger)countOfflineStoresForDay:(NSNumber *)day inMonth:(NSNumber *)month year:(NSNumber *)year {
     NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM offline_history WHERE day = %@ AND month = %@ AND year = %@", day, month, year];
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
