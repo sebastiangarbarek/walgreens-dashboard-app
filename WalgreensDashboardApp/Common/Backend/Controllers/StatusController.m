@@ -210,25 +210,6 @@
     }
 }
 
-- (void)updateStatusOfServerIfWasDown {
-    NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
-    
-    if (lastDownTime) {
-        if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
-            NSString *offlineDateTime = [lastDownTime objectForKey:kOfflineDateTime];
-            
-            if (offlineDateTime) {
-                printf("[STATUS 🍏] Server is back online.\n");
-                
-                // Update history to show when detected online.
-                [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
-                                                             offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
-                                                              onlineDateTime:[DateHelper currentDateAndTime]];
-            }
-        }
-    }
-}
-
 - (void)updateStoreStatusIfWasOffline:(NSString *)storeNumber {
     NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
     

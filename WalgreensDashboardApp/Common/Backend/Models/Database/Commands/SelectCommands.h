@@ -17,52 +17,23 @@
 - (BOOL)storeExists:(NSString *)storeNumber;
 - (BOOL)storeHasLastBeenOfflineToday:(NSString *)storeNumber;
 
-// Return IDs.
 - (NSArray *)selectAllPrintStoreIds;
-
-- (NSMutableArray *)selectOnlineStoreIdsInStoreTable;
 - (NSMutableArray *)selectNonPrintStoreIdsInStoreTable;
-
-// Return date string.
-- (NSString *)selectPreviousUpdateDateInHistoryTableWithDate:(NSString *)date;
-- (NSString *)selectNextUpdateDateInHistoryTableWithDate:(NSString *)date;
-
-// Return count.
-- (NSNumber *)countPrintStoresInStoreTable;
-
-// Return rows.
-- (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;
+- (NSArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber;
+- (NSArray *)selectStatesInStoreDetail;
 - (NSDictionary *)selectCityStateForStore:(NSString *)storeNumber;
-- (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
-- (NSMutableArray *)selectDatesInHistoryTable;
-- (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date;
+- (NSArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber;
 - (NSArray *)selectStoresInState:(NSString *)state;
 - (NSArray *)selectAllStoreCords;
 - (NSArray *)selectAllPrintStoresAndHours;
 - (NSArray *)selectAllProducts;
-
-// Return states without duplicates
-- (NSMutableArray *)selectStatesInStoreDetail;
-
-// Return cities of one state
-- (NSMutableArray *)selectCitiesInStoreDetailWithState:(NSString *)state;
-
-// Return stores of one city
-- (NSMutableArray *)selectStoresInStoreDetailWithCity:(NSString *)city;
-
-// Boolean checks.
-- (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber;
-
-// Offline history.
 - (NSArray *)selectDistinctYearsInHistory;
 - (NSArray *)selectDistinctMonthsForYear:(NSNumber *)year;
 - (NSArray *)selectOfflineStoresForMonth:(NSNumber *)month year:(NSNumber *)year;
-- (NSInteger)countOfflineStoresForDay:(NSNumber *)day inMonth:(NSNumber *)month year:(NSNumber *)year;
-
-- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
-
-- (NSDictionary *)selectLastDowntime;
-- (NSDictionary *)selectLastDowntimeToday;
 - (NSDictionary *)selectStoreIfHasBeenOfflineToday:(NSString *)storeNumber;
+
+- (NSNumber *)countPrintStoresInStoreTable;
+- (NSInteger)countOfflineStoresForDay:(NSString *)day inMonth:(NSNumber *)month year:(NSNumber *)year;
+- (NSNumber *)countOfflineInHistoryTableWithDateTime:(NSString *)dateTime;
 
 @end
