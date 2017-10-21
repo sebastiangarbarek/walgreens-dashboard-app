@@ -53,7 +53,7 @@
     timesCalculated = NO;
 }
 
-// Wrapper for selector.
+// Wrapper for timer selector.
 - (void)updateStores {
     // Storing and using date time as param so custom date time can be used in the future.
     self.dateTime = [DateHelper currentDateAndTime];
@@ -81,6 +81,9 @@
         
         // Update view in main thread.
         dispatch_sync(dispatch_get_main_queue(), ^{
+            // Hide notification.
+            self.notificationView.hidden = YES;
+            
             [self.tableView beginUpdates];
             // Prevent reloading the entire table view if other data exists.
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
@@ -118,22 +121,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0: {
-            BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Notification" forIndexPath:indexPath];
-            cell.label.text = notification;
-            return cell;
-        }
-        case 1: {
-            BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Date" forIndexPath:indexPath];
-            cell.label.text = date;
-            return cell;
-        }
-        case 2: {
             StoreTimesMapCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Map" forIndexPath:indexPath];
             if (timesCalculated) {
                 cell.segueDelegate = self;
@@ -143,33 +136,9 @@
             }
             return cell;
         }
-        case 3: {
-            DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Open" forIndexPath:indexPath];
-            if (timesCalculated) {
-                cell.detail.text = [NSString stringWithFormat:@"%li", [openStores count]];
-                if ([openStores count] == 0) {
-                    cell.userInteractionEnabled = NO;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                } else {
-                    cell.userInteractionEnabled = YES;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-            }
-            return cell;
-        }
-        case 4: {
-            DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Closed" forIndexPath:indexPath];
-            if (timesCalculated) {
-                cell.detail.text = [NSString stringWithFormat:@"%li", [closedStores count]];
-                if ([closedStores count] == 0) {
-                    cell.userInteractionEnabled = NO;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                } else {
-                    cell.userInteractionEnabled = YES;
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                }
-            }
-            return cell;
+        case 1: {
+            OpenClosedCell *openClosedCell = [tableView dequeueReusableCellWithIdentifier:@"Open Closed" forIndexPath:indexPath];
+            return openClosedCell;
         }
         default:
             break;
@@ -181,19 +150,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            if (timesCalculated) {
-                return 0;
-            } else {
-                return 22;
-            }
-        case 1:
-            return 22;
-        case 2:
             return 264;
-        case 3:
-            return 44;
-        case 4:
-            return 44;
+        case 1: {
+            CGRect screen = [[UIScreen mainScreen] bounds];
+            return screen.size.width;
+        }
         default:
             break;
     }

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <ClusterKit/MKMapView+ClusterKit.h>
+
 #import "ClusterPin.h"
 #import "DatabaseConstants.h"
 #import "StoreTimes.h"
@@ -20,6 +21,7 @@
 
 @property NSString *storeNumber;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (void)loadWithoutStores;

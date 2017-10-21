@@ -31,6 +31,7 @@
 		A8017BE61F9B199600F2C695 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE21F9B199600F2C695 /* ViewController.m */; };
 		A8017BE71F9B199600F2C695 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE41F9B199600F2C695 /* TableViewController.m */; };
 		A8017BEA1F9B1A3E00F2C695 /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE81F9B1A3E00F2C695 /* DashboardCountCellData.m */; };
+		A8017BED1F9B44BF00F2C695 /* OpenClosedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
@@ -144,6 +145,8 @@
 		A8017BE51F9B199600F2C695 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		A8017BE81F9B1A3E00F2C695 /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
 		A8017BE91F9B1A3E00F2C695 /* DashboardCountCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
+		A8017BEB1F9B44BF00F2C695 /* OpenClosedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenClosedCell.h; sourceTree = "<group>"; };
+		A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenClosedCell.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C7361EB023FB002ED089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -480,14 +483,14 @@
 		A85D90C21F96C51400604683 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A8017BC31F9B190B00F2C695 /* SummaryCell.m */,
 				A8017BC41F9B190B00F2C695 /* SummaryCell.h */,
-				A8017BC51F9B190B00F2C695 /* OnlineTrendCell.m */,
+				A8017BC31F9B190B00F2C695 /* SummaryCell.m */,
 				A8017BC61F9B190B00F2C695 /* OnlineTrendCell.h */,
-				A8017BC71F9B190B00F2C695 /* OfflineHistoryCell.m */,
+				A8017BC51F9B190B00F2C695 /* OnlineTrendCell.m */,
 				A8017BC81F9B190B00F2C695 /* OfflineHistoryCell.h */,
-				A8017BC91F9B190B00F2C695 /* DatePickerCell.m */,
+				A8017BC71F9B190B00F2C695 /* OfflineHistoryCell.m */,
 				A8017BCA1F9B190B00F2C695 /* DatePickerCell.h */,
+				A8017BC91F9B190B00F2C695 /* DatePickerCell.m */,
 				A85D90CE1F96CC8700604683 /* Supporting Objects */,
 			);
 			path = Cells;
@@ -635,9 +638,9 @@
 		A8AE355E1F80CDE00017C904 /* Store Hours */ = {
 			isa = PBXGroup;
 			children = (
-				A8017BAC1F9B185600F2C695 /* StoreHoursController.m */,
-				A8017BAD1F9B185600F2C695 /* StoreHoursController.h */,
 				A8AE35681F80FA660017C904 /* Cells */,
+				A8017BAD1F9B185600F2C695 /* StoreHoursController.h */,
+				A8017BAC1F9B185600F2C695 /* StoreHoursController.m */,
 			);
 			path = "Store Hours";
 			sourceTree = "<group>";
@@ -645,8 +648,10 @@
 		A8AE35681F80FA660017C904 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */,
 				A8017BAA1F9B184800F2C695 /* StoreTimesMapCell.h */,
+				A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */,
+				A8017BEB1F9B44BF00F2C695 /* OpenClosedCell.h */,
+				A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1054,6 +1059,7 @@
 				A8017BE01F9B198E00F2C695 /* DetailCell.m in Sources */,
 				A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */,
 				A8017BE11F9B198E00F2C695 /* BasicCell.m in Sources */,
+				A8017BED1F9B44BF00F2C695 /* OpenClosedCell.m in Sources */,
 				A8017BB41F9B188300F2C695 /* MapCell.m in Sources */,
 				A8D891871F6CA9CA00E3388B /* StoreCategoryController.m in Sources */,
 				A86CF5041F5CFC54005889B7 /* Controller.m in Sources */,

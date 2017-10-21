@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BasicCell.h"
+
 #import "StoreTimesMapCell.h"
-#import "DetailCell.h"
+#import "OpenClosedCell.h"
 #import "SegueDelegate.h"
 #import "StoreDetailsController.h"
 #import "StoreStateController.h"
@@ -19,6 +19,9 @@
 @property StoreTimes *storeTimes;
 @property NSString *dateTime;
 @property NSTimer *storeTimer;
+
+@property (weak, nonatomic) IBOutlet UIView *notificationView;
+@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
