@@ -119,7 +119,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
+    BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
     
     // See initData and Store object for understanding.
     NSString *street = [[[cellsToSection objectForKey:[sectionTitles objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] descriptor];
@@ -129,7 +129,7 @@
         // Fix casing.
         street = [street lowercaseString];
         street = [street capitalizedString];
-        cell.storeName.text = [NSString stringWithFormat:@"%@", street];
+        cell.label.text = [NSString stringWithFormat:@"%@", street];
     }
     
     return cell;

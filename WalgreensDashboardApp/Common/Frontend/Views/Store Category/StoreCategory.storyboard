@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="dGF-3t-HON" style="IBUITableViewCellStyleDefault" id="PxV-9e-cPk" customClass="StoreCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="dGF-3t-HON" style="IBUITableViewCellStyleDefault" id="PxV-9e-cPk" customClass="BasicCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PxV-9e-cPk" id="agl-oP-mKu">
@@ -124,7 +124,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storeName" destination="dGF-3t-HON" id="m25-DD-NH4"/>
+                                    <outlet property="label" destination="dGF-3t-HON" id="gYP-Te-zcE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="HcR-Ut-laA" style="IBUITableViewCellStyleDefault" id="7fX-7W-BV6" customClass="StoreCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Store" textLabel="HcR-Ut-laA" style="IBUITableViewCellStyleDefault" id="7fX-7W-BV6" customClass="BasicCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7fX-7W-BV6" id="6bT-qq-gv9">
@@ -172,7 +172,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storeName" destination="HcR-Ut-laA" id="650-yO-V2J"/>
+                                    <outlet property="label" destination="HcR-Ut-laA" id="Qwp-kp-r4e"/>
                                     <segue destination="sv6-Tc-lqd" kind="show" identifier="Store Details" id="pbo-fM-wMt"/>
                                 </connections>
                             </tableViewCell>

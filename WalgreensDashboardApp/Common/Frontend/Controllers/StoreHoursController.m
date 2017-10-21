@@ -124,12 +124,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0: {
-            SingleLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Notification" forIndexPath:indexPath];
+            BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Notification" forIndexPath:indexPath];
             cell.label.text = notification;
             return cell;
         }
         case 1: {
-            SingleLabelCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Date" forIndexPath:indexPath];
+            BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Date" forIndexPath:indexPath];
             cell.label.text = date;
             return cell;
         }

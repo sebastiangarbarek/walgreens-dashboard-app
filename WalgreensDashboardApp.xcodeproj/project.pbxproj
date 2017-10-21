@@ -16,7 +16,6 @@
 		A85D90C51F96C53200604683 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C41F96C53200604683 /* DatePickerCell.m */; };
 		A85D90C81F96C54C00604683 /* OfflineHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */; };
 		A85D90D11F96CCA800604683 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D01F96CCA800604683 /* Month.m */; };
-		A85D90D51F96E19D00604683 /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D31F96E19D00604683 /* StoreCell.m */; };
 		A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D71F970D0A00604683 /* OnlineTrendCell.m */; };
 		A86CF4E31F5CCADC005889B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E21F5CCADC005889B7 /* Main.storyboard */; };
 		A86CF4E81F5CCD6E005889B7 /* StoreHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E71F5CCD6E005889B7 /* StoreHistory.storyboard */; };
@@ -52,10 +51,9 @@
 		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
 		A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */; };
 		A8A1B8271F945B90004A0BC3 /* WalgreensAPIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */; };
-		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
 		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
 		A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35631F80F1750017C904 /* StoreHoursController.m */; };
-		A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE356D1F810AA00017C904 /* SingleLabelCell.m */; };
+		A8AE356E1F810AA00017C904 /* BasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE356D1F810AA00017C904 /* BasicCell.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
@@ -114,8 +112,6 @@
 		A85D90CD1F96CBBD00604683 /* DatePickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerDelegate.h; sourceTree = "<group>"; };
 		A85D90CF1F96CC9800604683 /* Month.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Month.h; sourceTree = "<group>"; };
 		A85D90D01F96CCA800604683 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Month.m; sourceTree = "<group>"; };
-		A85D90D31F96E19D00604683 /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
-		A85D90D41F96E19D00604683 /* StoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCell.h; sourceTree = "<group>"; };
 		A85D90D61F970D0A00604683 /* OnlineTrendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTrendCell.h; sourceTree = "<group>"; };
 		A85D90D71F970D0A00604683 /* OnlineTrendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTrendCell.m; sourceTree = "<group>"; };
 		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
@@ -135,8 +131,8 @@
 		A86CF51D1F5D3F59005889B7 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		A86CF51F1F5D3FA4005889B7 /* MapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCell.h; sourceTree = "<group>"; };
 		A86CF5201F5D3FA4005889B7 /* MapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCell.m; sourceTree = "<group>"; };
-		A86CF5221F5D4058005889B7 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
-		A86CF5231F5D4058005889B7 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
+		A86CF5221F5D4058005889B7 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = "../Store Details/DetailCell.h"; sourceTree = "<group>"; };
+		A86CF5231F5D4058005889B7 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCell.m; path = "../Store Details/DetailCell.m"; sourceTree = "<group>"; };
 		A86CF5251F5D40E9005889B7 /* StoreDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailsController.h; sourceTree = "<group>"; };
 		A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailsController.m; sourceTree = "<group>"; };
 		A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCountCell.h; sourceTree = "<group>"; };
@@ -151,19 +147,17 @@
 		A89B0A251F85076F0016A698 /* ProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTimesMapCell.h; path = Main/StoreTimesMapCell.h; sourceTree = "<group>"; };
 		A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTimesMapCell.m; path = Main/StoreTimesMapCell.m; sourceTree = "<group>"; };
-		A89EA2801F72661D00A50E3B /* SegueProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueProtocol.h; sourceTree = "<group>"; };
+		A89EA2801F72661D00A50E3B /* SegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SegueDelegate.h; path = ../SegueDelegate.h; sourceTree = "<group>"; };
 		A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
 		A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
 		A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIDelegate.h; sourceTree = "<group>"; };
 		A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIConstants.h; sourceTree = "<group>"; };
 		A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPIConstants.m; sourceTree = "<group>"; };
-		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
-		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
 		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
 		A8AE35621F80F1750017C904 /* StoreHoursController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHoursController.h; sourceTree = "<group>"; };
 		A8AE35631F80F1750017C904 /* StoreHoursController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHoursController.m; sourceTree = "<group>"; };
-		A8AE356C1F810AA00017C904 /* SingleLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLabelCell.h; sourceTree = "<group>"; };
-		A8AE356D1F810AA00017C904 /* SingleLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLabelCell.m; sourceTree = "<group>"; };
+		A8AE356C1F810AA00017C904 /* BasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicCell.h; path = ../BasicCell.h; sourceTree = "<group>"; };
+		A8AE356D1F810AA00017C904 /* BasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicCell.m; path = ../BasicCell.m; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A8D8917F1F6B875100E3388B /* StoreStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreStateController.h; sourceTree = "<group>"; };
 		A8D891801F6B875100E3388B /* StoreStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreStateController.m; sourceTree = "<group>"; };
@@ -190,8 +184,8 @@
 		A8E09A451F4D45560063EEE4 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtility.h; sourceTree = "<group>"; };
 		A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtility.m; sourceTree = "<group>"; };
-		A8E09A4D1F4D45680063EEE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A8E09A4E1F4D45680063EEE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A8E09A4D1F4D45680063EEE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Backend/Models/Network/Reachability.h; sourceTree = "<group>"; };
+		A8E09A4E1F4D45680063EEE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Backend/Models/Network/Reachability.m; sourceTree = "<group>"; };
 		A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPI.h; sourceTree = "<group>"; };
 		A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPI.m; sourceTree = "<group>"; };
 		A8E09A521F4D45680063EEE4 /* Commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commands.h; sourceTree = "<group>"; };
@@ -277,7 +271,6 @@
 		A80D3EAC1F6A166E00D9CBE6 /* Store Category */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90D21F96E15F00604683 /* Cells */,
 				A8D891851F6CA9CA00E3388B /* StoreCategoryController.h */,
 				A8D891861F6CA9CA00E3388B /* StoreCategoryController.m */,
 				A8D8917F1F6B875100E3388B /* StoreStateController.h */,
@@ -323,7 +316,6 @@
 				A82949DD1F4E525A00EA0BBD /* Shared */,
 				A88A798D1F2F340300C99BFD /* Main */,
 				A86CF5081F5D129D005889B7 /* Store History */,
-				A89EA2801F72661D00A50E3B /* SegueProtocol.h */,
 			);
 			name = Controllers;
 			path = Common/Frontend/Controllers;
@@ -418,10 +410,9 @@
 		A82949DD1F4E525A00EA0BBD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A86CF4F31F5CF475005889B7 /* ViewController.h */,
-				A86CF4F41F5CF475005889B7 /* ViewController.m */,
-				A86CF4F61F5CF6C9005889B7 /* TableViewController.h */,
-				A86CF4F71F5CF6C9005889B7 /* TableViewController.m */,
+				A8F98A5C1F98327700BFC759 /* Delegates */,
+				A8F98A5A1F98311F00BFC759 /* Cells */,
+				A8F98A5B1F98326C00BFC759 /* Controllers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -500,15 +491,6 @@
 			name = "Supporting Objects";
 			sourceTree = "<group>";
 		};
-		A85D90D21F96E15F00604683 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A85D90D31F96E19D00604683 /* StoreCell.m */,
-				A85D90D41F96E19D00604683 /* StoreCell.h */,
-			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
 		A86CF4E41F5CCD09005889B7 /* Store History */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,12 +549,8 @@
 				A86CF51D1F5D3F59005889B7 /* MapPin.m */,
 				A86CF51F1F5D3FA4005889B7 /* MapCell.h */,
 				A86CF5201F5D3FA4005889B7 /* MapCell.m */,
-				A86CF5221F5D4058005889B7 /* DetailCell.h */,
-				A86CF5231F5D4058005889B7 /* DetailCell.m */,
 				A86CF5251F5D40E9005889B7 /* StoreDetailsController.h */,
 				A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */,
-				A8AE35571F7FB4600017C904 /* StoreTimeCell.h */,
-				A8AE35581F7FB4600017C904 /* StoreTimeCell.m */,
 			);
 			path = "Store Details";
 			sourceTree = "<group>";
@@ -582,8 +560,7 @@
 			children = (
 				A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */,
 				A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */,
-				A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */,
-				A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */,
+				A8F98A5D1F9832A300BFC759 /* Supporting Objects */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -655,8 +632,6 @@
 			children = (
 				A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */,
 				A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */,
-				A8AE356C1F810AA00017C904 /* SingleLabelCell.h */,
-				A8AE356D1F810AA00017C904 /* SingleLabelCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -664,6 +639,7 @@
 		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A621F9835C400BFC759 /* Network */,
 				A82949DB1F4E4EB500EA0BBD /* Date */,
 			);
 			name = Helpers;
@@ -673,10 +649,9 @@
 		A8D891941F6F79CF00E3388B /* Time */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A5F1F98354200BFC759 /* Constants */,
 				A8D891951F6F7A8500E3388B /* StoreTimes.h */,
 				A8D891961F6F7A9500E3388B /* StoreTimes.m */,
-				A8D8919A1F71F6A000E3388B /* StoreTimesConstants.h */,
-				A8D8919B1F71F6B200E3388B /* StoreTimesConstants.m */,
 			);
 			name = Time;
 			path = ../Time;
@@ -685,15 +660,12 @@
 		A8E09A4A1F4D45680063EEE4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A601F98354B00BFC759 /* Constants */,
+				A8F98A5E1F98353000BFC759 /* Delegates */,
 				A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */,
 				A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */,
-				A8E09A4D1F4D45680063EEE4 /* Reachability.h */,
-				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
 				A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */,
 				A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */,
-				A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */,
-				A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */,
-				A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */,
 			);
 			name = Network;
 			path = WalgreensDashboardApp/Common/Backend/Models/Network;
@@ -702,8 +674,7 @@
 		A8E09A511F4D45680063EEE4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				A8D8918B1F6CFDBD00E3388B /* DatabaseConstants.h */,
-				A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */,
+				A8F98A611F98357C00BFC759 /* Constants */,
 				A8E09A541F4D45680063EEE4 /* DatabaseManager.h */,
 				A8E09A551F4D45680063EEE4 /* DatabaseManager.m */,
 				A82949D61F4E4C4D00EA0BBD /* Commands */,
@@ -723,6 +694,89 @@
 				A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A8F98A5A1F98311F00BFC759 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A86CF5221F5D4058005889B7 /* DetailCell.h */,
+				A86CF5231F5D4058005889B7 /* DetailCell.m */,
+				A8AE356C1F810AA00017C904 /* BasicCell.h */,
+				A8AE356D1F810AA00017C904 /* BasicCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		A8F98A5B1F98326C00BFC759 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A86CF4F31F5CF475005889B7 /* ViewController.h */,
+				A86CF4F41F5CF475005889B7 /* ViewController.m */,
+				A86CF4F61F5CF6C9005889B7 /* TableViewController.h */,
+				A86CF4F71F5CF6C9005889B7 /* TableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		A8F98A5C1F98327700BFC759 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A89EA2801F72661D00A50E3B /* SegueDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		A8F98A5D1F9832A300BFC759 /* Supporting Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */,
+				A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */,
+			);
+			name = "Supporting Objects";
+			sourceTree = "<group>";
+		};
+		A8F98A5E1F98353000BFC759 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		A8F98A5F1F98354200BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8D8919A1F71F6A000E3388B /* StoreTimesConstants.h */,
+				A8D8919B1F71F6B200E3388B /* StoreTimesConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A601F98354B00BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */,
+				A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A611F98357C00BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8D8918B1F6CFDBD00E3388B /* DatabaseConstants.h */,
+				A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A621F9835C400BFC759 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A8E09A4D1F4D45680063EEE4 /* Reachability.h */,
+				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -955,9 +1009,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A85D90D51F96E19D00604683 /* StoreCell.m in Sources */,
 				A86CF4FA1F5CFC54005889B7 /* NetworkUtility.m in Sources */,
-				A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */,
 				A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
 				A89B0A261F85076F0016A698 /* ProductCell.m in Sources */,
@@ -1002,7 +1054,7 @@
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
 				A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */,
-				A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */,
+				A8AE356E1F810AA00017C904 /* BasicCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

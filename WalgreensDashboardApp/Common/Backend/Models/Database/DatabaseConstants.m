@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// Store detail.
 NSString *const kStoreNum = @"storeNum";
 NSString *const kLat = @"latitude";
 NSString *const kLong = @"longitude";
@@ -35,10 +36,12 @@ NSString *const kSunOpen = @"sunOpen";
 NSString *const kSunClose = @"sunClose";
 NSString *const kPhotoStatus = @"photoStatusCd";
 
+// Product detail.
 NSString *const kProId = @"productId";
 NSString *const kProGroup = @"productGroupId";
 NSString *const kProSize = @"productSize";
 NSString *const kProPrice = @"productPrice";
 
+// Offline history.
 NSString *const kOfflineDateTime = @"offlineDateTime";
 NSString *const kOnlineDateTime = @"onlineDateTime";

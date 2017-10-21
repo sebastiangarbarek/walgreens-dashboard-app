@@ -206,8 +206,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
-    cell.storeName.text = [[self.cellsToSection objectForKey:self.sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
+    BasicCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Store" forIndexPath:indexPath];
+    cell.label.text = [[self.cellsToSection objectForKey:self.sectionTitles[indexPath.section]] objectAtIndex:indexPath.row];
     return cell;
 }
 

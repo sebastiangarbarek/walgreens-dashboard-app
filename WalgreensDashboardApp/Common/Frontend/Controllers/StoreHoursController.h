@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SingleLabelCell.h"
+#import "BasicCell.h"
 #import "StoreTimesMapCell.h"
 #import "DetailCell.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
 #import "StoreDetailsController.h"
 #import "StoreStateController.h"
 
-@interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource, SegueProtocol>
+@interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource, SegueDelegate>
 
 @property StoreTimes *storeTimes;
 @property NSString *dateTime;

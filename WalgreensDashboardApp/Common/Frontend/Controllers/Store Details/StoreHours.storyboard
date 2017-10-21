@@ -83,12 +83,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2T3-i9-buA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2138" y="-27"/>
+            <point key="canvasLocation" x="1714" y="157"/>
         </scene>
         <!--Store Hours-->
         <scene sceneID="alI-qz-vwo">
@@ -125,7 +124,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Notification" rowHeight="22" id="ETJ-N1-SB5" customClass="SingleLabelCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Notification" rowHeight="22" id="ETJ-N1-SB5" customClass="BasicCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ETJ-N1-SB5" id="pvS-dP-EHG">
@@ -148,10 +147,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="fFE-Ch-TNx" id="62K-Lr-SLf"/>
+                                            <outlet property="label" destination="fFE-Ch-TNx" id="wOV-S4-b6W"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Date" rowHeight="22" id="f9U-X4-URn" customClass="SingleLabelCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Date" rowHeight="22" id="f9U-X4-URn" customClass="BasicCell">
                                         <rect key="frame" x="0.0" y="50" width="375" height="22"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f9U-X4-URn" id="cCk-FY-DbN">
@@ -173,7 +172,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="label" destination="aYy-S4-1CX" id="0vu-sh-0Tx"/>
+                                            <outlet property="label" destination="aYy-S4-1CX" id="39s-GE-KQn"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Map" rowHeight="264" id="QZF-cW-YUu" customClass="StoreTimesMapCell">
@@ -270,7 +269,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Store Status" id="ShK-8b-rZG">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="pW1-TS-5uv"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="pW1-TS-5uv">
+                            <connections>
+                                <segue destination="pFK-7A-r5N" kind="presentation" id="7km-s6-F2O"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rTA-YI-CeS" id="dOM-ca-O2u"/>

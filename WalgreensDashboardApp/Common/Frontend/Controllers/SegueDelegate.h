@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol SegueProtocol <NSObject>
+@protocol SegueDelegate <NSObject>
 
 @required
 - (void)child:(id)child willPerformSegueWithIdentifier:(NSString *)segueIdentifier;

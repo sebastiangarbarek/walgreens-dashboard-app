@@ -12,11 +12,11 @@
 #import "ClusterPin.h"
 #import "DatabaseConstants.h"
 #import "StoreTimes.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
 
 @interface StoreTimesMapCell : UITableViewCell <MKMapViewDelegate>
 
-@property (weak, nonatomic) id <SegueProtocol> segueDelegate;
+@property (weak, nonatomic) id <SegueDelegate> segueDelegate;
 
 @property NSString *storeNumber;
 

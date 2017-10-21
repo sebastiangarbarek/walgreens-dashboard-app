@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StoreCell.h"
+#import "BasicCell.h"
 #import "StoreCategoryController.h"
 #import "TableViewController.h"
 #import "StoreCityController.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
 
 @interface StoreStateController : TableViewController
 
-@property (weak, nonatomic) id <SegueProtocol> segueDelegate;
+@property (weak, nonatomic) id <SegueDelegate> segueDelegate;
 
 // Can pass in filtered stores by setting this, e.g. currently open stores.
 @property NSArray *stores;

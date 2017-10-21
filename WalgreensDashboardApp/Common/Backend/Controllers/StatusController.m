@@ -10,9 +10,6 @@
 
 @interface StatusController () {
     NSString *requestedStoresFilePath;
-    
-    int nDowntime;
-    
     BOOL wasDisconnected;
 }
 
@@ -26,8 +23,6 @@
     self = [super initWithManager:manager];
     
     if (self) {
-        nDowntime = 0;
-        
         walgreensApi.delegate = self;
         
         NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -102,6 +97,7 @@
             }
             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+            
             NSArray *remainingStores = [self validateTemporary:storeList];
             [walgreensApi requestStoresInList:remainingStores];
         }
@@ -136,8 +132,8 @@
             return [self removeNonPrintStores:storeList];
         }
     } else {
+        printf("[STATUS] A temporary list of stores does not exist...\n");
         [self newTemporary];
-        
         return [self removeNonPrintStores:storeList];
     }
     
@@ -249,38 +245,13 @@
 }
 
 - (void)checkDowntime {
-    NSDictionary *lastDownTimeToday = [databaseManager.selectCommands selectLastDowntimeToday];
+    // Don't add another downtime entry if the last hasn't been resolved yet.
     
-    if (lastDownTimeToday == nil) {
-        nDowntime = 0;
-        
-        [self insertDowntime];
-    } else {
-        if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
-            printf("[STATUS] Server was online last checked.\n");
-            
-            nDowntime = 0;
-            
-            [self insertDowntime];
-        } else {
-            if ([lastDownTimeToday objectForKey:kOfflineDateTime]) {
-                if ([DateHelper currentDateTimeIsAtLeastMinutes:kInsertDowntimeIntoDatabaseEvery
-                                                        aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
-                                                   timesChecked:nDowntime]) {
-                    nDowntime++;
-                    
-                    printf("[STATUS] Server has been down for %li minute(s).\n", kInsertDowntimeIntoDatabaseEvery * nDowntime);
-                    
-                    [self insertDowntime];
-                }
-            }
-        }
-    }
 }
 
 - (void)insertDowntime {
     printf("[STATUS] Inserting downtime into database...\n");
-    [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All" status:nil];
+    
 }
 
 #pragma mark - Delegate Methods -

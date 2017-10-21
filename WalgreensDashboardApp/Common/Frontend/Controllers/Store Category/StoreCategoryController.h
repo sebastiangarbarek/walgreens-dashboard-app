@@ -11,9 +11,9 @@
 #import "StoreStateController.h"
 #import "StoreCityController.h"
 #import "MapController.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
 
-@interface StoreCategoryController : ViewController <SegueProtocol>
+@interface StoreCategoryController : ViewController <SegueDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 

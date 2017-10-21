@@ -34,6 +34,4 @@
     return [UIColor colorWithRed:255.0f/255.0f green:141.0f/255.0f blue:141.0f/255.0f alpha:1.0];
 }
 
-
-
 @end
