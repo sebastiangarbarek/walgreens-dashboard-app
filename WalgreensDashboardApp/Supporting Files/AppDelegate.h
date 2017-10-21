@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "StatusController.h"
-#import "DatabaseManagerApp.h"
+#import "DatabaseManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -3,16 +3,18 @@
 //  WalgreensAPIHarvester
 //
 //  Created by Sebastian Garbarek on 27/07/17.
-//  Copyright � 2017 Sebastian Garbarek. All rights reserved.
+//  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
 #import "SelectCommands.h"
+
 #import "DatabaseManager.h"
+#import "DatabaseConstants.h"
 
 @implementation SelectCommands
 
 - (BOOL)storeExists:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE storeNum = %@", kStoreTableName, storeNumber];
     NSArray *results = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([results count]) {
         return YES;
@@ -44,7 +46,7 @@
  * \returns An array of IDs of stores that are confirmed.
  */
 - (NSMutableArray *)selectOnlineStoreIdsInStoreTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE status = 1", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE status = 1", kStoreTableName];
     NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"storeNum"];
     return [self stringArrayWithArray:results];
 }
@@ -55,7 +57,7 @@
  * \returns An array of IDs of non-print stores.
  */
 - (NSMutableArray *)selectNonPrintStoreIdsInStoreTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE photoInd = 'false'", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE photoInd = 'false'", kStoreTableName];
     NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"storeNum"];
     return [self stringArrayWithArray:results];
 }
@@ -65,7 +67,7 @@
  * \returns Date in string format or nil if no date before given date.
  */
 - (NSString *)selectPreviousUpdateDateInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime < '%@' ORDER BY offlineDateTime DESC LIMIT 1", HistoryTableName, date];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime < '%@' ORDER BY offlineDateTime DESC LIMIT 1", kHistoryTableName, date];
     NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
     if ([results count])
         return results[0];
@@ -78,7 +80,7 @@
  * \returns Date in string format or nil if no date after given date.
  */
 - (NSString *)selectNextUpdateDateInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime > '%@' LIMIT 1", HistoryTableName, date];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@ WHERE offlineDateTime > '%@' LIMIT 1", kHistoryTableName, date];
     NSMutableArray *results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
     if ([results count])
         return results[0];
@@ -92,7 +94,7 @@
  * \returns Date in string format or nil if no date before given date.
  */
 - (NSNumber *)countPrintStoresInStoreTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE photoInd = 'true'", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE photoInd = 'true'", kStoreTableName];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
     if ([results count])
         return (NSNumber *) results[0];
@@ -101,12 +103,12 @@
 }
 
 - (NSMutableArray *)selectStoreDetailsWithStoreNumber:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", kStoreTableName, storeNumber];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
 - (NSDictionary *)selectCityStateForStore:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT city, state FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT city, state FROM %@ WHERE storeNum = %@", kStoreTableName, storeNumber];
     NSArray *result = [self.databaseManager executeQuery:[commandString UTF8String]];
     if ([result count])
         return result[0];
@@ -115,12 +117,12 @@
 }
 
 - (NSMutableArray *)selectStoreHoursWithStoreNumber:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE storeNum = %@", kStoreHourTableName, storeNumber];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
 - (BOOL)storeHoursForStoreNumber:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE storeNum = %@", StoreHourTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@ WHERE storeNum = %@", kStoreHourTableName, storeNumber];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(*)"];
     if ([results count])
         return YES;
@@ -129,24 +131,24 @@
 }
 
 - (NSMutableArray *)selectDatesInHistoryTable {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@", HistoryTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT offlineDateTime FROM %@", kHistoryTableName];
     return [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"offlineDateTime"];
 }
 
 - (NSMutableArray *)selectOfflineStoresInHistoryTableWithDate:(NSString *)date {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.offlineDateTime = '%@'", StoreTableName, HistoryTableName, HistoryTableName, StoreTableName, HistoryTableName, date];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT * FROM %@ INNER JOIN %@ ON %@.storeNum = %@.storeNum WHERE %@.offlineDateTime = '%@'", kStoreTableName, kHistoryTableName, kHistoryTableName, kStoreTableName, kHistoryTableName, date];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
 - (NSArray *)selectStoresInState:(NSString *)state {
     // Select only print stores.
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@' AND photoInd = 'true'", StoreTableName, state];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, city FROM %@ WHERE state = '%@' AND photoInd = 'true'", kStoreTableName, state];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
 - (NSArray *)selectAllStoreCords {
     // Ignores null. Select only print stores.
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, latitude, longitude FROM %@ WHERE photoInd = 'true' AND latitude IS NOT NULL", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum, street, latitude, longitude FROM %@ WHERE photoInd = 'true' AND latitude IS NOT NULL", kStoreTableName];
     return [self.databaseManager executeQuery:[commandString UTF8String]];
 }
 
@@ -201,7 +203,7 @@
     NSArray *dateTimeSeperated = [dateTime componentsSeparatedByString:@" "];
     
     // Count the unique number of stores that were offline at anytime today, that haven't be resolved as online and do not include server downtime.
-    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All' AND onlineDateTime IS NULL", HistoryTableName, dateTimeSeperated[0]];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT COUNT(DISTINCT storeNum) FROM %@ WHERE offlineDateTime LIKE '%@%%' AND storeNum != 'All' AND onlineDateTime IS NULL", kHistoryTableName, dateTimeSeperated[0]];
     NSArray* results = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"COUNT(DISTINCT storeNum)"];
     if ([results count])
         return (NSNumber *) results[0];
@@ -303,7 +305,7 @@
  * Put them into array
  */
 - (NSMutableArray *)selectStatesInStoreDetail {
-    NSString *commandString = [NSString stringWithFormat:@"SELECT DISTINCT state FROM %@ ORDER BY state", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT DISTINCT state FROM %@ ORDER BY state", kStoreTableName];
     NSMutableArray *StateList = [self arrayResultsWithoutNil:[self.databaseManager executeQuery:[commandString UTF8String]]];
     return StateList;
 }
@@ -313,7 +315,7 @@
  */
 - (NSMutableArray *)selectCitiesInStoreDetailWithState:(NSString *)state {
     
-    NSString *commandString = [NSString stringWithFormat:@"SELECT city FROM %@ WHERE state = '%@' ORDER BY city", StoreTableName, state];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT city FROM %@ WHERE state = '%@' ORDER BY city", kStoreTableName, state];
     NSMutableArray *CityList = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"city"];
     
     return CityList;
@@ -324,7 +326,7 @@
  */
 - (NSMutableArray *)selectStoresInStoreDetailWithCity:(NSString *)city {
     
-    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE city = '%@' ORDER BY storeNum", StoreTableName, city];
+    NSString *commandString = [NSString stringWithFormat:@"SELECT storeNum FROM %@ WHERE city = '%@' ORDER BY storeNum", kStoreTableName, city];
     NSMutableArray *StoreList = [self arrayWithResults:[self.databaseManager executeQuery:[commandString UTF8String]] key:@"storeNum"];
     
     return StoreList;

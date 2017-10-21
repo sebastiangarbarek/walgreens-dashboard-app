@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DatabaseManagerApp.h"
+#import "DatabaseManager.h"
 #import "DatePickerDelegate.h"
 #import "Month.h"
 
@@ -18,6 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *datePicker;
 
-- (void)loadDatePickerData:(DatabaseManagerApp *)databaseManager;
+- (void)loadDatePickerData:(DatabaseManager *)databaseManager;
 
 @end

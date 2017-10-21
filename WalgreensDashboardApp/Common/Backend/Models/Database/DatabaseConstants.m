@@ -6,7 +6,13 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DatabaseConstants.h"
+
+// Table names.
+NSString *const kStoreTableName = @"store_detail";
+NSString *const kProductTableName = @"product_detail";
+NSString *const kHistoryTableName = @"offline_history";
+NSString *const kStoreHourTableName = @"store_hour";
 
 // Store detail.
 NSString *const kStoreNum = @"storeNum";

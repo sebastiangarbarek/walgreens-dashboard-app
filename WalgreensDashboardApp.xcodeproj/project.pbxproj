@@ -32,9 +32,7 @@
 		A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A531F4D45680063EEE4 /* Commands.m */; };
 		A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */; };
 		A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */; };
-		A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5F1F4D45680063EEE4 /* TableCommands.m */; };
 		A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A611F4D45680063EEE4 /* UpdateCommands.m */; };
-		A86CF5031F5CFC54005889B7 /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */; };
 		A86CF5041F5CFC54005889B7 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A441F4D45560063EEE4 /* Controller.m */; };
 		A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A401F4D45560063EEE4 /* StatusController.m */; };
 		A86CF5161F5D366C005889B7 /* StoreCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF5151F5D366C005889B7 /* StoreCategory.storyboard */; };
@@ -192,14 +190,10 @@
 		A8E09A531F4D45680063EEE4 /* Commands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commands.m; sourceTree = "<group>"; };
 		A8E09A541F4D45680063EEE4 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		A8E09A551F4D45680063EEE4 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
-		A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
-		A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
 		A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertCommands.h; sourceTree = "<group>"; };
 		A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertCommands.m; sourceTree = "<group>"; };
 		A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCommands.h; sourceTree = "<group>"; };
 		A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCommands.m; sourceTree = "<group>"; };
-		A8E09A5E1F4D45680063EEE4 /* TableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommands.h; sourceTree = "<group>"; };
-		A8E09A5F1F4D45680063EEE4 /* TableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommands.m; sourceTree = "<group>"; };
 		A8E09A601F4D45680063EEE4 /* UpdateCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCommands.h; sourceTree = "<group>"; };
 		A8E09A611F4D45680063EEE4 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
 		A8E1E2011F4E58CE008DE876 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
@@ -372,15 +366,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		A82949D41F4E4BEC00EA0BBD /* App */ = {
-			isa = PBXGroup;
-			children = (
-				A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */,
-				A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		A82949D61F4E4C4D00EA0BBD /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,8 +375,6 @@
 				A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */,
 				A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */,
 				A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */,
-				A8E09A5E1F4D45680063EEE4 /* TableCommands.h */,
-				A8E09A5F1F4D45680063EEE4 /* TableCommands.m */,
 				A8E09A601F4D45680063EEE4 /* UpdateCommands.h */,
 				A8E09A611F4D45680063EEE4 /* UpdateCommands.m */,
 			);
@@ -456,6 +439,15 @@
 				A8E09A401F4D45560063EEE4 /* StatusController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A85D15BF1F9AF4D600AE7444 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */,
+				A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */,
+			);
+			name = Colors;
 			sourceTree = "<group>";
 		};
 		A85D90C21F96C51400604683 /* Cells */ = {
@@ -568,11 +560,10 @@
 		A88A798D1F2F340300C99BFD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A85D15BF1F9AF4D600AE7444 /* Colors */,
 				A86DE40E1F8AECEC00D3E486 /* Cells */,
 				A86CF4F01F5CF437005889B7 /* DashboardController.h */,
 				A86CF4F11F5CF437005889B7 /* DashboardController.m */,
-				A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */,
-				A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -678,7 +669,6 @@
 				A8E09A541F4D45680063EEE4 /* DatabaseManager.h */,
 				A8E09A551F4D45680063EEE4 /* DatabaseManager.m */,
 				A82949D61F4E4C4D00EA0BBD /* Commands */,
-				A82949D41F4E4BEC00EA0BBD /* App */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -1028,12 +1018,10 @@
 				A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */,
 				A85D90C11F96C15C00604683 /* OfflineHistoryController.m in Sources */,
 				A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */,
-				A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */,
 				A8D891811F6B875100E3388B /* StoreStateController.m in Sources */,
 				A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */,
 				A8D891901F6D070A00E3388B /* Store.m in Sources */,
 				A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */,
-				A86CF5031F5CFC54005889B7 /* DatabaseManagerApp.m in Sources */,
 				A8D891871F6CA9CA00E3388B /* StoreCategoryController.m in Sources */,
 				A86CF5041F5CFC54005889B7 /* Controller.m in Sources */,
 				A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */,

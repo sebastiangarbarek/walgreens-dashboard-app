@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DatabaseManagerApp.h"
+#import "DatabaseManager.h"
 
 @interface TableViewController : UITableViewController
 
-@property DatabaseManagerApp *databaseManagerApp;
+@property DatabaseManager *databaseManager;
 
 @end

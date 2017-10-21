@@ -101,7 +101,7 @@
         case 0: {
             DatePickerCell *datePicker = [tableView dequeueReusableCellWithIdentifier:@"Date Picker"];
             datePicker.delegate = self;
-            [datePicker loadDatePickerData:self.databaseManagerApp];
+            [datePicker loadDatePickerData:self.databaseManager];
             return datePicker;
             break;
         }
@@ -144,7 +144,7 @@
         // Cells load in order.
         selectedMonth = initialMonth;
         selectedYear = initialYear;
-        offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+        offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
         didLoadInitialGraph = YES;
     }
 }
@@ -152,7 +152,7 @@
 - (void)datePickerDidSelectMonth:(NSNumber *)month withYear:(NSNumber *)year {
     selectedMonth = month;
     selectedYear = year;
-    offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:month year:year];
+    offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:month year:year];
     [self.tableView reloadData];
 }
 
@@ -166,7 +166,7 @@
 
 - (OfflineHistoryCell *)smartDequeueWithIdentifier:(NSString *)identifier {
     OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManagerApp];
+    [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManager];
     return offlineHistoryCell;
 }
 

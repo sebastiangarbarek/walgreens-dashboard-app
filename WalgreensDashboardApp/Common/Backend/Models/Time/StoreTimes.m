@@ -35,7 +35,7 @@ static NSCalendar *sCalender = nil;
      */
     NSArray *stores;
     
-    DatabaseManagerApp *databaseManagerApp;
+    DatabaseManager *databaseManager;
 }
 
 @end
@@ -50,12 +50,12 @@ static NSCalendar *sCalender = nil;
 }
 
 - (void)createDatabaseConnection {
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    [databaseManagerApp openCreateDatabase];
+    databaseManager = [[DatabaseManager alloc] init];
+    [databaseManager openCreateDatabase];
 }
 
 - (void)loadStores {
-    stores = [databaseManagerApp.selectCommands selectAllPrintStoresAndHours];
+    stores = [databaseManager.selectCommands selectAllPrintStoresAndHours];
 }
 
 - (NSDictionary *)retrieveStore:(NSString *)storeNumber withDateTime:(NSString *)dateTime {

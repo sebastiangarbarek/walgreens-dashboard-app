@@ -18,7 +18,7 @@
 
 #pragma mark - Parent Methods -
 
-- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManagerApp *)databaseManager {
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManager *)databaseManager {
     NSNumber *offline = [self countStatus:@"C" inDataSet:offlineStoresForMonthInYear];
     NSNumber *scheduledMaintenance = [self countStatus:@"M" inDataSet:offlineStoresForMonthInYear];;
     NSNumber *unscheduledMaintenance = [self countStatus:@"T" inDataSet:offlineStoresForMonthInYear];;

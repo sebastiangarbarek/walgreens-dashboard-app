@@ -10,7 +10,7 @@
 #import <UIKit/UIkit.h>
 
 #import "Controller.h"
-#import "DatabaseManagerApp.h"
+#import "DatabaseManager.h"
 #import "DatabaseConstants.h"
 #import "Reachability.h"
 

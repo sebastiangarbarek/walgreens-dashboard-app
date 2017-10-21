@@ -10,23 +10,33 @@
 
 @implementation DatabaseManager
 
+- (void)copyInitialDatabase {
+    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
+    
+    NSError *error;
+    [[NSFileManager defaultManager] copyItemAtPath:sourcePath toPath:databasePath error:&error];
+    if (error != nil) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+}
+
 - (BOOL)openCreateDatabase {
-    if (!database) {
-        NSArray *supportDirectoryPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-        NSString *databaseDirectory = [supportDirectoryPaths objectAtIndex:0];
-        databasePath = [databaseDirectory stringByAppendingPathComponent:databaseName];
-        if (sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_FULLMUTEX, nil)
-            == SQLITE_OK) {
-            self.tableCommands = [[TableCommands alloc] initWithDatabaseManager:self];
-            self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];
-            self.selectCommands = [[SelectCommands alloc] initWithDatabaseManager:self];
-            self.updateCommands = [[UpdateCommands alloc] initWithDatabaseManager:self];
-            
-            [self.tableCommands openCreateTables];
-        }
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    databasePath = [[documentPaths objectAtIndex:0] stringByAppendingPathComponent:databaseName];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:databasePath]) {
+        [self copyInitialDatabase];
     }
     
-    return YES;
+    self.insertCommands = [[InsertCommands alloc] initWithDatabaseManager:self];
+    self.selectCommands = [[SelectCommands alloc] initWithDatabaseManager:self];
+    self.updateCommands = [[UpdateCommands alloc] initWithDatabaseManager:self];
+    
+    int code = sqlite3_open_v2([databasePath UTF8String], &database, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, nil);
+    if (code == SQLITE_OK)
+        return YES;
+    else
+        return NO;
 }
 
 - (void)executeCommand:(const char *)command {

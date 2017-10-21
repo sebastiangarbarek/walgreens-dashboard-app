@@ -12,7 +12,7 @@
 
 #pragma mark - Parent Methods -
 
-- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManagerApp *)databaseManager {
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManager *)databaseManager {
     NSArray *chartData = [self buildChartDataWithMonth:month year:year databaseManager:databaseManager];
     NSArray *dayLabels = chartData[0];
     NSArray *onlineStoreNumbersForMonth = chartData[1];
@@ -55,7 +55,7 @@
 
 #pragma mark - Helper Methods -
 
-- (NSArray *)buildChartDataWithMonth:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManagerApp *)databaseManager {
+- (NSArray *)buildChartDataWithMonth:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManager *)databaseManager {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     

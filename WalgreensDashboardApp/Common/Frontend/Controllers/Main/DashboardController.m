@@ -89,8 +89,8 @@
     failureState = YES;
     
     // Get the numbers.
-    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
-    int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
+    int numberOfPrintStores = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] intValue];
+    int offline = [[self.databaseManager.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
     int online = numberOfPrintStores - offline;
     NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
@@ -247,7 +247,7 @@
 
 - (void)updateProgressView:(NSInteger)numberOfStoresRequested {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger numberOfStoresToRequest = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+        NSInteger numberOfStoresToRequest = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] integerValue];
         self.progressView.progress = (float) numberOfStoresRequested / numberOfStoresToRequest;
     });
 }
@@ -345,7 +345,7 @@
 }
 
 - (void)presentOfflineNotificationForStore:(NSString *)storeNumber {
-    NSDictionary *cityState = [self.databaseManagerApp.selectCommands selectCityStateForStore:storeNumber];
+    NSDictionary *cityState = [self.databaseManager.selectCommands selectCityStateForStore:storeNumber];
     
     if ([[cityState objectForKey:kCity] length] != 0 && [[cityState objectForKey:kState] length] != 0) {
         self.offlineNotificationView.hidden = NO;
@@ -372,12 +372,12 @@
 
 - (void)updateOnlineOfflineCells {
     int online, offline;
-    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
+    int numberOfPrintStores = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] intValue];
     if (failureState) {
         online = 0;
         offline = numberOfPrintStores;
     } else {
-        offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
+        offline = [[self.databaseManager.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
         online = numberOfPrintStores - offline;
     }
 

@@ -6,6 +6,14 @@
 //  Copyright © 2017 Sebastian Garbarek. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
+// Table names.
+extern NSString *const kStoreTableName;
+extern NSString *const kProductTableName;
+extern NSString *const kHistoryTableName;
+extern NSString *const kStoreHourTableName;
+
 // Store detail.
 extern NSString *const kStoreNum;
 extern NSString *const kLat;

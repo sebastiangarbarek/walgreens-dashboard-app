@@ -49,7 +49,7 @@
 
 - (void)initUsingAllPrintStores {
     // Walgreens database only holds state abbreviations. Database query return states in alphabetical order.
-    NSArray *stateAbbreviations = [self.databaseManagerApp.selectCommands selectStatesInStoreDetail];
+    NSArray *stateAbbreviations = [self.databaseManager.selectCommands selectStatesInStoreDetail];
     // Switch abbreviations for full names, array maintains order of elements.
     NSArray *states = [self postalAbbreviationsToName:stateAbbreviations];
     

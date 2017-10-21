@@ -20,7 +20,7 @@
 
 #pragma mark - Parent Methods
 
-- (void)loadDatePickerData:(DatabaseManagerApp *)databaseManager {
+- (void)loadDatePickerData:(DatabaseManager *)databaseManager {
     monthsToYear = [NSMutableDictionary new];
     
     years = [databaseManager.selectCommands selectDistinctYearsInHistory];

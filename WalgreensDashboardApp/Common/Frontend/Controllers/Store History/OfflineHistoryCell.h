@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DatabaseManagerApp.h"
+#import "DatabaseManager.h"
 
 @interface OfflineHistoryCell : UITableViewCell
 
-- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManagerApp *)databaseManager;
+- (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManager *)databaseManager;
 
 @end

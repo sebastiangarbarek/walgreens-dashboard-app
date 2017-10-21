@@ -7,6 +7,8 @@
 //
 
 #import "InsertCommands.h"
+
+#import "DatabaseConstants.h"
 #import "DatabaseManager.h"
 
 @implementation InsertCommands
@@ -14,7 +16,7 @@
 - (void)insertOnlineStoreWithData:(NSDictionary *)responseData {
     NSDictionary *storeDetails = [responseData objectForKey:@"store"];
     
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, address1, address2, street, streetAddr2, city, state, country, county, districtNum, storeAreaCd, formattedIntersection, intersection, latitude, longitude, storeTimeZone, timezone, dayltTimeOffset, stdTimeOffset, timeOffsetCode, twentyFourHr, photoInd, photoStatusCd, storePhotoStatusCd, inkjeti, storeStatus, intlPhoneNumber, storePhoneNum, status, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", StoreTableName];
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, address1, address2, street, streetAddr2, city, state, country, county, districtNum, storeAreaCd, formattedIntersection, intersection, latitude, longitude, storeTimeZone, timezone, dayltTimeOffset, stdTimeOffset, timeOffsetCode, twentyFourHr, photoInd, photoStatusCd, storePhotoStatusCd, inkjeti, storeStatus, intlPhoneNumber, storePhoneNum, status, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", kStoreTableName];
     const char *insertStoreDetailsCmd = [commandString UTF8String];
     
     sqlite3_stmt *insertStoreDetailsStmt = [self.databaseManager createStatementWithCommand:insertStoreDetailsCmd];
@@ -65,32 +67,11 @@
     [self insertStoreHoursWithData:responseData];
 }
 
-- (void)insertOfflineStoreWithStoreNumber:(NSString *)storeNumber {
-    NSString *storeCommandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, updateDtTime) VALUES (?, ?, ?)", StoreTableName];
-    const char *insertStoreDetailsCmd = [storeCommandString UTF8String];
-    
-    sqlite3_stmt *insertStoreDetailsStmt = [self.databaseManager createStatementWithCommand:insertStoreDetailsCmd];
-    sqlite3_bind_int(insertStoreDetailsStmt, 1, [storeNumber intValue]);
-    sqlite3_bind_int(insertStoreDetailsStmt, 2, 0);
-    sqlite3_bind_text(insertStoreDetailsStmt, 3, [[[DateHelper currentDateAndTime] description] UTF8String], -1, SQLITE_STATIC);
-
-    [self.databaseManager executeStatement:insertStoreDetailsStmt];
-    
-    NSString *hoursCommandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, updateDtTime) VALUES (?, ?)", StoreHourTableName];
-    const char *insertStoreHoursCmd = [hoursCommandString UTF8String];
-    
-    sqlite3_stmt *insertStoreHoursStmt = [self.databaseManager createStatementWithCommand:insertStoreHoursCmd];
-    sqlite3_bind_int(insertStoreHoursStmt, 1, [storeNumber intValue]);
-    sqlite3_bind_text(insertStoreHoursStmt, 2, [[[DateHelper currentDateAndTime] description] UTF8String], -1, SQLITE_STATIC);
-    
-    [self.databaseManager executeStatement:insertStoreHoursStmt];
-}
-
 - (void)insertStoreHoursWithData:(NSDictionary *)responseData {
     NSDictionary *storeHours = [responseData objectForKey:@"storeHr"];
     
     if (storeHours) {
-        NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, avail, monOpen, monClose, mon24Hrs, tueOpen, tueClose, tue24Hrs, wedOpen, wedClose, wed24Hrs, thuOpen, thuClose, thu24Hrs, friOpen, friClose, fri24Hrs, satOpen, satClose, sat24Hrs, sunOpen, sunClose, sun24Hrs, wkdaySamelnd, hourType, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", StoreHourTableName];
+        NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, avail, monOpen, monClose, mon24Hrs, tueOpen, tueClose, tue24Hrs, wedOpen, wedClose, wed24Hrs, thuOpen, thuClose, thu24Hrs, friOpen, friClose, fri24Hrs, satOpen, satClose, sat24Hrs, sunOpen, sunClose, sun24Hrs, wkdaySamelnd, hourType, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", kStoreHourTableName];
         const char *insertStoreHoursCmd = [commandString UTF8String];
         
         sqlite3_stmt *insertStoreHoursStmt = [self.databaseManager createStatementWithCommand:insertStoreHoursCmd];
@@ -144,7 +125,7 @@
     for(int i = 0; i < [products count]; i++) {
         NSDictionary *product = products[i];
         
-        NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (productId, productGroupId, productDesc, productPrice, currencyType, productSize, offsetWidth, offsetHeight, resWidth, resHeight, dpi, multiImageIndicator, boxQty, vendorQtyLimit, templateUrl, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", ProductTableName];
+        NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (productId, productGroupId, productDesc, productPrice, currencyType, productSize, offsetWidth, offsetHeight, resWidth, resHeight, dpi, multiImageIndicator, boxQty, vendorQtyLimit, templateUrl, updateDtTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", kProductTableName];
         const char* insertProductsCmd = [commandString UTF8String];
         
         sqlite3_stmt *insertProductsStmt = [self.databaseManager createStatementWithCommand:insertProductsCmd];
@@ -177,7 +158,7 @@
 }
 
 - (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status {
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", HistoryTableName];
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", kHistoryTableName];
     const char *command = [commandString UTF8String];
     sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
     
@@ -202,15 +183,19 @@
     [self.databaseManager executeStatement:statement];
 }
 
-- (void)insertOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year {
-    printf("Inserting %s as %s on %s-%s\n", [[storeNumber stringValue] UTF8String], [status UTF8String], [[day stringValue] UTF8String], [[month stringValue] UTF8String]);
+- (void)insertTestOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year {
+    printf("[TEST] Inserting store #%s as %s on %s/%s/%s\n", [[storeNumber stringValue] UTF8String], [status UTF8String], [[day stringValue] UTF8String], [[month stringValue] UTF8String], [[year stringValue] UTF8String]);
     
-    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", HistoryTableName];
+    NSString *commandString = [NSString stringWithFormat:@"INSERT INTO %@ (storeNum, status, offlineDateTime, day, month, year) VALUES (?,?,?,?,?,?)", kHistoryTableName];
     const char *command = [commandString UTF8String];
     sqlite3_stmt *statement = [self.databaseManager createStatementWithCommand:command];
     
-    // Only do months 1 - 9.
-    NSString *currentDateTime = [NSString stringWithFormat:@"%@-0%@-%@ 22:10:20", year, month, day];
+    NSString *currentDateTime;
+    if ([[month stringValue] length] > 1) {
+        currentDateTime = [NSString stringWithFormat:@"%@-%@-%@ 23:59:59", year, month, day];
+    } else {
+        currentDateTime = [NSString stringWithFormat:@"%@-0%@-%@ 23:59:59", year, month, day];
+    }
     
     sqlite3_bind_int(statement, 1, [storeNumber intValue]);
     sqlite3_bind_text(statement, 2, [[status description] UTF8String], -1, SQLITE_STATIC);

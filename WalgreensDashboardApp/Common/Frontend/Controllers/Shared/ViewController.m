@@ -16,8 +16,8 @@
 }
 
 - (void)createDatabaseConnection {
-    self.databaseManagerApp = [[DatabaseManagerApp alloc] init];
-    [self.databaseManagerApp openCreateDatabase];
+    self.databaseManager = [[DatabaseManager alloc] init];
+    [self.databaseManager openCreateDatabase];
 }
 
 @end

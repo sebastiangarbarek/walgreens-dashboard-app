@@ -48,7 +48,7 @@
 }
 
 - (void)initUsingAllPrintStores {
-    NSArray *stores = [self.databaseManagerApp.selectCommands selectStoresInState:self.state];
+    NSArray *stores = [self.databaseManager.selectCommands selectStoresInState:self.state];
     [self mapStateStoresToCities:stores];
 }
 

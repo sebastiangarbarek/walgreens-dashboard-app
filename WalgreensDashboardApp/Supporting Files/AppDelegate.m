@@ -10,7 +10,7 @@
 
 @interface AppDelegate () {
     StatusController *statusController;
-    DatabaseManagerApp *databaseManagerApp;
+    DatabaseManager *databaseManager;
 }
 
 @end
@@ -20,11 +20,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"%@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
     
-    databaseManagerApp = [[DatabaseManagerApp alloc] init];
+    databaseManager = [[DatabaseManager alloc] init];
     
-    //[self randomOfflineHistory];
+    // Populate the database with random but realistic offline history.
+    // [self randomOfflineHistory];
     
-    statusController = [[StatusController alloc] initWithManager:databaseManagerApp];
+    statusController = [[StatusController alloc] initWithManager:databaseManager];
     
     return YES;
 }
@@ -58,14 +59,14 @@
 }
 
 - (void)randomOfflineHistory {
-    [databaseManagerApp openCreateDatabase];
+    [databaseManager openCreateDatabase];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     
-    NSArray *printStores = [databaseManagerApp.selectCommands selectAllPrintStoreIds];
+    NSArray *printStores = [databaseManager.selectCommands selectAllPrintStoreIds];
     
-    for (int i = 1; i <= 9; i++) {
+    for (int i = 1; i <= 12; i++) {
         [components setYear:2017];
         [components setMonth:i];
         
@@ -102,7 +103,7 @@
                 upperBound = [printStores count];
                 rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
                 
-                [databaseManagerApp.insertCommands insertOfflineHistoryWithStore:[printStores objectAtIndex:rndValue] status:status day:@(j) month:@(i) year:@(2017)];
+                [databaseManager.insertCommands insertTestOfflineHistoryWithStore:[printStores objectAtIndex:rndValue] status:status day:@(j) month:@(i) year:@(2017)];
             }
         }
     }

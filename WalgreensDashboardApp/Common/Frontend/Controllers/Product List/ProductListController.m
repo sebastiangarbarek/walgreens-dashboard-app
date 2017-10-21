@@ -48,7 +48,7 @@
 #pragma mark - Init Methods -
 
 - (void)loadProducts {
-    products = [self.databaseManagerApp.selectCommands selectAllProducts];
+    products = [self.databaseManager.selectCommands selectAllProducts];
 }
 
 #pragma mark - View Methods -
