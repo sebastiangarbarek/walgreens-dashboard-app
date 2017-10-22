@@ -31,20 +31,38 @@
     CKGridBasedAlgorithm *algorithm = [CKGridBasedAlgorithm new];
     self.mapView.clusterManager.algorithm = algorithm;
     
+    NSInteger selectedStoreHourType = self.typeSegmentedControl.selectedSegmentIndex;
     // Build annotation array.
     for (NSDictionary *store in stores) {
-        ClusterPin *pin = [[ClusterPin alloc] init];
-        pin.storeNumber = [store objectForKey:kStoreNum];
-        pin.title = [[[store objectForKey:kAddr] lowercaseString] capitalizedString];
-        pin.subtitle = [NSString stringWithFormat:@"Store #%@", [store objectForKey:kStoreNum]];
-        pin.coordinate = CLLocationCoordinate2DMake([[store objectForKey:kLong] doubleValue], [[store objectForKey:kLat] doubleValue]);
-        [annotations addObject:pin];
+        if (selectedStoreHourType == 0) {
+            // Display All.
+            [annotations addObject:[self buildPinWithStore:store]];
+        } else if (selectedStoreHourType == 1) {
+            // Display only 24/7 stores.
+            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"]) {
+                [annotations addObject:[self buildPinWithStore:store]];
+            }
+        } else if (selectedStoreHourType == 2) {
+            // Display only standard hour stores.
+            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"N"]) {
+                [annotations addObject:[self buildPinWithStore:store]];
+            }
+        }
     }
     
     // Load annotation data into map.
     self.mapView.clusterManager.annotations = annotations;
     
     [self displayUnitedStates];
+}
+
+- (ClusterPin *)buildPinWithStore:(NSDictionary *)store {
+    ClusterPin *pin = [[ClusterPin alloc] init];
+    pin.storeNumber = [store objectForKey:kStoreNum];
+    pin.title = [[[store objectForKey:kAddr] lowercaseString] capitalizedString];
+    pin.subtitle = [NSString stringWithFormat:@"Store #%@", [store objectForKey:kStoreNum]];
+    pin.coordinate = CLLocationCoordinate2DMake([[store objectForKey:kLong] doubleValue], [[store objectForKey:kLat] doubleValue]);
+    return pin;
 }
 
 - (void)displayUnitedStates {

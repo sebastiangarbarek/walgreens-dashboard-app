@@ -20,9 +20,6 @@
 @property NSString *dateTime;
 @property NSTimer *storeTimer;
 
-@property (weak, nonatomic) IBOutlet UIView *notificationView;
-@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

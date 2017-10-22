@@ -62,18 +62,21 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ks-fI-72i">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="eM7-rB-1Ou"/>
+                                                        <constraint firstAttribute="height" constant="28" id="ONy-mb-RVE"/>
                                                     </constraints>
                                                     <segments>
                                                         <segment title="All"/>
                                                         <segment title="24/7"/>
                                                         <segment title="Standard"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="storeHourTypeChanged:" destination="qEF-8j-fmz" eventType="valueChanged" id="aD7-wp-G9d"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-5j-WfP">
                                                     <rect key="frame" x="0.0" y="28" width="375" height="272"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="272" id="E2D-mT-yXw"/>
+                                                        <constraint firstAttribute="height" constant="272" id="kEC-Ws-zDd"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="delegate" destination="QZF-cW-YUu" id="SlE-Ma-T0g"/>
@@ -81,13 +84,12 @@
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="Kw2-rY-ZmM"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" id="Vm3-aK-oXR"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="top" id="caN-Ji-Q6e"/>
-                                                <constraint firstAttribute="trailing" secondItem="2ks-fI-72i" secondAttribute="trailing" id="feQ-CY-K2d"/>
-                                                <constraint firstAttribute="trailing" secondItem="XeV-5j-WfP" secondAttribute="trailing" id="gF5-UZ-6V7"/>
-                                                <constraint firstAttribute="bottom" secondItem="XeV-5j-WfP" secondAttribute="bottom" id="p5a-EH-SQz"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="rQd-4t-gne"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="0do-IJ-Kuz"/>
+                                                <constraint firstAttribute="trailing" secondItem="XeV-5j-WfP" secondAttribute="trailing" id="HKX-gK-abz"/>
+                                                <constraint firstAttribute="trailing" secondItem="2ks-fI-72i" secondAttribute="trailing" id="MBb-Mb-srq"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="top" id="XVS-Nz-Zk8"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="XYo-CC-skf"/>
+                                                <constraint firstAttribute="bottom" secondItem="XeV-5j-WfP" secondAttribute="bottom" id="ptL-6c-DHq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -213,36 +215,13 @@
                                     <outlet property="delegate" destination="qEF-8j-fmz" id="8S9-4z-8Nb"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv2-ze-Y66">
-                                <rect key="frame" x="0.0" y="64" width="375" height="22"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Checking Store Times" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6p-pn-Yop">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="6No-FZ-2XU"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="uv2-ze-Y66" secondAttribute="trailing" id="DMw-kr-nCp"/>
-                            <constraint firstItem="uv2-ze-Y66" firstAttribute="leading" secondItem="nk9-yn-eBN" secondAttribute="leading" id="nWx-De-jd3"/>
-                            <constraint firstItem="uv2-ze-Y66" firstAttribute="top" secondItem="3Ts-8D-rtP" secondAttribute="bottom" id="td9-Pr-rwF"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Store Hours" id="ShK-8b-rZG"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
-                        <outlet property="notificationLabel" destination="C6p-pn-Yop" id="xZJ-cr-f2n"/>
-                        <outlet property="notificationView" destination="uv2-ze-Y66" id="MRK-yg-VWq"/>
                         <outlet property="tableView" destination="rTA-YI-CeS" id="dOM-ca-O2u"/>
                         <segue destination="y3s-xR-BSJ" kind="show" identifier="Store Details" id="P1B-Kw-FVM"/>
                     </connections>

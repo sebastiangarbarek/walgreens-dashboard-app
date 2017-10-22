@@ -31,8 +31,6 @@
     static dispatch_once_t onceToken;
     // Dispatch once is synchronous.
     dispatch_once (&onceToken, ^{
-        // Show update notification.
-        self.notificationView.hidden = NO;
         // Storing and using date time as param so custom date time can be used in the future.
         self.dateTime = [DateHelper currentDateAndTime];
         // Once the view has appeared, then calculate store times.
@@ -83,20 +81,21 @@
         
         // Update view in main thread.
         dispatch_sync(dispatch_get_main_queue(), ^{
-            // Hide notification.
-            self.notificationView.hidden = YES;
-            
-            [self.tableView beginUpdates];
-            // Prevent reloading the entire table view if other data exists.
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:1 inSection:0], nil]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView endUpdates];
-            
-            [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
+            [self reloadTimes];
         });
     });
+}
+
+- (void)reloadTimes {
+    [self.tableView beginUpdates];
+    // Prevent reloading the entire table view if other data exists.
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:1 inSection:0], nil]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    
+    [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];
 }
 
 - (void)startStoreTimerWithSeconds:(float)seconds {
@@ -164,6 +163,10 @@
 }
 
 #pragma mark - Navigation Methods -
+
+- (IBAction)storeHourTypeChanged:(id)sender {
+    [self reloadTimes];
+}
 
 - (void)child:(id)child willPerformSegueWithIdentifier:(NSString *)segueIdentifier {
     [self performSegueWithIdentifier:segueIdentifier sender:child];

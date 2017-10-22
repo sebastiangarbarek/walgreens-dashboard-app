@@ -30,6 +30,11 @@
     self.navigationController.navigationBar.barTintColor = themeColor;
     self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    // Remove shadow.
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 - (void)setTextColorTabItem {
