@@ -14,6 +14,7 @@
 #import "DatabaseConstants.h"
 #import "StoreTimes.h"
 #import "SegueDelegate.h"
+#import "UIColor+AppTheme.h"
 
 @interface StoreTimesMapCell : UITableViewCell <MKMapViewDelegate>
 

@@ -14,7 +14,7 @@
 #import "StoreDetailsController.h"
 #import "StoreStateController.h"
 
-@interface StoreHoursController : UIViewController <UITableViewDelegate, UITableViewDataSource, SegueDelegate>
+@interface StoreHoursController : ViewController <UITableViewDelegate, UITableViewDataSource, SegueDelegate>
 
 @property StoreTimes *storeTimes;
 @property NSString *dateTime;

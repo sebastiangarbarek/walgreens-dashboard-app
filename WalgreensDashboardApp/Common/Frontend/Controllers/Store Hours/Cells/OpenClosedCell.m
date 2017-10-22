@@ -25,11 +25,11 @@
     DashboardCountCellData *c2 = [DashboardCountCellData new];
     
     c1.backgroundColor = [UIColor printicularRed];
-    c1.title = @"Open Stores";
+    c1.title = @"Stores Open";
     c1.count = [NSNumberFormatter localizedStringFromNumber:open numberStyle:NSNumberFormatterDecimalStyle];
     
     c2.backgroundColor = [UIColor printicularYellow];
-    c2.title = @"Closed Stores";
+    c2.title = @"Stores Closed";
     c2.count = [NSNumberFormatter localizedStringFromNumber:closed numberStyle:NSNumberFormatterDecimalStyle];
     
     [cellCollection addObject:c1];

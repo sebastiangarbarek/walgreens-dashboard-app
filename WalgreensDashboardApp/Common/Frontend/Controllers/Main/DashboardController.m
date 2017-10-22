@@ -33,7 +33,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self configureViewOnAppear];
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularBlue]];
     
     // Store went offline off screen and the user has not seen the notification.
     if (!self.offlineNotificationView.isHidden) {
@@ -128,32 +128,6 @@
     [cellCollection addObject:offlineCell];
     [cellCollection addObject:openCell];
     [cellCollection addObject:closedCell];
-}
-
-- (void)configureViewOnAppear {
-    [self setTextColorTabItem];
-    // Different for each screen.
-    [self setSelectedTabBackgroundImage];
-    
-    // Set background color of navigation bar.
-    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
-}
-
-- (void)setTextColorTabItem {
-    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
-}
-
-- (void)setSelectedTabBackgroundImage {
-    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
-    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
-    [[UIColor printicularBlue] setFill];
-    [path fill];
-    UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self.tabBarController.tabBar setSelectionIndicatorImage:selectedBackground];
 }
 
 #pragma mark - Collection Methods -

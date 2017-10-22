@@ -43,41 +43,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self configureViewOnAppear];
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularRed]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     for (int i = 0; i < 3; i++)
         NSLog(@"Offline history screen received memory warning.");
-}
-
-#pragma mark - Init Methods -
-
-- (void)configureViewOnAppear {
-    [self setTextColorTabItem];
-    // Different for each screen.
-    [self setSelectedTabBackgroundImage];
-    
-    // Set background color of navigation bar.
-    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
-}
-
-- (void)setTextColorTabItem {
-    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
-}
-
-- (void)setSelectedTabBackgroundImage {
-    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
-    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
-    [[UIColor printicularBlue] setFill];
-    [path fill];
-    UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self.tabBarController.tabBar setSelectionIndicatorImage:selectedBackground];
 }
 
 #pragma mark - Table Methods -

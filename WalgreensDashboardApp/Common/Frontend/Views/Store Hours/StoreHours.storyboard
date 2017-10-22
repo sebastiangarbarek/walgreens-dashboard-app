@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +21,7 @@
         <scene sceneID="alI-qz-vwo">
             <objects>
                 <navigationController id="mhs-0r-gjf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Store Hours" id="bND-gC-S6e"/>
+                    <tabBarItem key="tabBarItem" title="Store Hours" image="Hours Outline" selectedImage="Hours Filled" id="bND-gC-S6e"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8e8-ow-Fxm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -53,26 +52,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Map" rowHeight="308" id="QZF-cW-YUu" customClass="StoreTimesMapCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="308"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Map" rowHeight="300" id="QZF-cW-YUu" customClass="StoreTimesMapCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QZF-cW-YUu" id="TqE-1H-tfs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="308"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-5j-WfP">
-                                                    <rect key="frame" x="0.0" y="44" width="375" height="264"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="264" id="y7K-vJ-KNG"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="QZF-cW-YUu" id="SlE-Ma-T0g"/>
-                                                    </connections>
-                                                </mapView>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ks-fI-72i">
-                                                    <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="zTL-hF-zcl"/>
+                                                        <constraint firstAttribute="height" constant="28" id="eM7-rB-1Ou"/>
                                                     </constraints>
                                                     <segments>
                                                         <segment title="All"/>
@@ -80,15 +70,24 @@
                                                         <segment title="Standard"/>
                                                     </segments>
                                                 </segmentedControl>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-5j-WfP">
+                                                    <rect key="frame" x="0.0" y="28" width="375" height="272"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="272" id="E2D-mT-yXw"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="QZF-cW-YUu" id="SlE-Ma-T0g"/>
+                                                    </connections>
+                                                </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="XeV-5j-WfP" secondAttribute="bottom" constant="-8" id="3rc-Xf-Cl5"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" constant="8" id="7sD-bD-Ra9"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XeV-5j-WfP" secondAttribute="trailing" constant="-8" id="R8s-Um-5oe"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="trailing" secondItem="TqE-1H-tfs" secondAttribute="trailingMargin" id="giH-B7-i9W"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leadingMargin" id="k3U-gC-QXe"/>
-                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leadingMargin" constant="-8" id="qSt-Xc-WsH"/>
-                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="topMargin" id="s4o-Ht-5Mb"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="Kw2-rY-ZmM"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="2ks-fI-72i" secondAttribute="bottom" id="Vm3-aK-oXR"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="top" id="caN-Ji-Q6e"/>
+                                                <constraint firstAttribute="trailing" secondItem="2ks-fI-72i" secondAttribute="trailing" id="feQ-CY-K2d"/>
+                                                <constraint firstAttribute="trailing" secondItem="XeV-5j-WfP" secondAttribute="trailing" id="gF5-UZ-6V7"/>
+                                                <constraint firstAttribute="bottom" secondItem="XeV-5j-WfP" secondAttribute="bottom" id="p5a-EH-SQz"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="rQd-4t-gne"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -97,7 +96,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Open Closed" rowHeight="216" id="1vY-TC-NZU" customClass="OpenClosedCell">
-                                        <rect key="frame" x="0.0" y="336" width="375" height="216"/>
+                                        <rect key="frame" x="0.0" y="328" width="375" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vY-TC-NZU" id="DfC-A3-UV3">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
@@ -269,4 +268,8 @@
             <point key="canvasLocation" x="1182" y="309"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Hours Filled" width="25" height="25"/>
+        <image name="Hours Outline" width="25" height="25"/>
+    </resources>
 </document>

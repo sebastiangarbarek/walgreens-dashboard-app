@@ -26,6 +26,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularYellow]];
+    
     static dispatch_once_t onceToken;
     // Dispatch once is synchronous.
     dispatch_once (&onceToken, ^{
@@ -145,7 +147,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            return 308;
+            return 300;
         case 1: {
             CGRect screen = [[UIScreen mainScreen] bounds];
             return screen.size.width;

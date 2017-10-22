@@ -17,10 +17,14 @@
 @implementation StoreTimesMapCell
 
 - (void)loadWithoutStores {
+    [self configureSegmentedControl];
+    
     [self displayUnitedStates];
 }
 
 - (void)loadWithStores:(NSArray *)stores {
+    [self configureSegmentedControl];
+    
     annotations = [NSMutableArray new];
     
     // Apply cluster algorithm.
@@ -48,6 +52,10 @@
     CLLocationCoordinate2D unitedStates = CLLocationCoordinate2DMake(36.2158881, -113.6882983);
     MKCoordinateRegion region = MKCoordinateRegionMake(unitedStates, MKCoordinateSpanMake(100, 100));
     [self.mapView setRegion:region animated:NO];
+}
+
+- (void)configureSegmentedControl {
+    [self.typeSegmentedControl setTintColor:[UIColor printicularBlue]];
 }
 
 #pragma mark - Cluster Kit Methods -

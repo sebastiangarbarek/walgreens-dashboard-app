@@ -14,4 +14,6 @@
 
 @property DatabaseManager *databaseManager;
 
+- (void)configureViewOnAppearWithThemeColor:(UIColor *)themeColor;
+
 @end

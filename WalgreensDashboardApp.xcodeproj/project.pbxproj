@@ -729,10 +729,10 @@
 		A8F98A5B1F98326C00BFC759 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A8017BE21F9B199600F2C695 /* ViewController.m */,
 				A8017BE31F9B199600F2C695 /* ViewController.h */,
-				A8017BE41F9B199600F2C695 /* TableViewController.m */,
+				A8017BE21F9B199600F2C695 /* ViewController.m */,
 				A8017BE51F9B199600F2C695 /* TableViewController.h */,
+				A8017BE41F9B199600F2C695 /* TableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
