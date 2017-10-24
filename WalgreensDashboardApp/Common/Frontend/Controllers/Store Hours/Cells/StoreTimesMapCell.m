@@ -17,21 +17,16 @@
 @implementation StoreTimesMapCell
 
 - (void)loadWithoutStores {
-    [self configureSegmentedControl];
-    
     [self displayUnitedStates];
 }
 
-- (void)loadWithStores:(NSArray *)stores {
-    [self configureSegmentedControl];
-    
+- (void)loadWithStores:(NSArray *)stores selectedStoreHourType:(NSInteger)selectedStoreHourType {
     annotations = [NSMutableArray new];
     
     // Apply cluster algorithm.
     CKGridBasedAlgorithm *algorithm = [CKGridBasedAlgorithm new];
     self.mapView.clusterManager.algorithm = algorithm;
     
-    NSInteger selectedStoreHourType = self.typeSegmentedControl.selectedSegmentIndex;
     // Build annotation array.
     for (NSDictionary *store in stores) {
         if (selectedStoreHourType == 0) {
@@ -70,10 +65,6 @@
     CLLocationCoordinate2D unitedStates = CLLocationCoordinate2DMake(36.2158881, -113.6882983);
     MKCoordinateRegion region = MKCoordinateRegionMake(unitedStates, MKCoordinateSpanMake(100, 100));
     [self.mapView setRegion:region animated:NO];
-}
-
-- (void)configureSegmentedControl {
-    [self.typeSegmentedControl setTintColor:[UIColor printicularBlue]];
 }
 
 #pragma mark - Cluster Kit Methods -

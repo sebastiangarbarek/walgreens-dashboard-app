@@ -12,6 +12,7 @@
     BOOL timesCalculated;
     NSMutableArray *openStores;
     NSMutableArray *closedStores;
+    NSInteger selectedSegment;
 }
 
 @end
@@ -89,9 +90,14 @@
 - (void)reloadTimes {
     [self.tableView beginUpdates];
     // Prevent reloading the entire table view if other data exists.
+    // Notification.
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
                           withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:1 inSection:0], nil]
+    // Map.
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    // Summary.
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:3 inSection:0], nil]
                           withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     
@@ -116,22 +122,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0: {
+            return [tableView dequeueReusableCellWithIdentifier:@"Notification"];
+        }
+        case 1: {
+            return [tableView dequeueReusableCellWithIdentifier:@"Filter"];
+        }
+        case 2: {
             StoreTimesMapCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Map" forIndexPath:indexPath];
             if (timesCalculated) {
                 cell.segueDelegate = self;
-                [cell loadWithStores:openStores];
+                [cell loadWithStores:openStores selectedStoreHourType:selectedSegment];
             } else {
                 [cell loadWithoutStores];
             }
             return cell;
         }
-        case 1: {
+        case 3: {
             OpenClosedCell *openClosedCell = [tableView dequeueReusableCellWithIdentifier:@"Open Closed" forIndexPath:indexPath];
             [openClosedCell loadWithStores:@([openStores count]) closed:@([closedStores count])];
             return openClosedCell;
@@ -145,9 +157,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
-        case 0:
-            return 300;
+        case 0: {
+            // Notification.
+            if (timesCalculated) {
+                return 0;
+            } else {
+                return 22;
+            }
+        }
         case 1: {
+            // Filter.
+            return 30;
+        }
+        case 2: {
+            // Map.
+            return 264;
+        }
+        case 3: {
+            // Summary.
             CGRect screen = [[UIScreen mainScreen] bounds];
             return screen.size.width;
         }
@@ -164,7 +191,8 @@
 
 #pragma mark - Navigation Methods -
 
-- (IBAction)storeHourTypeChanged:(id)sender {
+- (IBAction)storeHourTypeChanged:(UISegmentedControl *)sender {
+    selectedSegment = [sender selectedSegmentIndex];
     [self reloadTimes];
 }
 

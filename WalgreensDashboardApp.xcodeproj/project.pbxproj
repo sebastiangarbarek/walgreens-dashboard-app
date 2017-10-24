@@ -56,6 +56,7 @@
 		A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */; };
 		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
+		A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4A4641F9C383C00702565 /* FilterCell.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
@@ -167,6 +168,8 @@
 		A89B0A221F8500C10016A698 /* ProductListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductListController.m; sourceTree = "<group>"; };
 		A89B0A241F85076F0016A698 /* ProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		A89B0A251F85076F0016A698 /* ProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
+		A8A4A4631F9C383C00702565 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
+		A8A4A4641F9C383C00702565 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A8D8917F1F6B875100E3388B /* StoreStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreStateController.h; sourceTree = "<group>"; };
 		A8D891801F6B875100E3388B /* StoreStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreStateController.m; sourceTree = "<group>"; };
@@ -652,6 +655,8 @@
 				A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */,
 				A8017BEB1F9B44BF00F2C695 /* OpenClosedCell.h */,
 				A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */,
+				A8A4A4631F9C383C00702565 /* FilterCell.h */,
+				A8A4A4641F9C383C00702565 /* FilterCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1033,6 +1038,7 @@
 				A86CF4FA1F5CFC54005889B7 /* NetworkUtility.m in Sources */,
 				A8017BBE1F9B18D400F2C695 /* WalgreensAPIConstants.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
+				A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */,
 				A89B0A261F85076F0016A698 /* ProductCell.m in Sources */,
 				A8017BDA1F9B198100F2C695 /* ClusterPin.m in Sources */,
 				A8017BD91F9B198100F2C695 /* MapPin.m in Sources */,

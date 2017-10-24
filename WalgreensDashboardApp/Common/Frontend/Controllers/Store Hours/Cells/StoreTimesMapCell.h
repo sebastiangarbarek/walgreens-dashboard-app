@@ -26,6 +26,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (void)loadWithoutStores;
-- (void)loadWithStores:(NSArray *)stores;
+- (void)loadWithStores:(NSArray *)stores selectedStoreHourType:(NSInteger)selectedStoreHourType;
 
 @end
