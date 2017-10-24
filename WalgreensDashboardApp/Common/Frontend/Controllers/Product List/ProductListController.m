@@ -31,6 +31,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularBlue]];
+    
     if (!updated) {
         [self presentNotification:@"Checking Products" backgroundColor:[UIColor greenColor]];
         if ([reach isReachable]) {

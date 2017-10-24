@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ViewController.h"
 #import "StoreStateController.h"
 #import "StoreCityController.h"
 #import "MapController.h"
 #import "SegueDelegate.h"
+#import "UIColor+AppTheme.h"
 
 @interface StoreCategoryController : ViewController <SegueDelegate>
 

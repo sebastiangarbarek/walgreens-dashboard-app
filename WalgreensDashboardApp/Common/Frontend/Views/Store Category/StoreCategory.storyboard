@@ -13,7 +13,7 @@
         <scene sceneID="hof-am-wfA">
             <objects>
                 <navigationController id="4us-5f-sA9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="All Stores" id="Bat-Wn-zW5"/>
+                    <tabBarItem key="tabBarItem" title="All Stores" image="Stores Outline" selectedImage="Stores Filled" id="Bat-Wn-zW5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KY7-J9-x6j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -203,11 +203,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUX-bj-eGP" id="LWV-am-NsO">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdF-iU-9cu">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -244,11 +244,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vHl-fJ-9ZS" id="M4p-g0-nuF">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ztn-bj-E37">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -284,6 +284,10 @@
             <point key="canvasLocation" x="1558" y="1462"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Stores Filled" width="25" height="25"/>
+        <image name="Stores Outline" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pbo-fM-wMt"/>
     </inferredMetricsTieBreakers>

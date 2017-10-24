@@ -15,7 +15,7 @@
         <scene sceneID="AkK-2n-cVB">
             <objects>
                 <navigationController id="QDf-L9-hFl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Print Products" id="tif-wD-enJ"/>
+                    <tabBarItem key="tabBarItem" title="Print Products" image="Products Outline" selectedImage="Products Filled" id="tif-wD-enJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kaE-YA-iF2">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -229,4 +229,8 @@
             <point key="canvasLocation" x="80.799999999999997" y="94.902548725637189"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Products Filled" width="25" height="25"/>
+        <image name="Products Outline" width="25" height="25"/>
+    </resources>
 </document>
