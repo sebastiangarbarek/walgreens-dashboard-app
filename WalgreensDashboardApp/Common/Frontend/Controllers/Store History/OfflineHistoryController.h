@@ -16,7 +16,7 @@
 #import "SegueDelegate.h"
 #import "OfflineStoresController.h"
 
-@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate, SegueDelegate>
+@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

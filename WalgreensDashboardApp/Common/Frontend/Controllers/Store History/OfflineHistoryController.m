@@ -38,6 +38,10 @@
                               sectionTitles[1] : @(1),
                               sectionTitles[2] : @(1)};
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView)
+                                                 name:@"Store offline"
+                                               object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -179,6 +183,20 @@
         }
     }
     return offlineStores;
+}
+
+- (void)refreshView {
+    offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:selectedMonth year:selectedYear];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        // Graph.
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:1], nil]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        // Summary.
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:2], nil]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    });
 }
 
 @end
