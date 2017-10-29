@@ -10,6 +10,7 @@
 
 @interface StoreHoursController () {
     BOOL timesCalculated;
+    NSArray *stores;
     NSMutableArray *openStores;
     NSMutableArray *closedStores;
     NSInteger selectedSegment;
@@ -67,16 +68,12 @@
         [self.storeTimes loadStores];
         
         // Perform algorithm in background thread to prevent blocking.
-        NSArray *stores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime]];
+        stores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime]];
         // Extract open and closed stores into their own arrays.
         openStores = [NSMutableArray new];
         closedStores = [NSMutableArray new];
         for (NSDictionary *store in stores) {
-            if ([[store objectForKey:kOpen] intValue] == 1) {
-                [openStores addObject:store];
-            } else {
-                [closedStores addObject:store];
-            }
+            [self sortStore:store];
         }
         timesCalculated = YES;
         
@@ -193,6 +190,26 @@
 
 - (IBAction)storeHourTypeChanged:(UISegmentedControl *)sender {
     selectedSegment = [sender selectedSegmentIndex];
+    
+    openStores = [NSMutableArray new];
+    closedStores = [NSMutableArray new];
+    for (NSDictionary *store in stores) {
+        if (selectedSegment == 0) {
+            // Display All.
+            [self sortStore:store];
+        } else if (selectedSegment == 1) {
+            // Display only 24/7 stores.
+            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"]) {
+                [self sortStore:store];
+            }
+        } else if (selectedSegment == 2) {
+            // Display only standard hour stores.
+            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"N"]) {
+                [self sortStore:store];
+            }
+        }
+    }
+    
     [self reloadTimes];
 }
 
@@ -211,6 +228,16 @@
     } else if ([[segue identifier] isEqualToString:@"States (Closed)"]) {
         StoreStateController *storeStateController = [segue destinationViewController];
         storeStateController.stores = closedStores;
+    }
+}
+
+#pragma mark - Helper Methods -
+
+- (void)sortStore:(NSDictionary *)store {
+    if ([[store objectForKey:kOpen] intValue] == 1) {
+        [openStores addObject:store];
+    } else {
+        [closedStores addObject:store];
     }
 }
 

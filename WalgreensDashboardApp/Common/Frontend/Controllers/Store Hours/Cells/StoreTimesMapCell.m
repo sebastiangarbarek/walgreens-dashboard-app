@@ -29,20 +29,7 @@
     
     // Build annotation array.
     for (NSDictionary *store in stores) {
-        if (selectedStoreHourType == 0) {
-            // Display All.
-            [annotations addObject:[self buildPinWithStore:store]];
-        } else if (selectedStoreHourType == 1) {
-            // Display only 24/7 stores.
-            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"Y"]) {
-                [annotations addObject:[self buildPinWithStore:store]];
-            }
-        } else if (selectedStoreHourType == 2) {
-            // Display only standard hour stores.
-            if ([[store objectForKey:kTwentyFourHours] isEqualToString:@"N"]) {
-                [annotations addObject:[self buildPinWithStore:store]];
-            }
-        }
+        [annotations addObject:[self buildPinWithStore:store]];
     }
     
     // Load annotation data into map.
