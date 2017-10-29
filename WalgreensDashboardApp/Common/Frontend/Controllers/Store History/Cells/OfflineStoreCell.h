@@ -10,6 +10,7 @@
 
 @interface OfflineStoreCell : UITableViewCell
 
-
+@property (weak, nonatomic) IBOutlet UILabel *storeDetailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *offlineTimeLabel;
 
 @end

@@ -13,8 +13,10 @@
 #import "DatePickerCell.h"
 #import "DatabaseConstants.h"
 #import "UIColor+AppTheme.h"
+#import "SegueDelegate.h"
+#import "OfflineStoresController.h"
 
-@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate>
+@interface OfflineHistoryController : ViewController <UITableViewDelegate, UITableViewDataSource, DatePickerDelegate, SegueDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

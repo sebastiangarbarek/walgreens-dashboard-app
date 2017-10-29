@@ -10,6 +10,7 @@
 
 #import "DatabaseConstants.h"
 #import "StoreDetailsController.h"
+#import "OfflineStoreCell.h"
 
 @interface OfflineStoresController : TableViewController
 

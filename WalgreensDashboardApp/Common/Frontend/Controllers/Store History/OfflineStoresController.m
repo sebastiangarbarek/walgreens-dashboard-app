@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initStoresToDate];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,11 +48,11 @@
     }
     
     dates = [[storesToDates allKeys] sortedArrayUsingComparator:^NSComparisonResult(id o, id to) {
-        NSString *date = (NSString *)o;
-        NSString *toDate = (NSString *)to;
+        NSString *date = [(NSString *)o componentsSeparatedByString:@" "][0];
+        NSString *toDate = [(NSString *)to componentsSeparatedByString:@" "][0];
         
-        int month = [[date substringWithRange:NSMakeRange(8, 2)] intValue];
-        int toMonth = [[toDate substringWithRange:NSMakeRange(8, 2)] intValue];
+        int month = [[date substringFromIndex:8] intValue];
+        int toMonth = [[toDate substringFromIndex:8] intValue];
         
         if (month < toMonth) {
             return NSOrderedAscending;
@@ -87,7 +88,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    OfflineStoreCell *offlineStoreCell = [tableView dequeueReusableCellWithIdentifier:@"Offline Store"];
+    NSDictionary *offlineStore = [[storesToDates objectForKey:[dates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
+    offlineStoreCell.storeDetailLabel.text = [NSString stringWithFormat:@"%@,%@, Store #%@", [offlineStore objectForKey:kState], [offlineStore objectForKey:kCity], [offlineStore objectForKey:kStoreNum]];
+    offlineStoreCell.offlineTimeLabel.text = [NSString stringWithFormat:@"Offline: %@", [[offlineStore objectForKey:kOfflineDateTime] componentsSeparatedByString:@" "][1]];
+    
+    return offlineStoreCell;
 }
 
 #pragma mark - Navigation Methods -

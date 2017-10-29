@@ -109,6 +109,41 @@
     return 0;
 }
 
+#pragma mark - Navigation Methods -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UICollectionViewCell *senderCell = (UICollectionViewCell *)sender;
+    NSIndexPath *indexPath = [(UICollectionView *)senderCell.superview indexPathForCell:senderCell];
+    
+    NSArray *offlineStores;
+    
+    switch (indexPath.row) {
+        case 0:
+            // Offline.
+        {
+            offlineStores = [self offlineStoresForStatus:@"C"];
+        }
+            break;
+        case 1:
+            // Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"M"];
+        }
+            break;
+        case 2:
+            // Unscheduled Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"T"];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    OfflineStoresController *destination = [segue destinationViewController];
+    destination.offlineStores = offlineStores;
+}
+
 #pragma mark - Picker Delegate Methods -
 
 - (void)datePickerDidLoadWithInitialMonth:(NSNumber *)initialMonth initialYear:(NSNumber *)initialYear {
@@ -134,6 +169,16 @@
     OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManager];
     return offlineHistoryCell;
+}
+
+- (NSArray *)offlineStoresForStatus:(NSString *)status {
+    NSMutableArray *offlineStores = [NSMutableArray new];
+    for (NSDictionary *offlineStore in offlineStoresForMonthInYear) {
+        if ([[offlineStore objectForKey:@"status"] isEqualToString:status]) {
+            [offlineStores addObject:offlineStore];
+        }
+    }
+    return offlineStores;
 }
 
 @end
