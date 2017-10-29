@@ -11,6 +11,7 @@
 #import "UIColor+AppTheme.h"
 #import "DashboardCountCell.h"
 #import "DashboardCountCellData.h"
+#import "OfflineStoresController.h"
 
 @interface SummaryCell : OfflineHistoryCell <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 

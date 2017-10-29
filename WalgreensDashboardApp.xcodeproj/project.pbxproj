@@ -57,6 +57,8 @@
 		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
 		A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4A4641F9C383C00702565 /* FilterCell.m */; };
+		A8AF4BA41FA66E7E003F01D3 /* OfflineStoresController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */; };
+		A8AF4BA81FA67618003F01D3 /* OfflineStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
@@ -170,6 +172,10 @@
 		A89B0A251F85076F0016A698 /* ProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		A8A4A4631F9C383C00702565 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
 		A8A4A4641F9C383C00702565 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		A8AF4BA21FA66E7E003F01D3 /* OfflineStoresController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineStoresController.h; sourceTree = "<group>"; };
+		A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineStoresController.m; sourceTree = "<group>"; };
+		A8AF4BA61FA67618003F01D3 /* OfflineStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineStoreCell.h; sourceTree = "<group>"; };
+		A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineStoreCell.m; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A8D8917F1F6B875100E3388B /* StoreStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreStateController.h; sourceTree = "<group>"; };
 		A8D891801F6B875100E3388B /* StoreStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreStateController.m; sourceTree = "<group>"; };
@@ -495,6 +501,8 @@
 				A8017BCA1F9B190B00F2C695 /* DatePickerCell.h */,
 				A8017BC91F9B190B00F2C695 /* DatePickerCell.m */,
 				A85D90CE1F96CC8700604683 /* Supporting Objects */,
+				A8AF4BA61FA67618003F01D3 /* OfflineStoreCell.h */,
+				A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -539,6 +547,8 @@
 				A85D90BF1F96C15C00604683 /* OfflineHistoryController.h */,
 				A85D90C01F96C15C00604683 /* OfflineHistoryController.m */,
 				A85D90CC1F96CB9E00604683 /* Delegates */,
+				A8AF4BA21FA66E7E003F01D3 /* OfflineStoresController.h */,
+				A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */,
 			);
 			path = "Store History";
 			sourceTree = "<group>";
@@ -1041,6 +1051,7 @@
 				A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */,
 				A89B0A261F85076F0016A698 /* ProductCell.m in Sources */,
 				A8017BDA1F9B198100F2C695 /* ClusterPin.m in Sources */,
+				A8AF4BA41FA66E7E003F01D3 /* OfflineStoresController.m in Sources */,
 				A8017BD91F9B198100F2C695 /* MapPin.m in Sources */,
 				A8017BCC1F9B190B00F2C695 /* OnlineTrendCell.m in Sources */,
 				A8017BD41F9B194A00F2C695 /* DashboardCountCell.m in Sources */,
@@ -1077,6 +1088,7 @@
 				A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */,
 				A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
+				A8AF4BA81FA67618003F01D3 /* OfflineStoreCell.m in Sources */,
 				A8017BEA1F9B1A3E00F2C695 /* DashboardCountCellData.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
 			);

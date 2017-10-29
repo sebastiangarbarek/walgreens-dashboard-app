@@ -92,13 +92,13 @@
     // Prevent reloading the entire table view if other data exists.
     // Notification.
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                          withRowAnimation:UITableViewRowAnimationNone];
     // Map.
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                          withRowAnimation:UITableViewRowAnimationNone];
     // Summary.
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:3 inSection:0], nil]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                          withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
     
     [self startStoreTimerWithSeconds:[self.storeTimes secondsToNextHour]];

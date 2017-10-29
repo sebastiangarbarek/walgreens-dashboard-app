@@ -128,12 +128,6 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - Navigation Methods -
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
 #pragma mark - Helper Methods -
 
 - (OfflineHistoryCell *)smartDequeueWithIdentifier:(NSString *)identifier {

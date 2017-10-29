@@ -10,6 +10,7 @@
 
 @interface SummaryCell () {
     NSMutableArray<DashboardCountCellData *> *cellCollection;
+    NSArray *stores;
 }
 
 @end
@@ -19,6 +20,8 @@
 #pragma mark - Parent Methods -
 
 - (void)loadCellDataWithOfflineStores:(NSArray *)offlineStoresForMonthInYear month:(NSNumber *)month year:(NSNumber *)year databaseManager:(DatabaseManager *)databaseManager {
+    stores = offlineStoresForMonthInYear;
+    
     NSNumber *offline = [self countStatus:@"C" inDataSet:offlineStoresForMonthInYear];
     NSNumber *scheduledMaintenance = [self countStatus:@"M" inDataSet:offlineStoresForMonthInYear];;
     NSNumber *unscheduledMaintenance = [self countStatus:@"T" inDataSet:offlineStoresForMonthInYear];;
@@ -78,6 +81,41 @@
     return CGSizeMake(screen.size.width / 2, screen.size.width / 2);
 }
 
+#pragma mark - Navigation Methods -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UICollectionViewCell *senderCell = (UICollectionViewCell *)sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:senderCell];
+    
+    NSArray *offlineStores;
+    
+    switch (indexPath.row) {
+        case 0:
+            // Offline.
+        {
+            offlineStores = [self offlineStoresForStatus:@"C"];
+        }
+            break;
+        case 1:
+            // Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"M"];
+        }
+            break;
+        case 2:
+            // Unscheduled Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"T"];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    OfflineStoresController *destination = [segue destinationViewController];
+    destination.offlineStores = offlineStores;
+}
+
 #pragma mark - Helper Methods -
 
 - (NSNumber *)countStatus:(NSString *)status inDataSet:(NSArray *)dataSet {
@@ -90,6 +128,16 @@
     }
     
     return @(count);
+}
+
+- (NSArray *)offlineStoresForStatus:(NSString *)status {
+    NSMutableArray *offlineStores = [NSMutableArray new];
+    for (NSDictionary *offlineStore in stores) {
+        if ([[offlineStore objectForKey:@"status"] isEqualToString:status]) {
+            [offlineStores addObject:offlineStore];
+        }
+    }
+    return offlineStores;
 }
 
 @end
