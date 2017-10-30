@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DatabaseManagerApp.h"
+
+#import "DatabaseManager.h"
 #import "DatabaseConstants.h"
 #import "DateHelper.h"
 #import "StoreTimesConstants.h"
@@ -34,7 +35,7 @@ typedef NS_ENUM(NSInteger, Day) {
 
 - (void)loadStores;
 // Returns a dictionary mapping timezones to their time for provided NZ date and time.
-- (NSDictionary *)generalizedTimesInUSWithDateTime:(NSString *)dateTime;
+- (NSDictionary *)timesInUSWithNZDateTime:(NSString *)dateTime;
 
 /*!Retrieves a store, processes and updates its physical status and returns the result.
  Current date and time should be passed to this method, or any other date and time.

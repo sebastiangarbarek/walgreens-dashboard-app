@@ -18,6 +18,10 @@
     [self updateView];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularYellow]];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     NSLog(@"[WARNING] Browse stores received memory warning.");

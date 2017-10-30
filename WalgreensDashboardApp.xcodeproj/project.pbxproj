@@ -9,62 +9,61 @@
 /* Begin PBXBuildFile section */
 		4E3749391F3EE491004DBD53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E3749381F3EE491004DBD53 /* MapKit.framework */; };
 		7649FB6E2941621ED3FB9EEA /* Pods_WalgreensDashboardAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */; };
+		A8017BA71F9B163600F2C695 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8017BA61F9B163600F2C695 /* StoreHours.storyboard */; };
+		A8017BAB1F9B184800F2C695 /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */; };
+		A8017BAE1F9B185600F2C695 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BAC1F9B185600F2C695 /* StoreHoursController.m */; };
+		A8017BB11F9B186C00F2C695 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BAF1F9B186C00F2C695 /* Store.m */; };
+		A8017BB41F9B188300F2C695 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BB21F9B188300F2C695 /* MapCell.m */; };
+		A8017BB71F9B189B00F2C695 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BB51F9B189B00F2C695 /* Reachability.m */; };
+		A8017BBA1F9B18B600F2C695 /* DatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BB81F9B18B600F2C695 /* DatabaseConstants.m */; };
+		A8017BBE1F9B18D400F2C695 /* WalgreensAPIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BBC1F9B18D400F2C695 /* WalgreensAPIConstants.m */; };
+		A8017BC21F9B18FE00F2C695 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BC01F9B18FE00F2C695 /* Month.m */; };
+		A8017BCB1F9B190B00F2C695 /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BC31F9B190B00F2C695 /* SummaryCell.m */; };
+		A8017BCC1F9B190B00F2C695 /* OnlineTrendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BC51F9B190B00F2C695 /* OnlineTrendCell.m */; };
+		A8017BCD1F9B190B00F2C695 /* OfflineHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BC71F9B190B00F2C695 /* OfflineHistoryCell.m */; };
+		A8017BCE1F9B190B00F2C695 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BC91F9B190B00F2C695 /* DatePickerCell.m */; };
+		A8017BD11F9B194200F2C695 /* UIColor+AppTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BCF1F9B194200F2C695 /* UIColor+AppTheme.m */; };
+		A8017BD41F9B194A00F2C695 /* DashboardCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BD21F9B194A00F2C695 /* DashboardCountCell.m */; };
+		A8017BD91F9B198100F2C695 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BD51F9B198100F2C695 /* MapPin.m */; };
+		A8017BDA1F9B198100F2C695 /* ClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BD71F9B198100F2C695 /* ClusterPin.m */; };
+		A8017BE01F9B198E00F2C695 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BDC1F9B198E00F2C695 /* DetailCell.m */; };
+		A8017BE11F9B198E00F2C695 /* BasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BDE1F9B198E00F2C695 /* BasicCell.m */; };
+		A8017BE61F9B199600F2C695 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE21F9B199600F2C695 /* ViewController.m */; };
+		A8017BE71F9B199600F2C695 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE41F9B199600F2C695 /* TableViewController.m */; };
+		A8017BEA1F9B1A3E00F2C695 /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BE81F9B1A3E00F2C695 /* DashboardCountCellData.m */; };
+		A8017BED1F9B44BF00F2C695 /* OpenClosedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */; };
 		A80D3CEB1F3159AF00ED6BF2 /* walgreensapidb.sql in Resources */ = {isa = PBXBuildFile; fileRef = A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */; };
 		A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A842C7361EB023FB002ED089 /* Assets.xcassets */; };
 		A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A842C7381EB023FB002ED089 /* LaunchScreen.storyboard */; };
 		A85D90C11F96C15C00604683 /* OfflineHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C01F96C15C00604683 /* OfflineHistoryController.m */; };
-		A85D90C51F96C53200604683 /* DatePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C41F96C53200604683 /* DatePickerCell.m */; };
-		A85D90C81F96C54C00604683 /* OfflineHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */; };
-		A85D90D11F96CCA800604683 /* Month.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D01F96CCA800604683 /* Month.m */; };
-		A85D90D51F96E19D00604683 /* StoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D31F96E19D00604683 /* StoreCell.m */; };
-		A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A85D90D71F970D0A00604683 /* OnlineTrendCell.m */; };
 		A86CF4E31F5CCADC005889B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E21F5CCADC005889B7 /* Main.storyboard */; };
 		A86CF4E81F5CCD6E005889B7 /* StoreHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4E71F5CCD6E005889B7 /* StoreHistory.storyboard */; };
 		A86CF4EC1F5CCDB1005889B7 /* PrintProducts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4EB1F5CCDB1005889B7 /* PrintProducts.storyboard */; };
 		A86CF4EE1F5CCE40005889B7 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF4ED1F5CCE40005889B7 /* Dashboard.storyboard */; };
 		A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF4F11F5CF437005889B7 /* DashboardController.m */; };
-		A86CF4F51F5CF475005889B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF4F41F5CF475005889B7 /* ViewController.m */; };
-		A86CF4F81F5CF6C9005889B7 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF4F71F5CF6C9005889B7 /* TableViewController.m */; };
 		A86CF4F91F5CFC1A005889B7 /* DateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1E2011F4E58CE008DE876 /* DateHelper.m */; };
 		A86CF4FA1F5CFC54005889B7 /* NetworkUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */; };
-		A86CF4FB1F5CFC54005889B7 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A4E1F4D45680063EEE4 /* Reachability.m */; };
 		A86CF4FC1F5CFC54005889B7 /* WalgreensAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */; };
 		A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A551F4D45680063EEE4 /* DatabaseManager.m */; };
 		A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A531F4D45680063EEE4 /* Commands.m */; };
 		A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */; };
 		A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */; };
-		A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A5F1F4D45680063EEE4 /* TableCommands.m */; };
 		A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A611F4D45680063EEE4 /* UpdateCommands.m */; };
-		A86CF5031F5CFC54005889B7 /* DatabaseManagerApp.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */; };
 		A86CF5041F5CFC54005889B7 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A441F4D45560063EEE4 /* Controller.m */; };
 		A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E09A401F4D45560063EEE4 /* StatusController.m */; };
 		A86CF5161F5D366C005889B7 /* StoreCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF5151F5D366C005889B7 /* StoreCategory.storyboard */; };
 		A86CF51A1F5D37DB005889B7 /* StoreDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86CF5191F5D37DB005889B7 /* StoreDetails.storyboard */; };
-		A86CF51E1F5D3F59005889B7 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF51D1F5D3F59005889B7 /* MapPin.m */; };
-		A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5201F5D3FA4005889B7 /* MapCell.m */; };
-		A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5231F5D4058005889B7 /* DetailCell.m */; };
 		A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */; };
-		A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */; };
-		A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */; };
-		A873C6981F97DD0300BD41AE /* SummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A873C6971F97DD0300BD41AE /* SummaryCell.m */; };
 		A89B0A231F8500C10016A698 /* ProductListController.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A221F8500C10016A698 /* ProductListController.m */; };
 		A89B0A261F85076F0016A698 /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89B0A251F85076F0016A698 /* ProductCell.m */; };
-		A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */; };
-		A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A89EA2841F726CF800A50E3B /* MessageCell.m */; };
-		A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */; };
-		A8A1B8271F945B90004A0BC3 /* WalgreensAPIConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */; };
-		A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35581F7FB4600017C904 /* StoreTimeCell.m */; };
-		A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */; };
-		A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE35631F80F1750017C904 /* StoreHoursController.m */; };
-		A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AE356D1F810AA00017C904 /* SingleLabelCell.m */; };
+		A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A4A4641F9C383C00702565 /* FilterCell.m */; };
+		A8AF4BA41FA66E7E003F01D3 /* OfflineStoresController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */; };
+		A8AF4BA81FA67618003F01D3 /* OfflineStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */; };
 		A8C1D31D1ED827EA00D34DD4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */; };
 		A8D891811F6B875100E3388B /* StoreStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891801F6B875100E3388B /* StoreStateController.m */; };
 		A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891831F6BEBA100E3388B /* StoreCityController.m */; };
 		A8D891871F6CA9CA00E3388B /* StoreCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891861F6CA9CA00E3388B /* StoreCategoryController.m */; };
 		A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891891F6CAC6E00E3388B /* MapController.m */; };
-		A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */; };
-		A8D891901F6D070A00E3388B /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8918F1F6D070A00E3388B /* Store.m */; };
-		A8D891931F6E675200E3388B /* ClusterPin.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891921F6E675200E3388B /* ClusterPin.m */; };
 		A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891961F6F7A9500E3388B /* StoreTimes.m */; };
 		A8D891991F711B3B00E3388B /* StoreTimesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D891981F711B3B00E3388B /* StoreTimesTests.m */; };
 		A8D8919C1F71F6B200E3388B /* StoreTimesConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D8919B1F71F6B200E3388B /* StoreTimesConstants.m */; };
@@ -100,37 +99,62 @@
 		2CF0AFDCB79E639C41000337 /* Pods-WalgreensDashboardApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp.release.xcconfig"; sourceTree = "<group>"; };
 		3978F15B1EBEAF16001FD643 /* WalgreensDashboardAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalgreensDashboardAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3978F15F1EBEAF16001FD643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAxisFomatter.h; sourceTree = "<group>"; };
-		4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAxisFomatter.m; sourceTree = "<group>"; };
-		4E1C8E471F3E758600947604 /* SetValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetValueFormatter.h; sourceTree = "<group>"; };
-		4E1C8E481F3E758600947604 /* SetValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetValueFormatter.m; sourceTree = "<group>"; };
-		4E1C8E4B1F3E998200947604 /* ChartsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsView.h; sourceTree = "<group>"; };
-		4E1C8E4C1F3E998200947604 /* ChartsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsView.m; sourceTree = "<group>"; };
 		4E3749381F3EE491004DBD53 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4E3749431F3EEC1F004DBD53 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		4E3749441F3EEC1F004DBD53 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		58F71D457A8E5549B6DB1252 /* Pods-WalgreensDashboardApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardApp/Pods-WalgreensDashboardApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5FAA2A7827A99CB66E52E48B /* Pods_WalgreensDashboardAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8074F501F58EA3C00C4406C /* UIViewController+DateTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DateTransition.m"; sourceTree = "<group>"; };
-		A8074F521F58EA4C00C4406C /* UIViewController+DateTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DateTransition.h"; sourceTree = "<group>"; };
+		A8017BA61F9B163600F2C695 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreHours.storyboard; sourceTree = "<group>"; };
+		A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimesMapCell.m; sourceTree = "<group>"; };
+		A8017BAA1F9B184800F2C695 /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimesMapCell.h; sourceTree = "<group>"; };
+		A8017BAC1F9B185600F2C695 /* StoreHoursController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHoursController.m; sourceTree = "<group>"; };
+		A8017BAD1F9B185600F2C695 /* StoreHoursController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHoursController.h; sourceTree = "<group>"; };
+		A8017BAF1F9B186C00F2C695 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
+		A8017BB01F9B186C00F2C695 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
+		A8017BB21F9B188300F2C695 /* MapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCell.m; sourceTree = "<group>"; };
+		A8017BB31F9B188300F2C695 /* MapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCell.h; sourceTree = "<group>"; };
+		A8017BB51F9B189B00F2C695 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A8017BB61F9B189B00F2C695 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A8017BB81F9B18B600F2C695 /* DatabaseConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConstants.m; sourceTree = "<group>"; };
+		A8017BB91F9B18B600F2C695 /* DatabaseConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConstants.h; sourceTree = "<group>"; };
+		A8017BBB1F9B18CC00F2C695 /* WalgreensAPIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIDelegate.h; sourceTree = "<group>"; };
+		A8017BBC1F9B18D400F2C695 /* WalgreensAPIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPIConstants.m; sourceTree = "<group>"; };
+		A8017BBD1F9B18D400F2C695 /* WalgreensAPIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIConstants.h; sourceTree = "<group>"; };
+		A8017BBF1F9B18E500F2C695 /* DatePickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerDelegate.h; sourceTree = "<group>"; };
+		A8017BC01F9B18FE00F2C695 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Month.m; sourceTree = "<group>"; };
+		A8017BC11F9B18FE00F2C695 /* Month.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Month.h; sourceTree = "<group>"; };
+		A8017BC31F9B190B00F2C695 /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
+		A8017BC41F9B190B00F2C695 /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryCell.h; sourceTree = "<group>"; };
+		A8017BC51F9B190B00F2C695 /* OnlineTrendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTrendCell.m; sourceTree = "<group>"; };
+		A8017BC61F9B190B00F2C695 /* OnlineTrendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTrendCell.h; sourceTree = "<group>"; };
+		A8017BC71F9B190B00F2C695 /* OfflineHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineHistoryCell.m; sourceTree = "<group>"; };
+		A8017BC81F9B190B00F2C695 /* OfflineHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineHistoryCell.h; sourceTree = "<group>"; };
+		A8017BC91F9B190B00F2C695 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
+		A8017BCA1F9B190B00F2C695 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
+		A8017BCF1F9B194200F2C695 /* UIColor+AppTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppTheme.m"; sourceTree = "<group>"; };
+		A8017BD01F9B194200F2C695 /* UIColor+AppTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppTheme.h"; sourceTree = "<group>"; };
+		A8017BD21F9B194A00F2C695 /* DashboardCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashboardCountCell.m; path = WalgreensDashboardApp/Common/Frontend/Controllers/Main/Cells/DashboardCountCell.m; sourceTree = SOURCE_ROOT; };
+		A8017BD31F9B194A00F2C695 /* DashboardCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashboardCountCell.h; path = WalgreensDashboardApp/Common/Frontend/Controllers/Main/Cells/DashboardCountCell.h; sourceTree = SOURCE_ROOT; };
+		A8017BD51F9B198100F2C695 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		A8017BD61F9B198100F2C695 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		A8017BD71F9B198100F2C695 /* ClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterPin.m; sourceTree = "<group>"; };
+		A8017BD81F9B198100F2C695 /* ClusterPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClusterPin.h; sourceTree = "<group>"; };
+		A8017BDB1F9B198700F2C695 /* SegueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueDelegate.h; sourceTree = "<group>"; };
+		A8017BDC1F9B198E00F2C695 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
+		A8017BDD1F9B198E00F2C695 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
+		A8017BDE1F9B198E00F2C695 /* BasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicCell.m; sourceTree = "<group>"; };
+		A8017BDF1F9B198E00F2C695 /* BasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicCell.h; sourceTree = "<group>"; };
+		A8017BE21F9B199600F2C695 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A8017BE31F9B199600F2C695 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A8017BE41F9B199600F2C695 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		A8017BE51F9B199600F2C695 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		A8017BE81F9B1A3E00F2C695 /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
+		A8017BE91F9B1A3E00F2C695 /* DashboardCountCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
+		A8017BEB1F9B44BF00F2C695 /* OpenClosedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenClosedCell.h; sourceTree = "<group>"; };
+		A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenClosedCell.m; sourceTree = "<group>"; };
 		A842C7271EB023FB002ED089 /* WalgreensDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalgreensDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A842C7361EB023FB002ED089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		A842C7391EB023FB002ED089 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A85D90BF1F96C15C00604683 /* OfflineHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineHistoryController.h; sourceTree = "<group>"; };
 		A85D90C01F96C15C00604683 /* OfflineHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineHistoryController.m; sourceTree = "<group>"; };
-		A85D90C31F96C53200604683 /* DatePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerCell.h; sourceTree = "<group>"; };
-		A85D90C41F96C53200604683 /* DatePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerCell.m; sourceTree = "<group>"; };
-		A85D90C61F96C54C00604683 /* OfflineHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineHistoryCell.h; sourceTree = "<group>"; };
-		A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineHistoryCell.m; sourceTree = "<group>"; };
-		A85D90CD1F96CBBD00604683 /* DatePickerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatePickerDelegate.h; sourceTree = "<group>"; };
-		A85D90CF1F96CC9800604683 /* Month.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Month.h; sourceTree = "<group>"; };
-		A85D90D01F96CCA800604683 /* Month.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Month.m; sourceTree = "<group>"; };
-		A85D90D31F96E19D00604683 /* StoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCell.m; sourceTree = "<group>"; };
-		A85D90D41F96E19D00604683 /* StoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCell.h; sourceTree = "<group>"; };
-		A85D90D61F970D0A00604683 /* OnlineTrendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTrendCell.h; sourceTree = "<group>"; };
-		A85D90D71F970D0A00604683 /* OnlineTrendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTrendCell.m; sourceTree = "<group>"; };
-		A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateTableViewController.h; sourceTree = "<group>"; };
-		A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateTableViewController.m; sourceTree = "<group>"; };
 		A86A06C71F2DC9D5005A0936 /* walgreensapidb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = walgreensapidb.sql; sourceTree = "<group>"; };
 		A86CF4E21F5CCADC005889B7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A86CF4E71F5CCD6E005889B7 /* StoreHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreHistory.storyboard; sourceTree = "<group>"; };
@@ -138,55 +162,20 @@
 		A86CF4ED1F5CCE40005889B7 /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		A86CF4F01F5CF437005889B7 /* DashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardController.h; sourceTree = "<group>"; };
 		A86CF4F11F5CF437005889B7 /* DashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardController.m; sourceTree = "<group>"; };
-		A86CF4F31F5CF475005889B7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A86CF4F41F5CF475005889B7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A86CF4F61F5CF6C9005889B7 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		A86CF4F71F5CF6C9005889B7 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A86CF5151F5D366C005889B7 /* StoreCategory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreCategory.storyboard; sourceTree = "<group>"; };
 		A86CF5191F5D37DB005889B7 /* StoreDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoreDetails.storyboard; sourceTree = "<group>"; };
-		A86CF51C1F5D3F59005889B7 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
-		A86CF51D1F5D3F59005889B7 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
-		A86CF51F1F5D3FA4005889B7 /* MapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapCell.h; sourceTree = "<group>"; };
-		A86CF5201F5D3FA4005889B7 /* MapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapCell.m; sourceTree = "<group>"; };
-		A86CF5221F5D4058005889B7 /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
-		A86CF5231F5D4058005889B7 /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		A86CF5251F5D40E9005889B7 /* StoreDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailsController.h; sourceTree = "<group>"; };
 		A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailsController.m; sourceTree = "<group>"; };
-		A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardCountCell.h; sourceTree = "<group>"; };
-		A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCell.m; sourceTree = "<group>"; };
-		A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppTheme.h"; sourceTree = "<group>"; };
-		A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppTheme.m"; sourceTree = "<group>"; };
-		A873C6961F97DD0300BD41AE /* SummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryCell.h; sourceTree = "<group>"; };
-		A873C6971F97DD0300BD41AE /* SummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryCell.m; sourceTree = "<group>"; };
-		A88A79871F2F151700C99BFD /* OfflineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineCell.h; sourceTree = "<group>"; };
-		A88A79881F2F151700C99BFD /* OfflineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineCell.m; sourceTree = "<group>"; };
-		A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
-		A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
-		A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineTableViewController.h; sourceTree = "<group>"; };
-		A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineTableViewController.m; sourceTree = "<group>"; };
 		A89B0A211F8500C10016A698 /* ProductListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListController.h; sourceTree = "<group>"; };
 		A89B0A221F8500C10016A698 /* ProductListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductListController.m; sourceTree = "<group>"; };
 		A89B0A241F85076F0016A698 /* ProductCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
 		A89B0A251F85076F0016A698 /* ProductCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
-		A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTimesMapCell.h; path = Main/StoreTimesMapCell.h; sourceTree = "<group>"; };
-		A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTimesMapCell.m; path = Main/StoreTimesMapCell.m; sourceTree = "<group>"; };
-		A89EA2801F72661D00A50E3B /* SegueProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegueProtocol.h; sourceTree = "<group>"; };
-		A89EA2831F726CF800A50E3B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
-		A89EA2841F726CF800A50E3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
-		A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashboardCountCellData.h; sourceTree = "<group>"; };
-		A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardCountCellData.m; sourceTree = "<group>"; };
-		A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIDelegate.h; sourceTree = "<group>"; };
-		A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalgreensAPIConstants.h; sourceTree = "<group>"; };
-		A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPIConstants.m; sourceTree = "<group>"; };
-		A8AE35571F7FB4600017C904 /* StoreTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTimeCell.h; sourceTree = "<group>"; };
-		A8AE35581F7FB4600017C904 /* StoreTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimeCell.m; sourceTree = "<group>"; };
-		A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = StoreHours.storyboard; path = "WalgreensDashboardApp/Common/Frontend/Controllers/Store Details/StoreHours.storyboard"; sourceTree = SOURCE_ROOT; };
-		A8AE35621F80F1750017C904 /* StoreHoursController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHoursController.h; sourceTree = "<group>"; };
-		A8AE35631F80F1750017C904 /* StoreHoursController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHoursController.m; sourceTree = "<group>"; };
-		A8AE356C1F810AA00017C904 /* SingleLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLabelCell.h; sourceTree = "<group>"; };
-		A8AE356D1F810AA00017C904 /* SingleLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLabelCell.m; sourceTree = "<group>"; };
-		A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
-		A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
+		A8A4A4631F9C383C00702565 /* FilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCell.h; sourceTree = "<group>"; };
+		A8A4A4641F9C383C00702565 /* FilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCell.m; sourceTree = "<group>"; };
+		A8AF4BA21FA66E7E003F01D3 /* OfflineStoresController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineStoresController.h; sourceTree = "<group>"; };
+		A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineStoresController.m; sourceTree = "<group>"; };
+		A8AF4BA61FA67618003F01D3 /* OfflineStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineStoreCell.h; sourceTree = "<group>"; };
+		A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineStoreCell.m; sourceTree = "<group>"; };
 		A8C1D31C1ED827EA00D34DD4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		A8D8917F1F6B875100E3388B /* StoreStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreStateController.h; sourceTree = "<group>"; };
 		A8D891801F6B875100E3388B /* StoreStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreStateController.m; sourceTree = "<group>"; };
@@ -196,12 +185,6 @@
 		A8D891861F6CA9CA00E3388B /* StoreCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCategoryController.m; sourceTree = "<group>"; };
 		A8D891881F6CAC6E00E3388B /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
 		A8D891891F6CAC6E00E3388B /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
-		A8D8918B1F6CFDBD00E3388B /* DatabaseConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseConstants.h; sourceTree = "<group>"; };
-		A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConstants.m; sourceTree = "<group>"; };
-		A8D8918E1F6D06F900E3388B /* Store.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
-		A8D8918F1F6D070A00E3388B /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
-		A8D891911F6E673B00E3388B /* ClusterPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClusterPin.h; sourceTree = "<group>"; };
-		A8D891921F6E675200E3388B /* ClusterPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClusterPin.m; sourceTree = "<group>"; };
 		A8D891951F6F7A8500E3388B /* StoreTimes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoreTimes.h; sourceTree = "<group>"; };
 		A8D891961F6F7A9500E3388B /* StoreTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimes.m; sourceTree = "<group>"; };
 		A8D891981F711B3B00E3388B /* StoreTimesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTimesTests.m; sourceTree = "<group>"; };
@@ -213,22 +196,16 @@
 		A8E09A451F4D45560063EEE4 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
 		A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUtility.h; sourceTree = "<group>"; };
 		A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkUtility.m; sourceTree = "<group>"; };
-		A8E09A4D1F4D45680063EEE4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A8E09A4E1F4D45680063EEE4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalgreensAPI.h; sourceTree = "<group>"; };
 		A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalgreensAPI.m; sourceTree = "<group>"; };
 		A8E09A521F4D45680063EEE4 /* Commands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commands.h; sourceTree = "<group>"; };
 		A8E09A531F4D45680063EEE4 /* Commands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Commands.m; sourceTree = "<group>"; };
 		A8E09A541F4D45680063EEE4 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		A8E09A551F4D45680063EEE4 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
-		A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManagerApp.h; sourceTree = "<group>"; };
-		A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerApp.m; sourceTree = "<group>"; };
 		A8E09A5A1F4D45680063EEE4 /* InsertCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsertCommands.h; sourceTree = "<group>"; };
 		A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsertCommands.m; sourceTree = "<group>"; };
 		A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCommands.h; sourceTree = "<group>"; };
 		A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCommands.m; sourceTree = "<group>"; };
-		A8E09A5E1F4D45680063EEE4 /* TableCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommands.h; sourceTree = "<group>"; };
-		A8E09A5F1F4D45680063EEE4 /* TableCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommands.m; sourceTree = "<group>"; };
 		A8E09A601F4D45680063EEE4 /* UpdateCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCommands.h; sourceTree = "<group>"; };
 		A8E09A611F4D45680063EEE4 /* UpdateCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCommands.m; sourceTree = "<group>"; };
 		A8E1E2011F4E58CE008DE876 /* DateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateHelper.m; sourceTree = "<group>"; };
@@ -239,14 +216,6 @@
 		A8E1E2131F4E5ADE008DE876 /* Charts-Bridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Charts-Bridging.swift"; sourceTree = "<group>"; };
 		A8E1E2141F4E5ADE008DE876 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A8E1E2151F4E5ADE008DE876 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineTableViewController.h; sourceTree = "<group>"; };
-		B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineTableViewController.m; sourceTree = "<group>"; };
-		B38ECF7C1F40446600AF75B0 /* OnlineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineCell.h; sourceTree = "<group>"; };
-		B38ECF7D1F40446600AF75B0 /* OnlineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineCell.m; sourceTree = "<group>"; };
-		B3FB08AD1F45378A00509D57 /* CityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityTableViewController.h; sourceTree = "<group>"; };
-		B3FB08AE1F45378A00509D57 /* CityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityTableViewController.m; sourceTree = "<group>"; };
-		B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreTableViewController.h; sourceTree = "<group>"; };
-		B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreTableViewController.m; sourceTree = "<group>"; };
 		B6E7F328C7136741CEF869F6 /* Pods_WalgreensDashboardApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalgreensDashboardApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF33B164F684CDBC08297E0 /* Pods-WalgreensDashboardAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FFAB52812B6619A93CDF5CA0 /* Pods-WalgreensDashboardAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalgreensDashboardAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WalgreensDashboardAppTests/Pods-WalgreensDashboardAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -305,39 +274,19 @@
 			path = WalgreensDashboardAppTests;
 			sourceTree = "<group>";
 		};
-		4E1C8E4A1F3E995C00947604 /* Models */ = {
+		A8017BA81F9B16A800F2C695 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A82949DA1F4E4DEE00EA0BBD /* Graph */,
+				A8017BB21F9B188300F2C695 /* MapCell.m */,
+				A8017BB31F9B188300F2C695 /* MapCell.h */,
 			);
-			name = Models;
-			path = Common/Frontend/Views;
-			sourceTree = "<group>";
-		};
-		4E37493F1F3EE532004DBD53 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				4E3749431F3EEC1F004DBD53 /* DetailViewController.h */,
-				4E3749441F3EEC1F004DBD53 /* DetailViewController.m */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
-		4E3F0BB51F3D1F3E00F1D22D /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				4E1C8E471F3E758600947604 /* SetValueFormatter.h */,
-				4E1C8E481F3E758600947604 /* SetValueFormatter.m */,
-				4E1C8E441F3E60FF00947604 /* YAxisFomatter.h */,
-				4E1C8E451F3E60FF00947604 /* YAxisFomatter.m */,
-			);
-			path = Chart;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A80D3EAC1F6A166E00D9CBE6 /* Store Category */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90D21F96E15F00604683 /* Cells */,
+				A85D15C01F9B11DC00AE7444 /* Supporting Objects */,
 				A8D891851F6CA9CA00E3388B /* StoreCategoryController.h */,
 				A8D891861F6CA9CA00E3388B /* StoreCategoryController.m */,
 				A8D8917F1F6B875100E3388B /* StoreStateController.h */,
@@ -346,10 +295,6 @@
 				A8D891831F6BEBA100E3388B /* StoreCityController.m */,
 				A8D891881F6CAC6E00E3388B /* MapController.h */,
 				A8D891891F6CAC6E00E3388B /* MapController.m */,
-				A8D8918E1F6D06F900E3388B /* Store.h */,
-				A8D8918F1F6D070A00E3388B /* Store.m */,
-				A8D891911F6E673B00E3388B /* ClusterPin.h */,
-				A8D891921F6E675200E3388B /* ClusterPin.m */,
 			);
 			path = "Store Category";
 			sourceTree = "<group>";
@@ -368,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				A821BB2B1EDB961800B878BA /* Views */,
-				4E1C8E4A1F3E995C00947604 /* Models */,
 				A821BB2A1EDB960400B878BA /* Controllers */,
 			);
 			name = Frontend;
@@ -384,10 +328,6 @@
 				A82949DD1F4E525A00EA0BBD /* Shared */,
 				A88A798D1F2F340300C99BFD /* Main */,
 				A86CF5081F5D129D005889B7 /* Store History */,
-				A88A79911F2F346000C99BFD /* Offline */,
-				B38ECF731F402B6000AF75B0 /* Online */,
-				4E37493F1F3EE532004DBD53 /* Store */,
-				A89EA2801F72661D00A50E3B /* SegueProtocol.h */,
 			);
 			name = Controllers;
 			path = Common/Frontend/Controllers;
@@ -444,26 +384,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		A82949D31F4E4BBF00EA0BBD /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				A8B5AD481F3AEE2D0040A2E8 /* NSMutableArray+Stack.h */,
-				A8B5AD491F3AEE440040A2E8 /* NSMutableArray+Stack.m */,
-				A8074F521F58EA4C00C4406C /* UIViewController+DateTransition.h */,
-				A8074F501F58EA3C00C4406C /* UIViewController+DateTransition.m */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		A82949D41F4E4BEC00EA0BBD /* App */ = {
-			isa = PBXGroup;
-			children = (
-				A8E09A561F4D45680063EEE4 /* DatabaseManagerApp.h */,
-				A8E09A571F4D45680063EEE4 /* DatabaseManagerApp.m */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		A82949D61F4E4C4D00EA0BBD /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,22 +393,10 @@
 				A8E09A5B1F4D45680063EEE4 /* InsertCommands.m */,
 				A8E09A5C1F4D45680063EEE4 /* SelectCommands.h */,
 				A8E09A5D1F4D45680063EEE4 /* SelectCommands.m */,
-				A8E09A5E1F4D45680063EEE4 /* TableCommands.h */,
-				A8E09A5F1F4D45680063EEE4 /* TableCommands.m */,
 				A8E09A601F4D45680063EEE4 /* UpdateCommands.h */,
 				A8E09A611F4D45680063EEE4 /* UpdateCommands.m */,
 			);
 			path = Commands;
-			sourceTree = "<group>";
-		};
-		A82949DA1F4E4DEE00EA0BBD /* Graph */ = {
-			isa = PBXGroup;
-			children = (
-				4E1C8E4B1F3E998200947604 /* ChartsView.h */,
-				4E1C8E4C1F3E998200947604 /* ChartsView.m */,
-			);
-			name = Graph;
-			path = ../Models/Graph;
 			sourceTree = "<group>";
 		};
 		A82949DB1F4E4EB500EA0BBD /* Date */ = {
@@ -503,10 +411,10 @@
 		A82949DD1F4E525A00EA0BBD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A86CF4F31F5CF475005889B7 /* ViewController.h */,
-				A86CF4F41F5CF475005889B7 /* ViewController.m */,
-				A86CF4F61F5CF6C9005889B7 /* TableViewController.h */,
-				A86CF4F71F5CF6C9005889B7 /* TableViewController.m */,
+				A85D15C11F9B11FC00AE7444 /* Pins */,
+				A8F98A5C1F98327700BFC759 /* Delegates */,
+				A8F98A5A1F98311F00BFC759 /* Cells */,
+				A8F98A5B1F98326C00BFC759 /* Controllers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -552,46 +460,68 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A85D15BF1F9AF4D600AE7444 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BCF1F9B194200F2C695 /* UIColor+AppTheme.m */,
+				A8017BD01F9B194200F2C695 /* UIColor+AppTheme.h */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		A85D15C01F9B11DC00AE7444 /* Supporting Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BAF1F9B186C00F2C695 /* Store.m */,
+				A8017BB01F9B186C00F2C695 /* Store.h */,
+			);
+			path = "Supporting Objects";
+			sourceTree = "<group>";
+		};
+		A85D15C11F9B11FC00AE7444 /* Pins */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BD51F9B198100F2C695 /* MapPin.m */,
+				A8017BD61F9B198100F2C695 /* MapPin.h */,
+				A8017BD71F9B198100F2C695 /* ClusterPin.m */,
+				A8017BD81F9B198100F2C695 /* ClusterPin.h */,
+			);
+			path = Pins;
+			sourceTree = "<group>";
+		};
 		A85D90C21F96C51400604683 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90C61F96C54C00604683 /* OfflineHistoryCell.h */,
-				A85D90C71F96C54C00604683 /* OfflineHistoryCell.m */,
-				A85D90C31F96C53200604683 /* DatePickerCell.h */,
-				A85D90C41F96C53200604683 /* DatePickerCell.m */,
-				A85D90D61F970D0A00604683 /* OnlineTrendCell.h */,
-				A85D90D71F970D0A00604683 /* OnlineTrendCell.m */,
-				A873C6961F97DD0300BD41AE /* SummaryCell.h */,
-				A873C6971F97DD0300BD41AE /* SummaryCell.m */,
+				A8017BC41F9B190B00F2C695 /* SummaryCell.h */,
+				A8017BC31F9B190B00F2C695 /* SummaryCell.m */,
+				A8017BC61F9B190B00F2C695 /* OnlineTrendCell.h */,
+				A8017BC51F9B190B00F2C695 /* OnlineTrendCell.m */,
+				A8017BC81F9B190B00F2C695 /* OfflineHistoryCell.h */,
+				A8017BC71F9B190B00F2C695 /* OfflineHistoryCell.m */,
+				A8017BCA1F9B190B00F2C695 /* DatePickerCell.h */,
+				A8017BC91F9B190B00F2C695 /* DatePickerCell.m */,
 				A85D90CE1F96CC8700604683 /* Supporting Objects */,
+				A8AF4BA61FA67618003F01D3 /* OfflineStoreCell.h */,
+				A8AF4BA71FA67618003F01D3 /* OfflineStoreCell.m */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A85D90CC1F96CB9E00604683 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90CD1F96CBBD00604683 /* DatePickerDelegate.h */,
+				A8017BBF1F9B18E500F2C695 /* DatePickerDelegate.h */,
 			);
-			name = Delegates;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		A85D90CE1F96CC8700604683 /* Supporting Objects */ = {
 			isa = PBXGroup;
 			children = (
-				A85D90CF1F96CC9800604683 /* Month.h */,
-				A85D90D01F96CCA800604683 /* Month.m */,
+				A8017BC01F9B18FE00F2C695 /* Month.m */,
+				A8017BC11F9B18FE00F2C695 /* Month.h */,
 			);
-			name = "Supporting Objects";
-			sourceTree = "<group>";
-		};
-		A85D90D21F96E15F00604683 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A85D90D31F96E19D00604683 /* StoreCell.m */,
-				A85D90D41F96E19D00604683 /* StoreCell.h */,
-			);
-			name = Cells;
+			path = "Supporting Objects";
 			sourceTree = "<group>";
 		};
 		A86CF4E41F5CCD09005889B7 /* Store History */ = {
@@ -617,6 +547,8 @@
 				A85D90BF1F96C15C00604683 /* OfflineHistoryController.h */,
 				A85D90C01F96C15C00604683 /* OfflineHistoryController.m */,
 				A85D90CC1F96CB9E00604683 /* Delegates */,
+				A8AF4BA21FA66E7E003F01D3 /* OfflineStoresController.h */,
+				A8AF4BA31FA66E7E003F01D3 /* OfflineStoresController.m */,
 			);
 			path = "Store History";
 			sourceTree = "<group>";
@@ -624,7 +556,7 @@
 		A86CF5121F5D2A3C005889B7 /* Store Hours */ = {
 			isa = PBXGroup;
 			children = (
-				A8AE355C1F80CA6F0017C904 /* StoreHours.storyboard */,
+				A8017BA61F9B163600F2C695 /* StoreHours.storyboard */,
 			);
 			path = "Store Hours";
 			sourceTree = "<group>";
@@ -648,16 +580,9 @@
 		A86CF51B1F5D3ED3005889B7 /* Store Details */ = {
 			isa = PBXGroup;
 			children = (
-				A86CF51C1F5D3F59005889B7 /* MapPin.h */,
-				A86CF51D1F5D3F59005889B7 /* MapPin.m */,
-				A86CF51F1F5D3FA4005889B7 /* MapCell.h */,
-				A86CF5201F5D3FA4005889B7 /* MapCell.m */,
-				A86CF5221F5D4058005889B7 /* DetailCell.h */,
-				A86CF5231F5D4058005889B7 /* DetailCell.m */,
+				A8017BA81F9B16A800F2C695 /* Cells */,
 				A86CF5251F5D40E9005889B7 /* StoreDetailsController.h */,
 				A86CF5261F5D40E9005889B7 /* StoreDetailsController.m */,
-				A8AE35571F7FB4600017C904 /* StoreTimeCell.h */,
-				A8AE35581F7FB4600017C904 /* StoreTimeCell.m */,
 			);
 			path = "Store Details";
 			sourceTree = "<group>";
@@ -665,50 +590,22 @@
 		A86DE40E1F8AECEC00D3E486 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A86DE40B1F8AECDD00D3E486 /* DashboardCountCell.h */,
-				A86DE40C1F8AECDD00D3E486 /* DashboardCountCell.m */,
-				A8A166CD1F902AF800E3081C /* DashboardCountCellData.h */,
-				A8A166CE1F902B7300E3081C /* DashboardCountCellData.m */,
+				A8017BD21F9B194A00F2C695 /* DashboardCountCell.m */,
+				A8017BD31F9B194A00F2C695 /* DashboardCountCell.h */,
+				A8F98A5D1F9832A300BFC759 /* Supporting Objects */,
 			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		A88A79861F2F14BA00C99BFD /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A88A79871F2F151700C99BFD /* OfflineCell.h */,
-				A88A79881F2F151700C99BFD /* OfflineCell.m */,
-			);
-			name = Cells;
-			path = ../Offline/Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A88A798D1F2F340300C99BFD /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A85D15BF1F9AF4D600AE7444 /* Colors */,
 				A86DE40E1F8AECEC00D3E486 /* Cells */,
 				A86CF4F01F5CF437005889B7 /* DashboardController.h */,
 				A86CF4F11F5CF437005889B7 /* DashboardController.m */,
-				A86A06B11F2DA850005A0936 /* UpdateTableViewController.h */,
-				A86A06B21F2DA850005A0936 /* UpdateTableViewController.m */,
-				A88A798E1F2F343900C99BFD /* HistoryTableViewController.h */,
-				A88A798F1F2F343900C99BFD /* HistoryTableViewController.m */,
-				A89EA2831F726CF800A50E3B /* MessageCell.h */,
-				A89EA2841F726CF800A50E3B /* MessageCell.m */,
-				A86DE40F1F8B002C00D3E486 /* UIColor+AppTheme.h */,
-				A86DE4101F8B008100D3E486 /* UIColor+AppTheme.m */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		A88A79911F2F346000C99BFD /* Offline */ = {
-			isa = PBXGroup;
-			children = (
-				A88A79861F2F14BA00C99BFD /* Cells */,
-				A88A79921F2F41AE00C99BFD /* OfflineTableViewController.h */,
-				A88A79931F2F41AE00C99BFD /* OfflineTableViewController.m */,
-			);
-			path = Offline;
 			sourceTree = "<group>";
 		};
 		A89B0A201F8500800016A698 /* Product List */ = {
@@ -755,29 +652,30 @@
 			isa = PBXGroup;
 			children = (
 				A8AE35681F80FA660017C904 /* Cells */,
-				A8AE35621F80F1750017C904 /* StoreHoursController.h */,
-				A8AE35631F80F1750017C904 /* StoreHoursController.m */,
+				A8017BAD1F9B185600F2C695 /* StoreHoursController.h */,
+				A8017BAC1F9B185600F2C695 /* StoreHoursController.m */,
 			);
-			name = "Store Hours";
+			path = "Store Hours";
 			sourceTree = "<group>";
 		};
 		A8AE35681F80FA660017C904 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A89EA27D1F72477700A50E3B /* StoreTimesMapCell.h */,
-				A89EA27E1F72477700A50E3B /* StoreTimesMapCell.m */,
-				A8AE356C1F810AA00017C904 /* SingleLabelCell.h */,
-				A8AE356D1F810AA00017C904 /* SingleLabelCell.m */,
+				A8017BAA1F9B184800F2C695 /* StoreTimesMapCell.h */,
+				A8017BA91F9B184800F2C695 /* StoreTimesMapCell.m */,
+				A8017BEB1F9B44BF00F2C695 /* OpenClosedCell.h */,
+				A8017BEC1F9B44BF00F2C695 /* OpenClosedCell.m */,
+				A8A4A4631F9C383C00702565 /* FilterCell.h */,
+				A8A4A4641F9C383C00702565 /* FilterCell.m */,
 			);
-			name = Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A8B5AD471F3AEDF00040A2E8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A621F9835C400BFC759 /* Network */,
 				A82949DB1F4E4EB500EA0BBD /* Date */,
-				A82949D31F4E4BBF00EA0BBD /* Data */,
-				4E3F0BB51F3D1F3E00F1D22D /* Chart */,
 			);
 			name = Helpers;
 			path = Common/Helpers;
@@ -786,10 +684,9 @@
 		A8D891941F6F79CF00E3388B /* Time */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A5F1F98354200BFC759 /* Constants */,
 				A8D891951F6F7A8500E3388B /* StoreTimes.h */,
 				A8D891961F6F7A9500E3388B /* StoreTimes.m */,
-				A8D8919A1F71F6A000E3388B /* StoreTimesConstants.h */,
-				A8D8919B1F71F6B200E3388B /* StoreTimesConstants.m */,
 			);
 			name = Time;
 			path = ../Time;
@@ -798,15 +695,12 @@
 		A8E09A4A1F4D45680063EEE4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A8F98A601F98354B00BFC759 /* Constants */,
+				A8F98A5E1F98353000BFC759 /* Delegates */,
 				A8E09A4B1F4D45680063EEE4 /* NetworkUtility.h */,
 				A8E09A4C1F4D45680063EEE4 /* NetworkUtility.m */,
-				A8E09A4D1F4D45680063EEE4 /* Reachability.h */,
-				A8E09A4E1F4D45680063EEE4 /* Reachability.m */,
 				A8E09A4F1F4D45680063EEE4 /* WalgreensAPI.h */,
 				A8E09A501F4D45680063EEE4 /* WalgreensAPI.m */,
-				A8A1B8241F942DD3004A0BC3 /* WalgreensAPIDelegate.h */,
-				A8A1B8251F945B81004A0BC3 /* WalgreensAPIConstants.h */,
-				A8A1B8261F945B90004A0BC3 /* WalgreensAPIConstants.m */,
 			);
 			name = Network;
 			path = WalgreensDashboardApp/Common/Backend/Models/Network;
@@ -815,12 +709,10 @@
 		A8E09A511F4D45680063EEE4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				A8D8918B1F6CFDBD00E3388B /* DatabaseConstants.h */,
-				A8D8918C1F6D003B00E3388B /* DatabaseConstants.m */,
+				A8F98A611F98357C00BFC759 /* Constants */,
 				A8E09A541F4D45680063EEE4 /* DatabaseManager.h */,
 				A8E09A551F4D45680063EEE4 /* DatabaseManager.m */,
 				A82949D61F4E4C4D00EA0BBD /* Commands */,
-				A82949D41F4E4BEC00EA0BBD /* App */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -838,27 +730,87 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B38ECF731F402B6000AF75B0 /* Online */ = {
+		A8F98A5A1F98311F00BFC759 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B38ECF761F402BA600AF75B0 /* Cells */,
-				B38ECF791F40442A00AF75B0 /* OnlineTableViewController.h */,
-				B38ECF7A1F40442A00AF75B0 /* OnlineTableViewController.m */,
-				B3FB08AD1F45378A00509D57 /* CityTableViewController.h */,
-				B3FB08AE1F45378A00509D57 /* CityTableViewController.m */,
-				B3FB08B01F4537CF00509D57 /* StoreTableViewController.h */,
-				B3FB08B11F4537CF00509D57 /* StoreTableViewController.m */,
-			);
-			path = Online;
-			sourceTree = "<group>";
-		};
-		B38ECF761F402BA600AF75B0 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B38ECF7C1F40446600AF75B0 /* OnlineCell.h */,
-				B38ECF7D1F40446600AF75B0 /* OnlineCell.m */,
+				A8017BDC1F9B198E00F2C695 /* DetailCell.m */,
+				A8017BDD1F9B198E00F2C695 /* DetailCell.h */,
+				A8017BDE1F9B198E00F2C695 /* BasicCell.m */,
+				A8017BDF1F9B198E00F2C695 /* BasicCell.h */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A8F98A5B1F98326C00BFC759 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BE31F9B199600F2C695 /* ViewController.h */,
+				A8017BE21F9B199600F2C695 /* ViewController.m */,
+				A8017BE51F9B199600F2C695 /* TableViewController.h */,
+				A8017BE41F9B199600F2C695 /* TableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A8F98A5C1F98327700BFC759 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BDB1F9B198700F2C695 /* SegueDelegate.h */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A8F98A5D1F9832A300BFC759 /* Supporting Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BE81F9B1A3E00F2C695 /* DashboardCountCellData.m */,
+				A8017BE91F9B1A3E00F2C695 /* DashboardCountCellData.h */,
+			);
+			path = "Supporting Objects";
+			sourceTree = "<group>";
+		};
+		A8F98A5E1F98353000BFC759 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BBB1F9B18CC00F2C695 /* WalgreensAPIDelegate.h */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A8F98A5F1F98354200BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8D8919A1F71F6A000E3388B /* StoreTimesConstants.h */,
+				A8D8919B1F71F6B200E3388B /* StoreTimesConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A601F98354B00BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BBC1F9B18D400F2C695 /* WalgreensAPIConstants.m */,
+				A8017BBD1F9B18D400F2C695 /* WalgreensAPIConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A611F98357C00BFC759 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BB81F9B18B600F2C695 /* DatabaseConstants.m */,
+				A8017BB91F9B18B600F2C695 /* DatabaseConstants.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		A8F98A621F9835C400BFC759 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A8017BB51F9B189B00F2C695 /* Reachability.m */,
+				A8017BB61F9B189B00F2C695 /* Reachability.h */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -964,10 +916,10 @@
 				A86CF5161F5D366C005889B7 /* StoreCategory.storyboard in Resources */,
 				A86CF4E81F5CCD6E005889B7 /* StoreHistory.storyboard in Resources */,
 				A86CF4E31F5CCADC005889B7 /* Main.storyboard in Resources */,
+				A8017BA71F9B163600F2C695 /* StoreHours.storyboard in Resources */,
 				A86CF51A1F5D37DB005889B7 /* StoreDetails.storyboard in Resources */,
 				A842C73A1EB023FB002ED089 /* LaunchScreen.storyboard in Resources */,
 				A842C7371EB023FB002ED089 /* Assets.xcassets in Resources */,
-				A8AE355D1F80CA6F0017C904 /* StoreHours.storyboard in Resources */,
 				A86CF4EE1F5CCE40005889B7 /* Dashboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1091,55 +1043,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A85D90D51F96E19D00604683 /* StoreCell.m in Sources */,
+				A8017BE61F9B199600F2C695 /* ViewController.m in Sources */,
+				A8017BE71F9B199600F2C695 /* TableViewController.m in Sources */,
 				A86CF4FA1F5CFC54005889B7 /* NetworkUtility.m in Sources */,
-				A8AE35591F7FB4600017C904 /* StoreTimeCell.m in Sources */,
-				A8AE35641F80F1750017C904 /* StoreHoursController.m in Sources */,
+				A8017BBE1F9B18D400F2C695 /* WalgreensAPIConstants.m in Sources */,
 				A86CF5271F5D40E9005889B7 /* StoreDetailsController.m in Sources */,
+				A8A4A4651F9C383C00702565 /* FilterCell.m in Sources */,
 				A89B0A261F85076F0016A698 /* ProductCell.m in Sources */,
-				A89EA2851F726CF800A50E3B /* MessageCell.m in Sources */,
-				A85D90C81F96C54C00604683 /* OfflineHistoryCell.m in Sources */,
-				A86CF4FB1F5CFC54005889B7 /* Reachability.m in Sources */,
-				A85D90C51F96C53200604683 /* DatePickerCell.m in Sources */,
-				A86CF51E1F5D3F59005889B7 /* MapPin.m in Sources */,
+				A8017BDA1F9B198100F2C695 /* ClusterPin.m in Sources */,
+				A8AF4BA41FA66E7E003F01D3 /* OfflineStoresController.m in Sources */,
+				A8017BD91F9B198100F2C695 /* MapPin.m in Sources */,
+				A8017BCC1F9B190B00F2C695 /* OnlineTrendCell.m in Sources */,
+				A8017BD41F9B194A00F2C695 /* DashboardCountCell.m in Sources */,
 				A86CF4FC1F5CFC54005889B7 /* WalgreensAPI.m in Sources */,
+				A8017BCE1F9B190B00F2C695 /* DatePickerCell.m in Sources */,
 				A8D891841F6BEBA100E3388B /* StoreCityController.m in Sources */,
-				A86DE40D1F8AECDD00D3E486 /* DashboardCountCell.m in Sources */,
-				A8A166CF1F902B7300E3081C /* DashboardCountCellData.m in Sources */,
+				A8017BAE1F9B185600F2C695 /* StoreHoursController.m in Sources */,
 				A86CF4FD1F5CFC54005889B7 /* DatabaseManager.m in Sources */,
-				A8D8918D1F6D003C00E3388B /* DatabaseConstants.m in Sources */,
 				A86CF4FE1F5CFC54005889B7 /* Commands.m in Sources */,
+				A8017BB71F9B189B00F2C695 /* Reachability.m in Sources */,
 				A89B0A231F8500C10016A698 /* ProductListController.m in Sources */,
+				A8017BC21F9B18FE00F2C695 /* Month.m in Sources */,
 				A86CF4FF1F5CFC54005889B7 /* InsertCommands.m in Sources */,
+				A8017BBA1F9B18B600F2C695 /* DatabaseConstants.m in Sources */,
+				A8017BCD1F9B190B00F2C695 /* OfflineHistoryCell.m in Sources */,
 				A85D90C11F96C15C00604683 /* OfflineHistoryController.m in Sources */,
+				A8017BCB1F9B190B00F2C695 /* SummaryCell.m in Sources */,
 				A86CF5001F5CFC54005889B7 /* SelectCommands.m in Sources */,
-				A86CF5011F5CFC54005889B7 /* TableCommands.m in Sources */,
+				A8017BB11F9B186C00F2C695 /* Store.m in Sources */,
 				A8D891811F6B875100E3388B /* StoreStateController.m in Sources */,
-				A86CF5211F5D3FA4005889B7 /* MapCell.m in Sources */,
-				A8D891901F6D070A00E3388B /* Store.m in Sources */,
+				A8017BD11F9B194200F2C695 /* UIColor+AppTheme.m in Sources */,
+				A8017BE01F9B198E00F2C695 /* DetailCell.m in Sources */,
 				A86CF5021F5CFC54005889B7 /* UpdateCommands.m in Sources */,
-				A86CF5031F5CFC54005889B7 /* DatabaseManagerApp.m in Sources */,
+				A8017BE11F9B198E00F2C695 /* BasicCell.m in Sources */,
+				A8017BED1F9B44BF00F2C695 /* OpenClosedCell.m in Sources */,
+				A8017BB41F9B188300F2C695 /* MapCell.m in Sources */,
 				A8D891871F6CA9CA00E3388B /* StoreCategoryController.m in Sources */,
 				A86CF5041F5CFC54005889B7 /* Controller.m in Sources */,
 				A86CF5051F5CFC54005889B7 /* StatusController.m in Sources */,
-				A85D90D11F96CCA800604683 /* Month.m in Sources */,
 				A8D8919C1F71F6B200E3388B /* StoreTimesConstants.m in Sources */,
-				A8A1B8271F945B90004A0BC3 /* WalgreensAPIConstants.m in Sources */,
 				A8D891971F6F7A9500E3388B /* StoreTimes.m in Sources */,
 				A86CF4F91F5CFC1A005889B7 /* DateHelper.m in Sources */,
+				A8017BAB1F9B184800F2C695 /* StoreTimesMapCell.m in Sources */,
 				A8D8918A1F6CAC6E00E3388B /* MapController.m in Sources */,
 				A86CF4F21F5CF437005889B7 /* DashboardController.m in Sources */,
-				A86CF4F81F5CF6C9005889B7 /* TableViewController.m in Sources */,
-				A86CF4F51F5CF475005889B7 /* ViewController.m in Sources */,
-				A873C6981F97DD0300BD41AE /* SummaryCell.m in Sources */,
-				A8D891931F6E675200E3388B /* ClusterPin.m in Sources */,
-				A86DE4111F8B008100D3E486 /* UIColor+AppTheme.m in Sources */,
-				A89EA27F1F72477700A50E3B /* StoreTimesMapCell.m in Sources */,
-				A86CF5241F5D4058005889B7 /* DetailCell.m in Sources */,
 				A8E1E2161F4E5ADE008DE876 /* main.m in Sources */,
+				A8AF4BA81FA67618003F01D3 /* OfflineStoreCell.m in Sources */,
+				A8017BEA1F9B1A3E00F2C695 /* DashboardCountCellData.m in Sources */,
 				A8E1E2191F4E5ADE008DE876 /* AppDelegate.m in Sources */,
-				A85D90D81F970D0A00604683 /* OnlineTrendCell.m in Sources */,
-				A8AE356E1F810AA00017C904 /* SingleLabelCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,7 +1254,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastiangarbarek.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1328,7 +1279,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/WalgreensDashboardApp/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sebastiangarbarek.WalgreensDashboardApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

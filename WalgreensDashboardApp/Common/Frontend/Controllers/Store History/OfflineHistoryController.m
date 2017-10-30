@@ -38,46 +38,22 @@
                               sectionTitles[1] : @(1),
                               sectionTitles[2] : @(1)};
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshView)
+                                                 name:@"Store offline"
+                                               object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self configureViewOnAppear];
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularRed]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     for (int i = 0; i < 3; i++)
         NSLog(@"Offline history screen received memory warning.");
-}
-
-#pragma mark - Init Methods -
-
-- (void)configureViewOnAppear {
-    [self setTextColorTabItem];
-    // Different for each screen.
-    [self setSelectedTabBackgroundImage];
-    
-    // Set background color of navigation bar.
-    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
-}
-
-- (void)setTextColorTabItem {
-    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
-}
-
-- (void)setSelectedTabBackgroundImage {
-    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
-    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
-    [[UIColor printicularBlue] setFill];
-    [path fill];
-    UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self.tabBarController.tabBar setSelectionIndicatorImage:selectedBackground];
 }
 
 #pragma mark - Table Methods -
@@ -101,7 +77,7 @@
         case 0: {
             DatePickerCell *datePicker = [tableView dequeueReusableCellWithIdentifier:@"Date Picker"];
             datePicker.delegate = self;
-            [datePicker loadDatePickerData:self.databaseManagerApp];
+            [datePicker loadDatePickerData:self.databaseManager];
             return datePicker;
             break;
         }
@@ -137,6 +113,41 @@
     return 0;
 }
 
+#pragma mark - Navigation Methods -
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    UICollectionViewCell *senderCell = (UICollectionViewCell *)sender;
+    NSIndexPath *indexPath = [(UICollectionView *)senderCell.superview indexPathForCell:senderCell];
+    
+    NSArray *offlineStores;
+    
+    switch (indexPath.row) {
+        case 0:
+            // Offline.
+        {
+            offlineStores = [self offlineStoresForStatus:@"C"];
+        }
+            break;
+        case 1:
+            // Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"M"];
+        }
+            break;
+        case 2:
+            // Unscheduled Maintenance.
+        {
+            offlineStores = [self offlineStoresForStatus:@"T"];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    OfflineStoresController *destination = [segue destinationViewController];
+    destination.offlineStores = offlineStores;
+}
+
 #pragma mark - Picker Delegate Methods -
 
 - (void)datePickerDidLoadWithInitialMonth:(NSNumber *)initialMonth initialYear:(NSNumber *)initialYear {
@@ -144,7 +155,7 @@
         // Cells load in order.
         selectedMonth = initialMonth;
         selectedYear = initialYear;
-        offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
+        offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:initialMonth year:initialYear];
         didLoadInitialGraph = YES;
     }
 }
@@ -152,22 +163,40 @@
 - (void)datePickerDidSelectMonth:(NSNumber *)month withYear:(NSNumber *)year {
     selectedMonth = month;
     selectedYear = year;
-    offlineStoresForMonthInYear = [self.databaseManagerApp.selectCommands selectOfflineStoresForMonth:month year:year];
+    offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:month year:year];
     [self.tableView reloadData];
-}
-
-#pragma mark - Navigation Methods -
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
 }
 
 #pragma mark - Helper Methods -
 
 - (OfflineHistoryCell *)smartDequeueWithIdentifier:(NSString *)identifier {
     OfflineHistoryCell *offlineHistoryCell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
-    [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManagerApp];
+    [offlineHistoryCell loadCellDataWithOfflineStores:offlineStoresForMonthInYear month:selectedMonth year:selectedYear databaseManager:self.databaseManager];
     return offlineHistoryCell;
+}
+
+- (NSArray *)offlineStoresForStatus:(NSString *)status {
+    NSMutableArray *offlineStores = [NSMutableArray new];
+    for (NSDictionary *offlineStore in offlineStoresForMonthInYear) {
+        if ([[offlineStore objectForKey:@"status"] isEqualToString:status]) {
+            [offlineStores addObject:offlineStore];
+        }
+    }
+    return offlineStores;
+}
+
+- (void)refreshView {
+    offlineStoresForMonthInYear = [self.databaseManager.selectCommands selectOfflineStoresForMonth:selectedMonth year:selectedYear];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView beginUpdates];
+        // Graph.
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:1], nil]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        // Summary.
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:2], nil]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+    });
 }
 
 @end

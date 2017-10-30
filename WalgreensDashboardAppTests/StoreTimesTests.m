@@ -164,21 +164,4 @@
      */
 }
 
-- (void)testTimeCountingOpenStores {
-    [self measureBlock:^{
-        int count = 0;
-        for (NSDictionary *store in self.preparedOpenClosedStores) {
-            if ([[store objectForKey:kOpen] intValue] == 1) {
-                count++;
-            }
-        }
-        NSLog(@"%i stores open stores counted.", count);
-    }];
-    
-    /*
-     Results:
-     Average time of 0.003s. Iteration over store array and accessing contained store detail dictionaries has no impact on performance as expected.
-     */
-}
-
 @end

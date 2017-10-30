@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StoreCell.h"
+#import "BasicCell.h"
 #import "TableViewController.h"
 #import "StoreDetailsController.h"
 #import "DatabaseConstants.h"

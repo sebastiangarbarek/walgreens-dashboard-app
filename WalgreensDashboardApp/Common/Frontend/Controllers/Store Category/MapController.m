@@ -38,7 +38,7 @@
     self.mapView.clusterManager.algorithm = algorithm;
     
     // Retrieve all print store coordinates.
-    NSArray *results = [self.databaseManagerApp.selectCommands selectAllStoreCords];
+    NSArray *results = [self.databaseManager.selectCommands selectAllStoreCords];
     
     // Build annotation array.
     for (NSDictionary *store in results) {

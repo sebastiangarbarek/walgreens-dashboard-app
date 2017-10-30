@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-#import "TableCommands.h"
 #import "InsertCommands.h"
 #import "SelectCommands.h"
 #import "UpdateCommands.h"
@@ -28,7 +27,6 @@ static NSString *const databaseName = @"walgreensapidb.sql";
 - (NSMutableArray *)executeQuery:(const char *)query;
 - (void)closeDatabase;
 
-@property TableCommands* tableCommands;
 @property InsertCommands* insertCommands;
 @property SelectCommands* selectCommands;
 @property UpdateCommands* updateCommands;

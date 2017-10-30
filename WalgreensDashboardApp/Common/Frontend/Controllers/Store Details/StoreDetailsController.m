@@ -36,7 +36,7 @@
 
 - (void)initData {
     NSDictionary *storeDictionary;
-    NSArray *storeDetailsResultsArray = [self.databaseManagerApp.selectCommands selectStoreDetailsWithStoreNumber:self.storeNumber];
+    NSArray *storeDetailsResultsArray = [self.databaseManager.selectCommands selectStoreDetailsWithStoreNumber:self.storeNumber];
 
     if (storeDetailsResultsArray && storeDetailsResultsArray.count) {
         storeDictionary = storeDetailsResultsArray[0];
@@ -65,7 +65,7 @@
                                 @"Phone"];
         
         NSDictionary *hoursDictionary;
-        NSArray *storeHoursResultsArray = [self.databaseManagerApp.selectCommands selectStoreHoursWithStoreNumber:self.storeNumber];
+        NSArray *storeHoursResultsArray = [self.databaseManager.selectCommands selectStoreHoursWithStoreNumber:self.storeNumber];
         if (storeHoursResultsArray && storeHoursResultsArray.count) {
             hoursDictionary = storeHoursResultsArray[0];
             storeHours = @[[NSString stringWithFormat:@"%@ - %@", [hoursDictionary objectForKey:kMonOpen], [hoursDictionary objectForKey:kMonClose]],

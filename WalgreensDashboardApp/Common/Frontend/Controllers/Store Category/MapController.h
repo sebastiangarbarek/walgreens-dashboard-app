@@ -13,11 +13,11 @@
 #import "ViewController.h"
 #import "StoreCategoryController.h"
 #import "DatabaseConstants.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
 
 @interface MapController : ViewController <MKMapViewDelegate>
 
-@property (weak, nonatomic) id <SegueProtocol> segueDelegate;
+@property (weak, nonatomic) id <SegueDelegate> segueDelegate;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 

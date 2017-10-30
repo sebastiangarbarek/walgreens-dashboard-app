@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mhs-0r-gjf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--StoreDetails-->
+        <scene sceneID="su5-E0-3Vf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="y3s-xR-BSJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5br-DD-rMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521" y="747"/>
+        </scene>
+        <!--Live Status-->
+        <scene sceneID="alI-qz-vwo">
+            <objects>
+                <navigationController id="mhs-0r-gjf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Live Status" image="Hours Outline" selectedImage="Hours Filled" id="bND-gC-S6e"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8e8-ow-Fxm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qEF-8j-fmz" kind="relationship" relationship="rootViewController" id="5oV-Dy-f56"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ful-FV-DU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="157"/>
+        </scene>
+        <!--Live Status-->
+        <scene sceneID="4QW-gn-jDJ">
+            <objects>
+                <viewController id="qEF-8j-fmz" customClass="StoreHoursController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Ts-8D-rtP"/>
+                        <viewControllerLayoutGuide type="bottom" id="uW9-Hw-26R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nk9-yn-eBN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rTA-YI-CeS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Notification" rowHeight="22" id="L6V-BO-dRM" customClass="BasicCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L6V-BO-dRM" id="OGf-Qa-mpP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checking Stores" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcY-dc-42z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fcY-dc-42z" secondAttribute="bottom" id="50D-bC-tvS"/>
+                                                <constraint firstItem="fcY-dc-42z" firstAttribute="leading" secondItem="OGf-Qa-mpP" secondAttribute="leading" id="6yS-AL-7w9"/>
+                                                <constraint firstItem="fcY-dc-42z" firstAttribute="top" secondItem="OGf-Qa-mpP" secondAttribute="top" id="b19-qZ-Ma1"/>
+                                                <constraint firstAttribute="trailing" secondItem="fcY-dc-42z" secondAttribute="trailing" id="daD-DE-sPk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="fcY-dc-42z" id="LZI-eD-Rqv"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Filter" rowHeight="30" id="MYh-EO-Zqv" customClass="FilterCell">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MYh-EO-Zqv" id="EB0-8W-O15">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2ks-fI-72i">
+                                                    <rect key="frame" x="0.0" y="1" width="375" height="29"/>
+                                                    <segments>
+                                                        <segment title="All"/>
+                                                        <segment title="24/7"/>
+                                                        <segment title="Standard"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="storeHourTypeChanged:" destination="qEF-8j-fmz" eventType="valueChanged" id="ZaW-e9-iZU"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="leading" secondItem="EB0-8W-O15" secondAttribute="leading" id="6Da-k8-2yM"/>
+                                                <constraint firstAttribute="trailing" secondItem="2ks-fI-72i" secondAttribute="trailing" id="Fg9-vG-JgW"/>
+                                                <constraint firstAttribute="bottom" secondItem="2ks-fI-72i" secondAttribute="bottom" constant="1" id="kut-BG-Lsg"/>
+                                                <constraint firstItem="2ks-fI-72i" firstAttribute="top" secondItem="EB0-8W-O15" secondAttribute="top" constant="1" id="wIg-Gg-wSo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="storeHourTypeControl" destination="2ks-fI-72i" id="Cmv-D8-x8l"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Map" rowHeight="264" id="QZF-cW-YUu" customClass="StoreTimesMapCell">
+                                        <rect key="frame" x="0.0" y="80" width="375" height="264"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QZF-cW-YUu" id="TqE-1H-tfs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-5j-WfP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="QZF-cW-YUu" id="SlE-Ma-T0g"/>
+                                                    </connections>
+                                                </mapView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="top" secondItem="TqE-1H-tfs" secondAttribute="top" id="1nY-pV-hfn"/>
+                                                <constraint firstAttribute="bottom" secondItem="XeV-5j-WfP" secondAttribute="bottom" id="XSw-xM-2lu"/>
+                                                <constraint firstItem="XeV-5j-WfP" firstAttribute="leading" secondItem="TqE-1H-tfs" secondAttribute="leading" id="kwO-J2-kLQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="XeV-5j-WfP" secondAttribute="trailing" id="tQk-mY-gxr"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mapView" destination="XeV-5j-WfP" id="ak5-Qq-VIH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Open Closed" rowHeight="216" id="1vY-TC-NZU" customClass="OpenClosedCell">
+                                        <rect key="frame" x="0.0" y="344" width="375" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1vY-TC-NZU" id="DfC-A3-UV3">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-Cd-H7w">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nRk-IM-kta">
+                                                        <size key="itemSize" width="150" height="150"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Open" id="5In-vl-Ix4" customClass="DashboardCountCell">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7b-av-VYV">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stores Open" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dL-gx-PYC">
+                                                                        <rect key="frame" x="8" y="75" width="134" height="75"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="B7b-av-VYV" secondAttribute="trailing" id="7z3-M5-hk2"/>
+                                                                <constraint firstItem="2dL-gx-PYC" firstAttribute="top" secondItem="5In-vl-Ix4" secondAttribute="top" constant="75" id="INV-wR-4Ry"/>
+                                                                <constraint firstAttribute="bottom" secondItem="B7b-av-VYV" secondAttribute="bottom" id="NUU-eY-lOP"/>
+                                                                <constraint firstItem="B7b-av-VYV" firstAttribute="leading" secondItem="5In-vl-Ix4" secondAttribute="leading" id="V63-Lh-bob"/>
+                                                                <constraint firstItem="2dL-gx-PYC" firstAttribute="leading" secondItem="5In-vl-Ix4" secondAttribute="leading" constant="8" id="WVp-6r-BjT"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2dL-gx-PYC" secondAttribute="bottom" id="Z03-uv-Jzk"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2dL-gx-PYC" secondAttribute="trailing" constant="8" id="o8Y-U5-sy0"/>
+                                                                <constraint firstItem="B7b-av-VYV" firstAttribute="top" secondItem="5In-vl-Ix4" secondAttribute="top" id="v82-1Y-lLN"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="countLabel" destination="B7b-av-VYV" id="NPX-Qi-h7L"/>
+                                                                <outlet property="descriptionLabel" destination="2dL-gx-PYC" id="jcI-FY-ifb"/>
+                                                                <segue destination="BAR-Fb-Q97" kind="show" identifier="States (Open)" id="wmb-lY-tgL"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Closed" id="Ilf-33-khQ" customClass="DashboardCountCell">
+                                                            <rect key="frame" x="225" y="0.0" width="150" height="150"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-bM-ocE">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stores Closed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mJ-ip-sAe">
+                                                                        <rect key="frame" x="8" y="75" width="134" height="75"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="3mJ-ip-sAe" firstAttribute="leading" secondItem="Ilf-33-khQ" secondAttribute="leading" constant="8" id="0UE-fJ-VqP"/>
+                                                                <constraint firstAttribute="bottom" secondItem="3mJ-ip-sAe" secondAttribute="bottom" id="Diu-hm-Lh9"/>
+                                                                <constraint firstAttribute="trailing" secondItem="3mJ-ip-sAe" secondAttribute="trailing" constant="8" id="SUC-6Z-oNw"/>
+                                                                <constraint firstAttribute="bottom" secondItem="P2A-bM-ocE" secondAttribute="bottom" id="btM-V9-996"/>
+                                                                <constraint firstAttribute="trailing" secondItem="P2A-bM-ocE" secondAttribute="trailing" id="cuS-wW-sAI"/>
+                                                                <constraint firstItem="P2A-bM-ocE" firstAttribute="leading" secondItem="Ilf-33-khQ" secondAttribute="leading" id="i6s-0N-4ds"/>
+                                                                <constraint firstItem="3mJ-ip-sAe" firstAttribute="top" secondItem="Ilf-33-khQ" secondAttribute="top" constant="75" id="o3s-1r-g6p"/>
+                                                                <constraint firstItem="P2A-bM-ocE" firstAttribute="top" secondItem="Ilf-33-khQ" secondAttribute="top" id="uAf-6g-MGv"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="countLabel" destination="P2A-bM-ocE" id="AZ0-6S-tO7"/>
+                                                                <outlet property="descriptionLabel" destination="3mJ-ip-sAe" id="IPO-LP-mhf"/>
+                                                                <segue destination="0E9-eB-YS9" kind="show" identifier="States (Closed)" id="0nW-Pa-WlY"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="1vY-TC-NZU" id="iw9-A0-sXR"/>
+                                                        <outlet property="delegate" destination="1vY-TC-NZU" id="qTs-bY-9fk"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ulb-Cd-H7w" secondAttribute="trailing" id="e7l-8r-BuJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="ulb-Cd-H7w" secondAttribute="bottom" id="e8y-uk-iaO"/>
+                                                <constraint firstItem="ulb-Cd-H7w" firstAttribute="leading" secondItem="DfC-A3-UV3" secondAttribute="leading" id="iog-5y-Hjl"/>
+                                                <constraint firstItem="ulb-Cd-H7w" firstAttribute="top" secondItem="DfC-A3-UV3" secondAttribute="top" id="yyq-ND-BrM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="ulb-Cd-H7w" id="vl3-2p-F9I"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qEF-8j-fmz" id="88i-Oa-kUX"/>
+                                    <outlet property="delegate" destination="qEF-8j-fmz" id="8S9-4z-8Nb"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Live Status" id="ShK-8b-rZG"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="tableView" destination="rTA-YI-CeS" id="dOM-ca-O2u"/>
+                        <segue destination="y3s-xR-BSJ" kind="show" identifier="Store Details" id="P1B-Kw-FVM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTZ-S5-1go" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520.79999999999995" y="156.52173913043478"/>
+        </scene>
+        <!--States - Custom-->
+        <scene sceneID="TfY-Lq-dNh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreCategory" referencedIdentifier="States - Custom" id="BAR-Fb-Q97" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9G-MG-81c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="-13"/>
+        </scene>
+        <!--States - Custom-->
+        <scene sceneID="eHJ-q7-tb9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreCategory" referencedIdentifier="States - Custom" id="0E9-eB-YS9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCN-eO-Lq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="309"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Hours Filled" width="25" height="25"/>
+        <image name="Hours Outline" width="25" height="25"/>
+    </resources>
+</document>

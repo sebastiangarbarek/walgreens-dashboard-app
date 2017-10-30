@@ -15,12 +15,8 @@
 @interface InsertCommands : Commands
 
 - (void)insertOnlineStoreWithData:(NSDictionary *)responseData;
-- (void)insertOfflineStoreWithStoreNumber:(NSString *)storeNumber;
-
 - (void)insertProductsWithData:(NSDictionary *)responseData;
-
 - (void)insertOfflineHistoryWithStore:(NSString *)storeNumber status:(NSString *)status;
-
-- (void)insertOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year;
+- (void)insertTestOfflineHistoryWithStore:(NSNumber *)storeNumber status:(NSString *)status day:(NSNumber *)day month:(NSNumber *)month year:(NSNumber *)year;
 
 @end

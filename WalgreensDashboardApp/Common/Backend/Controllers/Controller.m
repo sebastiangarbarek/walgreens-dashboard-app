@@ -10,21 +10,13 @@
 
 @implementation Controller
 
-- (instancetype)init {
-    self  = [super init];
-    if (self) {
-        startSemaphore = dispatch_semaphore_create(0);
-        walgreensApi = [[WalgreensAPI alloc] initWithStartSemaphore:startSemaphore];
-        databaseManager = [[DatabaseManager alloc] init];
-    }
-    return self;
-}
-
 - (instancetype)initWithManager:(DatabaseManager *)manager {
     self  = [self init];
     if (self) {
         databaseManager = manager;
         [databaseManager openCreateDatabase];
+        startSemaphore = dispatch_semaphore_create(0);
+        walgreensApi = [[WalgreensAPI alloc] initWithStartSemaphore:startSemaphore];
     }
     return self;
 }

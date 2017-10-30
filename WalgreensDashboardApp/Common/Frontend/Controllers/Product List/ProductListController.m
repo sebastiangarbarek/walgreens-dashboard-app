@@ -31,6 +31,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularBlue]];
+    
     if (!updated) {
         [self presentNotification:@"Checking Products" backgroundColor:[UIColor greenColor]];
         if ([reach isReachable]) {
@@ -48,7 +50,7 @@
 #pragma mark - Init Methods -
 
 - (void)loadProducts {
-    products = [self.databaseManagerApp.selectCommands selectAllProducts];
+    products = [self.databaseManager.selectCommands selectAllProducts];
 }
 
 #pragma mark - View Methods -

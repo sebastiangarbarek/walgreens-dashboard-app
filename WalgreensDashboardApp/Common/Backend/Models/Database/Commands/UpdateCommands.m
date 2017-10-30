@@ -7,22 +7,16 @@
 //
 
 #import "UpdateCommands.h"
+
 #import "DatabaseManager.h"
+#import "DatabaseConstants.h"
 
 @implementation UpdateCommands
 
-- (void)deleteOfflineStoresInDetailTable {
-    NSString *commandString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE status = 0", StoreTableName];
-    [self.databaseManager executeCommand:[commandString UTF8String]];
-}
-
-- (void)deletePastTempStatuses {
-    NSString *commandString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE date != '%@'", TempStatusTableName, [DateHelper currentDate]];
-    [self.databaseManager executeCommand:[commandString UTF8String]];
-}
+#pragma mark - Store Detail -
 
 - (void)deleteStoreFromStoreDetailTable:(NSString *)storeNumber {
-    NSString *commandString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE storeNum = %@", StoreTableName, storeNumber];
+    NSString *commandString = [NSString stringWithFormat:@"DELETE FROM %@ WHERE storeNum = %@", kStoreTableName, storeNumber];
     [self.databaseManager executeCommand:[commandString UTF8String]];
 }
 

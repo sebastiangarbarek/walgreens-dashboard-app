@@ -10,9 +10,6 @@
 
 @interface StatusController () {
     NSString *requestedStoresFilePath;
-    
-    int nDowntime;
-    
     BOOL wasDisconnected;
 }
 
@@ -26,8 +23,6 @@
     self = [super initWithManager:manager];
     
     if (self) {
-        nDowntime = 0;
-        
         walgreensApi.delegate = self;
         
         NSArray *directories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -102,6 +97,7 @@
             }
             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+            
             NSArray *remainingStores = [self validateTemporary:storeList];
             [walgreensApi requestStoresInList:remainingStores];
         }
@@ -136,8 +132,8 @@
             return [self removeNonPrintStores:storeList];
         }
     } else {
+        printf("[STATUS] A temporary list of stores does not exist...\n");
         [self newTemporary];
-        
         return [self removeNonPrintStores:storeList];
     }
     
@@ -214,25 +210,6 @@
     }
 }
 
-- (void)updateStatusOfServerIfWasDown {
-    NSDictionary *lastDownTime = [databaseManager.selectCommands selectLastDowntime];
-    
-    if (lastDownTime) {
-        if ([lastDownTime objectForKey:kOnlineDateTime] == nil) {
-            NSString *offlineDateTime = [lastDownTime objectForKey:kOfflineDateTime];
-            
-            if (offlineDateTime) {
-                printf("[STATUS 🍏] Server is back online.\n");
-                
-                // Update history to show when detected online.
-                [databaseManager.updateCommands updateDateTimeOnlineForStore:@"All"
-                                                             offlineDateTime:[lastDownTime objectForKey:kOfflineDateTime]
-                                                              onlineDateTime:[DateHelper currentDateAndTime]];
-            }
-        }
-    }
-}
-
 - (void)updateStoreStatusIfWasOffline:(NSString *)storeNumber {
     NSDictionary *lastOfflineToday = [databaseManager.selectCommands selectStoreIfHasBeenOfflineToday:storeNumber];
     
@@ -249,38 +226,13 @@
 }
 
 - (void)checkDowntime {
-    NSDictionary *lastDownTimeToday = [databaseManager.selectCommands selectLastDowntimeToday];
+    // Don't add another downtime entry if the last hasn't been resolved yet.
     
-    if (lastDownTimeToday == nil) {
-        nDowntime = 0;
-        
-        [self insertDowntime];
-    } else {
-        if ([lastDownTimeToday objectForKey:kOnlineDateTime] != nil) {
-            printf("[STATUS] Server was online last checked.\n");
-            
-            nDowntime = 0;
-            
-            [self insertDowntime];
-        } else {
-            if ([lastDownTimeToday objectForKey:kOfflineDateTime]) {
-                if ([DateHelper currentDateTimeIsAtLeastMinutes:kInsertDowntimeIntoDatabaseEvery
-                                                        aheadOf:[DateHelper dateWithString:[lastDownTimeToday objectForKey:kOfflineDateTime]]
-                                                   timesChecked:nDowntime]) {
-                    nDowntime++;
-                    
-                    printf("[STATUS] Server has been down for %li minute(s).\n", kInsertDowntimeIntoDatabaseEvery * nDowntime);
-                    
-                    [self insertDowntime];
-                }
-            }
-        }
-    }
 }
 
 - (void)insertDowntime {
     printf("[STATUS] Inserting downtime into database...\n");
-    [databaseManager.insertCommands insertOfflineHistoryWithStore:@"All" status:nil];
+    
 }
 
 #pragma mark - Delegate Methods -

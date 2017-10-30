@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "ViewController.h"
 #import "StoreStateController.h"
 #import "StoreCityController.h"
 #import "MapController.h"
-#import "SegueProtocol.h"
+#import "SegueDelegate.h"
+#import "UIColor+AppTheme.h"
 
-@interface StoreCategoryController : ViewController <SegueProtocol>
+@interface StoreCategoryController : ViewController <SegueDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 

@@ -28,13 +28,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupView];
     [self initData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self configureViewOnAppear];
+    [self configureViewOnAppearWithThemeColor:[UIColor printicularBlue]];
     
     // Store went offline off screen and the user has not seen the notification.
     if (!self.offlineNotificationView.isHidden) {
@@ -89,8 +88,8 @@
     failureState = YES;
     
     // Get the numbers.
-    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
-    int offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
+    int numberOfPrintStores = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] intValue];
+    int offline = [[self.databaseManager.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
     int online = numberOfPrintStores - offline;
     NSArray *openStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:YES];
     NSArray *closedStores = [self.storeTimes retrieveStoresWithDateTime:[DateHelper currentDateAndTime] requestOpen:NO];
@@ -129,48 +128,6 @@
     [cellCollection addObject:offlineCell];
     [cellCollection addObject:openCell];
     [cellCollection addObject:closedCell];
-}
-
-- (void)setupView {
-    [self addPrinticularLogo];
-}
-
-- (void)addPrinticularLogo {
-    UIImage *image = [UIImage imageNamed:@"Printicular Logo"];
-    
-    // Use to automatically scale image.
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    button.adjustsImageWhenHighlighted = NO;
-    
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = leftBarButton;
-}
-
-- (void)configureViewOnAppear {
-    [self setTextColorTabItem];
-    // Different for each screen.
-    [self setSelectedTabBackgroundImage];
-    
-    // Set background color of navigation bar.
-    self.navigationController.navigationBar.backgroundColor = [UIColor printicularBlue];
-}
-
-- (void)setTextColorTabItem {
-    [self.tabBarController.tabBar.selectedItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateFocused];
-}
-
-- (void)setSelectedTabBackgroundImage {
-    CGSize tabSize = CGSizeMake(self.tabBarController.tabBar.frame.size.width / self.tabBarController.tabBar.items.count, self.tabBarController.tabBar.frame.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(tabSize, NO, 0);
-    UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, tabSize.width, tabSize.height)];
-    [[UIColor printicularBlue] setFill];
-    [path fill];
-    UIImage* selectedBackground = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    [self.tabBarController.tabBar setSelectionIndicatorImage:selectedBackground];
 }
 
 #pragma mark - Collection Methods -
@@ -247,7 +204,7 @@
 
 - (void)updateProgressView:(NSInteger)numberOfStoresRequested {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger numberOfStoresToRequest = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] integerValue];
+        NSInteger numberOfStoresToRequest = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] integerValue];
         self.progressView.progress = (float) numberOfStoresRequested / numberOfStoresToRequest;
     });
 }
@@ -345,7 +302,7 @@
 }
 
 - (void)presentOfflineNotificationForStore:(NSString *)storeNumber {
-    NSDictionary *cityState = [self.databaseManagerApp.selectCommands selectCityStateForStore:storeNumber];
+    NSDictionary *cityState = [self.databaseManager.selectCommands selectCityStateForStore:storeNumber];
     
     if ([[cityState objectForKey:kCity] length] != 0 && [[cityState objectForKey:kState] length] != 0) {
         self.offlineNotificationView.hidden = NO;
@@ -372,12 +329,12 @@
 
 - (void)updateOnlineOfflineCells {
     int online, offline;
-    int numberOfPrintStores = [[self.databaseManagerApp.selectCommands countPrintStoresInStoreTable] intValue];
+    int numberOfPrintStores = [[self.databaseManager.selectCommands countPrintStoresInStoreTable] intValue];
     if (failureState) {
         online = 0;
         offline = numberOfPrintStores;
     } else {
-        offline = [[self.databaseManagerApp.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
+        offline = [[self.databaseManager.selectCommands countOfflineInHistoryTableWithDateTime:[DateHelper currentDateAndTime]] intValue];
         online = numberOfPrintStores - offline;
     }
 

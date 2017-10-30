@@ -172,6 +172,7 @@
                                                             <connections>
                                                                 <outlet property="countLabel" destination="BW5-Qq-Zj9" id="XKh-pH-W5p"/>
                                                                 <outlet property="descriptionLabel" destination="4LO-z5-f91" id="aPz-4J-Ok0"/>
+                                                                <segue destination="Z1J-jA-vuc" kind="show" identifier="Offline Stores" id="rdJ-kD-6xZ"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -225,6 +226,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yE-je-cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-18.399999999999999" y="37.781109445277366"/>
+        </scene>
+        <!--Offline Stores Controller-->
+        <scene sceneID="KsW-x3-ckh">
+            <objects>
+                <tableViewController id="Z1J-jA-vuc" customClass="OfflineStoresController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iUx-hg-jGG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Offline Store" textLabel="mo6-wC-jQs" detailTextLabel="KAV-qH-NE2" style="IBUITableViewCellStyleSubtitle" id="3kJ-9f-crN" customClass="OfflineStoreCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3kJ-9f-crN" id="i1a-XZ-AsC">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="State, City, Store Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mo6-wC-jQs">
+                                            <rect key="frame" x="15" y="5" width="194.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Offline Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KAV-qH-NE2">
+                                            <rect key="frame" x="15" y="25.5" width="69.5" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="offlineTimeLabel" destination="KAV-qH-NE2" id="OhW-9z-8kx"/>
+                                    <outlet property="storeDetailLabel" destination="mo6-wC-jQs" id="8kW-tZ-Heb"/>
+                                    <segue destination="3hm-O5-Z2U" kind="show" identifier="Store Details" id="65k-bg-DEi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Z1J-jA-vuc" id="rCR-zB-Vsf"/>
+                            <outlet property="delegate" destination="Z1J-jA-vuc" id="jtb-T0-WW0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ygX-Qp-1Ka" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="38"/>
+        </scene>
+        <!--StoreDetails-->
+        <scene sceneID="Czc-IM-XHc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StoreDetails" id="3hm-O5-Z2U" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wg0-Yd-6dq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="-404"/>
         </scene>
     </scenes>
     <resources>
